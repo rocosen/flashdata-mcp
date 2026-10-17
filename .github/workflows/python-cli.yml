@@ -27,4 +27,3 @@ jobs:
       - run: uv run --frozen ruff format --check src scripts tests
       - run: uv run --frozen python scripts/build.py
       - run: uv run --frozen python scripts/verify_install.py
-
