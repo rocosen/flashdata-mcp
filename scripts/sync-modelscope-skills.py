@@ -36,7 +36,7 @@ for skill in catalog['skills']:
 {skill['command']} --help
 ```
 
-已配置密钥后，可使用 `{skill['command']} call get_pricing` 免费读取当前价格；价格检查不等于实际数据查询成功。异步提交保存返回的 `id`（CLI为 `result.id`），用 `get_job` 的 `job_id` 读取同一任务，完成后从 `output`（CLI为 `result.output`）取结果。不要在超时后自动重复提交收费请求。
+已配置密钥后，可使用 `{skill['command']} call get_pricing` 免费读取当前价格；价格检查不等于实际数据查询成功。普通同步查询直接处理返回的 `result`，不要求存在job ID。需要异步时显式传入 `mode: "async"`，保存提交返回的 `id`（CLI为 `result.id`），用 `get_job` 的 `job_id` 读取同一任务，完成后从 `output`（CLI为 `result.output`）取结果。下载始终使用异步模式。不要在超时后自动重复提交收费请求。
 
 """
     if skill['source'] == 'youtube_download':
