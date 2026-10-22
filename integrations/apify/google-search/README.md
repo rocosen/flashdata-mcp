@@ -1,8 +1,29 @@
-# Google Search Results — FlashData
+# Google Search for AI Agents — FlashData
 
-Search Google using your own FlashData API key. Get result positions, titles, links and snippets, export organic results to JSON or CSV, and keep the complete API response for other returned SERP fields.
+Give your AI agent a Google web search tool. FlashData returns ranked URLs, page titles and snippets as structured JSON, so research assistants, LLM applications and automated workflows can discover sources and bring web context into their work.
 
-Use it to collect research sources, compare search snapshots or find localized web results. This Actor fetches one query and one page per run. It does not fetch article full text or automatically follow more pages.
+Use it when an agent needs to find relevant pages, look up information beyond its model knowledge, or collect links for an answer with citations. Your agent supplies a search query; the Actor returns results it can inspect, select and pass to the next step.
+
+## When to use this tool
+
+| Agent task | What Google Search returns for the next step |
+| --- | --- |
+| Web research and source discovery | Ranked pages with titles, URLs and snippets to build a research shortlist. |
+| Answers with sources | Links and search excerpts for the agent to inspect before citing a source. |
+| Fact-checking research | Candidate sources to compare when checking a claim. The agent still needs to evaluate the evidence. |
+| Product, company or market research | Relevant web pages for comparisons and research briefs. |
+| Localized research | Search results with optional country, language and location parameters. |
+| Retrieval pipelines | Structured search results to select URLs for a separate page-fetching or indexing step. |
+
+Each call searches one query and one results page. You receive search snippets and any other SERP fields returned by the provider. Full article text requires a separate page-fetching step; request additional pages with separate calls.
+
+## Use it in an AI agent
+
+Call this Actor through the Apify API from your agent's tool or function, or connect it to an existing workflow. The Actor's **API** tab provides platform request examples. Supply your FlashData key and the agent's search query, then read **Organic search results** or **Complete search response** when the run completes.
+
+A typical flow is: **agent identifies an information gap → searches Google → inspects titles, snippets and source URLs → retrieves selected pages if needed → writes an answer with sources**. Search results provide source candidates; your agent handles reasoning and citation selection.
+
+The dataset exposes `query`, `position`, `title`, `link`, `snippet` and `request_id`, and can be exported as JSON or CSV. The complete response also preserves additional fields such as related searches and People Also Ask when returned.
 
 ## Before you start
 
