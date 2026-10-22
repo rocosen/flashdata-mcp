@@ -26,6 +26,7 @@ assert.ok(schema.required.includes('flashdataApiKey'));
 assert.ok(schema.required.includes('query'));
 const output = await readJson('.actor/output_schema.json');
 assert.equal(output.actorOutputSchemaVersion, 1);
+for (const definition of Object.values(output.properties)) assert.equal(definition.type, 'string');
 assert.equal(output.properties.response.template, '{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT');
 const packageJson = await readJson('package.json');
 const lock = await readJson('package-lock.json');
