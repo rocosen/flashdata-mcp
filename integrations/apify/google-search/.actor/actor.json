@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "flashdata-google-search",
+  "title": "Google Search Results — FlashData",
+  "description": "Get structured Google search results using your own FlashData API key. Check your account price, then export titles, links, snippets and positions. Queries use your FlashData Credits; Apify platform usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

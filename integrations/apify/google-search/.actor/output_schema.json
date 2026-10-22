@@ -1,0 +1,21 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Google Search output",
+  "properties": {
+    "results": {
+      "title": "Organic search results",
+      "description": "Search-mode organic results, exportable as JSON or CSV. Price-check mode has no search results.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=organic"
+    },
+    "response": {
+      "title": "Complete response or quote",
+      "description": "Search response, query, request ID, usage when returned, or a quote without a search.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    },
+    "quote": {
+      "title": "FlashData price quote",
+      "description": "The account-specific price checked before the search. This is not a final usage invoice.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/QUOTE"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-google-search",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Google Search Actor using the customer's FlashData API key and Credits",
+  "license": "MIT",
+  "engines": { "node": ">=22.18.0" },
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check-package.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}
