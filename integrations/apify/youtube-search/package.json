@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-youtube-search",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Find YouTube videos for AI research and content-discovery agents. Export titles, video IDs and available channel, duration and view metadata; request up to 20 results. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}

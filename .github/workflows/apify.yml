@@ -1,4 +1,4 @@
-name: Apify Google Search
+name: Apify Actors
 on:
   push:
     paths: ['integrations/apify/**', '.github/workflows/apify.yml']
@@ -24,3 +24,9 @@ jobs:
       - run: npm run check
       - run: npm audit --audit-level=high
       - run: docker build -f .actor/Dockerfile -t flashdata-google-search:ci .
+      - run: npm ci --ignore-scripts
+        working-directory: integrations/apify/suite
+      - run: npm test && npm run check && npm audit --audit-level=high
+        working-directory: integrations/apify/suite
+      - run: docker build -f .actor/Dockerfile -t flashdata-youtube-download:ci .
+        working-directory: integrations/apify/youtube-download

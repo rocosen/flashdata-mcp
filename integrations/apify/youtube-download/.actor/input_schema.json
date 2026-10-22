@@ -1,0 +1,186 @@
+{
+  "title": "YouTube to Cloud Storage with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Start one download with video ID and encrypted storage JSON, or read an existing job ID. Uses your FlashData Credits and separate Apify resources.",
+  "properties": {
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Your own FlashData API key with YouTube Download permission. Encrypted; no shared key is provided.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "video_id": {
+      "type": "string",
+      "minLength": 11,
+      "maxLength": 11,
+      "pattern": "^[A-Za-z0-9_-]{11}$",
+      "title": "Video Id",
+      "description": "An 11-character YouTube video ID, not a full URL.",
+      "editor": "textfield"
+    },
+    "download_type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 11,
+      "default": "audio_video",
+      "enum": [
+        "audio_video",
+        "video",
+        "audio"
+      ],
+      "title": "Download Type",
+      "description": "audio_video, video, or audio. Output format must match the selected type.",
+      "editor": "select"
+    },
+    "video_quality": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40,
+      "enum": [
+        "best",
+        "worst",
+        "<=144",
+        "==144",
+        ">=144",
+        "<=360",
+        "==360",
+        ">=360",
+        "<=480",
+        "==480",
+        ">=480",
+        "<=720",
+        "==720",
+        ">=720",
+        "<=1080",
+        "==1080",
+        ">=1080",
+        "<=1440",
+        "==1440",
+        ">=1440",
+        "<=2160",
+        "==2160",
+        ">=2160",
+        "<=4320",
+        "==4320",
+        ">=4320"
+      ],
+      "title": "Video Quality",
+      "description": "Video quality constraint. Omit for audio-only downloads.",
+      "editor": "select"
+    },
+    "fps": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 6,
+      "pattern": "^(?:>=|<=|==)(?:[1-9]\\d?|1\\d\\d|2[0-3]\\d|240)$",
+      "title": "Fps",
+      "description": "Frame-rate constraint. Omit for audio-only downloads.",
+      "editor": "textfield"
+    },
+    "audio_language": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8,
+      "enum": [
+        "default",
+        "original"
+      ],
+      "title": "Audio Language",
+      "description": "Audio language selection; omit for video-only downloads.",
+      "editor": "select"
+    },
+    "audio_quality": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10,
+      "enum": [
+        "best",
+        "320",
+        "256",
+        "192",
+        "128"
+      ],
+      "title": "Audio Quality",
+      "description": "Applies only to audio downloads; omit for video or combined media.",
+      "editor": "select"
+    },
+    "yt_dlp_format": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "title": "Yt Dlp Format",
+      "description": "Advanced format selector; overrides quality, FPS and audio-language selection.",
+      "editor": "textfield"
+    },
+    "upload_metadata": {
+      "type": "boolean",
+      "default": false,
+      "title": "Upload Metadata",
+      "description": "Also upload metadata to your customer storage."
+    },
+    "output_format": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10,
+      "enum": [
+        "mp4",
+        "webm",
+        "mkv",
+        "m4a",
+        "mp3",
+        "opus"
+      ],
+      "title": "Output Format",
+      "description": "Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default.",
+      "editor": "select"
+    },
+    "start_at": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8,
+      "pattern": "^\\d{1,2}:[0-5]\\d:[0-5]\\d$",
+      "title": "Start At",
+      "description": "Optional start timestamp in HH:MM:SS, at most 12:00:00.",
+      "editor": "textfield"
+    },
+    "end_at": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8,
+      "pattern": "^\\d{1,2}:[0-5]\\d:[0-5]\\d$",
+      "title": "End At",
+      "description": "Optional end timestamp after start_at, in HH:MM:SS.",
+      "editor": "textfield"
+    },
+    "storageJson": {
+      "title": "Customer storage configuration (encrypted JSON)",
+      "type": "string",
+      "editor": "textarea",
+      "isSecret": true,
+      "description": "Required for a NEW download. Paste the storage JSON, including provider credentials, here only. Clear it when continuing an existing job."
+    },
+    "jobId": {
+      "title": "Continue an existing job (optional)",
+      "type": "string",
+      "editor": "textfield",
+      "pattern": "^job_[A-Za-z0-9_-]+$",
+      "maxLength": 120,
+      "description": "Reads this existing job without submitting or charging for a new download. Clear video_id and storageJson when using this field."
+    },
+    "waitSeconds": {
+      "title": "Maximum polling wait (seconds)",
+      "type": "integer",
+      "editor": "number",
+      "minimum": 0,
+      "maximum": 120,
+      "default": 60,
+      "description": "Stop polling after this interval. A pending job continues on FlashData; resume with jobId. The final in-flight API read can take additional time."
+    }
+  },
+  "required": [
+    "flashdataApiKey"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-metadata",
+  "title": "YouTube Metadata for AI Agents — FlashData",
+  "description": "Read YouTube video metadata for AI research agents. Get available titles, channels, statistics, chapters and formats as structured JSON from a video ID. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

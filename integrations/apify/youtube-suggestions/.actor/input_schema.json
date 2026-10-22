@@ -1,0 +1,48 @@
+{
+  "title": "YouTube Autocomplete with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Enter your Key and required query input. Start performs one YouTube Autocomplete request using your FlashData Credits.",
+  "properties": {
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Your own FlashData API key with YouTube Suggestions permission. Encrypted; no shared key is provided.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "query": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "title": "Query",
+      "description": "A single search query or query prefix. No automatic query expansion.",
+      "editor": "textfield"
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 35,
+      "pattern": "^[A-Za-z0-9-]+$",
+      "default": "en",
+      "title": "Language",
+      "description": "Requested language code. Does not translate content.",
+      "editor": "textfield"
+    },
+    "region": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2,
+      "default": "US",
+      "pattern": "^[A-Za-z]{2}$",
+      "title": "Region",
+      "description": "Two-letter region code, such as US or GB.",
+      "editor": "textfield"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "query"
+  ],
+  "additionalProperties": false
+}

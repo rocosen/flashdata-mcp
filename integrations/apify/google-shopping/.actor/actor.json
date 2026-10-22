@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "google-shopping",
+  "title": "Google Shopping for AI Agents — FlashData",
+  "description": "Discover product offers for AI shopping and market-research assistants. Export product titles, merchants, available prices, ratings and URLs. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "Google Videos results",
+      "description": "Returned result rows. Complete nested fields and usage remain in OUTPUT.",
+      "transformation": {
+        "fields": [
+          "query",
+          "position",
+          "title",
+          "link",
+          "duration",
+          "source",
+          "channel",
+          "date",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "query": {
+            "label": "query",
+            "format": "text"
+          },
+          "position": {
+            "label": "position",
+            "format": "number"
+          },
+          "title": {
+            "label": "title",
+            "format": "text"
+          },
+          "link": {
+            "label": "link",
+            "format": "link"
+          },
+          "duration": {
+            "label": "duration",
+            "format": "text"
+          },
+          "source": {
+            "label": "source",
+            "format": "text"
+          },
+          "channel": {
+            "label": "channel",
+            "format": "text"
+          },
+          "date": {
+            "label": "date",
+            "format": "text"
+          },
+          "request_id": {
+            "label": "request_id",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

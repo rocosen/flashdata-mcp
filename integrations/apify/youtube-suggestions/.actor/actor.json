@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-suggestions",
+  "title": "YouTube Autocomplete for AI Agents — FlashData",
+  "description": "Discover YouTube autocomplete phrases for AI topic-research agents. Submit a query prefix with language and region and export one suggestion per dataset row. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}
