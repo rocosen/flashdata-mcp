@@ -9,9 +9,7 @@
       "type": "string",
       "description": "Your own FlashData API key (starting with fd_) with Google Search permission. Stored as encrypted input. Clicking Start performs a search using your FlashData Credits.",
       "editor": "textfield",
-      "isSecret": true,
-      "minLength": 1,
-      "pattern": "^fd_[A-Za-z0-9_-]+$"
+      "isSecret": true
     },
     "query": {
       "title": "Search query",

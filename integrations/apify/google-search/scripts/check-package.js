@@ -23,8 +23,9 @@ assert.equal(schema.properties.flashdataApiKey.prefill, undefined);
 assert.equal(schema.properties.operation, undefined);
 assert.equal(schema.properties.maxCredits, undefined);
 assert.equal(schema.properties.query.prefill, undefined);
-assert.ok(new RegExp(schema.properties.flashdataApiKey.pattern).test('fd_example_key'));
-assert.ok(!new RegExp(schema.properties.flashdataApiKey.pattern).test('YOUR_FLASHDATA_API_KEY'));
+// Apify does not allow string validation constraints on encrypted inputs.
+assert.equal(schema.properties.flashdataApiKey.minLength, undefined);
+assert.equal(schema.properties.flashdataApiKey.pattern, undefined);
 assert.ok(schema.required.includes('flashdataApiKey'));
 assert.ok(schema.required.includes('query'));
 const output = await readJson('.actor/output_schema.json');

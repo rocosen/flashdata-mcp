@@ -15,7 +15,7 @@ Build 0.0.2 used a default price-check workflow. The owner then ran a saved plac
 
 ## Direct-search correction
 
-The owner rejected the extra price-check and manual Credits-limit steps. The current source accepts a key and query and submits one search directly. It removes `operation`, `maxCredits`, the pricing request and quote output. The form requires a key starting with `fd_` and a query; neither has a prefilled value. Authentication and Google Search permission are verified before recording the search attempt. Existing duplicate-request protection remains.
+The owner rejected the extra price-check and manual Credits-limit steps. The current source accepts a key and query and submits one search directly. It removes `operation`, `maxCredits`, the pricing request and quote output. The form requires a key and a query; neither has a prefilled value. Key format (starting with `fd_`) is checked locally at startup because Apify rejects string validation constraints on encrypted input fields (build 0.0.3 failed before image construction). Authentication and Google Search permission are verified before recording the search attempt. Existing duplicate-request protection remains.
 
 Old saved inputs containing `operation` or `maxCredits` fail with an update instruction, before any network call. They must not silently become a paid search. When deploying, update the existing Actor, point its saved run options at the new build, remove those two fields from the private saved input while preserving the user's key/query, and update the public README and example. Do not click Start as part of deployment. Record the resulting platform build and public verification in GTM.
 
