@@ -1,6 +1,6 @@
 {
   "actorSpecification": 1,
-  "name": "flashdata-google-search",
+  "name": "google-search",
   "title": "Google Search Results — FlashData",
   "description": "Get structured Google search results using your own FlashData API key. Check your account price, then export titles, links, snippets and positions. Queries use your FlashData Credits; Apify platform usage is separate.",
   "version": "0.1",
