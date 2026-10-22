@@ -22,8 +22,6 @@
     },
     "download_type": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 11,
       "default": "audio_video",
       "enum": [
         "audio_video",
@@ -36,8 +34,6 @@
     },
     "video_quality": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 40,
       "enum": [
         "best",
         "worst",
@@ -81,8 +77,6 @@
     },
     "audio_language": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 8,
       "enum": [
         "default",
         "original"
@@ -93,8 +87,6 @@
     },
     "audio_quality": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 10,
       "enum": [
         "best",
         "320",
@@ -122,8 +114,6 @@
     },
     "output_format": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 10,
       "enum": [
         "mp4",
         "webm",

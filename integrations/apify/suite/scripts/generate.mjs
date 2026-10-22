@@ -64,7 +64,11 @@ for (const definition of definitions) {
       // Apify JSON editor accepts the object; the published client validates its nested contract.
       property = { title: property.title, description: property.description, type: 'object', editor: 'json' };
     } else if (property.type === 'integer') property.editor = 'number';
-    else if (property.type === 'string') property.editor = property.enum ? 'select' : 'textfield';
+    else if (property.type === 'string') {
+      property.editor = property.enum ? 'select' : 'textfield';
+      // Apify select fields reject string-length/pattern constraints; the client still validates them.
+      if (property.enum) for (const key of ['minLength','maxLength','pattern']) delete property[key];
+    }
     if (download && ['video_quality','audio_language','audio_quality','output_format'].includes(field)) delete property.default;
     properties[field] = property;
   }
