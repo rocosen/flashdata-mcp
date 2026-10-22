@@ -4,7 +4,11 @@ This directory is an independently buildable Actor source package. It reuses the
 
 The private pilot is now `flashdata/google-search`, Actor ID `Z2M705IR2oQj98zfZ`:
 https://console.apify.com/actors/Z2M705IR2oQj98zfZ/source
-Reuse this object. At the 2026-10-22 setup checkpoint it had zero builds and zero runs; the account avatar was updated to the existing FlashData mark. This is not a public Store listing.
+Reuse this object. On 2026-10-22, platform build 0.0.2 succeeded and two runs completed: one free FlashData quote and one authorized search returning 10 results. FlashData Jobs recorded 0.008 Credits for the search. Account and Actor images use the existing FlashData mark. This is not a public Store listing.
+
+Successful run: https://console.apify.com/actors/Z2M705IR2oQj98zfZ/runs/am5hXJvO3hqGxjc16
+Validated source commit: `e85e1fd5d52e31725c8d850f3af15d416448230c`.
+The input was restored to `operation: quote` and `maxCredits: 0` after the test. The saved test key has Google Search permission only and expires on 2026-11-21. The authorized single paid search has been used; further paid tests need a new explicit budget.
 
 ## Local verification
 
@@ -17,7 +21,7 @@ npm run check
 docker build -f .actor/Dockerfile -t flashdata-google-search:local .
 ```
 
-Tests use local HTTP fixtures or injected clients and never run a paid search. The synthetic README example is labeled. A real successful search and its actual Credits deduction remain required before a public launch.
+Tests use local HTTP fixtures or injected clients and never run a paid search. The synthetic README example is labeled. The separate platform search and Credits check above passed; it does not establish repeated-run reliability or permission to publish.
 
 ## Platform setup
 
