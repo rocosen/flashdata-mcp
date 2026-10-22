@@ -5,20 +5,14 @@
     "results": {
       "type": "string",
       "title": "Organic search results",
-      "description": "Search-mode organic results, exportable as JSON or CSV. Price-check mode has no search results.",
+      "description": "Organic search results, exportable as JSON or CSV.",
       "template": "{{links.apiDefaultDatasetUrl}}/items?view=organic"
     },
     "response": {
       "type": "string",
-      "title": "Complete response or quote",
-      "description": "Search response, query, request ID, usage when returned, or a quote without a search.",
+      "title": "Complete search response",
+      "description": "Complete search response, query, request ID and usage when returned.",
       "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
-    },
-    "quote": {
-      "type": "string",
-      "title": "FlashData price quote",
-      "description": "The account-specific price checked before the search. This is not a final usage invoice.",
-      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/QUOTE"
     }
   }
 }

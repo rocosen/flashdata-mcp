@@ -5,7 +5,7 @@ import flashdata from '@flashdata-dev/mcp';
 import { runSearch } from '../src/run.js';
 
 const secret = `fd_test_${'a'.repeat(43)}`;
-const input = { flashdataApiKey: secret, query: 'fixture query', operation: 'search', maxCredits: 0.03 };
+const input = { flashdataApiKey: secret, query: 'fixture query' };
 
 function storage() {
   const values = new Map();
@@ -22,8 +22,9 @@ function storage() {
 
 async function fixture(t) {
   const requests = [];
-  let unitPrice = 0.02;
+  const unitPrice = 0.02;
   let permission = true;
+  let authenticated = true;
   let lostResponse = false;
   let empty = false;
   const server = http.createServer(async (req, res) => {
@@ -32,10 +33,9 @@ async function fixture(t) {
     const body = text ? JSON.parse(text) : null;
     requests.push({ method: req.method, path: req.url, key: req.headers['x-api-key'], body });
     res.setHeader('Content-Type', 'application/json');
-    if (req.url === '/v2/api-access') return res.end(JSON.stringify({ sources: permission ? ['google_search'] : [], result_origin: null }));
-    if (req.url === '/v2/api-access/pricing?source=google_search&request_count=1') {
-      return res.end(JSON.stringify({ prices: [{ source: 'google_search', available: true,
-        creditsPerRequest: unitPrice, estimatedCredits: unitPrice }] }));
+    if (req.url === '/v2/api-access') {
+      if (!authenticated) { res.statusCode = 401; return res.end('{}'); }
+      return res.end(JSON.stringify({ sources: permission ? ['google_search'] : [], result_origin: null }));
     }
     if (req.url === '/v1/queries/realtime') {
       if (lostResponse) return req.socket.destroy();
@@ -51,20 +51,15 @@ async function fixture(t) {
   return {
     requests,
     makeTools: config => flashdata.createLocalTools({ ...config, dataOrigin: origin, managementOrigin: origin }, { taskSource: 'google_search' }),
-    price: value => { unitPrice = value; },
+    authenticate: value => { authenticated = value; },
     permit: value => { permission = value; },
     loseResponse: () => { lostResponse = true; },
     emptyResults: () => { empty = true; },
   };
 }
 
-test('real client: default quote submits no search; search preserves raw fields, usage and exports; same run never charges twice', async t => {
+test('key and query perform one search without a price read; preserve results and usage; same run never charges twice', async t => {
   const api = await fixture(t);
-  const quoteState = storage();
-  await runSearch({ input: { flashdataApiKey: secret, query: 'fixture query' }, ...quoteState, makeTools: api.makeTools });
-  assert.equal(quoteState.values.get('OUTPUT').status, 'quote');
-  assert.equal(quoteState.values.get('OUTPUT').searchSubmitted, false);
-  assert.equal(api.requests.filter(request => request.method === 'POST').length, 0);
   const state = storage();
   assert.deepEqual(await runSearch({ input, ...state, makeTools: api.makeTools }), { status: 'completed', count: 1 });
   const paid = api.requests.filter(request => request.method === 'POST');
@@ -74,6 +69,8 @@ test('real client: default quote submits no search; search preserves raw fields,
   assert.equal(state.values.get('OUTPUT').response.usage.credits, 0.02);
   assert.equal(state.values.get('OUTPUT').response.results[0].knowledgeGraph.title, 'Preserve other SERP fields');
   assert.equal(state.rows[0].snippet, '[REDACTED]');
+  assert.equal(state.values.has('QUOTE'), false);
+  assert.equal(api.requests.some(request => request.path.includes('/pricing')), false);
   assert.ok(!JSON.stringify([...state.values, state.rows]).includes(secret));
   const count = api.requests.length;
   assert.equal((await runSearch({ input, ...state, makeTools: api.makeTools })).reused, true);
@@ -82,22 +79,35 @@ test('real client: default quote submits no search; search preserves raw fields,
   await assert.rejects(runSearch({ input: { ...input, query: 'changed' }, ...state, makeTools: api.makeTools }), /different input/);
 });
 
-test('current account quote and source permission prevent unaffordable or unauthorized search', async t => {
+test('invalid or revoked keys and missing source permission stop before a search', async t => {
   const api = await fixture(t);
-  api.price(0.04);
-  await assert.rejects(runSearch({ input, ...storage(), makeTools: api.makeTools }), /exceed maxCredits/);
+  api.authenticate(false);
+  const state = storage();
+  await assert.rejects(runSearch({ input, ...state, makeTools: api.makeTools }), /Could not verify.*No search was submitted/);
+  assert.equal(state.values.has('REQUEST_STATE'), false);
+  api.authenticate(true);
   api.permit(false);
-  await assert.rejects(runSearch({ input, ...storage(), makeTools: api.makeTools }), /Could not obtain/);
+  await assert.rejects(runSearch({ input, ...storage(), makeTools: api.makeTools }), /needs Google Search permission.*No search was submitted/);
   assert.equal(api.requests.filter(request => request.method === 'POST').length, 0);
 });
 
-test('invalid input and missing budget fail before accessing any service', async () => {
-  const badInputs = [null, { ...input, num: 0 }, { ...input, maxCredits: 0 }, { ...input, maxCredits: Infinity },
-    { ...input, operation: 'other' }, { ...input, flashdataApiKey: '' }, { ...input, mode: 'async' },
+test('required input, placeholder keys and unsupported fields fail before accessing any service', async () => {
+  const badInputs = [null, { ...input, num: 0 }, { ...input, query: '' }, { ...input, query: '   ' },
+    { ...input, query: undefined }, { ...input, flashdataApiKey: undefined },
+    { ...input, flashdataApiKey: 'YOUR_FLASHDATA_API_KEY' }, { ...input, flashdataApiKey: '' }, { ...input, mode: 'async' },
     { ...input, baseUrl: 'https://untrusted.example' }, { ...input, source: 'youtube_download' }];
   for (const value of badInputs) {
     let calls = 0;
     await assert.rejects(runSearch({ input: value, ...storage(), makeTools: () => { calls++; throw new Error('Unexpected client'); } }));
+    assert.equal(calls, 0);
+  }
+});
+
+test('saved quote or budget inputs cannot silently turn into a paid search', async () => {
+  for (const previous of [{ operation: 'quote', maxCredits: 0 }, { operation: 'search', maxCredits: 0.03 }, { maxCredits: 0 }]) {
+    let calls = 0;
+    await assert.rejects(runSearch({ input: { ...input, ...previous }, ...storage(),
+      makeTools: () => { calls++; throw new Error('Unexpected client'); } }), /old price-check workflow/);
     assert.equal(calls, 0);
   }
 });

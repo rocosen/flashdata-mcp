@@ -6,10 +6,8 @@ await Actor.main(async () => {
     const input = await Actor.getInput();
     const store = await Actor.openKeyValueStore();
     const dataset = await Actor.openDataset();
-    const result = await runSearch({ input, store, dataset });
-    await Actor.setStatusMessage(result.status === 'quote'
-      ? 'Price checked. No FlashData search submitted.'
-      : 'Search finished. Open the dataset or complete JSON output.');
+    await runSearch({ input, store, dataset });
+    await Actor.setStatusMessage('Search finished. Open Organic search results or the complete JSON response.');
   } catch (error) {
     // SDK/HTTP exceptions can contain request configuration. Log only controlled messages.
     throw new Error(error instanceof RunError ? error.message

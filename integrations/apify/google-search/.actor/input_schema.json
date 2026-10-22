@@ -2,29 +2,16 @@
   "title": "Google Search with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Use an existing FlashData API key and Credits. Begin with a price check; then explicitly choose a search and its quoted Credits limit.",
+  "description": "Enter your FlashData API key and search query, then click Start to run one Google Search. Searches use your FlashData Credits; Apify platform usage is separate.",
   "properties": {
     "flashdataApiKey": {
       "title": "FlashData API key",
       "type": "string",
-      "description": "Your FlashData key with Google Search permission. Stored as an encrypted Actor input. Search calls use this account’s FlashData Credits.",
+      "description": "Your own FlashData API key (starting with fd_) with Google Search permission. Stored as encrypted input. Clicking Start performs a search using your FlashData Credits.",
       "editor": "textfield",
-      "isSecret": true
-    },
-    "operation": {
-      "title": "Operation",
-      "type": "string",
-      "description": "Check price makes free FlashData account reads. Run search performs one paid Google Search request after checking maxCredits. Apify platform usage is separate.",
-      "enum": [
-        "quote",
-        "search"
-      ],
-      "enumTitles": [
-        "Check price (no FlashData search charge)",
-        "Run one Google search"
-      ],
-      "default": "quote",
-      "editor": "select"
+      "isSecret": true,
+      "minLength": 1,
+      "pattern": "^fd_[A-Za-z0-9_-]+$"
     },
     "query": {
       "title": "Search query",
@@ -32,16 +19,7 @@
       "description": "Keywords or a Google search expression. A single query is sent per run.",
       "editor": "textfield",
       "minLength": 1,
-      "maxLength": 2000,
-      "prefill": "battery recycling research"
-    },
-    "maxCredits": {
-      "title": "Maximum quoted FlashData Credits",
-      "type": "number",
-      "description": "Set above zero to run a search. The Actor stops before submitting if the current quote exceeds this value. This is a preflight check, not a server-enforced account spending limit.",
-      "minimum": 0,
-      "default": 0,
-      "editor": "number"
+      "maxLength": 2000
     },
     "num": {
       "title": "Requested results",

@@ -20,8 +20,11 @@ for (const [field, expected] of Object.entries(source.inputSchema.properties)) {
 assert.equal(schema.properties.flashdataApiKey.isSecret, true);
 assert.equal(schema.properties.flashdataApiKey.default, undefined);
 assert.equal(schema.properties.flashdataApiKey.prefill, undefined);
-assert.equal(schema.properties.operation.default, 'quote');
-assert.equal(schema.properties.maxCredits.default, 0);
+assert.equal(schema.properties.operation, undefined);
+assert.equal(schema.properties.maxCredits, undefined);
+assert.equal(schema.properties.query.prefill, undefined);
+assert.ok(new RegExp(schema.properties.flashdataApiKey.pattern).test('fd_example_key'));
+assert.ok(!new RegExp(schema.properties.flashdataApiKey.pattern).test('YOUR_FLASHDATA_API_KEY'));
 assert.ok(schema.required.includes('flashdataApiKey'));
 assert.ok(schema.required.includes('query'));
 const output = await readJson('.actor/output_schema.json');
@@ -31,4 +34,4 @@ assert.equal(output.properties.response.template, '{{links.apiDefaultKeyValueSto
 const packageJson = await readJson('package.json');
 const lock = await readJson('package-lock.json');
 assert.deepEqual(lock.packages[''].dependencies, packageJson.dependencies);
-console.log('Actor file references, Google Search input contract, protected key, quote defaults and dependency lock verified.');
+console.log('Actor file references, Google Search input contract, protected key, direct search input and dependency lock verified.');
