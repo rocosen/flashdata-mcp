@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-google-shopping",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Discover product offers for AI shopping and market-research assistants. Export product titles, merchants, available prices, ratings and URLs. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}

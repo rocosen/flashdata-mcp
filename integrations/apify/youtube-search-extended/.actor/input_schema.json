@@ -1,0 +1,43 @@
+{
+  "title": "YouTube Extended Search with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Enter your Key and required query input. Start performs one YouTube Extended Search request using your FlashData Credits.",
+  "properties": {
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Your own FlashData API key with YouTube Extended Search permission. Encrypted; no shared key is provided.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "query": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "title": "Query",
+      "description": "A single search query or query prefix. No automatic query expansion.",
+      "editor": "textfield"
+    },
+    "max_results": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 700,
+      "default": 20,
+      "title": "Max Results",
+      "description": "Requested results. Actual count may be lower; extended search uses a separate rate.",
+      "editor": "number"
+    },
+    "filters": {
+      "title": "Filters",
+      "description": "Optional YouTube search filters as a JSON object. Use the documented fields and values.",
+      "type": "object",
+      "editor": "json"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "query"
+  ],
+  "additionalProperties": false
+}

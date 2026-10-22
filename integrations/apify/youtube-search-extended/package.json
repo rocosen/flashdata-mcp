@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-youtube-search-extended",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Collect larger YouTube discovery sets for AI research agents. Request up to 700 video results with available channel and video metadata; uses the extended-search rate. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-trainability",
+  "title": "YouTube License Metadata for AI Agents — FlashData",
+  "description": "Inspect a YouTube video's Creative Commons license label for AI research workflows. Returns the license classification in JSON; it does not grant training or reuse permission. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

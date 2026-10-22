@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-search",
+  "title": "YouTube Search for AI Agents — FlashData",
+  "description": "Find YouTube videos for AI research and content-discovery agents. Export titles, video IDs and available channel, duration and view metadata; request up to 20 results. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

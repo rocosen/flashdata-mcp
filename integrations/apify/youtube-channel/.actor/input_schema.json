@@ -1,0 +1,37 @@
+{
+  "title": "YouTube Channel with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Enter your Key and required handle input. Start performs one YouTube Channel request using your FlashData Credits.",
+  "properties": {
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Your own FlashData API key with YouTube Channel permission. Encrypted; no shared key is provided.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "handle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "title": "Handle",
+      "description": "YouTube channel handle, such as @example. Not a URL or channel ID.",
+      "editor": "textfield"
+    },
+    "video_limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20,
+      "title": "Video Limit",
+      "description": "Maximum recent videos to request; not the channel total.",
+      "editor": "number"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "handle"
+  ],
+  "additionalProperties": false
+}

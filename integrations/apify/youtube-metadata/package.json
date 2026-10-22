@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-youtube-metadata",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Read YouTube video metadata for AI research agents. Get available titles, channels, statistics, chapters and formats as structured JSON from a video ID. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}

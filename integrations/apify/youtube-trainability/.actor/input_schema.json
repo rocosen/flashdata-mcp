@@ -1,0 +1,29 @@
+{
+  "title": "YouTube License Metadata with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Enter your Key and required video_id input. Start performs one YouTube License Metadata request using your FlashData Credits.",
+  "properties": {
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Your own FlashData API key with YouTube Trainability permission. Encrypted; no shared key is provided.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "video_id": {
+      "type": "string",
+      "minLength": 11,
+      "maxLength": 11,
+      "pattern": "^[A-Za-z0-9_-]{11}$",
+      "title": "Video Id",
+      "description": "An 11-character YouTube video ID, not a full URL.",
+      "editor": "textfield"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "video_id"
+  ],
+  "additionalProperties": false
+}

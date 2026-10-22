@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "google-videos",
+  "title": "Google Video Search for AI Agents — FlashData",
+  "description": "Discover videos across websites for AI research agents. Export Google Video results with titles, links and available duration, channel and date metadata. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

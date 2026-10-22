@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "google-search",
+  "title": "Google Search for AI Agents — FlashData",
+  "description": "Web search for AI agents, research assistants and LLM apps. Get Google Search results as structured JSON with ranked URLs, titles and snippets for source discovery and citation workflows. Uses your FlashData API key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

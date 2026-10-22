@@ -1,0 +1,85 @@
+{
+  "title": "Google Images with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Enter your Key and required query input. Start performs one Google Images request using your FlashData Credits.",
+  "properties": {
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Your own FlashData API key with Google Images permission. Encrypted; no shared key is provided.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "query": {
+      "title": "Search query",
+      "type": "string",
+      "description": "Keywords or a Google search expression. A single query is sent per run.",
+      "editor": "textfield",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "gl": {
+      "title": "Country code",
+      "type": "string",
+      "description": "Optional two-letter country code, such as us or gb.",
+      "minLength": 2,
+      "maxLength": 2,
+      "pattern": "^[A-Za-z]{2}$",
+      "editor": "textfield"
+    },
+    "hl": {
+      "title": "Interface language",
+      "type": "string",
+      "description": "Optional language code, such as en or de.",
+      "minLength": 1,
+      "maxLength": 35,
+      "pattern": "^[A-Za-z0-9-]+$",
+      "editor": "textfield"
+    },
+    "location": {
+      "title": "Search location",
+      "type": "string",
+      "description": "Optional geographic location.",
+      "minLength": 1,
+      "maxLength": 200,
+      "editor": "textfield"
+    },
+    "num": {
+      "title": "Requested results",
+      "type": "integer",
+      "description": "Requested result count; actual count can be lower. Does not automatically fetch additional pages.",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 10,
+      "editor": "number"
+    },
+    "page": {
+      "title": "Search page",
+      "type": "integer",
+      "description": "Fetch this page only. Each additional page requires a separate paid request.",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 1,
+      "editor": "number"
+    },
+    "tbs": {
+      "title": "Google search filter (tbs)",
+      "type": "string",
+      "description": "Optional Google filter expression, such as qdr:w for the past week.",
+      "minLength": 1,
+      "maxLength": 200,
+      "editor": "textfield"
+    },
+    "autocorrect": {
+      "title": "Autocorrect",
+      "type": "boolean",
+      "description": "Optional search-provider autocorrect setting."
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "query"
+  ],
+  "additionalProperties": false
+}
