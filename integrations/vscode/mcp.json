@@ -1,0 +1,19 @@
+{
+  "servers": {
+    "flashdata": {
+      "type": "http",
+      "url": "https://data.flashdata.dev/mcp",
+      "headers": {
+        "X-API-Key": "${input:flashdata-api-key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "flashdata-api-key",
+      "description": "Your FlashData API key (data requests consume your Credits)",
+      "password": true
+    }
+  ]
+}

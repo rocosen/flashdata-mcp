@@ -17,6 +17,10 @@ For a local server focused on one capability, see the [15 independent Smithery t
 
 This directory is a complete, standalone project. Use its contents as the root of your GitHub repository, including `.github/` and `.gitignore`. Installation and tests require no files from another checkout.
 
+## Client tutorials
+
+Connect [Kiro](integrations/kiro/README.md) or [VS Code](integrations/vscode/README.md) to the hosted MCP service. Each guide maps all 15 capabilities, explains client-specific key handling and approvals, and uses a protected local workflow for download storage credentials. Tutorial availability is separate from official directory approval.
+
 ## Choose a task package
 
 Python users can build the [15 independent Python / uvx CLIs](packages/python-cli/README.md).
