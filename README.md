@@ -38,6 +38,8 @@ The last two commands require your API key in `FLASHDATA_API_KEY` and make only 
 
 ## Agent Skill
 
+Hermes users can install the [FlashData Hermes plugin](plugins/hermes/README.md), which connects the hosted MCP server and includes 15 task Skills. Its source release and official catalog approval are separate milestones. The plugin is free to install; data queries use the user's own FlashData Key and paid Credits.
+
 The [FlashData Skill](skills/flashdata/SKILL.md) helps an agent use an existing FlashData MCP connection for source-backed web and video research. It includes recipes for video research, comparing search snapshots, and preparing knowledge-base records.
 
 Install the Skill into your project with the [skills CLI](https://skills.sh/docs):
