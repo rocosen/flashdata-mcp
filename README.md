@@ -21,6 +21,8 @@ This directory is a complete, standalone project. Use its contents as the root o
 
 Connect [Kiro](integrations/kiro/README.md) or [VS Code](integrations/vscode/README.md) to the hosted MCP service. Each guide maps all 15 capabilities, explains client-specific key handling and approvals, and uses a protected local workflow for download storage credentials. Tutorial availability is separate from official directory approval.
 
+Build a local Python research agent with [OpenAI Responses](integrations/openai/README.md) or [Anthropic Messages](integrations/anthropic/README.md). Both tutorials use the existing MCP service, discover query schemas, request approval before data calls, and cover all 15 capabilities with a protected download handoff.
+
 ## Choose a task package
 
 Python users can build the [15 independent Python / uvx CLIs](packages/python-cli/README.md).

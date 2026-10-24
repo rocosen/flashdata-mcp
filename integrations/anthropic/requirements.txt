@@ -1,0 +1,2 @@
+-r ../../registry/examples/requirements.txt
+anthropic==2.3.0
