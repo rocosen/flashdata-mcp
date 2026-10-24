@@ -1,0 +1,11 @@
+{
+  "name": "flashdata",
+  "version": "0.1.0",
+  "description": "Google web, news, image, shopping, video and places search, plus YouTube research and media delivery. Use your own FlashData API key and paid Credits.",
+  "author": { "name": "FlashData", "email": "support@flashdata.dev" },
+  "homepage": "https://flashdata.dev/mcp?utm_source=grok-build&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined",
+  "repository": "https://github.com/rocosen/flashdata-mcp",
+  "license": "MIT",
+  "keywords": ["flashdata", "flashdata search", "flashdata youtube"],
+  "icon": "./assets/logo.svg"
+}

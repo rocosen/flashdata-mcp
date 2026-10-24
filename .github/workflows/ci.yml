@@ -18,6 +18,7 @@ jobs:
       - run: npm test
       - run: npm run check:package
       - run: npm run check:claude-plugin
+      - run: npm run check:grok-plugin
       - run: npm run check:task-integrations
       - run: npm run test:task-integrations
       - run: npm run test:install
