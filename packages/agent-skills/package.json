@@ -1,0 +1,17 @@
+{
+  "name": "@flashdata-dev/agent-skills",
+  "version": "0.1.0",
+  "description": "Google search, news, places and YouTube research skills for OpenCode and Pi, using the FlashData CLI and your own paid API credits.",
+  "type": "module",
+  "main": "index.js",
+  "files": ["index.js", "skills.json", "skills", "assets", "README.md", "LICENSE"],
+  "license": "MIT",
+  "author": {"name": "FlashData", "email": "support@flashdata.dev"},
+  "repository": {"type": "git", "url": "https://github.com/rocosen/flashdata-mcp.git", "directory": "packages/agent-skills"},
+  "homepage": "https://flashdata.dev/mcp?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined",
+  "bugs": {"url": "https://github.com/rocosen/flashdata-mcp/issues"},
+  "engines": {"node": ">=22.18.0", "opencode": "^1.18.29 || ^2.0.0"},
+  "publishConfig": {"access": "public"},
+  "keywords": ["pi-package", "opencode-plugin", "flashdata", "google-search", "news-search", "local-business-search", "youtube-transcript", "youtube-captions", "agent-skills"],
+  "pi": {"skills": ["./skills"]}
+}
