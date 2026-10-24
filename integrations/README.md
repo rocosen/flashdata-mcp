@@ -1,4 +1,8 @@
-# Google and YouTube tasks for Cursor and Gemini CLI
+# Google and YouTube client integrations
+
+Hosted MCP tutorials: [Kiro](kiro/README.md) and [VS Code](vscode/README.md), with 15 capability mappings and explicit credential, billing and verification boundaries.
+
+## Cursor and Gemini CLI
 
 Choose the capability you need. Each plugin or extension runs a pinned, source-restricted npm package and exposes one data tool plus pricing, job and result reads for that source. Node.js 22.18 or newer and a source-enabled FlashData API key are required.
 
