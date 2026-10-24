@@ -20,6 +20,7 @@ jobs:
       - run: npm run check:claude-plugin
       - run: npm run check:grok-plugin
       - run: npm run check:hermes-plugin
+      - run: npm run check:devin-plugin
       - run: npm run check:agent-skills
       - run: npm run test:agent-skills
       - run: npm run check:task-integrations

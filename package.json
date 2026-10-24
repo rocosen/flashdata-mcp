@@ -54,6 +54,8 @@
     "check:grok-plugin": "node scripts/sync-grok-plugin.js --check",
     "sync:hermes-plugin": "node scripts/sync-hermes-plugin.js",
     "check:hermes-plugin": "node scripts/sync-hermes-plugin.js --check",
+    "sync:devin-plugin": "node scripts/sync-devin-plugin.js",
+    "check:devin-plugin": "node scripts/sync-devin-plugin.js --check",
     "sync:agent-skills": "node scripts/sync-agent-skills.js",
     "check:agent-skills": "node scripts/sync-agent-skills.js --check",
     "test:agent-skills": "node --test test/agent-skills.test.js",

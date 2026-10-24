@@ -1,0 +1,18 @@
+{
+  "name": "flashdata",
+  "displayName": "FlashData",
+  "description": "Google web, news, images, shopping, video and places search, plus YouTube transcripts, channel research and media delivery. Includes 15 task Skills. Bring your own FlashData API key and paid Credits.",
+  "shortDescription": "Google search and YouTube research",
+  "homepage": "https://flashdata.dev/mcp?utm_source=devin&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined",
+  "repository": "https://github.com/rocosen/flashdata-mcp",
+  "logo": "logo.svg",
+  "keywords": ["web search", "news", "places", "YouTube", "transcripts"],
+  "mcpServers": {
+    "flashdata": {
+      "url": "https://data.flashdata.dev/mcp",
+      "headers": {
+        "X-API-Key": "${FLASHDATA_API_KEY}"
+      }
+    }
+  }
+}
