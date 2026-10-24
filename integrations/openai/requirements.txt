@@ -1,0 +1,2 @@
+-r ../../registry/examples/requirements.txt
+openai==3.37.0
