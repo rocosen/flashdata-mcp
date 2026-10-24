@@ -17,8 +17,20 @@ for (const target of [manifest.main, ...Object.values(manifest.bin), ...Object.v
 for (const file of required) {
   if (!files.includes(file)) throw new Error(`Missing release file: ${file}`);
 }
+const skillRoot = 'packages/agent-skills/';
+const agentManifest = JSON.parse(fs.readFileSync(path.join(root, skillRoot, 'package.json'), 'utf8'));
+for (const name of ['package.json', 'index.js', 'skills.json', 'README.md', 'LICENSE', 'assets/logo.svg']) {
+  if (!files.includes(skillRoot + name)) throw new Error(`Missing agent package file: ${name}`);
+}
+for (const skill of JSON.parse(fs.readFileSync(path.join(root, skillRoot, 'skills.json'), 'utf8'))) {
+  for (const name of ['SKILL.md', 'references/api.md', 'references/query.json']) {
+    const file = `${skillRoot}skills/${skill.name}/${name}`;
+    if (!files.includes(file)) throw new Error(`Unpacked Pi Skill resource: ${file}`);
+  }
+}
+if (agentManifest.main !== 'index.js') throw new Error('Update agent entry verification');
 for (const file of files) {
-  if (!required.includes(file) && !file.startsWith('src/')) throw new Error(`Unexpected release file: ${file}`);
+  if (!required.includes(file) && !file.startsWith('src/') && !file.startsWith(skillRoot)) throw new Error(`Unexpected release file: ${file}`);
   if (!file.endsWith('.js')) continue;
   const content = fs.readFileSync(path.join(root, file), 'utf8');
   for (const match of content.matchAll(/require\(['"](\.[^'"]+)['"]\)/g)) {
