@@ -18,7 +18,7 @@ Clone the source into a location you control:
 git clone --branch agent-skills-v0.1.0 --depth 1 https://github.com/rocosen/flashdata-mcp.git flashdata-agent-skills
 ```
 
-Add the absolute file URL of `packages/agent-skills/index.js` to your OpenCode configuration. For OpenCode 1.18.29 and later v1 releases:
+For OpenCode 1.18.29 and later v1 releases, add the absolute file URL of `packages/agent-skills/index.js` to your configuration:
 
 ```json
 {
@@ -27,7 +27,25 @@ Add the absolute file URL of `packages/agent-skills/index.js` to your OpenCode c
 }
 ```
 
-Use the `plugins` array in OpenCode v2. The package has both v1 `server()` and v2 `setup()` entry points. On Windows, a file URL has the form `file:///C:/path/flashdata-agent-skills/packages/agent-skills/index.js`. No dependency installation is needed inside this adapter directory. Restart OpenCode and run `opencode debug skill` to confirm the 15 `*-flashdata` Skills are available. Remove that configuration entry to uninstall the plugin.
+For OpenCode v2, use `plugins` and the **package directory**, without `index.js`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": ["file:///absolute/path/flashdata-agent-skills/packages/agent-skills"]
+}
+```
+
+The package has both v1 `server()` and v2 `setup()` entry points. On Windows, the v2 directory URL has the form `file:///C:/path/flashdata-agent-skills/packages/agent-skills`; append `/index.js` only for the v1 configuration. No dependency installation is needed inside this adapter directory.
+
+Restart OpenCode in the intended project. On v1, run `opencode debug skill`. On v2, run the following from that same project directory, connecting to the running service:
+
+```sh
+opencode api get /api/plugin
+opencode api get /api/skill
+```
+
+The plugin inventory should show `flashdata.skills` with `state.status` equal to `active`; then the Skills response should contain all 15 `*-flashdata` names. A newly started location can briefly return an empty registry while plugins initialize. Wait for the active state before checking Skills, and inspect any failed plugin state. Avoid a one-shot `--standalone` Skills check: it starts a new private server and can read the registry before activation finishes. OpenCode v2 has no `debug skill` command. Remove the configuration entry and restart OpenCode to uninstall the plugin.
 
 ### Pi
 
@@ -84,7 +102,7 @@ When the agent follows a Skill, npm downloads the named public CLI from `registr
 
 One distribution package covers 15 capabilities. It is not 15 independent marketplace entries. Git availability, OpenCode Ecosystem approval and Pi gallery discovery are separate milestones. This source does not claim either directory has approved or listed it. The npm package name is reserved in the manifest for a future authenticated release; do not infer npm availability from the manifest or `pi-package` keyword.
 
-Validated with OpenCode 1.19.4 using an isolated configuration and actual `debug skill` discovery of all 15 Skills, and with Pi 1.4.0's official Skill loader with no diagnostics. v2 hooks are checked against the official interface using an offline harness. No model call, paid FlashData query or customer-storage write was used; this is not live retrieval validation.
+Validated with OpenCode 1.19.4 using actual `debug skill` discovery, and OpenCode 2.1.4 using the official CLI and a temporary local server: the plugin became active and `/api/skill` returned all 15 Skills from the unchanged public release. Both runs used isolated configurations. Pi 1.4.0's official Skill loader reported no diagnostics. v2 hooks also have offline interface checks. See [verification details](verification.md). No model call, paid FlashData query or customer-storage write was used; this is not live retrieval validation.
 
 ## Maintenance
 
