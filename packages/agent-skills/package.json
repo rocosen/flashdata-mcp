@@ -4,7 +4,7 @@
   "description": "Google search, news, places and YouTube research skills for OpenCode and Pi, using the FlashData CLI and your own paid API credits.",
   "type": "module",
   "main": "index.js",
-  "files": ["index.js", "skills.json", "skills", "assets", "README.md", "LICENSE"],
+  "files": ["index.js", "skills.json", "skills", "assets", "README.md", "verification.md", "LICENSE"],
   "license": "MIT",
   "author": {"name": "FlashData", "email": "support@flashdata.dev"},
   "repository": {"type": "git", "url": "https://github.com/rocosen/flashdata-mcp.git", "directory": "packages/agent-skills"},
