@@ -6,6 +6,15 @@ Find web sources, prepare news briefings, discover local businesses and research
 
 **Free to install; data calls consume your own paid [FlashData Credits](https://flashdata.dev/pricing).** Model/client and storage costs are separate. Use Node.js 22.18+ and npm, and supply your own [FlashData API key](https://flashdata.dev/app/api-keys) through the environment or a secret manager before starting the agent. Never paste the Key into chat or commit it. Installation and Skill discovery submit no data queries.
 
+## Install from npm in Pi
+
+```sh
+pi install npm:@flashdata-dev/agent-skills@0.1.0
+pi list
+```
+
+Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.0`.
+
 ## Install from Git
 
 The public Git distribution is independent of npm publication. Review the source, then pin a release tag or commit. `agent-skills-v0.1.0` is the release reference for this package.
@@ -100,7 +109,7 @@ When the agent follows a Skill, npm downloads the named public CLI from `registr
 
 ## Verification and publication
 
-One distribution package covers 15 capabilities. It is not 15 independent marketplace entries. Git availability, OpenCode Ecosystem approval and Pi gallery discovery are separate milestones. This source does not claim either directory has approved or listed it. The npm package name is reserved in the manifest for a future authenticated release; do not infer npm availability from the manifest or `pi-package` keyword.
+One distribution package covers 15 capabilities. It is not 15 independent marketplace entries. The [npm package](https://www.npmjs.com/package/@flashdata-dev/agent-skills), Git release, OpenCode Ecosystem approval and Pi gallery discovery are separate milestones. This source does not claim either directory has approved or listed it. The `pi-package` keyword makes the npm package eligible for gallery discovery; it does not prove listing or search visibility.
 
 Validated with OpenCode 1.19.4 using actual `debug skill` discovery, and OpenCode 2.1.4 using the official CLI and a temporary local server: the plugin became active and `/api/skill` returned all 15 Skills from the unchanged public release. Both runs used isolated configurations. Pi 1.4.0's official Skill loader reported no diagnostics. v2 hooks also have offline interface checks. See [verification details](verification.md). No model call, paid FlashData query or customer-storage write was used; this is not live retrieval validation.
 
