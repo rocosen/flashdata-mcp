@@ -1,8 +1,8 @@
 # Publishing
 
-The source distribution and PyPI publication are separate. Do not infer a PyPI release from this manifest or from an official ecosystem PR. Version 0.1.0 and project `pydantic-ai-flashdata` were not present on PyPI during preparation on October 25, 2026. Recheck both before publishing; never overwrite a version or release tag.
+The source distribution, PyPI publication and official ecosystem listing are separate. [Version 0.1.0 is published on PyPI](https://pypi.org/project/pydantic-ai-flashdata/0.1.0/). [The release workflow](https://github.com/rocosen/flashdata-mcp/actions/runs/40163509773) completed on October 25, 2026. Public wheel/sdist hashes match the workflow artifacts, PyPI provenance identifies the publisher below, and a fresh registry installation passed import and Agent spec registration checks. Never overwrite a version or release tag.
 
-The existing PyPI account is `flashdata-dev`. Its publisher list has no entry for this project. Publishing requires the account owner to confirm and configure a new project-specific Trusted Publisher and the corresponding GitHub environment. Other packages' publishers do not authorize this package. No account-wide token is needed.
+The PyPI account is `flashdata-dev`. The account owner approved this project's Trusted Publisher and the corresponding GitHub environment. The binding below is configured; the environment allows only tags matching `pydantic-ai-v*`. Other packages' publishers do not authorize this package. No account-wide token is needed.
 
 | Field | Value |
 | --- | --- |
