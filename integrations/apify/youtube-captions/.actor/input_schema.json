@@ -2,23 +2,23 @@
   "title": "YouTube Uploader Captions with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Enter your Key and required video_id input. Start performs one YouTube Uploader Captions request using your FlashData Credits.",
+  "description": "Enter the required video_id input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Uploader Captions request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
   "properties": {
-    "flashdataApiKey": {
-      "title": "FlashData API key",
-      "type": "string",
-      "description": "Your own FlashData API key with YouTube Captions permission. Encrypted; no shared key is provided.",
-      "editor": "textfield",
-      "isSecret": true
-    },
     "video_id": {
       "type": "string",
       "minLength": 11,
       "maxLength": 11,
       "pattern": "^[A-Za-z0-9_-]{11}$",
       "title": "Video Id",
-      "description": "An 11-character YouTube video ID, not a full URL.",
+      "description": "Paste one 11-character YouTube video ID. For https://www.youtube.com/watch?v=abcdefghijk, copy only abcdefghijk (illustrative ID; replace it with your video). Full URLs and lists are not accepted.",
       "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "Your FlashData API key",
+      "type": "string",
+      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Uploader Captions (youtube_captions) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "editor": "textfield",
+      "isSecret": true
     },
     "language": {
       "type": "string",
@@ -27,8 +27,10 @@
       "pattern": "^[A-Za-z0-9-]+$",
       "default": "en",
       "title": "Language",
-      "description": "Requested language code. Does not translate content.",
-      "editor": "textfield"
+      "description": "Language code, for example en (English), de (German), or es (Spanish). For captions, the selected track must already exist; this does not translate or generate content.",
+      "editor": "textfield",
+      "sectionCaption": "Optional settings",
+      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
     },
     "auto": {
       "type": "boolean",

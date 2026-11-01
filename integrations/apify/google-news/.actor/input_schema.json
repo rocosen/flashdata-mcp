@@ -2,27 +2,47 @@
   "title": "Google News with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Enter your Key and required query input. Start performs one Google News request using your FlashData Credits.",
+  "description": "Enter the required query input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one Google News request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
   "properties": {
-    "flashdataApiKey": {
-      "title": "FlashData API key",
-      "type": "string",
-      "description": "Your own FlashData API key with Google News permission. Encrypted; no shared key is provided.",
-      "editor": "textfield",
-      "isSecret": true
-    },
     "query": {
       "title": "Search query",
       "type": "string",
-      "description": "Keywords or a Google search expression. A single query is sent per run.",
+      "description": "Enter one Google News search query, for example: battery recycling. One query is sent per run; do not paste a list of queries.",
       "editor": "textfield",
       "minLength": 1,
       "maxLength": 2000
     },
+    "flashdataApiKey": {
+      "title": "Your FlashData API key",
+      "type": "string",
+      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with Google News (google_news) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "num": {
+      "title": "Requested results",
+      "type": "integer",
+      "description": "How many results to request (1–100). Start with 10. The provider may return fewer results; this does not fetch additional pages automatically.",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 10,
+      "editor": "number",
+      "sectionCaption": "Optional settings",
+      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
+    },
+    "page": {
+      "title": "Search page",
+      "type": "integer",
+      "description": "Which results page to fetch (1–100). Keep 1 for the first page. To fetch another page, start a separate run; each run uses Credits.",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 1,
+      "editor": "number"
+    },
     "gl": {
       "title": "Country code",
       "type": "string",
-      "description": "Optional two-letter country code, such as us or gb.",
+      "description": "Optional two-letter country code: us (United States), gb (United Kingdom), or sg (Singapore). Leave blank to use the search provider’s behavior.",
       "minLength": 2,
       "maxLength": 2,
       "pattern": "^[A-Za-z]{2}$",
@@ -31,7 +51,7 @@
     "hl": {
       "title": "Interface language",
       "type": "string",
-      "description": "Optional language code, such as en or de.",
+      "description": "Optional Google interface language: en (English), de (German), or zh-cn (Simplified Chinese). This does not translate the returned pages. Leave blank for provider behavior.",
       "minLength": 1,
       "maxLength": 35,
       "pattern": "^[A-Za-z0-9-]+$",
@@ -40,33 +60,15 @@
     "location": {
       "title": "Search location",
       "type": "string",
-      "description": "Optional geographic location.",
+      "description": "Optional location to focus the search, for example: Singapore, or New York, New York, United States. Leave blank if no local focus is needed.",
       "minLength": 1,
       "maxLength": 200,
       "editor": "textfield"
     },
-    "num": {
-      "title": "Requested results",
-      "type": "integer",
-      "description": "Requested result count; actual count can be lower. Does not automatically fetch additional pages.",
-      "minimum": 1,
-      "maximum": 100,
-      "default": 10,
-      "editor": "number"
-    },
-    "page": {
-      "title": "Search page",
-      "type": "integer",
-      "description": "Fetch this page only. Each additional page requires a separate paid request.",
-      "minimum": 1,
-      "maximum": 100,
-      "default": 1,
-      "editor": "number"
-    },
     "tbs": {
       "title": "Google search filter (tbs)",
       "type": "string",
-      "description": "Optional Google filter expression, such as qdr:w for the past week.",
+      "description": "Optional Google filter string. For time filtering, use qdr:d (past day), qdr:w (past week), or qdr:m (past month). Leave blank for no explicit filter.",
       "minLength": 1,
       "maxLength": 200,
       "editor": "textfield"
@@ -74,7 +76,7 @@
     "autocorrect": {
       "title": "Autocorrect",
       "type": "boolean",
-      "description": "Optional search-provider autocorrect setting."
+      "description": "Enable to allow the search provider to correct spelling. Leave unset to use the provider’s behavior."
     }
   },
   "required": [

@@ -22,8 +22,8 @@ Each Start submits one request and uses your FlashData Credits at your account r
 
 | Input | Meaning |
 | --- | --- |
-| `flashdataApiKey` | Required. Your own FlashData API key with YouTube Metadata permission. Encrypted; no shared key is provided. |
-| `video_id` | Required. An 11-character YouTube video ID, not a full URL. |
+| `video_id` | Required. Paste one 11-character YouTube video ID. For https://www.youtube.com/watch?v=abcdefghijk, copy only abcdefghijk (illustrative ID; replace it with your video). Full URLs and lists are not accepted. |
+| `flashdataApiKey` | Required. In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Metadata (youtube_metadata) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
 | `include_formats` | Include available video/audio format metadata, without downloading files. |
 | `include_chapters` | Include chapters when available. |
 

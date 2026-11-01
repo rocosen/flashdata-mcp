@@ -33,8 +33,10 @@ You need a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_
 
 ## Get started
 
-1. Enter your own **FlashData API key** and **Search query**, then click **Start**.
-2. Open **Organic search results** for the table and JSON/CSV export. Open **Complete search response** for the full response, request ID and usage when returned.
+1. Enter one **Search query**, for example `AI agent web search tools` or `site:github.com MCP server`.
+2. In your FlashData dashboard, open **API Keys** and copy a key with `google_search` permission. Paste the full `fd_` key into **Your FlashData API key**, without quotes or a `Bearer` prefix. An Apify token cannot be used in this field.
+3. Leave **Optional search settings** unchanged for a first run, or expand the section to adjust results, region and filters. Click **Start** to perform the search.
+4. Open **Organic search results** for the table and JSON/CSV export. Open **Complete search response** for the full response, request ID and usage when returned.
 
 ## Input
 

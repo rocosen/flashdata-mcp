@@ -2,22 +2,22 @@
   "title": "YouTube Channel with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Enter your Key and required handle input. Start performs one YouTube Channel request using your FlashData Credits.",
+  "description": "Enter the required handle input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Channel request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
   "properties": {
-    "flashdataApiKey": {
-      "title": "FlashData API key",
-      "type": "string",
-      "description": "Your own FlashData API key with YouTube Channel permission. Encrypted; no shared key is provided.",
-      "editor": "textfield",
-      "isSecret": true
-    },
     "handle": {
       "type": "string",
       "minLength": 1,
       "maxLength": 100,
       "title": "Handle",
-      "description": "YouTube channel handle, such as @example. Not a URL or channel ID.",
+      "description": "Enter a YouTube channel handle, for example @Google or Google. Copy the part after youtube.com/@ from the channel URL. Do not paste the full URL or a UC-prefixed channel ID.",
       "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "Your FlashData API key",
+      "type": "string",
+      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Channel (youtube_channel) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "editor": "textfield",
+      "isSecret": true
     },
     "video_limit": {
       "type": "integer",
@@ -25,8 +25,10 @@
       "maximum": 100,
       "default": 20,
       "title": "Video Limit",
-      "description": "Maximum recent videos to request; not the channel total.",
-      "editor": "number"
+      "description": "How many recent videos to request (1–100; default 20). This is a recent-video sample, not the complete channel history.",
+      "editor": "number",
+      "sectionCaption": "Optional settings",
+      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
     }
   },
   "required": [

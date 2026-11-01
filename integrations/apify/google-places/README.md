@@ -22,15 +22,15 @@ Each Start submits one request and uses your FlashData Credits at your account r
 
 | Input | Meaning |
 | --- | --- |
-| `flashdataApiKey` | Required. Your own FlashData API key with Google Places permission. Encrypted; no shared key is provided. |
-| `query` | Required. Keywords or a Google search expression. A single query is sent per run. |
-| `gl` | Optional two-letter country code, such as us or gb. |
-| `hl` | Optional language code, such as en or de. |
-| `location` | Optional geographic location. |
-| `num` | Requested result count; actual count can be lower. Does not automatically fetch additional pages. |
-| `page` | Fetch this page only. Each additional page requires a separate paid request. |
-| `tbs` | Optional Google filter expression, such as qdr:w for the past week. |
-| `autocorrect` | Optional search-provider autocorrect setting. |
+| `query` | Required. Enter one Google Places search query, for example: coffee shops in Singapore. One query is sent per run; do not paste a list of queries. |
+| `flashdataApiKey` | Required. In your FlashData account dashboard, open API Keys and create or copy a key with Google Places (google_places) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
+| `num` | How many results to request (1–100). Start with 10. The provider may return fewer results; this does not fetch additional pages automatically. |
+| `page` | Which results page to fetch (1–100). Keep 1 for the first page. To fetch another page, start a separate run; each run uses Credits. |
+| `gl` | Optional two-letter country code: us (United States), gb (United Kingdom), or sg (Singapore). Leave blank to use the search provider’s behavior. |
+| `hl` | Optional Google interface language: en (English), de (German), or zh-cn (Simplified Chinese). This does not translate the returned pages. Leave blank for provider behavior. |
+| `location` | Optional location to focus the search, for example: Singapore, or New York, New York, United States. Leave blank if no local focus is needed. |
+| `tbs` | Optional Google filter string. For time filtering, use qdr:d (past day), qdr:w (past week), or qdr:m (past month). Leave blank for no explicit filter. |
+| `autocorrect` | Enable to allow the search provider to correct spelling. Leave unset to use the provider’s behavior. |
 
 Example only; replace placeholders and enter credentials in the encrypted fields:
 

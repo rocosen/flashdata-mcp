@@ -2,22 +2,22 @@
   "title": "YouTube Search with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Enter your Key and required query input. Start performs one YouTube Search request using your FlashData Credits.",
+  "description": "Enter the required query input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Search request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
   "properties": {
-    "flashdataApiKey": {
-      "title": "FlashData API key",
-      "type": "string",
-      "description": "Your own FlashData API key with YouTube Search permission. Encrypted; no shared key is provided.",
-      "editor": "textfield",
-      "isSecret": true
-    },
     "query": {
       "type": "string",
       "minLength": 1,
       "maxLength": 2000,
       "title": "Query",
-      "description": "A single search query or query prefix. No automatic query expansion.",
+      "description": "Enter one YouTube Search search query, for example: battery recycling explained. One query is sent per run; do not paste a list of queries.",
       "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "Your FlashData API key",
+      "type": "string",
+      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Search (youtube_search) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "editor": "textfield",
+      "isSecret": true
     },
     "max_results": {
       "type": "integer",
@@ -25,12 +25,14 @@
       "maximum": 20,
       "default": 20,
       "title": "Max Results",
-      "description": "Requested results. Actual count may be lower; extended search uses a separate rate.",
-      "editor": "number"
+      "description": "Number of results to request (1–20; default 20). Actual count may be lower.",
+      "editor": "number",
+      "sectionCaption": "Optional settings",
+      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
     },
     "filters": {
       "title": "Filters",
-      "description": "Optional YouTube search filters as a JSON object. Use the documented fields and values.",
+      "description": "Optional JSON filters. Example: {\"upload_date\":\"this_week\",\"sort_by\":\"view_count\",\"type\":\"video\"}. Leave empty for no explicit filters. Accepted values are listed in the README; do not paste a search URL.",
       "type": "object",
       "editor": "json"
     }

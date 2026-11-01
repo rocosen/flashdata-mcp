@@ -25,17 +25,17 @@ async function save(file, content) {
 }
 const descriptions = {
   query: 'A single search query or query prefix. No automatic query expansion.',
-  video_id: 'An 11-character YouTube video ID, not a full URL.',
-  handle: 'YouTube channel handle, such as @example. Not a URL or channel ID.',
+  video_id: 'Paste one 11-character YouTube video ID. For https://www.youtube.com/watch?v=abcdefghijk, copy only abcdefghijk (illustrative ID; replace it with your video). Full URLs and lists are not accepted.',
+  handle: 'Enter a YouTube channel handle, for example @Google or Google. Copy the part after youtube.com/@ from the channel URL. Do not paste the full URL or a UC-prefixed channel ID.',
   max_results: 'Requested results. Actual count may be lower; extended search uses a separate rate.',
   video_limit: 'Maximum recent videos to request; not the channel total.',
-  filters: 'Optional YouTube search filters as a JSON object. Use the documented fields and values.',
-  language: 'Requested language code. Does not translate content.',
-  region: 'Two-letter region code, such as US or GB.',
+  filters: 'Optional JSON filters. Example: {"upload_date":"this_week","sort_by":"view_count","type":"video"}. Leave empty for no explicit filters. Accepted values are listed in the README; do not paste a search URL.',
+  language: 'Language code, for example en (English), de (German), or es (Spanish). For captions, the selected track must already exist; this does not translate or generate content.',
+  region: 'Two-letter region code, for example US (United States), GB (United Kingdom), or SG (Singapore).',
   auto: 'true selects automatic captions; false selects uploader captions. No fallback.',
   include_formats: 'Include available video/audio format metadata, without downloading files.',
   include_chapters: 'Include chapters when available.',
-  download_type: 'audio_video, video, or audio. Output format must match the selected type.',
+  download_type: 'Choose video with audio (audio_video), video only (video), or audio only (audio). For a first video download, keep audio_video and leave advanced format settings empty.',
   output_format: 'Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default.',
   video_quality: 'Video quality constraint. Omit for audio-only downloads.',
   audio_quality: 'Applies only to audio downloads; omit for video or combined media.',
@@ -53,13 +53,14 @@ for (const definition of definitions) {
   const description = download ? definition.summary
     : `${definition.summary} Uses your FlashData Key and Credits; Apify usage is separate.`;
   if (description.length > 300) throw new Error(`Description exceeds 300: ${source.id}`);
-  const properties = { flashdataApiKey: { ...baseInput.properties.flashdataApiKey,
-    description: `Your own FlashData API key with ${source.name} permission. Encrypted; no shared key is provided.` } };
+  const properties = {};
   for (const [field, original] of Object.entries(source.inputSchema.properties)) {
     let property = structuredClone(original);
     property.title = field.split('_').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
     property.description = descriptions[field] || original.description || `Optional ${field} parameter.`;
     if (source.category === 'google' && baseInput.properties[field]) property = structuredClone(baseInput.properties[field]);
+    delete property.sectionCaption;
+    delete property.sectionDescription;
     if (property.type === 'object') {
       // Apify JSON editor accepts the object; the published client validates its nested contract.
       property = { title: property.title, description: property.description, type: 'object', editor: 'json' };
@@ -72,18 +73,41 @@ for (const definition of definitions) {
     if (download && ['video_quality','audio_language','audio_quality','output_format'].includes(field)) delete property.default;
     properties[field] = property;
   }
+  if (properties.query) properties.query.description = source.id === 'youtube_suggestions'
+    ? `Enter one phrase to expand, for example: ${definition.example.query}. Returns autocomplete suggestions, not video results. Do not paste multiple phrases.`
+    : `Enter one ${definition.label} search query, for example: ${definition.example.query}. One query is sent per run; do not paste a list of queries.`;
+  if (properties.max_results) properties.max_results.description = `Number of results to request (1–${properties.max_results.maximum}; default ${properties.max_results.default}). Actual count may be lower.${source.id === 'youtube_search_extended' ? ' Extended search uses a separate, higher FlashData rate than standard search.' : ''}`;
+  if (properties.video_limit) properties.video_limit.description = 'How many recent videos to request (1–100; default 20). This is a recent-video sample, not the complete channel history.';
+  properties.flashdataApiKey = { ...baseInput.properties.flashdataApiKey,
+    description: baseInput.properties.flashdataApiKey.description.replace('Google Search (google_search)', `${definition.label} (${source.id})`) };
   if (download) Object.assign(properties, {
     storageJson: { title: 'Customer storage configuration (encrypted JSON)', type: 'string', editor: 'textarea', isSecret: true,
-      description: 'Required for a NEW download. Paste the storage JSON, including provider credentials, here only. Clear it when continuing an existing job.' },
+      description: 'Required for a NEW download. Paste your storage configuration as JSON in this encrypted field. S3 example (replace all placeholders): {"storage_type":"s3","storage_url":"YOUR_BUCKET","access_key":"YOUR_ACCESS_KEY","secret_key":"YOUR_SECRET_KEY","region":"us-east-1"}. storage_url is the bucket/container name; use object_prefix for a folder. Supported providers: S3, S3-compatible, GCS, Azure, OSS, COS, BOS and TOS; credential fields vary by provider (see README). Never paste credentials into other fields. Clear this field when reading an existing job.' },
     jobId: { title: 'Continue an existing job (optional)', type: 'string', editor: 'textfield', pattern: '^job_[A-Za-z0-9_-]+$', maxLength: 120,
       description: 'Reads this existing job without submitting or charging for a new download. Clear video_id and storageJson when using this field.' },
     waitSeconds: { title: 'Maximum polling wait (seconds)', type: 'integer', editor: 'number', minimum: 0, maximum: 120, default: 60,
       description: 'Stop polling after this interval. A pending job continues on FlashData; resume with jobId. The final in-flight API read can take additional time.' },
   });
+  const primary = download ? ['video_id', 'flashdataApiKey', 'storageJson', 'download_type']
+    : [...source.inputSchema.required, 'flashdataApiKey'];
+  const optional = source.category === 'google'
+    ? ['num', 'page', 'gl', 'hl', 'location', 'tbs', 'autocorrect']
+    : Object.keys(properties).filter(field => !primary.includes(field) && !['jobId', 'waitSeconds'].includes(field));
+  const orderedProperties = Object.fromEntries([...primary, ...optional, ...(download ? ['jobId', 'waitSeconds'] : [])]
+    .map(field => [field, properties[field]]));
+  if (optional.length) Object.assign(orderedProperties[optional[0]], {
+    sectionCaption: download ? 'Optional download settings' : 'Optional settings',
+    sectionDescription: download ? 'Leave these empty or unchanged for a first download. Format, quality and clip settings must match the selected download type.'
+      : 'The required inputs above are enough for a first run. Change these settings only when your workflow needs them.',
+  });
+  if (download) Object.assign(orderedProperties.jobId, {
+    sectionCaption: 'Check an existing download job',
+    sectionDescription: 'Use this instead of starting another download: copy jobId from the previous run’s OUTPUT, keep your API key, and clear video_id, storageJson and any explicit download settings. Reading an existing job does not submit another paid download.',
+  });
   const schema = { title: `${definition.label} with FlashData`, type: 'object', schemaVersion: 1,
-    description: download ? 'Start one download with video ID and encrypted storage JSON, or read an existing job ID. Uses your FlashData Credits and separate Apify resources.'
-      : `Enter your Key and required ${source.inputSchema.required.join('/')} input. Start performs one ${definition.label} request using your FlashData Credits.`,
-    properties, required: ['flashdataApiKey', ...(download ? [] : source.inputSchema.required)], additionalProperties: false };
+    description: download ? 'For a new download, enter one video ID, your FlashData API key and your cloud storage JSON below. Click Start, then check OUTPUT for status and jobId; completed delivery appears in the Dataset. To check an existing job, use the last section instead. New downloads use FlashData Credits; Apify resources and your cloud storage are billed separately.'
+      : `Enter the required ${source.inputSchema.required.join('/')} input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one ${definition.label} request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.`,
+    properties: orderedProperties, required: ['flashdataApiKey', ...(download ? [] : source.inputSchema.required)], additionalProperties: false };
   const pkg = { ...basePackage, name: `flashdata-apify-${definition.name}`, version: '0.1.0',
     description, scripts: { start: 'node src/main.js' } };
   const lock = structuredClone(baseLock); lock.name = pkg.name; lock.packages[''].name = pkg.name;
@@ -101,7 +125,7 @@ for (const definition of definitions) {
   } };
   const example = { flashdataApiKey: 'YOUR_FLASHDATA_API_KEY', ...definition.example,
     ...(download ? { storageJson: '{"storage_type":"s3","storage_url":"your-bucket","access_key":"YOUR_ACCESS_KEY","secret_key":"YOUR_SECRET_KEY","region":"us-east-1"}' } : {}) };
-  const inputTable = Object.entries(properties).map(([field, property]) => `| \`${field}\` | ${schema.required.includes(field) ? 'Required. ' : ''}${property.description} |`).join('\n');
+  const inputTable = Object.entries(orderedProperties).map(([field, property]) => `| \`${field}\` | ${schema.required.includes(field) ? 'Required. ' : ''}${property.description} |`).join('\n');
   const readme = `# ${definition.title}\n\n${definition.summary}\n\n## When to use this tool\n\n${definition.use}\n\nThis is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.\n\n## Authentication and costs\n\nUse your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for \`${source.id}\`. Enter the key in the encrypted input field. There is no shared or prefilled working key.\n\n${download ? 'A new download reserves Credits and settles based on uploaded bytes. Your storage provider may also charge for storage and transfer. Reading an existing job does not submit another paid download.' : 'Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required.'} This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.\n\n## Input and first run\n\n1. Enter your own FlashData key.\n2. ${download ? 'For a new download, enter a video ID and encrypted customer storage JSON. For an existing job, enter jobId only and clear video_id and storageJson.' : `Enter ${source.inputSchema.required.map(x => '\`' + x + '\`').join(' and ')} and any optional settings.`}\n3. Click Start, then inspect the dataset and complete JSON output.\n\n| Input | Meaning |\n| --- | --- |\n${inputTable}\n\nExample only; replace placeholders and enter credentials in the encrypted fields:\n\n\`\`\`json\n${JSON.stringify(example, null, 2)}\n\`\`\`\n\n${source.inputSchema.properties.filters ? 'Supported filters: upload_date (today, last_hour, this_week, this_month, this_year), type (video, channel, playlist, movie), duration (<4, 4-20, >20), sort_by (rating, relevance, view_count, upload_date), and boolean features: 360, 3d, 4k, creative_commons, hd, hdr, live, location, purchased, subtitles, vr180. Unknown fields are rejected.\n\n' : ''}${download ? 'Supported storage providers: S3, S3-compatible, GCS, Azure, OSS, COS, BOS and TOS. storage_url is a bucket/container name; use object_prefix for folders. Keep all provider credentials inside encrypted storageJson. [Storage API parameters](https://flashdata.dev/docs/sources/youtube_download).\n\nThe Actor polls for up to waitSeconds (default 60, maximum 120), plus the last in-flight read. A pending status is not completed delivery. OUTPUT saves jobId; start a new run with your key and that jobId, clearing new-download fields, to continue reading. Do not submit the video again. Completed media remains in your storage under your access and retention settings.\n\n' : ''}## Output\n\n${definition.rows === 'segments' ? 'One timestamped caption segment per dataset row; fullText and complete track metadata remain in OUTPUT.' : definition.source === 'youtube_channel' ? 'One recent video per dataset row; the complete channel profile and videos remain in OUTPUT.' : definition.rows === 'suggestions' ? 'One autocomplete suggestion per row. No suggestions produces an empty dataset.' : download ? 'Completed delivery manifests become dataset rows. Pending jobs have status and jobId in OUTPUT; they do not produce fake completed results.' : 'Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.'}\n\n**Synthetic example, not a live result:**\n\n\`\`\`json\n${JSON.stringify(definition.sample, null, 2)}\n\`\`\`\n\nUse the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.\n\n## Limits\n\n${definition.limits}\n\n## Errors and retries\n\nInvalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request${download ? ' unless jobId is provided for read-only continuation' : ''}. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.\n\nThis is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/${source.id}) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).\n`;
   await save(path.join(dir, 'actor-config.json'), { source: source.id, rows: definition.rows });
   await save(path.join(dir, '.actor/actor.json'), actor);
