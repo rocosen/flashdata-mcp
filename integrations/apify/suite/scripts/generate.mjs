@@ -80,6 +80,9 @@ for (const definition of definitions) {
   if (properties.video_limit) properties.video_limit.description = 'How many recent videos to request (1–100; default 20). This is a recent-video sample, not the complete channel history.';
   properties.flashdataApiKey = { ...baseInput.properties.flashdataApiKey,
     description: baseInput.properties.flashdataApiKey.description.replace('Google Search (google_search)', `${definition.label} (${source.id})`) };
+  if (download) properties.flashdataApiKey.description = properties.flashdataApiKey.description.replace(
+    'Clicking Start uses your FlashData Credits.',
+    'Starting a new download uses your FlashData Credits; reading an existing job does not submit another paid download.');
   if (download) Object.assign(properties, {
     storageJson: { title: 'Customer storage configuration (encrypted JSON)', type: 'string', editor: 'textarea', isSecret: true,
       description: 'Required for a NEW download. Paste your storage configuration as JSON in this encrypted field. S3 example (replace all placeholders): {"storage_type":"s3","storage_url":"YOUR_BUCKET","access_key":"YOUR_ACCESS_KEY","secret_key":"YOUR_SECRET_KEY","region":"us-east-1"}. storage_url is the bucket/container name; use object_prefix for a folder. Supported providers: S3, S3-compatible, GCS, Azure, OSS, COS, BOS and TOS; credential fields vary by provider (see README). Never paste credentials into other fields. Clear this field when reading an existing job.' },

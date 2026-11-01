@@ -16,7 +16,7 @@
     "flashdataApiKey": {
       "title": "Your FlashData API key",
       "type": "string",
-      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with YouTube to Cloud Storage (youtube_download) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with YouTube to Cloud Storage (youtube_download) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Starting a new download uses your FlashData Credits; reading an existing job does not submit another paid download.",
       "editor": "textfield",
       "isSecret": true
     },
