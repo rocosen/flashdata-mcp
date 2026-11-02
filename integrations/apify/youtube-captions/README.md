@@ -23,7 +23,7 @@ Each Start submits one request and uses your FlashData Credits at your account r
 | Input | Meaning |
 | --- | --- |
 | `video_id` | Required. Paste one 11-character YouTube video ID. For https://www.youtube.com/watch?v=abcdefghijk, copy only abcdefghijk (illustrative ID; replace it with your video). Full URLs and lists are not accepted. |
-| `flashdataApiKey` | Required. In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Uploader Captions (youtube_captions) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
+| `flashdataApiKey` | Required. Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Uploader Captions (youtube_captions) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
 | `language` | Language code, for example en (English), de (German), or es (Spanish). For captions, the selected track must already exist; this does not translate or generate content. |
 | `auto` | true selects automatic captions; false selects uploader captions. No fallback. |
 

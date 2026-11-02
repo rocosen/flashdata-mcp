@@ -2,7 +2,7 @@
   "title": "YouTube Transcript with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Enter the required video_id input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Transcript request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
+  "description": "Get your FlashData API key at https://flashdata.dev/app/api-keys (sign in or create an account first). Enter the required video_id input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Transcript request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
   "properties": {
     "video_id": {
       "type": "string",
@@ -16,7 +16,7 @@
     "flashdataApiKey": {
       "title": "Your FlashData API key",
       "type": "string",
-      "description": "In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Transcript (youtube_transcript) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "description": "Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Transcript (youtube_transcript) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
       "editor": "textfield",
       "isSecret": true
     },

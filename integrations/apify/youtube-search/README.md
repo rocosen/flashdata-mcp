@@ -23,7 +23,7 @@ Each Start submits one request and uses your FlashData Credits at your account r
 | Input | Meaning |
 | --- | --- |
 | `query` | Required. Enter one YouTube Search search query, for example: battery recycling explained. One query is sent per run; do not paste a list of queries. |
-| `flashdataApiKey` | Required. In your FlashData account dashboard, open API Keys and create or copy a key with YouTube Search (youtube_search) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
+| `flashdataApiKey` | Required. Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Search (youtube_search) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
 | `max_results` | Number of results to request (1–20; default 20). Actual count may be lower. |
 | `filters` | Optional JSON filters. Example: {"upload_date":"this_week","sort_by":"view_count","type":"video"}. Leave empty for no explicit filters. Accepted values are listed in the README; do not paste a search URL. |
 

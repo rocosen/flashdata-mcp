@@ -23,7 +23,7 @@ Each Start submits one request and uses your FlashData Credits at your account r
 | Input | Meaning |
 | --- | --- |
 | `query` | Required. Enter one Google Videos search query, for example: battery recycling process. One query is sent per run; do not paste a list of queries. |
-| `flashdataApiKey` | Required. In your FlashData account dashboard, open API Keys and create or copy a key with Google Videos (google_videos) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
+| `flashdataApiKey` | Required. Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with Google Videos (google_videos) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
 | `num` | How many results to request (1–100). Start with 10. The provider may return fewer results; this does not fetch additional pages automatically. |
 | `page` | Which results page to fetch (1–100). Keep 1 for the first page. To fetch another page, start a separate run; each run uses Credits. |
 | `gl` | Optional two-letter country code: us (United States), gb (United Kingdom), or sg (Singapore). Leave blank to use the search provider’s behavior. |

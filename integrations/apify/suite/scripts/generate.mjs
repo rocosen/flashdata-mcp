@@ -111,6 +111,7 @@ for (const definition of definitions) {
     description: download ? 'For a new download, enter one video ID, your FlashData API key and your cloud storage JSON below. Click Start, then check OUTPUT for status and jobId; completed delivery appears in the Dataset. To check an existing job, use the last section instead. New downloads use FlashData Credits; Apify resources and your cloud storage are billed separately.'
       : `Enter the required ${source.inputSchema.required.join('/')} input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one ${definition.label} request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.`,
     properties: orderedProperties, required: ['flashdataApiKey', ...(download ? [] : source.inputSchema.required)], additionalProperties: false };
+  schema.description = 'Get your FlashData API key at https://flashdata.dev/app/api-keys (sign in or create an account first). ' + schema.description;
   const pkg = { ...basePackage, name: `flashdata-apify-${definition.name}`, version: '0.1.0',
     description, scripts: { start: 'node src/main.js' } };
   const lock = structuredClone(baseLock); lock.name = pkg.name; lock.packages[''].name = pkg.name;
