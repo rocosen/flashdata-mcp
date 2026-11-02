@@ -22,10 +22,10 @@ Each Start submits one request and uses your FlashData Credits at your account r
 
 | Input | Meaning |
 | --- | --- |
-| `query` | Required. Enter one phrase to expand, for example: battery recycling. Returns autocomplete suggestions, not video results. Do not paste multiple phrases. |
-| `flashdataApiKey` | Required. Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Autocomplete (youtube_suggestions) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
-| `language` | Language code, for example en (English), de (German), or es (Spanish). For captions, the selected track must already exist; this does not translate or generate content. |
-| `region` | Two-letter region code, for example US (United States), GB (United Kingdom), or SG (Singapore). |
+| `query` | Required. Autocomplete prefix, e.g. battery recycling. |
+| `flashdataApiKey` | Required. Requires youtube_suggestions access. Get your key: https://flashdata.dev/app/api-keys |
+| `language` | Suggestion language code, e.g. en, de or es. |
+| `region` | Two-letter country code, e.g. US, GB or SG. |
 
 Example only; replace placeholders and enter credentials in the encrypted fields:
 

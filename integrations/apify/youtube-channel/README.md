@@ -22,9 +22,9 @@ Each Start submits one request and uses your FlashData Credits at your account r
 
 | Input | Meaning |
 | --- | --- |
-| `handle` | Required. Enter a YouTube channel handle, for example @Google or Google. Copy the part after youtube.com/@ from the channel URL. Do not paste the full URL or a UC-prefixed channel ID. |
-| `flashdataApiKey` | Required. Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Channel (youtube_channel) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits. |
-| `video_limit` | How many recent videos to request (1–100; default 20). This is a recent-video sample, not the complete channel history. |
+| `handle` | Required. YouTube channel handle, e.g. @Google. Use a handle, not a channel ID or URL. |
+| `flashdataApiKey` | Required. Requires youtube_channel access. Get your key: https://flashdata.dev/app/api-keys |
+| `video_limit` | Maximum recent videos (1–100); not the full channel history. |
 
 Example only; replace placeholders and enter credentials in the encrypted fields:
 

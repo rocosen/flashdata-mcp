@@ -2,38 +2,37 @@
   "title": "Google Places with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Get your FlashData API key at https://flashdata.dev/app/api-keys (sign in or create an account first). Enter the required query input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one Google Places request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
+  "description": "Google Places for your AI agent. Uses FlashData Credits; Apify usage is billed separately. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "title": "Search query",
       "type": "string",
-      "description": "Enter one Google Places search query, for example: coffee shops in Singapore. One query is sent per run; do not paste a list of queries.",
+      "description": "One search query, e.g. coffee shops in Singapore.",
       "editor": "textfield",
       "minLength": 1,
       "maxLength": 2000
     },
     "flashdataApiKey": {
-      "title": "Your FlashData API key",
+      "title": "FlashData API key",
       "type": "string",
-      "description": "Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with Google Places (google_places) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "description": "Requires google_places access. Get your key: https://flashdata.dev/app/api-keys",
       "editor": "textfield",
       "isSecret": true
     },
     "num": {
       "title": "Requested results",
       "type": "integer",
-      "description": "How many results to request (1–100). Start with 10. The provider may return fewer results; this does not fetch additional pages automatically.",
+      "description": "Maximum results to request (1–100). Actual count may be lower.",
       "minimum": 1,
       "maximum": 100,
       "default": 10,
       "editor": "number",
-      "sectionCaption": "Optional settings",
-      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
+      "sectionCaption": "Optional settings"
     },
     "page": {
       "title": "Search page",
       "type": "integer",
-      "description": "Which results page to fetch (1–100). Keep 1 for the first page. To fetch another page, start a separate run; each run uses Credits.",
+      "description": "Results page number, starting at 1.",
       "minimum": 1,
       "maximum": 100,
       "default": 1,
@@ -42,7 +41,7 @@
     "gl": {
       "title": "Country code",
       "type": "string",
-      "description": "Optional two-letter country code: us (United States), gb (United Kingdom), or sg (Singapore). Leave blank to use the search provider’s behavior.",
+      "description": "Two-letter country code, e.g. us, gb or sg.",
       "minLength": 2,
       "maxLength": 2,
       "pattern": "^[A-Za-z]{2}$",
@@ -51,7 +50,7 @@
     "hl": {
       "title": "Interface language",
       "type": "string",
-      "description": "Optional Google interface language: en (English), de (German), or zh-cn (Simplified Chinese). This does not translate the returned pages. Leave blank for provider behavior.",
+      "description": "Google interface language, e.g. en or zh-cn.",
       "minLength": 1,
       "maxLength": 35,
       "pattern": "^[A-Za-z0-9-]+$",
@@ -60,7 +59,7 @@
     "location": {
       "title": "Search location",
       "type": "string",
-      "description": "Optional location to focus the search, for example: Singapore, or New York, New York, United States. Leave blank if no local focus is needed.",
+      "description": "Search location, e.g. Singapore or New York.",
       "minLength": 1,
       "maxLength": 200,
       "editor": "textfield"
@@ -68,7 +67,7 @@
     "tbs": {
       "title": "Google search filter (tbs)",
       "type": "string",
-      "description": "Optional Google filter string. For time filtering, use qdr:d (past day), qdr:w (past week), or qdr:m (past month). Leave blank for no explicit filter.",
+      "description": "Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month).",
       "minLength": 1,
       "maxLength": 200,
       "editor": "textfield"
@@ -76,7 +75,7 @@
     "autocorrect": {
       "title": "Autocorrect",
       "type": "boolean",
-      "description": "Enable to allow the search provider to correct spelling. Leave unset to use the provider’s behavior."
+      "description": "Allow Google to correct spelling."
     }
   },
   "required": [

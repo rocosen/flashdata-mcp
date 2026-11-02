@@ -2,20 +2,20 @@
   "title": "YouTube Extended Search with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Get your FlashData API key at https://flashdata.dev/app/api-keys (sign in or create an account first). Enter the required query input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Extended Search request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
+  "description": "YouTube Extended Search for your AI agent. Uses FlashData Credits; Apify usage is billed separately. Higher FlashData rate than standard search. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "type": "string",
       "minLength": 1,
       "maxLength": 2000,
       "title": "Query",
-      "description": "Enter one YouTube Extended Search search query, for example: battery recycling explained. One query is sent per run; do not paste a list of queries.",
+      "description": "One search query, e.g. battery recycling explained.",
       "editor": "textfield"
     },
     "flashdataApiKey": {
-      "title": "Your FlashData API key",
+      "title": "FlashData API key",
       "type": "string",
-      "description": "Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Extended Search (youtube_search_extended) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "description": "Requires youtube_search_extended access. Get your key: https://flashdata.dev/app/api-keys",
       "editor": "textfield",
       "isSecret": true
     },
@@ -25,14 +25,13 @@
       "maximum": 700,
       "default": 20,
       "title": "Max Results",
-      "description": "Number of results to request (1–700; default 20). Actual count may be lower. Extended search uses a separate, higher FlashData rate than standard search.",
+      "description": "Maximum results (1–700). Actual count may be lower.",
       "editor": "number",
-      "sectionCaption": "Optional settings",
-      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
+      "sectionCaption": "Optional settings"
     },
     "filters": {
       "title": "Filters",
-      "description": "Optional JSON filters. Example: {\"upload_date\":\"this_week\",\"sort_by\":\"view_count\",\"type\":\"video\"}. Leave empty for no explicit filters. Accepted values are listed in the README; do not paste a search URL.",
+      "description": "JSON filters, e.g. {\"upload_date\":\"this_week\",\"type\":\"video\"}. See README for supported values.",
       "type": "object",
       "editor": "json"
     }

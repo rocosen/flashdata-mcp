@@ -2,20 +2,20 @@
   "title": "YouTube Autocomplete with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Get your FlashData API key at https://flashdata.dev/app/api-keys (sign in or create an account first). Enter the required query input and your own FlashData API key below. Optional settings can be left unchanged. Click Start to run one YouTube Autocomplete request, then open the run’s Dataset for results or OUTPUT for the complete JSON response. FlashData Credits and Apify resource usage are billed separately; no Actor service fee is added.",
+  "description": "YouTube Autocomplete for your AI agent. Uses FlashData Credits; Apify usage is billed separately. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "type": "string",
       "minLength": 1,
       "maxLength": 2000,
       "title": "Query",
-      "description": "Enter one phrase to expand, for example: battery recycling. Returns autocomplete suggestions, not video results. Do not paste multiple phrases.",
+      "description": "Autocomplete prefix, e.g. battery recycling.",
       "editor": "textfield"
     },
     "flashdataApiKey": {
-      "title": "Your FlashData API key",
+      "title": "FlashData API key",
       "type": "string",
-      "description": "Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube Autocomplete (youtube_suggestions) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Clicking Start uses your FlashData Credits.",
+      "description": "Requires youtube_suggestions access. Get your key: https://flashdata.dev/app/api-keys",
       "editor": "textfield",
       "isSecret": true
     },
@@ -26,10 +26,9 @@
       "pattern": "^[A-Za-z0-9-]+$",
       "default": "en",
       "title": "Language",
-      "description": "Language code, for example en (English), de (German), or es (Spanish). For captions, the selected track must already exist; this does not translate or generate content.",
+      "description": "Suggestion language code, e.g. en, de or es.",
       "editor": "textfield",
-      "sectionCaption": "Optional settings",
-      "sectionDescription": "The required inputs above are enough for a first run. Change these settings only when your workflow needs them."
+      "sectionCaption": "Optional settings"
     },
     "region": {
       "type": "string",
@@ -38,7 +37,7 @@
       "default": "US",
       "pattern": "^[A-Za-z]{2}$",
       "title": "Region",
-      "description": "Two-letter region code, for example US (United States), GB (United Kingdom), or SG (Singapore).",
+      "description": "Two-letter country code, e.g. US, GB or SG.",
       "editor": "textfield"
     }
   },

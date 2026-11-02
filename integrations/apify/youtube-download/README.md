@@ -22,10 +22,10 @@ A new download reserves Credits and settles based on uploaded bytes. Your storag
 
 | Input | Meaning |
 | --- | --- |
-| `video_id` | Paste one 11-character YouTube video ID. For https://www.youtube.com/watch?v=abcdefghijk, copy only abcdefghijk (illustrative ID; replace it with your video). Full URLs and lists are not accepted. |
-| `flashdataApiKey` | Required. Get your key at https://flashdata.dev/app/api-keys (sign in or create an account first), then create or copy a key with YouTube to Cloud Storage (youtube_download) permission. Paste the full key starting with fd_ here, without quotes or a Bearer prefix. Use your own FlashData key, not your Apify token. This field is encrypted; no working key is provided. Starting a new download uses your FlashData Credits; reading an existing job does not submit another paid download. |
-| `storageJson` | Required for a NEW download. Paste your storage configuration as JSON in this encrypted field. S3 example (replace all placeholders): {"storage_type":"s3","storage_url":"YOUR_BUCKET","access_key":"YOUR_ACCESS_KEY","secret_key":"YOUR_SECRET_KEY","region":"us-east-1"}. storage_url is the bucket/container name; use object_prefix for a folder. Supported providers: S3, S3-compatible, GCS, Azure, OSS, COS, BOS and TOS; credential fields vary by provider (see README). Never paste credentials into other fields. Clear this field when reading an existing job. |
-| `download_type` | Choose video with audio (audio_video), video only (video), or audio only (audio). For a first video download, keep audio_video and leave advanced format settings empty. |
+| `video_id` | 11-character YouTube video ID (the v= value in a watch URL). |
+| `flashdataApiKey` | Required. Requires youtube_download access. Get your key: https://flashdata.dev/app/api-keys |
+| `storageJson` | Storage credentials as JSON; required for a new download. See README for provider fields and an S3 example. |
+| `download_type` | Video with audio, video only, or audio only. |
 | `video_quality` | Video quality constraint. Omit for audio-only downloads. |
 | `fps` | Frame-rate constraint. Omit for audio-only downloads. |
 | `audio_language` | Audio language selection; omit for video-only downloads. |
@@ -35,8 +35,8 @@ A new download reserves Credits and settles based on uploaded bytes. Your storag
 | `output_format` | Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default. |
 | `start_at` | Optional start timestamp in HH:MM:SS, at most 12:00:00. |
 | `end_at` | Optional end timestamp after start_at, in HH:MM:SS. |
-| `jobId` | Reads this existing job without submitting or charging for a new download. Clear video_id and storageJson when using this field. |
-| `waitSeconds` | Stop polling after this interval. A pending job continues on FlashData; resume with jobId. The final in-flight API read can take additional time. |
+| `jobId` | Read an existing job without a new download charge. Clear video_id and storageJson. |
+| `waitSeconds` | Polling window. Pending jobs continue; resume with jobId. An in-flight read may finish later. |
 
 Example only; replace placeholders and enter credentials in the encrypted fields:
 
