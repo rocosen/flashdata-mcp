@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Read existing uploader-provided YouTube captions for AI agents. Export timestamped segments in a selected language and retain full caption text as JSON. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "description": "Extract existing YouTube subtitles with timestamps and full text. Choose a language; defaults to uploader-provided captions. Export JSON or CSV. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"
