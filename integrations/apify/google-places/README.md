@@ -1,38 +1,39 @@
-# Google Places for AI Agents — FlashData
+# Google Places Scraper
 
-Find local businesses and places for AI research assistants. Export available addresses, coordinates, ratings, phone numbers and business websites.
+Find local businesses and places by keyword and location. Collect a structured shortlist of cafes, shops, service providers or other places, with the contact and business details available in Google's search response.
 
-## When to use this tool
+## What you get
 
-Build local-business shortlists, investigate locations, or provide candidate places for a travel or market-research agent.
+- **Local business results:** names, addresses and categories, with available ratings, phone numbers and websites.
+- **Location-aware queries:** name a city in the query or use the location and country settings.
+- **Structured export:** one place per dataset row; download JSON or CSV or retrieve results through the Apify API.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it for local market research, supplier discovery or planning a list of places to review.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `google_places`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **Google Places results** dataset contains one returned place per row. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "query": "coffee shops in Singapore",
+  "position": 1,
+  "title": "Example Cafe",
+  "address": "Example Street, Singapore",
+  "category": "Cafe",
+  "rating": 4.5,
+  "website": "https://example.com",
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+Optional details such as `phoneNumber`, website, ratings or coordinates may be absent. **Complete response and status** retains all returned fields and usage information.
 
-1. Enter your own FlashData key.
-2. Enter `query` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `query` | Required. One search query, e.g. coffee shops in Singapore. |
-| `flashdataApiKey` | Required. Requires google_places access. Get your key: https://flashdata.dev/app/api-keys |
-| `num` | Maximum results to request (1–100). Actual count may be lower. |
-| `page` | Results page number, starting at 1. |
-| `gl` | Two-letter country code, e.g. us, gb or sg. |
-| `hl` | Google interface language, e.g. en or zh-cn. |
-| `location` | Search location, e.g. Singapore or New York. |
-| `tbs` | Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month). |
-| `autocorrect` | Allow Google to correct spelling. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_places` access and available Credits.
+2. Enter a **Search query** such as `coffee shops in Singapore` and your key. Adjust the location, country or requested result count if needed.
+3. Click **Start**, then open **Google Places results** to review the businesses and export the dataset.
 
 ```json
 {
@@ -42,30 +43,52 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One search query, e.g. coffee shops in Singapore.  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `num` | No | Maximum results to request (1–100). Actual count may be lower. Range: 1–100. Default: `10`. |
+| `page` | No | Results page number, starting at 1. Range: 1–100. Default: `1`. |
+| `gl` | No | Two-letter country code, e.g. us, gb or sg.  |
+| `hl` | No | Google interface language, e.g. en or zh-cn.  |
+| `location` | No | Search location, e.g. Singapore or New York.  |
+| `tbs` | No | Optional Google search filter. Supported behavior depends on the search type.  |
+| `autocorrect` | No | Allow Google to correct spelling.  |
 
-**Synthetic example, not a live result:**
+Each run handles one query and one page. Requested result counts are not guaranteed. Use separate runs for additional locations, queries or pages.
 
-```json
-{
-  "title": "Example Cafe",
-  "address": "Example Street",
-  "category": "Cafe",
-  "rating": 4.5,
-  "website": "https://example.com"
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Results are search snapshots. Phone, website, coordinates, price level and ratings may be absent. Does not guarantee complete business coverage or current opening hours.
+**Will this find every business in a city?**
 
-## Errors and retries
+No. It returns the results available for your query and page. It does not scan a grid or build an exhaustive business directory.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Does it collect emails or customer review text?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/google_places) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+No. Available phone numbers, websites and ratings can be returned, but the Actor does not crawl websites for emails or collect full reviews.
+
+**Why are some phone numbers or websites missing?**
+
+Fields depend on the provider response and the individual listing. A missing field does not mean the business has no phone or website.
+
+**Can I rely on the information being current?**
+
+Treat it as a search snapshot. Check the business website or listing before relying on contact details, opening hours or availability.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/google_places) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official Google product.

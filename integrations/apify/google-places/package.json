@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Find local businesses and places for AI research assistants. Export available addresses, coordinates, ratings, phone numbers and business websites. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "description": "Find local businesses on Google and extract names, addresses, categories and available ratings, phone numbers and websites. Export JSON or CSV. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"
