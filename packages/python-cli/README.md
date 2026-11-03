@@ -1,15 +1,15 @@
 # FlashData Python task CLIs
 
 Fifteen independent Python distributions expose one FlashData source each as a JSON command.
-Use them in shell scripts, pipelines or agent tool runners without a model SDK or LangChain.
+Use them from the command line to retrieve Google search results and YouTube data as JSON.
 Installation is free; FlashData API requests use paid Credits.
 
 ## Availability
 
-Version 0.1.0 is available as checked wheel/sdist assets in the
-[GitHub release](https://github.com/rocosen/flashdata-mcp/releases/tag/python-cli-v0.1.0).
-All fifteen distributions are published on PyPI as version 0.1.0. Each project below
-has its own command, source-specific README and package page. Homebrew users can follow
+This source builds version 0.1.1 with updated package summaries and source-specific READMEs.
+All fifteen distributions have existing PyPI projects; check each page for its published version.
+Each project has its own command, README and package page. Version 0.1.0 remains available
+in the [previous GitHub release](https://github.com/rocosen/flashdata-mcp/releases/tag/python-cli-v0.1.0). Homebrew users can follow
 the [independent formula guides](../../homebrew/README.md).
 The existing `langchain-flashdata` package is a separate integration and is unchanged.
 
@@ -58,10 +58,10 @@ No production API, model, or storage write is needed for these checks.
 For a local build, use the wheel path explicitly:
 
 ```sh
-uvx --from ./dist/flashdata_google_search-0.1.0-py3-none-any.whl flashdata-google-search --schema
+uvx --from ./dist/flashdata_google_search-0.1.1-py3-none-any.whl flashdata-google-search --schema
 ```
 
-The PyPI equivalent is `uvx flashdata-google-search@0.1.0 --schema`.
+The PyPI equivalent is `uvx flashdata-google-search@0.1.1 --schema`.
 For a paid query, set `FLASHDATA_API_KEY` through your shell or secret manager, then use
 `--query 'your research topic' --options-json '{"num":5}' --output result.json`.
 The output path must be new. Full JSON is written to stdout if the path is omitted.
@@ -95,9 +95,10 @@ commit, then manually dispatch **Publish Python task CLIs** from `main` with tha
 `release_tag`. The existing `python-cli-v0.1.0` release is already published.
 The workflow checks out that tag and verifies its version and commit before building;
 publishing infrastructure can be repaired without moving the source tag or changing the packages.
-Select one exact project to validate each new release;
+Select `flashdata-google-search` first to validate each new release;
 read back its PyPI files, hashes, provenance, description and clean uvx installation before
-publishing the remaining projects. Tags and package versions must match. There is no automatic
+publishing `remaining-14` (all projects except Google Search). Use `all` only when none of the
+version's projects have been published. Tags and package versions must match. There is no automatic
 publish on push, PR or tag creation, and no skip-existing behavior that could hide a collision.
 
 Publication status and platform discovery remain tracked in

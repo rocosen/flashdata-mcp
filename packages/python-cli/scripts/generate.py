@@ -7,26 +7,27 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CAPABILITIES = json.loads((ROOT / "capabilities.json").read_text())
-PURPOSES = {
-    "google_search": "Collect current web evidence for an AI research agent",
-    "google_news": "Save a news topic snapshot for a daily briefing",
-    "google_images": "Build an image-reference inventory for manual review",
-    "google_shopping": "Compare product offers in a purchasing research pipeline",
-    "google_videos": "Find video tutorials across websites",
-    "google_places": "Create a local-business research dataset",
-    "youtube_search": "Discover videos for a research shortlist",
-    "youtube_search_extended": "Build a larger video discovery dataset",
-    "youtube_metadata": "Inspect video metadata and chapters before ingestion",
-    "youtube_transcript": "Export timestamped automatic captions for retrieval",
-    "youtube_captions": "Export uploader captions for subtitle review",
-    "youtube_trainability": "Record Creative Commons license-label evidence",
-    "youtube_channel": "Snapshot channel metadata and recent videos",
-    "youtube_suggestions": "Expand research topics with localized autocomplete",
-    "youtube_download": "Deliver authorized YouTube media to your cloud storage",
+DESCRIPTIONS = {
+    "google_search": "Search Google from the command line and get ranked titles, links, snippets and positions as JSON.",
+    "google_news": "Search Google News from the command line and get headlines, publishers, article links and available dates as JSON.",
+    "google_images": "Search Google Images from the command line and get image URLs, dimensions and source-page links as JSON.",
+    "google_shopping": "Search Google Shopping from the command line and get product offers, merchants and displayed prices as JSON.",
+    "google_videos": "Search Google Videos across websites and get video links, titles, snippets and available metadata as JSON.",
+    "google_places": "Find local businesses and places with addresses, ratings, coordinates and available contact details as JSON.",
+    "youtube_search": "Search YouTube from the command line and get video details as JSON, with filters and up to 20 requested results.",
+    "youtube_search_extended": "Search YouTube with filters and up to 700 requested results, returning structured video details as JSON.",
+    "youtube_metadata": "Get YouTube video metadata, statistics and available chapters or format details as JSON from the command line.",
+    "youtube_transcript": "Retrieve existing YouTube transcripts as timestamped segments and full text in JSON; automatic captions by default.",
+    "youtube_captions": "Retrieve existing YouTube captions as timestamped segments and full text in JSON; uploader captions by default.",
+    "youtube_trainability": "Read YouTube Creative Commons license-label metadata as JSON by video ID; this does not grant training rights.",
+    "youtube_channel": "Get YouTube channel details and recent videos as JSON by handle, with up to 100 requested videos.",
+    "youtube_suggestions": "Get YouTube autocomplete search suggestions as JSON for a prefix, language and region.",
+    "youtube_download": "Download YouTube video, audio or clips to your cloud storage, with command-line job tracking and JSON file details.",
 }
 
 
 def generate():
+    from flashdata_cli import __version__
     from flashdata_cli.cli import CONTRACTS
 
     manifest = []
@@ -54,12 +55,12 @@ def generate():
         sample = dict(capability["sample"])
         primary = next(k for k in ("query", "video_id", "handle") if k in sample)
         value = sample.pop(primary)
-        command = f"uvx {name}@0.1.0 --{primary.replace('_', '-')} {shlex.quote(value)}"
+        command = f"uvx {name}@{__version__} --{primary.replace('_', '-')} {shlex.quote(value)}"
         if sample:
             command += " --options-json " + shlex.quote(json.dumps(sample))
         download = source == "youtube_download"
         if download:
-            command = f"uvx {name}@0.1.0 --operation result --job-id job_YOUR_SAVED_ID"
+            command = f"uvx {name}@{__version__} --operation result --job-id job_YOUR_SAVED_ID"
         options = []
         for key, value in schema["properties"].items():
             if key == primary:
@@ -90,7 +91,7 @@ and never submit a paid query. A pending/running response does not mean delivery
 For a new delivery, supply your own authorized video and storage configuration:
 
 ```sh
-uvx {name}@0.1.0 --operation submit --allow-submit \\
+uvx {name}@{__version__} --operation submit --allow-submit \\
   --video-id YOUR_VIDEO_ID \\
   --options-json '{{"download_type":"audio","output_format":"m4a"}}' \\
   --output delivery-receipt.json
@@ -107,88 +108,112 @@ Keep the returned `id`. Read that same job with `--operation status --job-id ID`
 polling or resubmission. Only the lifecycle receipt and delivery JSON are exported; media is
 written by FlashData to your storage. Result JSON expires after 24 hours. Delivery manifests
 can contain signed private URLs; protect the output file. Storage credentials from job params
-are excluded from CLI output.
+are excluded from CLI output. Completed result reads may fetch signed JSON from the
+FlashData result origin; the API key is never sent to that object URL.
 """
             if download
             else ""
         )
-        readme = f"""# {capability["name"]} CLI — FlashData
+        google_options = (
+            "Google count and locale options remain omitted unless supplied."
+            if source.startswith("google_")
+            else ""
+        )
+        input_guide = (
+            "For a new delivery, use `--video-id` with `--operation submit --allow-submit`. "
+            "For status or results, use only `--job-id` and omit submission fields."
+            if download
+            else f"Use `--{primary.replace('_', '-')}` for the primary input."
+        )
+        billing = (
+            "Downloads are billed by delivered volume; your cloud-storage and transfer costs "
+            "are separate. A submission receipt is not the final usage charge."
+            if download
+            else ""
+        )
+        output_note = "For downloads, exit 0 can describe an unfinished job." if download else ""
+        readme = f"""# {capability["name"]} CLI
 
-{PURPOSES[source]}. This command calls the `{source}` API and returns JSON for your
-shell script, data pipeline or agent tool runner. It does not invoke a language model.
+{DESCRIPTIONS[source]}
 
-{limitations}
+Uses the [FlashData {capability["name"]} API](https://flashdata.dev/docs/sources/{source}).
 
-## Install and run
+## Installation
 
-Requires Python 3.10 or newer. [uv installation](https://docs.astral.sh/uv/getting-started/installation/)
-provides `uvx`, which runs this package in an isolated environment.
-
-1. [Create a FlashData account](https://flashdata.dev/signup), obtain an API Key and fund Credits.
-2. Set `FLASHDATA_API_KEY` using your shell or secret manager. The CLI does not accept a key flag
-   or persist credentials. [Authentication and source documentation](https://flashdata.dev/docs/sources/{source}).
-3. Run this example after reviewing the input and cost:
+Requires Python 3.10 or newer:
 
 ```sh
+python -m pip install {name}=={__version__}
+```
+
+Or run it without a persistent install using [uvx](https://docs.astral.sh/uv/guides/tools/),
+as in the examples below. The installed command is `{name}`.
+
+## Quick start
+
+Create a [FlashData API key](https://flashdata.dev/app/api-keys) with `{source}` access,
+then set `FLASHDATA_API_KEY` in your environment or secret manager. API calls use your
+FlashData Credits.
+
+```sh
+export FLASHDATA_API_KEY='YOUR_API_KEY'
 {command} --output result.json
 ```
 
-`--output` creates a new file with owner-only permissions where supported and refuses existing
-files before making a paid request. Without it, the full JSON response goes to stdout. Errors
-go to stderr. Exit 0 means the response was exported, 2 means local input/configuration failure,
-and 1 means request or output failure. For downloads, exit 0 can describe an unfinished job.
+Omit `--output` to write JSON to stdout. An output file must not already exist; the CLI
+checks this before making a request. API keys are read from the environment, not command flags.
 
-For repeated use, install `uv tool install {name}==0.1.0`; the command name is `{name}`.
-Alternatively use `python -m pip install {name}==0.1.0` in your virtual environment.
+## Inputs
 
-## Inputs and output
-
-Use `--{primary.replace("_", "-")}` for the primary input. Additional options use
-`--options-json` as a JSON object, with strict field/type/range validation. Source is fixed by
-this package. Google count and locale options remain omitted unless supplied.
+{input_guide} Pass additional fields through
+`--options-json`. Options are validated against this package's source schema. {google_options}
 
 {option_table}
 
-Run `uvx {name}@0.1.0 --schema` to inspect all fields, nested filters, allowed values and
-defaults without a Key or an API call. `--help` and `--version` are also local-only.
+Inspect all fields, nested filters and defaults locally:
 
-The JSON output preserves the API result envelope and optional fields: {capability["outputs"]}.
-Missing fields remain missing; empty results remain empty. No article text, translated captions,
-model conclusions, rights grants or keyword volumes are invented. Exact source contracts are
-documented [here](https://flashdata.dev/docs/sources/{source}).
+```sh
+uvx {name}@{__version__} --schema
+```
+
+`--schema`, `--help` and `--version` do not require an API key or make an API call.
+
+## Output and limits
+
+The JSON response preserves the API envelope and available fields: {capability["outputs"]}.
+
+{limitations}
 {download_guide}
-## Fees and failure handling
+## Pricing and errors
 
-This MIT-licensed CLI is free to install. FlashData API requests consume paid Credits;
-[current pricing](https://flashdata.dev/pricing) applies. Extended YouTube Search has a separate
-rate. Media delivery is billed by delivered volume, and your cloud-storage costs are separate.
-There is no automatic pagination, retry, polling, scheduled execution or model call.
+This MIT-licensed CLI is free to install. API calls use your own
+[FlashData Credits](https://flashdata.dev/pricing). {billing}
 
-Each HTTP request has a 120-second network timeout (15-second connect timeout) and a 20-MiB response
-limit. A timeout or failure may occur after a paid request has been accepted. Check Jobs in
-the [FlashData console](https://flashdata.dev) before resubmitting. HTTP 401 means check the Key;
-402 means insufficient Credits; 429 means rate/quota limit. A partial output file is retained
-on failure. Do not retry a paid query just because output handling failed.
+Requests are not automatically retried. A timeout can occur after a request is accepted;
+check your FlashData query history before resubmitting. Each HTTP request has a 120-second
+network timeout, a 15-second connect timeout and a 20-MiB response limit.
 
-Input values and your API Key are sent to FlashData to perform the request. A completed
-download-result read may fetch a signed JSON object from the result origin returned by
-FlashData; the API Key is never sent to that object URL. Only process data appropriate for
-your output destination. [Privacy policy](https://flashdata.dev/legal/privacy).
+Errors go to stderr. Exit codes: `0` for exported output, `2` for local input/configuration
+errors, and `1` for request/output errors. {output_note}
+A partial output file is retained on failure; check the request before retrying because of
+an output error. HTTP `401` indicates an API key issue, `402` insufficient Credits, and
+`429` a rate or quota limit.
 
-Source and MIT license are included in the source distribution.
-
-[Source documentation](https://flashdata.dev/docs/sources/{source}) ·
-[Pricing](https://flashdata.dev/pricing) · [Sign up](https://flashdata.dev/signup)
+[API reference](https://flashdata.dev/docs/sources/{source}) ·
+[Privacy policy](https://flashdata.dev/legal/privacy) ·
+[Source code](https://github.com/rocosen/flashdata-mcp/tree/main/packages/python-cli)
 """
-        (package / "README.md").write_text(readme)
-        summary = f"{PURPOSES[source]} with the FlashData JSON CLI"
+        (package / "README.md").write_text(
+            "\n".join(line.rstrip() for line in readme.splitlines()) + "\n"
+        )
+        summary = DESCRIPTIONS[source]
         metadata = f'''[build-system]
 requires = ["hatchling>=1.27,<2"]
 build-backend = "hatchling.build"
 
 [project]
 name = "{name}"
-version = "0.1.0"
+version = "{__version__}"
 description = {json.dumps(summary)}
 readme = "README.md"
 requires-python = ">=3.10"
@@ -219,7 +244,7 @@ packages = ["{module}"]
                 "project": name,
                 "command": name,
                 "module": module,
-                "version": "0.1.0",
+                "version": __version__,
                 "pypi_url": f"https://pypi.org/project/{name}/",
             }
         )
