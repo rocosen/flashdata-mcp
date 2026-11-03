@@ -1,32 +1,37 @@
-# YouTube Channels for AI Agents — FlashData
+# YouTube Channel Scraper
 
-Inspect YouTube channels and recent videos for AI research agents. Use a channel handle to retrieve profile data and a recent-video sample of up to 100 items.
+Look up a YouTube channel by handle and collect its profile with a recent-video sample. Review what a creator has been publishing and inspect the available video statistics without building a full channel archive.
 
-## When to use this tool
+## What you get
 
-Build a channel profile, inspect recent publishing topics, and pass selected video IDs into metadata or caption workflows.
+- **Channel profile:** retrieve the channel information available in the full response.
+- **Recent videos:** request 1–100 video records with available titles, durations, view counts and upload dates.
+- **Exportable rows:** each recent video keeps its channel context for JSON or CSV export.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it for creator research, comparing recent publishing topics or selecting videos for a separate metadata or caption lookup.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `youtube_channel`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **YouTube Channel results** dataset contains one recent video per row. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "channelHandle": "@example",
+  "videoId": "abcdefghijk",
+  "title": "Example recent channel upload",
+  "viewCount": 1234,
+  "uploadDate": "2026-01-15",
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+The table includes available `channelId`, `channelHandle`, `videoId`, `title`, `duration`, `viewCount` and `uploadDate`. Open **Complete response and status** for the full channel profile, returned videos and usage information.
 
-1. Enter your own FlashData key.
-2. Enter `handle` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `handle` | Required. YouTube channel handle, e.g. @Google. Use a handle, not a channel ID or URL. |
-| `flashdataApiKey` | Required. Requires youtube_channel access. Get your key: https://flashdata.dev/app/api-keys |
-| `video_limit` | Maximum recent videos (1–100); not the full channel history. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `youtube_channel` access and available Credits.
+2. Enter a channel `handle`, such as `@Google`, and your key. Set `video_limit` to the number of recent videos you want.
+3. Click **Start**, then open **YouTube Channel results** for videos or **Complete response and status** for the channel profile.
 
 ```json
 {
@@ -36,29 +41,46 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-## Output
+## Input parameters
 
-One recent video per dataset row; the complete channel profile and videos remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `handle` | Yes | YouTube channel handle, e.g. @Google. Use a handle, not a channel ID or URL.  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `video_limit` | No | Maximum recent videos (1–100); not the full channel history. Range: 1–100. Default: `20`. |
 
-**Synthetic example, not a live result:**
+Replace the example handle with a real channel handle. The leading @ is optional. Full YouTube URLs and channel IDs are not accepted; use one channel per run.
 
-```json
-{
-  "channelHandle": "@example",
-  "videoId": "abcdefghijk",
-  "title": "Illustrative recent video",
-  "viewCount": 123
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Use a handle, with or without @; do not use a full URL or channel ID. video_limit is 1–100 (default 20); this is a recent-video sample, not the complete channel history. Profile counts may be absent and are not converted to zero.
+**Does this collect the entire channel history?**
 
-## Errors and retries
+No. It requests a recent-video sample of up to 100 items. The default is 20, and the actual count can be lower.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Where are the channel profile fields?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/youtube_channel) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+The dataset table is organized around recent videos. The complete channel profile is in Complete response and status, alongside the returned video list.
+
+**Does a missing subscriber or view count mean zero?**
+
+No. Counts may be unavailable or omitted by the provider. Missing values should remain unknown rather than being treated as zero.
+
+**Does it collect business emails, captions or video files?**
+
+No. It returns channel and recent-video metadata. Those other operations are outside this Actor's scope.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/youtube_channel) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official YouTube product.

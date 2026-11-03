@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Inspect YouTube channels and recent videos for AI research agents. Use a channel handle to retrieve profile data and a recent-video sample of up to 100 items. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "description": "Get a YouTube channel profile and recent videos from its handle. Request up to 100 videos with available titles, durations, views and dates. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"
