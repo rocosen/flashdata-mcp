@@ -1,38 +1,40 @@
-# Google Video Search for AI Agents — FlashData
+# Google Videos Scraper
 
-Discover videos across websites for AI research agents. Export Google Video results with titles, links and available duration, channel and date metadata.
+Search Google's video results and collect links from across the web in one dataset. Find tutorials, product demonstrations and topical coverage, with source and video details that help you choose what to watch or investigate next.
 
-## When to use this tool
+## What you get
 
-Find video explanations across multiple websites and supply candidate sources to a research or educational assistant.
+- **Video result links:** titles and URLs, with available source, channel, duration and date metadata.
+- **Search controls:** choose country, interface language, location and result page.
+- **Structured export:** one result per row, ready for JSON, CSV or retrieval through the Apify API.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it for video content research, competitor discovery or finding explanations across different publishing sites.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `google_videos`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **Google Videos results** dataset contains returned video-search results. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "query": "battery recycling process",
+  "position": 1,
+  "title": "Example battery recycling walkthrough",
+  "link": "https://example.com/video",
+  "duration": "5:00",
+  "source": "Example Video Site",
+  "channel": "Example Science",
+  "date": "1 month ago",
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+Duration and date values retain the provider's format; fields may be absent. **Complete response and status** preserves the full returned JSON and usage information.
 
-1. Enter your own FlashData key.
-2. Enter `query` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `query` | Required. One search query, e.g. battery recycling process. |
-| `flashdataApiKey` | Required. Requires google_videos access. Get your key: https://flashdata.dev/app/api-keys |
-| `num` | Maximum results to request (1–100). Actual count may be lower. |
-| `page` | Results page number, starting at 1. |
-| `gl` | Two-letter country code, e.g. us, gb or sg. |
-| `hl` | Google interface language, e.g. en or zh-cn. |
-| `location` | Search location, e.g. Singapore or New York. |
-| `tbs` | Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month). |
-| `autocorrect` | Allow Google to correct spelling. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_videos` access and available Credits.
+2. Enter your **Search query** and key, then select any country, language or page settings.
+3. Click **Start**, then open **Google Videos results** to inspect the links and export your dataset.
 
 ```json
 {
@@ -42,29 +44,52 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One search query, e.g. battery recycling process.  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `num` | No | Maximum results to request (1–100). Actual count may be lower. Range: 1–100. Default: `10`. |
+| `page` | No | Results page number, starting at 1. Range: 1–100. Default: `1`. |
+| `gl` | No | Two-letter country code, e.g. us, gb or sg.  |
+| `hl` | No | Google interface language, e.g. en or zh-cn.  |
+| `location` | No | Search location, e.g. Singapore or New York.  |
+| `tbs` | No | Optional Google search filter. Supported behavior depends on the search type.  |
+| `autocorrect` | No | Allow Google to correct spelling.  |
 
-**Synthetic example, not a live result:**
+Each run searches one query and one page. Additional pages require separate runs. The requested result count is a maximum, not a delivery guarantee.
 
-```json
-{
-  "title": "Illustrative process video",
-  "link": "https://example.com/video",
-  "duration": "5:00",
-  "source": "Example video site"
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-This is Google Video search, not YouTube's internal search. Returns links and metadata, not downloaded media, transcripts, or verified content claims.
+**Is this the same as searching directly on YouTube?**
 
-## Errors and retries
+No. It queries Google Videos, which can include YouTube and other sites. Use YouTube Search when you want YouTube's own search results.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Does it download videos or provide transcripts?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/google_videos) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+It returns links and metadata. Downloading media or retrieving captions requires a separate tool.
+
+**Are all fields present for every video?**
+
+No. A result may omit duration, channel or date. The full response preserves any additional fields returned by the provider.
+
+**Does it track newly published videos automatically?**
+
+Each run is independent. It does not maintain a history or remove results seen in earlier runs.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/google_videos) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official Google product.
