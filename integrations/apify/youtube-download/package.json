@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Deliver YouTube video or audio to your cloud storage for AI workflows. Submit one download job, read progress and export its delivery manifest. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "description": "Download a YouTube video or audio to your own S3, GCS, Azure or other supported cloud storage. Choose formats and read the delivery manifest. Requires a FlashData API key and Credits; Apify and storage costs are separate.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

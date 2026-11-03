@@ -1,44 +1,34 @@
-# YouTube to Cloud Storage for AI Agents — FlashData
+# YouTube Video & Audio Downloader to Cloud Storage
 
-Deliver YouTube video or audio to your cloud storage for AI workflows. Submit one download job, read progress and export its delivery manifest. Uses your FlashData Key and Credits; Apify usage is separate.
+Save a YouTube video or audio track directly to cloud storage you control. Choose the download type and available format options, then follow the asynchronous job until the uploaded file appears in the delivery manifest.
 
-## When to use this tool
+## What you get
 
-Deliver media into a storage location you control for an authorized downstream processing workflow. The agent can inspect the job status and delivery manifest.
+- **Video or audio:** select combined video and audio, video only, or audio only.
+- **Your destination:** deliver to S3, S3-compatible storage, GCS, Azure, OSS, COS, BOS or TOS.
+- **Job tracking:** keep a job ID for later status checks and read the completed file URL and size from the delivery manifest.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it to deliver media you are authorized to obtain into your own storage for archiving, editing or a separate processing workflow.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `youtube_download`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+Completed uploads appear in **Delivery manifest**. A completed row has this form. This example is illustrative, not a live result:
 
-A new download reserves Credits and settles based on uploaded bytes. Your storage provider may also charge for storage and transfer. Reading an existing job does not submit another paid download. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "job_id": "job_example",
+  "file_url": "https://example-bucket.s3.amazonaws.com/example.mp4",
+  "file_size": 1048576
+}
+```
 
-## Input and first run
+**Complete response and status** shows job progress and the full response. Pending jobs do not produce completed file rows. A file URL in your private bucket remains subject to that bucket's access controls.
 
-1. Enter your own FlashData key.
-2. For a new download, enter a video ID and encrypted customer storage JSON. For an existing job, enter jobId only and clear video_id and storageJson.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `video_id` | 11-character YouTube video ID (the v= value in a watch URL). |
-| `flashdataApiKey` | Required. Requires youtube_download access. Get your key: https://flashdata.dev/app/api-keys |
-| `storageJson` | Storage credentials as JSON; required for a new download. See README for provider fields and an S3 example. |
-| `download_type` | Video with audio, video only, or audio only. |
-| `video_quality` | Video quality constraint. Omit for audio-only downloads. |
-| `fps` | Frame-rate constraint. Omit for audio-only downloads. |
-| `audio_language` | Audio language selection; omit for video-only downloads. |
-| `audio_quality` | Applies only to audio downloads; omit for video or combined media. |
-| `yt_dlp_format` | Advanced format selector; overrides quality, FPS and audio-language selection. |
-| `upload_metadata` | Also upload metadata to your customer storage. |
-| `output_format` | Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default. |
-| `start_at` | Optional start timestamp in HH:MM:SS, at most 12:00:00. |
-| `end_at` | Optional end timestamp after start_at, in HH:MM:SS. |
-| `jobId` | Read an existing job without a new download charge. Clear video_id and storageJson. |
-| `waitSeconds` | Polling window. Pending jobs continue; resume with jobId. An in-flight read may finish later. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `youtube_download` access and available Credits.
+2. Enter a real video ID, your FlashData key and the destination configuration in encrypted `storageJson`. Select the download type and optional format settings.
+3. Click **Start**, then check **Complete response and status**. Open **Delivery manifest** once the job has completed.
 
 ```json
 {
@@ -50,32 +40,80 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-Supported storage providers: S3, S3-compatible, GCS, Azure, OSS, COS, BOS and TOS. storage_url is a bucket/container name; use object_prefix for folders. Keep all provider credentials inside encrypted storageJson. [Storage API parameters](https://flashdata.dev/docs/sources/youtube_download).
+## Input parameters
 
-The Actor polls for up to waitSeconds (default 60, maximum 120), plus the last in-flight read. A pending status is not completed delivery. OUTPUT saves jobId; start a new run with your key and that jobId, clearing new-download fields, to continue reading. Do not submit the video again. Completed media remains in your storage under your access and retention settings.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `video_id` | New job | 11-character YouTube video ID (the v= value in a watch URL).  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `storageJson` | New job | Storage credentials as JSON; required for a new download. See README for provider fields and an S3 example.  |
+| `download_type` | No | `audio_video` combines video and audio; `video` is video only; `audio` is audio only. Default: `"audio_video"`. |
+| `video_quality` | No | Video constraint such as `best`, `<=720` or `==1080`. Omit for audio-only downloads.  |
+| `fps` | No | Frame-rate constraint such as `<=30`. Omit for audio-only downloads.  |
+| `audio_language` | No | `default` or `original`. Omit for video-only downloads.  |
+| `audio_quality` | No | For audio-only downloads: `best`, `320`, `256`, `192` or `128`. Omit for video or combined media.  |
+| `yt_dlp_format` | No | Advanced format selector; overrides quality, FPS and audio-language selection.  |
+| `upload_metadata` | No | Also upload metadata to your customer storage. Default: `false`. |
+| `output_format` | No | Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default.  |
+| `start_at` | No | Optional start timestamp in HH:MM:SS, at most 12:00:00.  |
+| `end_at` | No | Optional end timestamp after start_at, in HH:MM:SS.  |
+| `jobId` | Existing job | Read an existing job without a new download charge. Clear video_id and storageJson.  |
+| `waitSeconds` | No | Polling window. Pending jobs continue; resume with jobId. An in-flight read may finish later. Range: 0–120. Default: `60`. |
 
-## Output
+Replace the video and credential placeholders before running. New jobs require video_id and storageJson; status-only requests use jobId instead. Quality and format selections depend on what the source supports.
 
-Completed delivery manifests become dataset rows. Pending jobs have status and jobId in OUTPUT; they do not produce fake completed results.
+## Storage configuration
 
-**Synthetic example, not a live result:**
+The input example uses AWS S3. `storage_url` is the bucket or Azure container name; use `object_prefix` for a folder within it. Keep provider credentials inside the encrypted `storageJson` field.
+
+Supported `storage_type` values: `s3`, `s3_compatible`, `gcs`, `azure`, `oss`, `cos`, `bos`, `tos`. S3-compatible destinations need an `endpoint_url`; GCS uses `service_account`; Azure uses `account_name` and a writable container `sas_token`. See the [provider-specific configuration](https://flashdata.dev/docs/sources/youtube_download) for required fields.
+
+## Check an unfinished job
+
+The Actor polls for up to `waitSeconds` (default 60, maximum 120), plus the last in-flight read. If the job is still pending or processing, keep the `jobId` from **Complete response and status**.
+
+Start a status-only run with the same key and job ID. Clear video_id, storageJson and other new-download settings; use this minimal input:
 
 ```json
 {
-  "job_id": "job_example",
-  "file_url": "https://example-bucket.s3.amazonaws.com/example.mp4",
-  "file_size": 1048576
+  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
+  "jobId": "job_example",
+  "waitSeconds": 60
 }
 ```
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+This reads the existing job without submitting another download. Do not resubmit the video just because the first polling window ended.
 
-## Limits
+## Pricing
 
-Async only. Requires your own supported storage and credentials; does not provide a shared public download bucket. Private files remain subject to your storage access controls. You are responsible for permission to obtain and use the media. No speech recognition or translation is included.
+New downloads reserve FlashData Credits and settle based on uploaded bytes at your applicable [download rate](https://flashdata.dev/pricing). Reading an existing job does not create another download charge. This Actor adds no service fee. Apify platform usage and your storage provider's storage/transfer fees are separate.
 
-## Errors and retries
+## FAQ
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request unless jobId is provided for read-only continuation. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Where is the downloaded file?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/youtube_download) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+In the destination you supplied, after the job completes. This Actor does not provide a shared download bucket or make private objects public.
+
+**Can I download several videos in one run?**
+
+This Actor submits one video per new job. Use separate jobs for additional videos.
+
+**Does it create transcripts or translate audio?**
+
+No. It delivers media files; transcription and translation are separate operations.
+
+**Are all requested qualities and formats guaranteed?**
+
+No. Available streams and valid combinations depend on the source. Leave unnecessary constraints unset rather than requesting an unavailable combination.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. If a jobId was saved, use it to read the existing job. Starting a fresh video request can create a second download charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/youtube_download) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official YouTube product.

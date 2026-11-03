@@ -2,7 +2,7 @@
   "title": "YouTube to Cloud Storage with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Save a YouTube video to your cloud storage. New downloads use FlashData Credits; Apify and storage costs are separate. API key: https://flashdata.dev/app/api-keys",
+  "description": "Download one YouTube video or audio to your own cloud storage. Requires FlashData Credits; Apify and storage costs are separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "video_id": {
       "type": "string",
