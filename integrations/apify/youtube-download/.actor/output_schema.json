@@ -1,0 +1,16 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "YouTube to Cloud Storage output",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Delivery manifest",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=results"
+    },
+    "response": {
+      "type": "string",
+      "title": "Complete response and status",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    }
+  }
+}

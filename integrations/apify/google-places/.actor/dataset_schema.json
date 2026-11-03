@@ -1,0 +1,64 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "Google Places results",
+      "description": "Returned result rows. Complete nested fields and usage remain in OUTPUT.",
+      "transformation": {
+        "fields": [
+          "query",
+          "position",
+          "title",
+          "address",
+          "category",
+          "rating",
+          "phoneNumber",
+          "website",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "query": {
+            "label": "query",
+            "format": "text"
+          },
+          "position": {
+            "label": "position",
+            "format": "number"
+          },
+          "title": {
+            "label": "title",
+            "format": "text"
+          },
+          "address": {
+            "label": "address",
+            "format": "text"
+          },
+          "category": {
+            "label": "category",
+            "format": "text"
+          },
+          "rating": {
+            "label": "rating",
+            "format": "number"
+          },
+          "phoneNumber": {
+            "label": "phoneNumber",
+            "format": "text"
+          },
+          "website": {
+            "label": "website",
+            "format": "link"
+          },
+          "request_id": {
+            "label": "request_id",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

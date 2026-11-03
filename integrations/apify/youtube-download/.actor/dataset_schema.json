@@ -1,0 +1,39 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "YouTube to Cloud Storage results",
+      "description": "Returned result rows. Complete nested fields and usage remain in OUTPUT.",
+      "transformation": {
+        "fields": [
+          "job_id",
+          "file_url",
+          "file_size",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "job_id": {
+            "label": "job_id",
+            "format": "text"
+          },
+          "file_url": {
+            "label": "file_url",
+            "format": "link"
+          },
+          "file_size": {
+            "label": "file_size",
+            "format": "number"
+          },
+          "request_id": {
+            "label": "request_id",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "title": "YouTube Channel with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Get a YouTube channel profile and up to 100 recent videos by handle. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "properties": {
+    "handle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "title": "Handle",
+      "description": "YouTube channel handle, e.g. @Google. Use a handle, not a channel ID or URL.",
+      "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Requires youtube_channel access. Get your key: https://flashdata.dev/app/api-keys",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "video_limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20,
+      "title": "Video Limit",
+      "description": "Maximum recent videos (1–100); not the full channel history.",
+      "editor": "number",
+      "sectionCaption": "Optional settings"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "handle"
+  ],
+  "additionalProperties": false
+}

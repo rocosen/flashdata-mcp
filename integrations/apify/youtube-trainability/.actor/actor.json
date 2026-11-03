@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-trainability",
+  "title": "YouTube Video License Checker",
+  "description": "Check a YouTube video's Creative Commons license label and export the classification as JSON. Reports metadata, not permission to reuse or train on content. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

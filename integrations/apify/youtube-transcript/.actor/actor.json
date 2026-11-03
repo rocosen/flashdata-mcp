@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-transcript",
+  "title": "YouTube Transcript Scraper",
+  "description": "Extract existing YouTube captions as timestamped text and full transcript JSON. Select a language and caption type; defaults to automatic captions. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

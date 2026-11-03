@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-search",
+  "title": "YouTube Search Scraper",
+  "description": "Search YouTube by keyword and extract titles, video IDs and available channel, duration, view and date metadata. Apply search filters; request up to 20 results. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

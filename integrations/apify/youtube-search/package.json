@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-youtube-search",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Search YouTube by keyword and extract titles, video IDs and available channel, duration, view and date metadata. Apply search filters; request up to 20 results. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}

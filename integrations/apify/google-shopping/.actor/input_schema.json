@@ -1,0 +1,86 @@
+{
+  "title": "Google Shopping with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Find product listings, displayed prices and merchant links on Google Shopping. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "properties": {
+    "query": {
+      "title": "Search query",
+      "type": "string",
+      "description": "One search query, e.g. portable solar panel.",
+      "editor": "textfield",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Requires google_shopping access. Get your key: https://flashdata.dev/app/api-keys",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "num": {
+      "title": "Requested results",
+      "type": "integer",
+      "description": "Maximum results to request (1–100). Actual count may be lower.",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 10,
+      "editor": "number",
+      "sectionCaption": "Optional settings"
+    },
+    "page": {
+      "title": "Search page",
+      "type": "integer",
+      "description": "Results page number, starting at 1.",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 1,
+      "editor": "number"
+    },
+    "gl": {
+      "title": "Country code",
+      "type": "string",
+      "description": "Two-letter country code, e.g. us, gb or sg.",
+      "minLength": 2,
+      "maxLength": 2,
+      "pattern": "^[A-Za-z]{2}$",
+      "editor": "textfield"
+    },
+    "hl": {
+      "title": "Interface language",
+      "type": "string",
+      "description": "Google interface language, e.g. en or zh-cn.",
+      "minLength": 1,
+      "maxLength": 35,
+      "pattern": "^[A-Za-z0-9-]+$",
+      "editor": "textfield"
+    },
+    "location": {
+      "title": "Search location",
+      "type": "string",
+      "description": "Search location, e.g. Singapore or New York.",
+      "minLength": 1,
+      "maxLength": 200,
+      "editor": "textfield"
+    },
+    "tbs": {
+      "title": "Google search filter (tbs)",
+      "type": "string",
+      "description": "Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month).",
+      "minLength": 1,
+      "maxLength": 200,
+      "editor": "textfield"
+    },
+    "autocorrect": {
+      "title": "Autocorrect",
+      "type": "boolean",
+      "description": "Allow Google to correct spelling."
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "query"
+  ],
+  "additionalProperties": false
+}

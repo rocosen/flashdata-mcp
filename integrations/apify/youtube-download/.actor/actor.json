@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-download",
+  "title": "YouTube Video & Audio Downloader to Cloud Storage",
+  "description": "Download a YouTube video or audio to your own S3, GCS, Azure or other supported cloud storage. Choose formats and read the delivery manifest. Requires a FlashData API key and Credits; Apify and storage costs are separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

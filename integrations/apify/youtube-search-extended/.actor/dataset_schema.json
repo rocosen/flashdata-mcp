@@ -1,0 +1,59 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "YouTube Extended Search results",
+      "description": "Returned result rows. Complete nested fields and usage remain in OUTPUT.",
+      "transformation": {
+        "fields": [
+          "query",
+          "videoId",
+          "title",
+          "channel",
+          "durationString",
+          "viewCount",
+          "uploadDate",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "query": {
+            "label": "query",
+            "format": "text"
+          },
+          "videoId": {
+            "label": "videoId",
+            "format": "text"
+          },
+          "title": {
+            "label": "title",
+            "format": "text"
+          },
+          "channel": {
+            "label": "channel",
+            "format": "text"
+          },
+          "durationString": {
+            "label": "durationString",
+            "format": "text"
+          },
+          "viewCount": {
+            "label": "viewCount",
+            "format": "number"
+          },
+          "uploadDate": {
+            "label": "uploadDate",
+            "format": "text"
+          },
+          "request_id": {
+            "label": "request_id",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

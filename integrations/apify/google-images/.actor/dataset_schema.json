@@ -1,0 +1,64 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "Google Images results",
+      "description": "Returned result rows. Complete nested fields and usage remain in OUTPUT.",
+      "transformation": {
+        "fields": [
+          "query",
+          "position",
+          "title",
+          "imageUrl",
+          "link",
+          "source",
+          "imageWidth",
+          "imageHeight",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "query": {
+            "label": "query",
+            "format": "text"
+          },
+          "position": {
+            "label": "position",
+            "format": "number"
+          },
+          "title": {
+            "label": "title",
+            "format": "text"
+          },
+          "imageUrl": {
+            "label": "imageUrl",
+            "format": "link"
+          },
+          "link": {
+            "label": "link",
+            "format": "link"
+          },
+          "source": {
+            "label": "source",
+            "format": "text"
+          },
+          "imageWidth": {
+            "label": "imageWidth",
+            "format": "number"
+          },
+          "imageHeight": {
+            "label": "imageHeight",
+            "format": "number"
+          },
+          "request_id": {
+            "label": "request_id",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}
