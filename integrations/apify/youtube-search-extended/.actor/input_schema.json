@@ -2,7 +2,7 @@
   "title": "YouTube Extended Search with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "YouTube Extended Search for your AI agent. Uses FlashData Credits; Apify usage is billed separately. Higher FlashData rate than standard search. API key: https://flashdata.dev/app/api-keys",
+  "description": "Search YouTube with up to 700 requested results at the extended-search FlashData rate. Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "type": "string",

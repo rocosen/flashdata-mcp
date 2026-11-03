@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-search-extended",
-  "title": "YouTube Extended Search for AI Agents — FlashData",
-  "description": "Collect larger YouTube discovery sets for AI research agents. Request up to 700 video results with available channel and video metadata; uses the extended-search rate. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "title": "YouTube Search Scraper – Extended",
+  "description": "Search YouTube by keyword and request up to 700 results with available titles, channels, durations, views and dates. Uses the extended-search rate. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,
