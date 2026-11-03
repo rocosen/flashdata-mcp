@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Find image references and source pages for AI research assistants. Export image URLs, thumbnails, available dimensions and ranked source links. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "description": "Scrape Google Images by keyword and get image URLs, source pages, titles and available dimensions. Export results as JSON or CSV. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

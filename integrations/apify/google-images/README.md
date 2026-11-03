@@ -1,71 +1,97 @@
-# Google Images for AI Agents — FlashData
+# Google Images Scraper
 
-Find image references and source pages for AI research assistants. Export image URLs, thumbnails, available dimensions and ranked source links.
+Find images by keyword and collect their original image URLs and source pages in a structured dataset. Use the results to gather visual references, research competing content or trace an image back to its publishing page.
 
-## When to use this tool
+## What you get
 
-Help an agent discover visual references, trace an image to its source page, and collect candidates for later review.
+- **Image search results:** titles, image URLs, source-page links and available source names, dimensions and positions.
+- **Localized search:** set the country, interface language and search location, with page selection and optional Google search filters.
+- **Exportable references:** review the dataset, download JSON or CSV, or retrieve results through the Apify API.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+## Example output
 
-## Authentication and costs
+Open **Google Images results** to view the dataset. This is an illustrative row, not a live image search result:
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `google_images`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+```json
+{
+  "query": "battery recycling process diagram",
+  "position": 1,
+  "title": "Example battery recycling process diagram",
+  "imageUrl": "https://example.com/images/recycling-diagram.jpg",
+  "link": "https://example.com/recycling-process",
+  "source": "Example Science",
+  "imageWidth": 1200,
+  "imageHeight": 800,
+  "request_id": "req_example"
+}
+```
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+`imageUrl` points to the image; `link` points to its source page. Dimensions and other metadata depend on the response and may be absent. Additional returned fields remain in **Complete response and status**.
 
-## Input and first run
+## Quick start
 
-1. Enter your own FlashData key.
-2. Enter `query` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_images` access and available Credits.
+2. Enter your **Search query** and key. Set the requested result count and optional search settings.
+3. Click **Start**, then open **Google Images results** to view or export the references.
 
-| Input | Meaning |
-| --- | --- |
-| `query` | Required. One search query, e.g. battery recycling process diagram. |
-| `flashdataApiKey` | Required. Requires google_images access. Get your key: https://flashdata.dev/app/api-keys |
-| `num` | Maximum results to request (1–100). Actual count may be lower. |
-| `page` | Results page number, starting at 1. |
-| `gl` | Two-letter country code, e.g. us, gb or sg. |
-| `hl` | Google interface language, e.g. en or zh-cn. |
-| `location` | Search location, e.g. Singapore or New York. |
-| `tbs` | Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month). |
-| `autocorrect` | Allow Google to correct spelling. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+Example input:
 
 ```json
 {
   "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
   "query": "battery recycling process diagram",
-  "num": 10
+  "num": 10,
+  "gl": "us",
+  "hl": "en"
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One image search query, 1–2,000 characters. |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input. |
+| `num` | No | Requested result count: 1–100. Default: 10. Actual count may be lower. |
+| `page` | No | Results page: 1–100. Default: 1. |
+| `gl` | No | Two-letter country code, e.g. `us`, `gb` or `sg`. |
+| `hl` | No | Google interface language, e.g. `en` or `zh-cn`. |
+| `location` | No | Search location, e.g. `Singapore` or `New York`. |
+| `tbs` | No | Optional Google search filter passed to the provider. Supported behavior depends on Google Images. |
+| `autocorrect` | No | Allow spelling correction. Omit to use the provider's behavior. |
 
-**Synthetic example, not a live result:**
+Each run handles one query and one page. Use separate runs for additional queries or pages.
 
-```json
-{
-  "title": "Illustrative process image",
-  "imageUrl": "https://example.com/image.jpg",
-  "link": "https://example.com/source",
-  "imageWidth": 1200,
-  "imageHeight": 800
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Searches use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Returns image references, not image files or reuse licenses. Original image URLs can expire or require access. Review source rights before using an image.
+**Does the Actor download image files?**
 
-## Errors and retries
+No. It returns image URLs and metadata. Downloading or storing the files is a separate step; some source sites restrict access or use URLs that expire.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Can I use the images commercially?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/google_images) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+A search result does not grant reuse rights. Check the license and terms on the source page before using an image.
+
+**Does it support reverse image search?**
+
+This Actor searches by text query. It does not accept an uploaded image or an image URL as reverse-search input.
+
+**Why are there fewer results or missing dimensions?**
+
+The requested count is a maximum, and metadata varies by result. Check **Complete response and status** for all returned fields.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect the saved response and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/google_images) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official Google product.

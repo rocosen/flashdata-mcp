@@ -50,8 +50,8 @@ for (const definition of definitions) {
   const source = catalog.SOURCE_CATALOG.find(item => item.id === definition.source);
   const download = source.id === 'youtube_download';
   const dir = path.join(root, definition.name);
-  const description = download ? definition.summary
-    : `${definition.summary} Uses your FlashData Key and Credits; Apify usage is separate.`;
+  const description = definition.description ?? (download ? definition.summary
+    : `${definition.summary} Uses your FlashData Key and Credits; Apify usage is separate.`);
   if (description.length > 300) throw new Error(`Description exceeds 300: ${source.id}`);
   const properties = {};
   for (const [field, original] of Object.entries(source.inputSchema.properties)) {
@@ -104,8 +104,8 @@ for (const definition of definitions) {
     sectionDescription: 'Use jobId from the previous OUTPUT. Clear new-download inputs.',
   });
   const schema = { title: `${definition.label} with FlashData`, type: 'object', schemaVersion: 1,
-    description: download ? 'Save a YouTube video to your cloud storage. New downloads use FlashData Credits; Apify and storage costs are separate. API key: https://flashdata.dev/app/api-keys'
-      : `${definition.label} for your AI agent. Uses FlashData Credits; Apify usage is billed separately.${source.id === 'youtube_search_extended' ? ' Higher FlashData rate than standard search.' : ''} API key: https://flashdata.dev/app/api-keys`,
+    description: definition.inputDescription ?? (download ? 'Save a YouTube video to your cloud storage. New downloads use FlashData Credits; Apify and storage costs are separate. API key: https://flashdata.dev/app/api-keys'
+      : `${definition.label} for your AI agent. Uses FlashData Credits; Apify usage is billed separately.${source.id === 'youtube_search_extended' ? ' Higher FlashData rate than standard search.' : ''} API key: https://flashdata.dev/app/api-keys`),
     properties: orderedProperties, required: ['flashdataApiKey', ...(download ? [] : source.inputSchema.required)], additionalProperties: false };
   const pkg = { ...basePackage, name: `flashdata-apify-${definition.name}`, version: '0.1.0',
     description, scripts: { start: 'node src/main.js' } };
@@ -133,7 +133,8 @@ for (const definition of definitions) {
   await save(path.join(dir, '.actor/dataset_schema.json'), dataset);
   await save(path.join(dir, 'package.json'), pkg);
   await save(path.join(dir, 'package-lock.json'), lock);
-  await save(path.join(dir, 'README.md'), readme);
+  await save(path.join(dir, 'README.md'), definition.readmeFile
+    ? await readFile(path.join(suite, definition.readmeFile), 'utf8') : readme);
   for (const name of ['run.js','main.js']) await save(path.join(dir, 'src', name), await readFile(path.join(suite,'src',name),'utf8'));
   await save(path.join(dir,'.actor/Dockerfile'), (await readFile(path.join(root,'google-search/.actor/Dockerfile'),'utf8')).replace('README.md LICENSE ./', 'README.md LICENSE actor-config.json ./'));
   await save(path.join(dir,'LICENSE'), await readFile(path.join(root,'google-search/LICENSE'),'utf8'));

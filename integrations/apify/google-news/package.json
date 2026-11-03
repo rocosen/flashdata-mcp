@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Find news articles, publishers and dates for AI research and news-monitoring workflows. Export structured titles, links and snippets. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "description": "Scrape Google News by keyword and get headlines, publishers, dates, links and available snippets. Filter by country, language and time range. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

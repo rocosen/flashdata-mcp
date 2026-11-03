@@ -1,71 +1,95 @@
-# Google News for AI Agents — FlashData
+# Google News Scraper
 
-Find news articles, publishers and dates for AI research and news-monitoring workflows. Export structured titles, links and snippets.
+Search Google News for coverage of a brand, company or industry topic. Collect headlines and publisher links in a structured dataset for news monitoring, market research and media analysis.
 
-## When to use this tool
+## What you get
 
-Discover recent industry coverage, compare publisher sources, and feed a research agent a shortlist of news URLs.
+- **News results by keyword:** headlines, publishers, dates, links and snippets when available.
+- **Search controls:** choose a country, language, location and time filter, then select a results page.
+- **Exportable data:** one news result per dataset row, ready to download as JSON or CSV or retrieve through the Apify API.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it to track product announcements, review competitor coverage or build a reading list for an industry report.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `google_news`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+Open **Google News results** to view the dataset. The following row is illustrative, not a live news result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "query": "battery recycling",
+  "position": 1,
+  "title": "Example company announces battery recycling facility",
+  "link": "https://example.com/news/recycling-facility",
+  "source": "Example News",
+  "date": "1 day ago",
+  "snippet": "An illustrative summary of the announcement.",
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+Fields depend on the search response. Dates may be relative or absent, and snippets are not guaranteed. **Complete response and status** contains the full JSON response and returned usage information.
 
-1. Enter your own FlashData key.
-2. Enter `query` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `query` | Required. One search query, e.g. battery recycling. |
-| `flashdataApiKey` | Required. Requires google_news access. Get your key: https://flashdata.dev/app/api-keys |
-| `num` | Maximum results to request (1–100). Actual count may be lower. |
-| `page` | Results page number, starting at 1. |
-| `gl` | Two-letter country code, e.g. us, gb or sg. |
-| `hl` | Google interface language, e.g. en or zh-cn. |
-| `location` | Search location, e.g. Singapore or New York. |
-| `tbs` | Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month). |
-| `autocorrect` | Allow Google to correct spelling. |
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_news` access and available Credits.
+2. Enter your **Search query** and key, then adjust optional filters.
+3. Click **Start** and open **Google News results** to review or export the results.
 
-Example only; replace placeholders and enter credentials in the encrypted fields:
+Example: search for recent coverage in English, using the US country setting.
 
 ```json
 {
   "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
   "query": "battery recycling",
-  "num": 10
+  "num": 10,
+  "gl": "us",
+  "hl": "en",
+  "tbs": "qdr:w"
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One news search query, 1–2,000 characters. |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input. |
+| `num` | No | Requested result count: 1–100. Default: 10. Actual count may be lower. |
+| `page` | No | Results page: 1–100. Default: 1. |
+| `gl` | No | Two-letter country code, e.g. `us`, `gb` or `sg`. |
+| `hl` | No | Google interface language, e.g. `en` or `zh-cn`. |
+| `location` | No | Search location, e.g. `Singapore` or `New York`. |
+| `tbs` | No | Google search filter, e.g. `qdr:d` (past day), `qdr:w` (week) or `qdr:m` (month). |
+| `autocorrect` | No | Allow spelling correction. Omit to use the provider's behavior. |
 
-**Synthetic example, not a live result:**
+Each run searches one query and one page. Use separate runs for additional queries or pages. For recurring monitoring, save your input as an Apify Task and schedule it; each scheduled run makes a new request.
 
-```json
-{
-  "title": "Example news article",
-  "link": "https://example.com/news",
-  "source": "Example publisher",
-  "date": "1 day ago",
-  "snippet": "Illustrative news result."
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Searches use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Returns news search metadata and available snippets, not article full text. Dates may be relative or absent. The agent must open and evaluate sources before citing claims.
+**Does it return the full article?**
 
-## Errors and retries
+It returns news search metadata and available snippets. Full article text requires opening or fetching the linked page separately.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Can I retrieve every article about a topic?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/google_news) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+Search results are a snapshot, not a complete news archive. Result counts, ordering and dates depend on the query and provider response; requesting 100 results does not guarantee 100 rows.
+
+**Does a repeated search return only new articles?**
+
+No. Each run is independent and does not deduplicate against previous runs. Compare saved links across runs if you need a list of newly discovered stories.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/google_news) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official Google product.
