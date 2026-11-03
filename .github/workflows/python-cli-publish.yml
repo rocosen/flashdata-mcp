@@ -8,7 +8,7 @@ on:
         required: true
         default: python-cli-v0.1.0
       project:
-        description: 'Choose a project, or all 15.'
+        description: 'Choose one project, remaining-14 after Google Search, or all 15.'
         type: choice
         required: true
         options:
@@ -27,6 +27,7 @@ on:
           - flashdata-youtube-channel
           - flashdata-youtube-suggestions
           - flashdata-youtube-cloud-storage
+          - remaining-14
           - all
 permissions:
   contents: read
@@ -60,7 +61,7 @@ jobs:
           packages = json.loads(Path('packages.json').read_text())
           assert len(packages) == 15
           assert all(os.environ['RELEASE_TAG'] == 'python-cli-v' + p['version'] for p in packages)
-          assert os.environ['PUBLISH_PROJECT'] in ['all', *(p['project'] for p in packages)]
+          assert os.environ['PUBLISH_PROJECT'] in ['all', 'remaining-14', *(p['project'] for p in packages)]
           tag_commit = subprocess.check_output(
               ['git', 'rev-parse', '--verify', 'refs/tags/' + os.environ['RELEASE_TAG'] + '^{commit}'], text=True
           ).strip()
@@ -82,10 +83,15 @@ jobs:
           target.mkdir()
           builds = json.loads(Path('evidence/builds.json').read_text())
           for build in builds:
-              if os.environ['PUBLISH_PROJECT'] in ('all', build['project']):
+              selection = os.environ['PUBLISH_PROJECT']
+              selected = selection in ('all', build['project']) or (
+                  selection == 'remaining-14' and build['project'] != 'flashdata-google-search'
+              )
+              if selected:
                   for artifact in build['artifacts']:
                       shutil.copy2(Path('dist') / artifact['filename'], target)
-          assert len(list(target.iterdir())) == (30 if os.environ['PUBLISH_PROJECT'] == 'all' else 2)
+          expected = {'all': 30, 'remaining-14': 28}.get(os.environ['PUBLISH_PROJECT'], 2)
+          assert len(list(target.iterdir())) == expected
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
