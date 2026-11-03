@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-trainability",
-  "title": "YouTube License Metadata for AI Agents — FlashData",
-  "description": "Inspect a YouTube video's Creative Commons license label for AI research workflows. Returns the license classification in JSON; it does not grant training or reuse permission. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "title": "YouTube Video License Checker",
+  "description": "Check a YouTube video's Creative Commons license label and export the classification as JSON. Reports metadata, not permission to reuse or train on content. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

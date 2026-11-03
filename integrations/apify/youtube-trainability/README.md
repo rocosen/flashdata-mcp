@@ -1,31 +1,37 @@
-# YouTube License Metadata for AI Agents — FlashData
+# YouTube Video License Checker
 
-Inspect a YouTube video's Creative Commons license label for AI research workflows. Returns the license classification in JSON; it does not grant training or reuse permission.
+Check whether a YouTube video's available metadata carries a Creative Commons license label. Record the classification for a video catalog or a separate review of the video's published license information.
 
-## When to use this tool
+## What you get
 
-Let an agent record the available license-label classification as one piece of metadata during a source review.
+- **Single-video lookup:** supply an 11-character YouTube video ID.
+- **Structured classification:** return the video ID and the provider's license-label result.
+- **Exportable record:** view the dataset or retrieve JSON through the Apify API.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it to add a license-label signal to records for videos you already know, using one video ID per run.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `youtube_trainability`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **YouTube License Metadata results** dataset contains the classification record. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "videoId": "abcdefghijk",
+  "kind": "youtube#videoTrainability",
+  "permitted": [
+    "none"
+  ],
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+**Complete response and status** contains the full returned response and usage information. The historical names `youtube_trainability` and `videoTrainability` remain in the API; they describe a license-label check here, not YouTube's creator-controlled training setting.
 
-1. Enter your own FlashData key.
-2. Enter `video_id` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `video_id` | Required. 11-character YouTube video ID (the v= value in a watch URL). |
-| `flashdataApiKey` | Required. Requires youtube_trainability access. Get your key: https://flashdata.dev/app/api-keys |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `youtube_trainability` access and available Credits.
+2. Enter a real `video_id` and your key. The key needs access to the API capability named `youtube_trainability`.
+3. Click **Start**, then open **YouTube License Metadata results** and interpret the classification using the table below.
 
 ```json
 {
@@ -34,30 +40,50 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `video_id` | Yes | 11-character YouTube video ID (the v= value in a watch URL).  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
 
-**Synthetic example, not a live result:**
+Replace the illustrative ID with the 11-character value from the video's watch URL. This Actor does not accept a full URL or search for videos by keyword.
 
-```json
-{
-  "videoId": "abcdefghijk",
-  "kind": "youtube#videoTrainability",
-  "permitted": [
-    "none"
-  ]
-}
-```
+## Interpreting the result
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+| Returned value | Meaning |
+| --- | --- |
+| `permitted: ["all"]` | The Creative Commons label was detected in available metadata. |
+| `permitted: ["none"]` | The label was not detected; this also includes missing license metadata. |
 
-## Limits
+Neither value grants permission to reuse or train on the video. Check the source license and the rights relevant to your intended use separately.
 
-The API source is named youtube_trainability, but it checks license metadata, not the creator's third-party AI-training setting. permitted=["all"] means the Creative Commons label was detected; ["none"] includes absent license metadata. Neither result grants permission or replaces a rights assessment.
+## Pricing
 
-## Errors and retries
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+## FAQ
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/youtube_trainability) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+**Does this read the creator's third-party AI-training setting?**
+
+No. It inspects license metadata only. The output field names do not imply that the creator has enabled AI training.
+
+**Does none always mean the video uses the Standard YouTube License?**
+
+No. It can also mean that license metadata was absent. The response should not be treated as a verified legal classification.
+
+**Can it find all Creative Commons videos on a topic?**
+
+This Actor checks a supplied video ID. Keyword discovery is a separate search operation.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/youtube_trainability) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official YouTube product.
