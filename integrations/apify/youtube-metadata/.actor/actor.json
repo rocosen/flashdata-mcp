@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-metadata",
-  "title": "YouTube Metadata for AI Agents — FlashData",
-  "description": "Read YouTube video metadata for AI research agents. Get available titles, channels, statistics, chapters and formats as structured JSON from a video ID. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "title": "YouTube Video Metadata Scraper",
+  "description": "Extract YouTube video details from a video ID: title, channel, duration, views and available chapters and format metadata. Export structured JSON. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

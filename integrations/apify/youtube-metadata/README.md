@@ -1,33 +1,45 @@
-# YouTube Metadata for AI Agents — FlashData
+# YouTube Video Metadata Scraper
 
-Read YouTube video metadata for AI research agents. Get available titles, channels, statistics, chapters and formats as structured JSON from a video ID.
+Look up a YouTube video and collect its details in structured JSON. Review the title, channel, duration and viewing statistics, with options to include available chapters and media format information.
 
-## When to use this tool
+## What you get
 
-Inspect a candidate video before retrieving its transcript, navigating chapters, or choosing a media-processing step.
+- **Video details:** available title, channel, duration, view count and live-status metadata.
+- **Chapter information:** include available chapter titles and timestamps.
+- **Format information:** include available audio/video format metadata without downloading the media.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it to inspect a video before further processing, organize a video catalog or locate sections using available chapter timestamps.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `youtube_metadata`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **YouTube Metadata results** dataset contains the returned video record. The table highlights basic fields; nested details are available in JSON. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "videoId": "abcdefghijk",
+  "title": "Example battery recycling walkthrough",
+  "channel": "Example Science",
+  "duration": 300,
+  "viewCount": 1234,
+  "isLive": false,
+  "chapters": [
+    {
+      "title": "Introduction",
+      "start_time": 0,
+      "end_time": 60
+    }
+  ],
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+**Complete response and status** contains the full response, including returned chapter and format arrays and usage information. Field availability varies by video.
 
-1. Enter your own FlashData key.
-2. Enter `video_id` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `video_id` | Required. 11-character YouTube video ID (the v= value in a watch URL). |
-| `flashdataApiKey` | Required. Requires youtube_metadata access. Get your key: https://flashdata.dev/app/api-keys |
-| `include_formats` | Include available video/audio format metadata, without downloading files. |
-| `include_chapters` | Include chapters when available. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `youtube_metadata` access and available Credits.
+2. Enter the video's 11-character `video_id` and your key. Select whether to include chapters and format metadata.
+3. Click **Start**, then open **YouTube Metadata results** for the record or **Complete response and status** for nested details.
 
 ```json
 {
@@ -38,35 +50,47 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `video_id` | Yes | 11-character YouTube video ID (the v= value in a watch URL).  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `include_formats` | No | Include available video/audio format metadata, without downloading files. Default: `true`. |
+| `include_chapters` | No | Include chapters when available. Default: `true`. |
 
-**Synthetic example, not a live result:**
+Replace the illustrative video_id with a real video ID, such as the value after `v=` in a YouTube watch URL. This Actor accepts one ID per run, not a full URL or a list. Both include_chapters and include_formats default to true; set either to false to omit that optional request.
 
-```json
-{
-  "videoId": "abcdefghijk",
-  "title": "Illustrative video",
-  "duration": 300,
-  "chapters": [
-    {
-      "title": "Introduction",
-      "start_time": 0,
-      "end_time": 60
-    }
-  ]
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Fields depend on video availability. Formats and chapters are optional; metadata does not grant download, reuse, or training rights. The Actor does not download the video.
+**Does include_formats download video or audio?**
 
-## Errors and retries
+No. It requests format information only. Downloading media is a separate operation.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Why are there no chapters?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/youtube_metadata) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+Not every video has chapters, and availability depends on the returned metadata. Enabling include_chapters does not generate chapters.
+
+**Does this include the transcript?**
+
+No. Use the dedicated transcript or captions Actor to retrieve an existing caption track.
+
+**Can it read private or unavailable videos?**
+
+Metadata depends on what the service can access. Private, removed, restricted or otherwise unavailable videos may fail or return limited information.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/youtube_metadata) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official YouTube product.
