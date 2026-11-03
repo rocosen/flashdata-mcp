@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-transcript",
-  "title": "YouTube Transcripts for AI Agents — FlashData",
-  "description": "Get existing YouTube automatic captions for AI research and summarization workflows. Export timestamped segments and retain full transcript text in JSON. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "title": "YouTube Transcript Scraper",
+  "description": "Extract existing YouTube captions as timestamped text and full transcript JSON. Select a language and caption type; defaults to automatic captions. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

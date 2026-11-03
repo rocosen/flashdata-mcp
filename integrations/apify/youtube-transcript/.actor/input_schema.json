@@ -2,7 +2,7 @@
   "title": "YouTube Transcript with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "YouTube Transcript for your AI agent. Uses FlashData Credits; Apify usage is billed separately. API key: https://flashdata.dev/app/api-keys",
+  "description": "Read existing YouTube captions as timestamped text; defaults to English automatic captions. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "video_id": {
       "type": "string",
