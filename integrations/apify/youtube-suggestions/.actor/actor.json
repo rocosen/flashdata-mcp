@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-suggestions",
-  "title": "YouTube Autocomplete for AI Agents — FlashData",
-  "description": "Discover YouTube autocomplete phrases for AI topic-research agents. Submit a query prefix with language and region and export one suggestion per dataset row. Uses your FlashData Key and Credits; Apify usage is separate.",
+  "title": "YouTube Autocomplete Scraper",
+  "description": "Get YouTube autocomplete suggestions for a keyword or query prefix. Customize language and region, then export keyword ideas as JSON or CSV. Requires a FlashData API key and Credits; Apify usage is billed separately.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

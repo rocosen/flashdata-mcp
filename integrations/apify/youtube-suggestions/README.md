@@ -1,33 +1,35 @@
-# YouTube Autocomplete for AI Agents — FlashData
+# YouTube Autocomplete Scraper
 
-Discover YouTube autocomplete phrases for AI topic-research agents. Submit a query prefix with language and region and export one suggestion per dataset row.
+Collect the phrases YouTube suggests for a search prefix. Explore topic wording, related questions and potential content ideas, with language and region settings for the audience you are researching.
 
-## When to use this tool
+## What you get
 
-Explore query wording and candidate subtopics before an agent chooses which YouTube searches to perform.
+- **Search suggestions:** one phrase per dataset row, with the original query.
+- **Language and region controls:** default to English and the US, or select another supported setting.
+- **Simple export:** keep the returned order and download suggestions as JSON or CSV.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it to build a shortlist of query ideas before running video searches or planning titles and topics.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `youtube_suggestions`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **YouTube Autocomplete results** dataset contains one suggestion per row. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "query": "battery recycling",
+  "position": 1,
+  "suggestion": "battery recycling explained",
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+`position` is the suggestion's order in this response, starting at 1. It is not a search-volume or popularity score. **Complete response and status** contains the full response and usage information.
 
-1. Enter your own FlashData key.
-2. Enter `query` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `query` | Required. Autocomplete prefix, e.g. battery recycling. |
-| `flashdataApiKey` | Required. Requires youtube_suggestions access. Get your key: https://flashdata.dev/app/api-keys |
-| `language` | Suggestion language code, e.g. en, de or es. |
-| `region` | Two-letter country code, e.g. US, GB or SG. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `youtube_suggestions` access and available Credits.
+2. Enter a keyword or partial query and your key. Choose a language and two-letter region code if needed.
+3. Click **Start**, then open **YouTube Autocomplete results** to review and export the suggestions.
 
 ```json
 {
@@ -38,28 +40,47 @@ Example only; replace placeholders and enter credentials in the encrypted fields
 }
 ```
 
-## Output
+## Input parameters
 
-One autocomplete suggestion per row. No suggestions produces an empty dataset.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | Autocomplete prefix, e.g. battery recycling.  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `language` | No | Suggestion language code, e.g. en, de or es. Default: `"en"`. |
+| `region` | No | Two-letter country code, e.g. US, GB or SG. Default: `"US"`. |
 
-**Synthetic example, not a live result:**
+Each run handles one query prefix, language and region. Use separate runs to compare different prefixes or markets. The number of suggestions depends on the provider response.
 
-```json
-{
-  "query": "battery recycling",
-  "position": 1,
-  "suggestion": "battery recycling explained"
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Suggestions are phrases, not video results, search-volume estimates, or popularity rankings. Empty suggestions are valid. Each language/region request is separate; the Actor does not expand queries automatically.
+**Does it return search volume or keyword difficulty?**
 
-## Errors and retries
+No. Autocomplete provides phrases, not measured search volume, competition or predicted traffic.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Does it return videos for these phrases?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/youtube_suggestions) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+No. Use a YouTube search Actor with a selected suggestion to retrieve video results.
+
+**Does it expand every suggestion or add a–z modifiers automatically?**
+
+No. It sends the prefix you provide once. Additional prefixes require separate runs.
+
+**Why is the dataset empty?**
+
+Some prefixes have no suggestions for the selected language or region. An empty suggestion list is a valid result; check Complete response and status to distinguish it from an error.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/youtube_suggestions) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official YouTube product.
