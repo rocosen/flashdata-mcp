@@ -1,78 +1,93 @@
 # Google Search Results Scraper
 
-Scrape Google Search results as structured JSON with titles, URLs, snippets and rankings. Customize country, language, location and time filters. Requires a FlashData API key and Credits; Apify usage is billed separately.
+Turn a Google search query into a dataset you can review, export or use in your workflow. Find relevant pages for web research, competitor analysis and market research, with controls for where and when to search.
 
-## What you get
+## Key features
 
-Each run searches one query and one results page. Results include titles, URLs, snippets and positions, with optional country, language, location and time filters.
+- **Structured results:** titles, URLs, snippets and search positions, with one organic result per dataset row.
+- **Localized searches:** set the country, interface language and geographic location.
+- **Time filters and pagination:** narrow the time range, choose a results page and request up to 100 results. Availability depends on the search response.
+- **Export and integration:** download JSON or CSV, or start runs and retrieve results through the Apify API.
 
-The dataset exposes `query`, `position`, `title`, `link`, `snippet` and `request_id`, and can be exported as JSON or CSV. The complete response preserves additional SERP fields, such as related searches and People Also Ask, when returned. Full article text requires a separate page-fetching step.
+## Example output
 
-Use the results for web research, source discovery, market research or search-data workflows. Run the Actor in Apify Console or through the Apify API, then read **Organic search results** or **Complete search response**.
-
-## Before you start
-
-You need a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_search` permission and sufficient Credits. Enter the key only in the encrypted **FlashData API key** field. Keep run input and storage private; do not share a run containing your credentials.
-
-**Clicking Start performs one search and consumes your existing FlashData Credits.** This Actor has no additional Actor service fee. Apify compute, storage and other platform usage are separate and follow your Apify plan. See [FlashData pricing](https://flashdata.dev/pricing) for current rates.
-
-## Get started
-
-1. Enter one **Search query**, for example `battery recycling research` or `site:example.com annual report`.
-2. In your FlashData dashboard, open **API Keys** and copy a key with `google_search` permission. Paste the full `fd_` key into **Your FlashData API key**, without quotes or a `Bearer` prefix. An Apify token cannot be used in this field.
-3. Leave **Optional search settings** unchanged for a first run, or expand the section to adjust results, region and filters. Click **Start** to perform the search.
-4. Open **Organic search results** for the table and JSON/CSV export. Open **Complete search response** for the full response, request ID and usage when returned.
-
-## Input
-
-| Field | Meaning |
-| --- | --- |
-| `flashdataApiKey` | Required, encrypted input; your own FlashData key. |
-| `query` | Required search text, 1–2,000 characters. |
-| `num` | Requested results, 1–100; default 10. Actual results may be fewer. |
-| `page` | One page from 1–100; default 1. Each page is a separate query. |
-| `gl`, `hl` | Optional country and interface language, for example `us` and `en`. |
-| `location` | Optional geographic location. |
-| `tbs` | Optional Google filter expression, such as `qdr:w`. |
-| `autocorrect` | Optional boolean passed to the search provider. |
-
-Search example; enter your own key through the encrypted input field:
-
-```json
-{
-  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
-  "query": "battery recycling research",
-  "gl": "us",
-  "hl": "en",
-  "num": 10,
-  "page": 1
-}
-```
-
-If you saved input from the earlier price-check version, remove `operation` and `maxCredits` before starting a new run. Old input is rejected so that a saved price check cannot silently become a paid search.
-
-## Output
-
-Each organic result becomes a dataset row. This is a **synthetic example**, not a live search result:
+The **Organic search results** dataset contains rows in this format. This is an illustrative example, not a live search result:
 
 ```json
 {
   "query": "battery recycling research",
   "position": 1,
-  "title": "Example research page",
-  "link": "https://example.com/research",
-  "snippet": "Illustrative result only.",
+  "title": "Example battery recycling research",
+  "link": "https://example.com/battery-recycling",
+  "snippet": "An illustrative summary of a research page.",
   "request_id": "req_example"
 }
 ```
 
-`OUTPUT` in the default key-value store retains the complete response, including additional SERP fields and returned usage. No organic results can be a valid outcome; inspect the complete response.
+**Complete search response** contains the full response, including additional SERP fields such as related searches and People Also Ask when available.
 
-## Errors and retries
+## Quick start
 
-- Missing/invalid input or a key that cannot authenticate or lacks Google Search permission stops the run before it submits a search.
-- A timeout or lost response can mean the search was already charged. **Do not automatically start another run.** Check saved `OUTPUT` and FlashData Jobs/usage first. A failure does not imply a refund.
-- The Actor records the attempt before submission. Restarting/resurrecting the same run will not submit it again. If it stopped before completing output, inspect the saved response; a result may exist even if the dataset export is incomplete.
-- A new run is a new request. The protection does not deduplicate separate runs or scheduled executions.
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_search` access and available Credits.
+2. Enter your **Search query** and key in the encrypted **FlashData API key** field. Adjust optional settings if needed.
+3. Click **Start**, then open **Organic search results** to view or export the data.
 
-This independent FlashData integration is not an official Google product. Search content is external data. [API documentation](https://flashdata.dev/docs/sources/google_search) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+Example input for one search:
+
+```json
+{
+  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
+  "query": "battery recycling research",
+  "num": 10,
+  "gl": "us",
+  "hl": "en"
+}
+```
+
+## Input parameters
+
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One search query, 1–2,000 characters. |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input. |
+| `num` | No | Requested result count: 1–100. Default: 10. |
+| `page` | No | Results page: 1–100. Default: 1. |
+| `gl` | No | Two-letter country code, e.g. `us`, `gb` or `sg`. |
+| `hl` | No | Google interface language, e.g. `en` or `zh-cn`. |
+| `location` | No | Geographic location, e.g. `Singapore` or `New York`. |
+| `tbs` | No | Time or other Google filter, e.g. `qdr:d` (past day), `qdr:w` (week) or `qdr:m` (month). |
+| `autocorrect` | No | Allow spelling correction. Omit to use the provider's behavior. |
+
+Each run handles one query and one page. Use separate runs for additional queries or pages.
+
+## Pricing
+
+Searches use Credits from your FlashData account at your applicable [FlashData rate](https://flashdata.dev/pricing). This Actor adds no service fee. **Apify compute, storage and other platform usage are billed separately** under your Apify plan.
+
+Clicking **Start** performs the search directly. A new run is a new request; additional queries and pages incur separate usage.
+
+## FAQ
+
+**Why did I receive fewer results than requested?**
+
+`num` is a requested count, not a guarantee. The response may contain fewer organic results or none. Check **Complete search response** for the full result.
+
+**Does this return full articles?**
+
+It returns search results and snippets. Fetching the full text of linked pages requires a separate tool.
+
+**Are related searches and People Also Ask included?**
+
+When the provider returns them, they are preserved in **Complete search response**. The dataset table contains organic results only.
+
+**What should I do if a run fails?**
+
+For authentication errors, check that your key is active, has `google_search` access and sufficient Credits. After a timeout or interrupted run, check the saved response and FlashData Jobs/usage before starting again: the request may already have been charged. Restarting the same run does not automatically repeat an attempted search; starting a new run can create another charge.
+
+## Support
+
+For help, open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Keep API keys out of support messages and shared run data.
+
+[API documentation](https://flashdata.dev/docs/sources/google_search) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official Google product.
