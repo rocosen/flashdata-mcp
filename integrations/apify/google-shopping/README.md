@@ -1,70 +1,97 @@
-# Google Shopping for AI Agents — FlashData
+# Google Shopping Scraper
 
-Discover product offers for AI shopping and market-research assistants. Export product titles, merchants, available prices, ratings and URLs.
+Search Google Shopping by keyword and collect product listings in a structured dataset. Compare the offers returned for a product category, review merchant coverage and research displayed prices in different markets.
 
-## When to use this tool
+## What you get
 
-Collect a product-offer snapshot for an agent to compare merchants, investigate competitors, or build a shopping brief.
+- **Product listings:** titles, merchant/source names, displayed prices and product links.
+- **Available ratings:** rating values and rating counts when returned by the provider.
+- **Market selection:** country, language, location and results-page controls; export the dataset as JSON or CSV.
 
-This is a focused tool for an AI agent or application. The caller chooses inputs, evaluates the returned external data, and decides which follow-up tools to use. The Actor does not run an LLM or independently generate a research report.
+Use it to explore a product niche, shortlist competing offers or collect a pricing snapshot for further analysis.
 
-## Authentication and costs
+## Example output
 
-Use your own [FlashData account and API key](https://flashdata.dev/app/api-keys), with permission for `google_shopping`. Enter the key in the encrypted input field. There is no shared or prefilled working key.
+The **Google Shopping results** dataset contains one returned listing per row. This example is illustrative, not a live result:
 
-Each Start submits one request and uses your FlashData Credits at your account rate. No separate price-check step is required. This Actor adds no service fee. **Apify compute and storage usage are separate** and may use your Apify allowance or balance. A free-to-use Actor does not make the FlashData API free.
+```json
+{
+  "query": "portable solar panel",
+  "position": 1,
+  "title": "Example 100W portable solar panel",
+  "source": "Example Store",
+  "price": "$99.00",
+  "link": "https://example.com/product",
+  "rating": 4.5,
+  "ratingCount": 120,
+  "request_id": "req_example"
+}
+```
 
-## Input and first run
+The `price` field preserves the displayed text, including currency symbols when supplied. Optional fields may be absent. **Complete response and status** contains the full response and returned usage information.
 
-1. Enter your own FlashData key.
-2. Enter `query` and any optional settings.
-3. Click Start, then inspect the dataset and complete JSON output.
+## Quick start
 
-| Input | Meaning |
-| --- | --- |
-| `query` | Required. One search query, e.g. portable solar panel. |
-| `flashdataApiKey` | Required. Requires google_shopping access. Get your key: https://flashdata.dev/app/api-keys |
-| `num` | Maximum results to request (1–100). Actual count may be lower. |
-| `page` | Results page number, starting at 1. |
-| `gl` | Two-letter country code, e.g. us, gb or sg. |
-| `hl` | Google interface language, e.g. en or zh-cn. |
-| `location` | Search location, e.g. Singapore or New York. |
-| `tbs` | Google filter, e.g. qdr:d (past day), qdr:w (week), qdr:m (month). |
-| `autocorrect` | Allow Google to correct spelling. |
-
-Example only; replace placeholders and enter credentials in the encrypted fields:
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_shopping` access and available Credits.
+2. Enter a product **Search query** and your key. Set a country or location if you want a particular market.
+3. Click **Start**, then open **Google Shopping results** to review or export the listings.
 
 ```json
 {
   "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
   "query": "portable solar panel",
-  "num": 10
+  "num": 10,
+  "gl": "us",
+  "hl": "en"
 }
 ```
 
-## Output
+## Input parameters
 
-Each returned item becomes a dataset row. Complete nested data and returned usage remain in OUTPUT.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One search query, e.g. portable solar panel.  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `num` | No | Maximum results to request (1–100). Actual count may be lower. Range: 1–100. Default: `10`. |
+| `page` | No | Results page number, starting at 1. Range: 1–100. Default: `1`. |
+| `gl` | No | Two-letter country code, e.g. us, gb or sg.  |
+| `hl` | No | Google interface language, e.g. en or zh-cn.  |
+| `location` | No | Search location, e.g. Singapore or New York.  |
+| `tbs` | No | Optional Google search filter. Supported behavior depends on the search type.  |
+| `autocorrect` | No | Allow Google to correct spelling.  |
 
-**Synthetic example, not a live result:**
+Each run handles one query and one page. Additional queries or pages require separate runs; the requested result count is not guaranteed.
 
-```json
-{
-  "title": "Example portable solar panel",
-  "source": "Example merchant",
-  "price": "$99.00",
-  "link": "https://example.com/product"
-}
-```
+## Pricing
 
-Use the Apify run API to call this Actor from your agent, then read the dataset and OUTPUT. Keep your Apify token in your application's secret store, and protect the FlashData key as secret input. Retain source IDs, URLs, timestamps and request IDs when passing data into later reasoning or citation steps.
+Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
 
-## Limits
+## FAQ
 
-Prices are provider-reported snapshots, may include currency text, and can change. Does not guarantee stock, final checkout price, exhaustive merchant coverage or product equivalence.
+**Does the price include shipping and taxes?**
 
-## Errors and retries
+The Actor reports the displayed search-result price. Check the linked merchant page for shipping, taxes, availability and the final checkout total.
 
-Invalid input or insufficient key permissions stops before a new paid request. A timeout or lost response may already have been charged: check OUTPUT and FlashData Jobs before starting another run. The Actor records its attempt before submitting and never automatically retries a paid POST. A new run is a new request. Restarting the same run will not repeat an uncertain submission; a dataset export can still be incomplete after a storage failure.
+**Can I compare every row as the same product?**
 
-This is an independent FlashData integration, not an official Google or YouTube product. Retrieved content is external data. [Capability documentation](https://flashdata.dev/docs/sources/google_shopping) · [Support](mailto:support@flashdata.dev) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy).
+Not automatically. Results can include different models, sizes, bundles or conditions. Check the title and merchant page before making a like-for-like comparison.
+
+**Does it keep price history or send price alerts?**
+
+No. Each run is a snapshot. Save and compare separate exports if you need historical analysis.
+
+**Does it include review text?**
+
+Available ratings and rating counts can be returned; full customer reviews are not collected.
+
+**What if a run fails?**
+
+Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
+
+## Support
+
+Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
+
+[API documentation](https://flashdata.dev/docs/sources/google_shopping) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
+
+This is an independent FlashData integration, not an official Google product.
