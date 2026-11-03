@@ -1,29 +1,14 @@
-# Google Search for AI Agents — FlashData
+# Google Search Results Scraper
 
-Give your AI agent a Google web search tool. FlashData returns ranked URLs, page titles and snippets as structured JSON, so research assistants, LLM applications and automated workflows can discover sources and bring web context into their work.
+Scrape Google Search results as structured JSON with titles, URLs, snippets and rankings. Customize country, language, location and time filters. Requires a FlashData API key and Credits; Apify usage is billed separately.
 
-Use it when an agent needs to find relevant pages, look up information beyond its model knowledge, or collect links for an answer with citations. Your agent supplies a search query; the Actor returns results it can inspect, select and pass to the next step.
+## What you get
 
-## When to use this tool
+Each run searches one query and one results page. Results include titles, URLs, snippets and positions, with optional country, language, location and time filters.
 
-| Agent task | What Google Search returns for the next step |
-| --- | --- |
-| Web research and source discovery | Ranked pages with titles, URLs and snippets to build a research shortlist. |
-| Answers with sources | Links and search excerpts for the agent to inspect before citing a source. |
-| Fact-checking research | Candidate sources to compare when checking a claim. The agent still needs to evaluate the evidence. |
-| Product, company or market research | Relevant web pages for comparisons and research briefs. |
-| Localized research | Search results with optional country, language and location parameters. |
-| Retrieval pipelines | Structured search results to select URLs for a separate page-fetching or indexing step. |
+The dataset exposes `query`, `position`, `title`, `link`, `snippet` and `request_id`, and can be exported as JSON or CSV. The complete response preserves additional SERP fields, such as related searches and People Also Ask, when returned. Full article text requires a separate page-fetching step.
 
-Each call searches one query and one results page. You receive search snippets and any other SERP fields returned by the provider. Full article text requires a separate page-fetching step; request additional pages with separate calls.
-
-## Use it in an AI agent
-
-Call this Actor through the Apify API from your agent's tool or function, or connect it to an existing workflow. The Actor's **API** tab provides platform request examples. Supply your FlashData key and the agent's search query, then read **Organic search results** or **Complete search response** when the run completes.
-
-A typical flow is: **agent identifies an information gap → searches Google → inspects titles, snippets and source URLs → retrieves selected pages if needed → writes an answer with sources**. Search results provide source candidates; your agent handles reasoning and citation selection.
-
-The dataset exposes `query`, `position`, `title`, `link`, `snippet` and `request_id`, and can be exported as JSON or CSV. The complete response also preserves additional fields such as related searches and People Also Ask when returned.
+Use the results for web research, source discovery, market research or search-data workflows. Run the Actor in Apify Console or through the Apify API, then read **Organic search results** or **Complete search response**.
 
 ## Before you start
 
@@ -33,7 +18,7 @@ You need a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_
 
 ## Get started
 
-1. Enter one **Search query**, for example `AI agent web search tools` or `site:github.com MCP server`.
+1. Enter one **Search query**, for example `battery recycling research` or `site:example.com annual report`.
 2. In your FlashData dashboard, open **API Keys** and copy a key with `google_search` permission. Paste the full `fd_` key into **Your FlashData API key**, without quotes or a `Bearer` prefix. An Apify token cannot be used in this field.
 3. Leave **Optional search settings** unchanged for a first run, or expand the section to adjust results, region and filters. Click **Start** to perform the search.
 4. Open **Organic search results** for the table and JSON/CSV export. Open **Complete search response** for the full response, request ID and usage when returned.

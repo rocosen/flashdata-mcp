@@ -1,8 +1,8 @@
 {
-  "title": "Google Search with FlashData",
+  "title": "Google Search Results Scraper",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Google Search results for your AI agent. Uses FlashData Credits; Apify usage is billed separately. API key: https://flashdata.dev/app/api-keys",
+  "description": "Google Search results as structured JSON. Uses FlashData Credits; Apify usage is billed separately. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "title": "Search query",
