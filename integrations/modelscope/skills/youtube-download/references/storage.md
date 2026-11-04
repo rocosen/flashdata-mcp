@@ -31,4 +31,4 @@ For S3, `storage_url` is the bucket name, without `s3://` or a folder suffix. Pu
 | `bos` | Bucket name, `access_key`, `secret_key`, and supported region (`bj`, `su`, `hkg`). |
 | `tos` | Bucket name, `access_key`, `secret_key`, and provider region. |
 
-Use the current [download documentation](https://flashdata.dev/docs/sources/youtube_download) and the provider's settings for the exact account configuration. Credentials are sent to FlashData for upload and may appear in MCP tool history; keep access limited to the intended destination. The returned object follows your bucket's access and retention settings. Uploading does not make the object public.
+Use the current [download documentation](https://flashdata.dev/zh/docs/sources/youtube_download) and the provider's settings for the exact account configuration. Credentials are sent to FlashData for upload and may appear in MCP tool history; keep access limited to the intended destination. The returned object follows your bucket's access and retention settings. Uploading does not make the object public.

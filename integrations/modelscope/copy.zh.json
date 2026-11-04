@@ -1,0 +1,375 @@
+{
+  "google_search": {
+    "description": "搜索谷歌网页，返回标题、链接、摘要和排名，支持地区、语言及分页设置。",
+    "result": "读取 `results[0].organic`，保留 `title`、`link`、`snippet`、`position`。摘要不等于网页全文；`site:`、`filetype:` 等操作符随 query 传递，实际匹配由搜索源决定。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "gl / hl",
+        "国家代码 / 界面语言，如 `us` / `en`。"
+      ],
+      [
+        "location",
+        "地点文本，用于本地化搜索。"
+      ],
+      [
+        "num",
+        "请求条数，1–100；实际可更少。"
+      ],
+      [
+        "page",
+        "页码，1–100；每页单独计费。"
+      ],
+      [
+        "tbs",
+        "传给搜索源的过滤字符串，支持程度因搜索类型而异。"
+      ],
+      [
+        "autocorrect",
+        "是否启用搜索纠错。"
+      ]
+    ]
+  },
+  "google_news": {
+    "description": "搜索谷歌新闻，获取标题、发布者、日期标签、摘要和文章链接。",
+    "result": "读取 `results[0].news` 的 `title`、`link`、`source`、`date`、`snippet`。日期可能是相对时间，建议同时保留检索时间；返回内容为新闻摘要，不含文章全文。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "gl / hl",
+        "国家代码 / 界面语言，如 `us` / `en`。"
+      ],
+      [
+        "location",
+        "地点文本，用于本地化搜索。"
+      ],
+      [
+        "num",
+        "请求条数，1–100；实际可更少。"
+      ],
+      [
+        "page",
+        "页码，1–100；每页单独计费。"
+      ],
+      [
+        "tbs",
+        "传给搜索源的过滤字符串，支持程度因搜索类型而异。"
+      ],
+      [
+        "autocorrect",
+        "是否启用搜索纠错。"
+      ]
+    ]
+  },
+  "google_images": {
+    "description": "搜索谷歌图片，获取图片链接、来源页面和可用尺寸，便于整理视觉参考。",
+    "result": "读取 `results[0].images` 的 `imageUrl`、`imageWidth`、`imageHeight`、`title`、`link`、`source`。尺寸要求在返回后本地筛选；返回元数据，不下载图片，使用前需核对来源许可。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "gl / hl",
+        "国家代码 / 界面语言，如 `us` / `en`。"
+      ],
+      [
+        "location",
+        "地点文本，用于本地化搜索。"
+      ],
+      [
+        "num",
+        "请求条数，1–100；实际可更少。"
+      ],
+      [
+        "page",
+        "页码，1–100；每页单独计费。"
+      ],
+      [
+        "tbs",
+        "传给搜索源的过滤字符串，支持程度因搜索类型而异。"
+      ],
+      [
+        "autocorrect",
+        "是否启用搜索纠错。"
+      ]
+    ]
+  },
+  "google_shopping": {
+    "description": "搜索谷歌购物商品，获取商家、价格标签和商品链接，支持按市场查询。",
+    "result": "读取 `results[0].shopping` 的 `title`、`productId`、`link`、`source`、`price`。比较同币种、同型号的报价，并保留原始价格标签；库存、运费与最终结算价可能不同。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "gl / hl",
+        "国家代码 / 界面语言，如 `us` / `en`。"
+      ],
+      [
+        "location",
+        "地点文本，用于本地化搜索。"
+      ],
+      [
+        "num",
+        "请求条数，1–100；实际可更少。"
+      ],
+      [
+        "page",
+        "页码，1–100；每页单独计费。"
+      ],
+      [
+        "tbs",
+        "传给搜索源的过滤字符串，支持程度因搜索类型而异。"
+      ],
+      [
+        "autocorrect",
+        "是否启用搜索纠错。"
+      ]
+    ]
+  },
+  "google_videos": {
+    "description": "搜索谷歌跨网站视频结果，返回标题、链接、来源和可用时长。",
+    "result": "读取 `results[0].videos` 的 `title`、`link`、`source`、`duration`、`snippet`、`position`。这是 Google 视频搜索结果，不含媒体文件或字幕；YouTube 站内筛选请使用 `youtube_search`。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "gl / hl",
+        "国家代码 / 界面语言，如 `us` / `en`。"
+      ],
+      [
+        "location",
+        "地点文本，用于本地化搜索。"
+      ],
+      [
+        "num",
+        "请求条数，1–100；实际可更少。"
+      ],
+      [
+        "page",
+        "页码，1–100；每页单独计费。"
+      ],
+      [
+        "tbs",
+        "传给搜索源的过滤字符串，支持程度因搜索类型而异。"
+      ],
+      [
+        "autocorrect",
+        "是否启用搜索纠错。"
+      ]
+    ]
+  },
+  "google_places": {
+    "description": "按关键词和城市搜索谷歌地点，返回名称、地址、评分及其他可用信息。",
+    "result": "读取 `results[0].places` 的 `title`、`address`、`rating`、`ratingCount`、`category`。评分和评论数门槛需在返回后本地筛选；缺失字段保持未知，不代表完整商家库或评论全文。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "gl / hl",
+        "国家代码 / 界面语言，如 `us` / `en`。"
+      ],
+      [
+        "location",
+        "地点文本，用于本地化搜索。"
+      ],
+      [
+        "num",
+        "请求条数，1–100；实际可更少。"
+      ],
+      [
+        "page",
+        "页码，1–100；每页单独计费。"
+      ],
+      [
+        "tbs",
+        "传给搜索源的过滤字符串，支持程度因搜索类型而异。"
+      ],
+      [
+        "autocorrect",
+        "是否启用搜索纠错。"
+      ]
+    ]
+  },
+  "youtube_search": {
+    "description": "按关键词搜索 YouTube 视频，支持日期、时长和排序筛选，单次最多请求 20 条。",
+    "result": "读取 `results[0].results`，包含视频 ID、标题、频道、时长及可用统计。实际条数可能更少；字幕筛选只查找候选视频，不返回字幕正文。视频链接可由 `https://www.youtube.com/watch?v=<videoId>` 生成。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "max_results",
+        "1–20，默认 20。"
+      ],
+      [
+        "filters",
+        "可选筛选对象，见下方。"
+      ]
+    ],
+    "notes": "可选 `filters` 支持：`sort_by`（relevance / upload_date / view_count / rating）、`upload_date`（last_hour / today / this_week / this_month / this_year）、`duration`（<4 / 4-20 / >20，分钟）、`type`（video / channel / playlist / movie）。功能标记如 `subtitles`、`creative_commons`、`live`、`hd`、`4k`、`hdr`、`360`、`3d`、`vr180`、`location`、`purchased` 用布尔值启用。"
+  },
+  "youtube_search_extended": {
+    "description": "搜索较大规模的 YouTube 视频结果，最多请求 700 条，支持日期、时长和排序筛选。",
+    "result": "读取 `results[0].results`，按 `videoId` 去重并保留频道信息。700 为请求上限，不保证实际条数；本工具采用独立于标准搜索的费率。",
+    "parameters": [
+      [
+        "query",
+        "必填，搜索词。"
+      ],
+      [
+        "max_results",
+        "1–700，默认 20。"
+      ],
+      [
+        "filters",
+        "可选筛选对象，见下方。"
+      ]
+    ],
+    "notes": "可选 `filters` 支持：`sort_by`（relevance / upload_date / view_count / rating）、`upload_date`（last_hour / today / this_week / this_month / this_year）、`duration`（<4 / 4-20 / >20，分钟）、`type`（video / channel / playlist / movie）。功能标记如 `subtitles`、`creative_commons`、`live`、`hd`、`4k`、`hdr`、`360`、`3d`、`vr180`、`location`、`purchased` 用布尔值启用。"
+  },
+  "youtube_metadata": {
+    "description": "读取 YouTube 视频的标题、频道、统计、可用章节及媒体格式信息。",
+    "result": "读取 `results[0]` 的视频与频道字段、`chapters[]` 和 `formats[]`。章节的 `start_time`、`end_time` 单位为秒；缺失统计或章节保持未知。格式信息不含媒体文件，字幕可用性字段不含字幕正文。",
+    "parameters": [
+      [
+        "video_id",
+        "必填，视频 URL 中的 11 位 ID。"
+      ],
+      [
+        "include_formats",
+        "是否返回格式信息，默认 `true`。"
+      ],
+      [
+        "include_chapters",
+        "是否返回可用章节，默认 `true`。"
+      ]
+    ]
+  },
+  "youtube_transcript": {
+    "description": "提取 YouTube 已有字幕和时间戳，返回分段文本及全文，默认选择自动字幕。",
+    "result": "读取 `results[0].segments`（`start`、`end`、`text`，时间为秒）及 `fullText`，用 `languageCode`、`isAutoGenerated` 确认轨道。缺失字幕不做语音识别、翻译或自动回退；自动字幕可能有识别错误。",
+    "parameters": [
+      [
+        "video_id",
+        "必填，视频 URL 中的 11 位 ID。"
+      ],
+      [
+        "language",
+        "字幕语言代码，默认 `en`；该语言轨道必须存在。"
+      ],
+      [
+        "auto",
+        "默认 `true`，选择已有自动字幕。 `true` 为自动字幕，`false` 为上传者字幕。"
+      ]
+    ]
+  },
+  "youtube_captions": {
+    "description": "提取 YouTube 上传者提供的字幕，返回分段时间戳及全文，可在本地转换为 SRT 或 WebVTT。",
+    "result": "读取 `results[0].segments`（`start`、`end`、`text`，时间为秒）及 `fullText`，保留语言和来源视频。SRT/WebVTT 需由返回的 JSON 在本地转换；本工具不生成、翻译字幕或自动切换轨道。",
+    "parameters": [
+      [
+        "video_id",
+        "必填，视频 URL 中的 11 位 ID。"
+      ],
+      [
+        "language",
+        "字幕语言代码，默认 `en`；该语言轨道必须存在。"
+      ],
+      [
+        "auto",
+        "默认 `false`，选择上传者字幕。 `true` 为自动字幕，`false` 为上传者字幕。"
+      ]
+    ]
+  },
+  "youtube_trainability": {
+    "description": "检查 YouTube 视频元数据中的 Creative Commons 许可标签，返回许可分类。",
+    "result": "读取 `results[0].videoId`、`permitted`：`[\"all\"]` 表示检测到 Creative Commons 标签，`[\"none\"]` 表示未检测到。它不读取创作者第三方训练设置，也不授予训练、下载或再发布权限。",
+    "parameters": [
+      [
+        "video_id",
+        "必填，视频 URL 中的 11 位 ID。"
+      ]
+    ]
+  },
+  "youtube_channel": {
+    "description": "按频道 handle 获取 YouTube 频道资料与近期视频，最多请求 100 条近期视频。",
+    "result": "读取 `results[0]` 的频道身份、简介、可用统计及 `videos[]`。缺失计数不填零；当前不提供频道总播放量和横幅。近期视频列表不是完整归档，未返回某视频不代表该视频已删除。",
+    "parameters": [
+      [
+        "handle",
+        "必填，如 `@3blue1brown`；不要传完整 URL 或 UC 频道 ID。"
+      ],
+      [
+        "video_limit",
+        "近期视频请求上限，1–100，默认 20。"
+      ]
+    ]
+  },
+  "youtube_suggestions": {
+    "description": "按关键词前缀、语言和地区获取 YouTube 自动补全短语，用于拓展搜索词。",
+    "result": "`results[0]` 为建议短语数组。保留输入前缀和地区；这些短语不是搜索量估算，也不是视频搜索结果。不同地区需要分别请求。",
+    "parameters": [
+      [
+        "query",
+        "必填，关键词或前缀。"
+      ],
+      [
+        "language",
+        "语言代码，默认 `en`。"
+      ],
+      [
+        "region",
+        "两位地区代码，默认 `US`。"
+      ]
+    ]
+  },
+  "youtube_download": {
+    "description": "将 YouTube 视频、音频或指定片段交付到自有云存储，支持格式与清晰度选择。",
+    "result": "提交返回 `id`。用同一 ID 调用 `get_job`；完成后从 `output.results[0]` 读取 `file_url`、`file_size`、`downloaded_bytes`、`md5` 和 `output_format`。私有对象链接仍需存储访问权限。下载预留 Credits，按实际上传字节结算；任务读取免费。",
+    "parameters": [
+      [
+        "video_id",
+        "必填，11 位视频 ID。"
+      ],
+      [
+        "download_type",
+        "`audio_video`（默认）、`video` 或 `audio`。"
+      ],
+      [
+        "video_quality",
+        "默认 `<=720`；支持 `best`、`worst` 或以 <= / == / >= 限定支持的分辨率。"
+      ],
+      [
+        "output_format",
+        "视频：mp4（默认）/ webm / mkv；音频：m4a（默认）/ mp3 / opus。"
+      ],
+      [
+        "start_at / end_at",
+        "片段起止时间，HH:MM:SS；结束须晚于开始，省略则为整段。"
+      ],
+      [
+        "storage",
+        "必填，用户授权的存储配置，见存储说明。"
+      ],
+      [
+        "mode",
+        "`async`，返回任务 ID。"
+      ]
+    ],
+    "notes": "音频专用 `audio_quality` 支持 best（默认）/ 320 / 256 / 192 / 128；纯音频省略 video_quality 和 fps。可选 `fps`、`audio_language`（default / original）、`upload_metadata`；`yt_dlp_format` 会覆盖 video_quality、fps 和 audio_language。纯视频省略 audio_language。完整字段见功能文档。"
+  }
+}
