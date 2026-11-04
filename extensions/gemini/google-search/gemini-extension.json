@@ -1,7 +1,7 @@
 {
   "name": "google-search-flashdata",
   "version": "0.1.0",
-  "description": "Search Google for ranked web pages, titles, URLs and snippets. Build localized SERP snapshots for research and comparison. Uses the paid FlashData API.",
+  "description": "Search Google and return ranked page titles, URLs, snippets and positions as JSON. Uses FlashData.",
   "mcpServers": {
     "google-search-flashdata": {
       "command": "npx",

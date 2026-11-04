@@ -2,7 +2,7 @@
   "name": "google-shopping-flashdata",
   "displayName": "Google Shopping — FlashData",
   "version": "0.1.0",
-  "description": "Search Google Shopping for products, merchants and price labels. Collect comparable offer snapshots with product IDs and source links. Uses the paid FlashData API.",
+  "description": "Search Google Shopping and return product offers, merchants and displayed prices as JSON. Uses FlashData.",
   "author": {
     "name": "FlashData",
     "email": "support@flashdata.dev"

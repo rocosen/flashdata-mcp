@@ -1,11 +1,11 @@
 ---
 name: google-images-flashdata
-description: "Find Google Images results with image URLs, dimensions and original source pages. Build an attributable image research inventory. Uses the paid FlashData API."
+description: "Search Google Images and return image URLs, dimensions and source-page links as JSON. Uses FlashData."
 ---
 
 # Google Images
 
-Find diagrams or reference images, then filter by returned dimensions before reviewing the original source pages. This helps research; it does not download the images or establish reuse rights.
+Search Google Images and return image URLs, dimensions and source-page links as JSON.
 
 Use this Skill for google images or image search tasks. Use the installed `google-images-flashdata` MCP server; it provides only `google_images` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

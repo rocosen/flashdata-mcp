@@ -1,7 +1,7 @@
 {
   "name": "youtube-extended-search-flashdata",
   "version": "0.1.0",
-  "description": "Search larger YouTube video result sets, with up to 700 requested results. Map recurring channels and topics from structured video records. Uses the paid FlashData API.",
+  "description": "Search YouTube with filters and up to 700 requested results, returned as structured video records. Uses FlashData.",
   "mcpServers": {
     "youtube-extended-search-flashdata": {
       "command": "npx",

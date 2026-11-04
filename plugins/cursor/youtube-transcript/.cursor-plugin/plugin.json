@@ -2,7 +2,7 @@
   "name": "youtube-transcript-flashdata",
   "displayName": "YouTube Transcript — FlashData",
   "version": "0.1.0",
-  "description": "Retrieve available YouTube transcript text with start and end timestamps. Build cited summaries, searchable notes and transcript exports. Uses the paid FlashData API.",
+  "description": "Get existing YouTube transcripts with timed segments. Selects automatic captions by default. Uses FlashData.",
   "author": {
     "name": "FlashData",
     "email": "support@flashdata.dev"

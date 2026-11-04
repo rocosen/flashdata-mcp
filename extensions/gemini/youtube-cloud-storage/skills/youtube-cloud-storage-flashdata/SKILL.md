@@ -1,11 +1,11 @@
 ---
 name: youtube-cloud-storage-flashdata
-description: "Deliver YouTube video, audio or clips to your own S3 or other supported cloud storage. Track asynchronous delivery and its output manifest. Uses the paid FlashData API."
+description: "Download YouTube video, audio or clips to your own S3 or other supported cloud storage. Uses FlashData."
 ---
 
 # YouTube Download to Cloud Storage
 
-Submit one video, audio or clip delivery to a storage destination you control. Save the returned job ID, read that job later, and inspect the delivery manifest after completion.
+Download YouTube video, audio or clips to your own S3 or other supported cloud storage.
 
 Use this Skill for youtube download or youtube to s3 tasks. Use the installed `youtube-cloud-storage-flashdata` MCP server; it provides only `youtube_download` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

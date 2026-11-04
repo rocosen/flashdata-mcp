@@ -2,7 +2,7 @@
   "name": "google-news-flashdata",
   "displayName": "Google News — FlashData",
   "version": "0.1.0",
-  "description": "Search Google News for articles, publishers, date labels and source links. Turn a topic into a traceable news briefing. Uses the paid FlashData API.",
+  "description": "Search Google News and return headlines, publishers, date labels and article links as JSON. Uses FlashData.",
   "author": {
     "name": "FlashData",
     "email": "support@flashdata.dev"

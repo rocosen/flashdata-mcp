@@ -1,7 +1,7 @@
 {
   "name": "youtube-captions-flashdata",
   "version": "0.1.0",
-  "description": "Retrieve YouTube uploader captions with timed segments. Prepare subtitle exports and inspect the language and caption-track type. Uses the paid FlashData API.",
+  "description": "Get existing YouTube captions with timed segments. Selects uploader-provided captions by default. Uses FlashData.",
   "mcpServers": {
     "youtube-captions-flashdata": {
       "command": "npx",

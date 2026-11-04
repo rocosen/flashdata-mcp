@@ -2,7 +2,7 @@
   "name": "youtube-captions-flashdata",
   "displayName": "YouTube Captions — FlashData",
   "version": "0.1.0",
-  "description": "Retrieve YouTube uploader captions with timed segments. Prepare subtitle exports and inspect the language and caption-track type. Uses the paid FlashData API.",
+  "description": "Get existing YouTube captions with timed segments. Selects uploader-provided captions by default. Uses FlashData.",
   "author": {
     "name": "FlashData",
     "email": "support@flashdata.dev"

@@ -1,11 +1,11 @@
 ---
 name: google-video-search-flashdata
-description: "Search Google Videos across websites. Retrieve video titles, links, sources and available durations for a cross-site video inventory. Uses the paid FlashData API."
+description: "Search Google Videos across websites and return video titles, links, sources and available durations as JSON. Uses FlashData."
 ---
 
 # Google Video Search
 
-Search Google’s video results for demonstrations or tutorials, then group the returned links by website. Use this when research needs sources beyond YouTube.
+Search Google Videos across websites and return video titles, links, sources and available durations as JSON.
 
 Use this Skill for google video search or video serp tasks. Use the installed `google-video-search-flashdata` MCP server; it provides only `google_videos` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

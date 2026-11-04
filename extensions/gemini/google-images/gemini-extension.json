@@ -1,7 +1,7 @@
 {
   "name": "google-images-flashdata",
   "version": "0.1.0",
-  "description": "Find Google Images results with image URLs, dimensions and original source pages. Build an attributable image research inventory. Uses the paid FlashData API.",
+  "description": "Search Google Images and return image URLs, dimensions and source-page links as JSON. Uses FlashData.",
   "mcpServers": {
     "google-images-flashdata": {
       "command": "npx",

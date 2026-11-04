@@ -1,11 +1,11 @@
 ---
 name: youtube-metadata-flashdata
-description: "Read YouTube video details, descriptions, statistics and available chapters. Inspect formats or prepare timestamped chapter navigation. Uses the paid FlashData API."
+description: "Get YouTube video details, descriptions, statistics and available chapters or formats as JSON. Uses FlashData."
 ---
 
 # YouTube Metadata
 
-Inspect a known video before deciding whether to fetch its transcript. Available chapter boundaries can become timestamped navigation links for a review or research notebook.
+Get YouTube video details, descriptions, statistics and available chapters or formats as JSON.
 
 Use this Skill for youtube metadata or youtube video chapters tasks. Use the installed `youtube-metadata-flashdata` MCP server; it provides only `youtube_metadata` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

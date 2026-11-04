@@ -45,6 +45,7 @@ for (const task of catalog.tasks) {
   for (const file of ['LICENSE', 'SECURITY.md', 'THIRD_PARTY_NOTICES.md']) fs.copyFileSync(path.join(root, file), path.join(directory, file));
   fs.copyFileSync(path.join(root, 'npm/docs', task.slug, 'README.md'), path.join(directory, 'README.md'));
   fs.mkdirSync(path.join(directory, 'examples'));
+  fs.copyFileSync(path.join(root, 'npm/docs', task.slug, 'examples.md'), path.join(directory, 'examples/README.md'));
   fs.writeFileSync(path.join(directory, 'examples/query.json'), json(require(`../registry/examples/${task.source}.json`).arguments));
   fs.writeFileSync(path.join(directory, 'schema.json'), json(listTaskTools(task.source).find(tool => tool.name === task.source).inputSchema));
   const [packed] = JSON.parse(runNpm(['pack', '--json', '--ignore-scripts', '--pack-destination', output], { cwd: directory, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }));
