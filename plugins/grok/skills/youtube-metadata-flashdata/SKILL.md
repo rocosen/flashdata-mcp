@@ -1,13 +1,13 @@
 ---
 name: youtube-metadata-flashdata
-description: "Read YouTube video details, descriptions, statistics and available chapters. Inspect formats or prepare timestamped chapter navigation. Uses the paid FlashData API."
+description: "Get YouTube video details, descriptions, statistics and available chapters or formats as JSON. Uses FlashData."
 metadata:
   author: FlashData
 ---
 
 # YouTube Metadata
 
-Inspect a known video before deciding whether to fetch its transcript. Available chapter boundaries can become timestamped navigation links for a review or research notebook.
+Get YouTube video details, descriptions, statistics and available chapters or formats as JSON.
 
 ## Workflow
 

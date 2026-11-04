@@ -1,13 +1,13 @@
 ---
 name: youtube-autocomplete-flashdata
-description: "Get YouTube search suggestions for a query prefix, language and region. Build keyword idea sheets from actual autocomplete phrases. Uses the paid FlashData API."
+description: "Get YouTube autocomplete phrases for a search prefix, language and region. Uses FlashData."
 metadata:
   author: FlashData
 ---
 
 # YouTube Autocomplete
 
-Query a prefix in a chosen language and region, then save unique suggestion phrases alongside that context. Suggestions provide ideas, not search-volume or demand estimates.
+Get YouTube autocomplete phrases for a search prefix, language and region.
 
 ## Workflow
 

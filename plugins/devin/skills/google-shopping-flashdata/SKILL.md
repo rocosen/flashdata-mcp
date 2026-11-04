@@ -1,6 +1,6 @@
 ---
 name: google-shopping-flashdata
-description: "Search Google Shopping for products, merchants and price labels. Collect comparable offer snapshots with product IDs and source links. Uses the paid FlashData API."
+description: "Search Google Shopping and return product offers, merchants and displayed prices as JSON. Uses FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # Google Shopping
 
-Capture product identifiers, merchant names and displayed prices for later comparison. Store the original currency labels rather than treating them as normalized numbers.
+Search Google Shopping and return product offers, merchants and displayed prices as JSON.
 
 ## Setup
 

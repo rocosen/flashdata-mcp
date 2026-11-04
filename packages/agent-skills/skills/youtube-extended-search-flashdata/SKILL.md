@@ -1,6 +1,6 @@
 ---
 name: youtube-extended-search-flashdata
-description: "Search larger YouTube video result sets, with up to 700 requested results. Map recurring channels and topics from structured video records. CLI and MCP via the paid FlashData API."
+description: "Search YouTube with filters and up to 700 requested results, returned as structured video records. CLI and MCP via FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Extended Search
 
-Collect a larger YouTube search sample and count observed videos by channel. Request up to 700 results when needed, while treating the actual result count as the observed sample size.
+Search YouTube with filters and up to 700 requested results, returned as structured video records.
 
 ## Run the task
 

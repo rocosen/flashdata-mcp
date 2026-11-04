@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Transcript Skill
 
-Retrieve an existing caption track and keep the timestamps beside the text. The default selects automatic captions; this package does not transcribe audio when a track is missing.
+Get existing YouTube transcripts with timed segments. Selects automatic captions by default.
 Read existing caption tracks with timestamps. auto defaults to true (automatic captions); it is not a fallback. No speech recognition or translation is performed.
 
 ## When to Use

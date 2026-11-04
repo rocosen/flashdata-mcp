@@ -8,7 +8,7 @@ metadata:
 
 # Google Places Skill
 
-Review places around a location using available ratings and review counts. Keep addresses with the candidates so a person can verify suitability before further research.
+Find local businesses and places with addresses, ratings and available review counts as JSON.
 Return addresses, ratings and review counts when present. Contact details may be absent; do not invent phone numbers or websites.
 
 ## When to Use

@@ -1,6 +1,6 @@
 ---
 name: youtube-search-flashdata
-description: "Search YouTube videos by keyword with date, duration, feature and sorting filters. Return video IDs, channels and available statistics. CLI and MCP via the paid FlashData API."
+description: "Search YouTube with keyword, date, duration and sorting filters. Request up to 20 video results. CLI and MCP via FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Search
 
-Use keyword and optional search filters to assemble up to 20 requested video results. Preserve video IDs so you can choose which videos merit a separate metadata or transcript request.
+Search YouTube with keyword, date, duration and sorting filters. Request up to 20 video results.
 
 ## Run the task
 

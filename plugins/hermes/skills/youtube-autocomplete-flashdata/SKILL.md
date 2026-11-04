@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Autocomplete Skill
 
-Query a prefix in a chosen language and region, then save unique suggestion phrases alongside that context. Suggestions provide ideas, not search-volume or demand estimates.
+Get YouTube autocomplete phrases for a search prefix, language and region.
 Return actual autocomplete phrases with the requested language and region. Suggestions are not search-volume or popularity estimates.
 
 ## When to Use

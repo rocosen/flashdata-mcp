@@ -1,6 +1,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const {tasks, version} = require('../npm/tasks.json');
+const {tasks} = require('../npm/tasks.json');
+// Skill releases keep their verified public CLI version until explicitly upgraded.
+const version = '0.1.1';
 const prompts = require('../integrations/task-prompts.json');
 const root = path.resolve(__dirname, '..');
 const read = relative => fs.readFileSync(path.join(root, relative), 'utf8').replace(/\r\n/g, '\n');

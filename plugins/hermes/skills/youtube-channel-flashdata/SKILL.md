@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Channel Data Skill
 
-Start from a channel handle and record its profile identifier with a bounded set of recent videos. Compare saved inventories in your own application rather than treating one response as a full historical archive.
+Get a YouTube channel profile and recent videos by handle, with up to 100 requested videos.
 Read a channel by handle and a bounded recent-video inventory. Treat statistics as a snapshot, not complete channel history.
 
 ## When to Use

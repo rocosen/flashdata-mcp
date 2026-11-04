@@ -1,6 +1,6 @@
 ---
 name: google-video-search-flashdata
-description: "Search Google Videos across websites. Retrieve video titles, links, sources and available durations for a cross-site video inventory. CLI and MCP via the paid FlashData API."
+description: "Search Google Videos across websites and return video titles, links, sources and available durations as JSON. CLI and MCP via FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # Google Video Search
 
-Search Google’s video results for demonstrations or tutorials, then group the returned links by website. Use this when research needs sources beyond YouTube.
+Search Google Videos across websites and return video titles, links, sources and available durations as JSON.
 
 ## Run the task
 

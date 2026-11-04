@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Download to Cloud Storage Skill
 
-Submit one video, audio or clip delivery to a storage destination you control. Save the returned job ID, read that job later, and inspect the delivery manifest after completion.
+Download YouTube video, audio or clips to your own S3 or other supported cloud storage.
 Delivery is asynchronous to the user’s own writable storage. Confirm rights, destination, scoped credentials and byte-based costs before submitting. Storage credentials are sent to FlashData and can appear in MCP client history. Do not put secrets in chat. Charges reserve Credits and settle by uploaded bytes; a per-request quote is not a delivery-cost estimate. Read the returned job and completed output manifest; pending is not completed delivery.
 
 ## When to Use

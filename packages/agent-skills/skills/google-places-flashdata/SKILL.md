@@ -1,6 +1,6 @@
 ---
 name: google-places-flashdata
-description: "Search for local businesses and places with addresses, available ratings and review counts. Build location-specific research shortlists. CLI and MCP via the paid FlashData API."
+description: "Find local businesses and places with addresses, ratings and available review counts as JSON. CLI and MCP via FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # Google Places
 
-Review places around a location using available ratings and review counts. Keep addresses with the candidates so a person can verify suitability before further research.
+Find local businesses and places with addresses, ratings and available review counts as JSON.
 
 ## Run the task
 

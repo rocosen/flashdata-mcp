@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Metadata Skill
 
-Inspect a known video before deciding whether to fetch its transcript. Available chapter boundaries can become timestamped navigation links for a review or research notebook.
+Get YouTube video details, descriptions, statistics and available chapters or formats as JSON.
 Read descriptions, statistics, formats and chapters when available. Preserve missing fields; metadata is not evidence of spoken content.
 
 ## When to Use

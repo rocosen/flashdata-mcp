@@ -1,6 +1,6 @@
 ---
 name: google-images-flashdata
-description: "Find Google Images results with image URLs, dimensions and original source pages. Build an attributable image research inventory. Uses the paid FlashData API."
+description: "Search Google Images and return image URLs, dimensions and source-page links as JSON. Uses FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # Google Images
 
-Find diagrams or reference images, then filter by returned dimensions before reviewing the original source pages. This helps research; it does not download the images or establish reuse rights.
+Search Google Images and return image URLs, dimensions and source-page links as JSON.
 
 ## Setup
 

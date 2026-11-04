@@ -8,7 +8,7 @@ metadata:
 
 # Google Shopping Skill
 
-Capture product identifiers, merchant names and displayed prices for later comparison. Store the original currency labels rather than treating them as normalized numbers.
+Search Google Shopping and return product offers, merchants and displayed prices as JSON.
 Keep merchant names, product identifiers and original price labels. Offers are snapshots, not guarantees of current inventory or checkout prices.
 
 ## When to Use
