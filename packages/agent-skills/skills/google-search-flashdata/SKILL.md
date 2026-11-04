@@ -1,6 +1,6 @@
 ---
 name: google-search-flashdata
-description: "Search Google for ranked web pages, titles, URLs and snippets. Build localized SERP snapshots for research and comparison. CLI and MCP via the paid FlashData API."
+description: "Search Google and return ranked page titles, URLs, snippets and positions as JSON. CLI and MCP via FlashData."
 license: MIT
 metadata:
   author: FlashData
@@ -8,7 +8,7 @@ metadata:
 
 # Google Search
 
-Build a small source list for a research question. Save each result’s position with its link and capture time so later comparisons use a recorded snapshot.
+Search Google and return ranked page titles, URLs, snippets and positions as JSON.
 
 ## Run the task
 

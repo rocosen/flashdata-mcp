@@ -1,7 +1,7 @@
 {
   "name": "youtube-metadata-flashdata",
   "version": "0.1.0",
-  "description": "Read YouTube video details, descriptions, statistics and available chapters. Inspect formats or prepare timestamped chapter navigation. Uses the paid FlashData API.",
+  "description": "Get YouTube video details, descriptions, statistics and available chapters or formats as JSON. Uses FlashData.",
   "mcpServers": {
     "youtube-metadata-flashdata": {
       "command": "npx",

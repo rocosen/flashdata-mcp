@@ -1,7 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
-const { tasks, version: npmVersion } = require('../npm/tasks.json');
+const { tasks } = require('../npm/tasks.json');
+// Client releases keep their verified public version until explicitly upgraded.
+const npmVersion = '0.1.1';
 const prompts = require('../integrations/task-prompts.json');
 const { listTaskTools } = require('../src/mcp/taskTools');
 const { SOURCE_CATALOG } = require('../src/catalog/sourceCatalog');

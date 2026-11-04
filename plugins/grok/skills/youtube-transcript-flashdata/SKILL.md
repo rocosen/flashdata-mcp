@@ -1,13 +1,13 @@
 ---
 name: youtube-transcript-flashdata
-description: "Retrieve available YouTube transcript text with start and end timestamps. Build cited summaries, searchable notes and transcript exports. Uses the paid FlashData API."
+description: "Get existing YouTube transcripts with timed segments. Selects automatic captions by default. Uses FlashData."
 metadata:
   author: FlashData
 ---
 
 # YouTube Transcript
 
-Retrieve an existing caption track and keep the timestamps beside the text. The default selects automatic captions; this package does not transcribe audio when a track is missing.
+Get existing YouTube transcripts with timed segments. Selects automatic captions by default.
 
 ## Workflow
 

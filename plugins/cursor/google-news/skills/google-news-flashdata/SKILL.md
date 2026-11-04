@@ -1,11 +1,11 @@
 ---
 name: google-news-flashdata
-description: "Search Google News for articles, publishers, date labels and source links. Turn a topic into a traceable news briefing. Uses the paid FlashData API."
+description: "Search Google News and return headlines, publishers, date labels and article links as JSON. Uses FlashData."
 ---
 
 # Google News
 
-Collect coverage of a company or topic, group stories by publisher, and keep the original date labels. Your application can schedule later snapshots; this package makes one request at a time.
+Search Google News and return headlines, publishers, date labels and article links as JSON.
 
 Use this Skill for google news or news search tasks. Use the installed `google-news-flashdata` MCP server; it provides only `google_news` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

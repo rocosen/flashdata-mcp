@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Search Skill
 
-Use keyword and optional search filters to assemble up to 20 requested video results. Preserve video IDs so you can choose which videos merit a separate metadata or transcript request.
+Search YouTube with keyword, date, duration and sorting filters. Request up to 20 video results.
 Standard search requests at most 20 results. The actual count may be lower. Use extended search only when its different rate and larger scope are approved.
 
 ## When to Use

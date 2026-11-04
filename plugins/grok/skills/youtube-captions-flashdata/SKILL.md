@@ -1,13 +1,13 @@
 ---
 name: youtube-captions-flashdata
-description: "Retrieve YouTube uploader captions with timed segments. Prepare subtitle exports and inspect the language and caption-track type. Uses the paid FlashData API."
+description: "Get existing YouTube captions with timed segments. Selects uploader-provided captions by default. Uses FlashData."
 metadata:
   author: FlashData
 ---
 
 # YouTube Captions
 
-Retrieve an existing uploader-provided caption track, then format its timed segments locally. The API returns JSON; the example below performs the SRT conversion without a second data call.
+Get existing YouTube captions with timed segments. Selects uploader-provided captions by default.
 
 ## Workflow
 

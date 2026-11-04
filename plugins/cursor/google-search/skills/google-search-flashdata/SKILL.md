@@ -1,11 +1,11 @@
 ---
 name: google-search-flashdata
-description: "Search Google for ranked web pages, titles, URLs and snippets. Build localized SERP snapshots for research and comparison. Uses the paid FlashData API."
+description: "Search Google and return ranked page titles, URLs, snippets and positions as JSON. Uses FlashData."
 ---
 
 # Google Search
 
-Build a small source list for a research question. Save each result’s position with its link and capture time so later comparisons use a recorded snapshot.
+Search Google and return ranked page titles, URLs, snippets and positions as JSON.
 
 Use this Skill for google search or google serp tasks. Use the installed `google-search-flashdata` MCP server; it provides only `google_search` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

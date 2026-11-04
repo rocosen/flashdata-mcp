@@ -1,7 +1,7 @@
 {
   "name": "google-news-flashdata",
   "version": "0.1.0",
-  "description": "Search Google News for articles, publishers, date labels and source links. Turn a topic into a traceable news briefing. Uses the paid FlashData API.",
+  "description": "Search Google News and return headlines, publishers, date labels and article links as JSON. Uses FlashData.",
   "mcpServers": {
     "google-news-flashdata": {
       "command": "npx",

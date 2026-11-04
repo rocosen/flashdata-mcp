@@ -2,7 +2,7 @@
   "name": "youtube-trainability-flashdata",
   "displayName": "YouTube Creative Commons License Metadata — FlashData",
   "version": "0.1.0",
-  "description": "Inspect a YouTube video’s Creative Commons license classification. Record the returned license-label signal for a separate rights review. Uses the paid FlashData API.",
+  "description": "Read a YouTube video’s Creative Commons license-label metadata as JSON. Uses FlashData.",
   "author": {
     "name": "FlashData",
     "email": "support@flashdata.dev"

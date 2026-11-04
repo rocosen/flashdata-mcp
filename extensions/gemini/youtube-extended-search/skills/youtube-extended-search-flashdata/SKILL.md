@@ -1,11 +1,11 @@
 ---
 name: youtube-extended-search-flashdata
-description: "Search larger YouTube video result sets, with up to 700 requested results. Map recurring channels and topics from structured video records. Uses the paid FlashData API."
+description: "Search YouTube with filters and up to 700 requested results, returned as structured video records. Uses FlashData."
 ---
 
 # YouTube Extended Search
 
-Collect a larger YouTube search sample and count observed videos by channel. Request up to 700 results when needed, while treating the actual result count as the observed sample size.
+Search YouTube with filters and up to 700 requested results, returned as structured video records.
 
 Use this Skill for youtube extended search or youtube search 700 results tasks. Use the installed `youtube-extended-search-flashdata` MCP server; it provides only `youtube_search_extended` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

@@ -1,11 +1,11 @@
 ---
 name: google-places-flashdata
-description: "Search for local businesses and places with addresses, available ratings and review counts. Build location-specific research shortlists. Uses the paid FlashData API."
+description: "Find local businesses and places with addresses, ratings and available review counts as JSON. Uses FlashData."
 ---
 
 # Google Places
 
-Review places around a location using available ratings and review counts. Keep addresses with the candidates so a person can verify suitability before further research.
+Find local businesses and places with addresses, ratings and available review counts as JSON.
 
 Use this Skill for google places or local business search tasks. Use the installed `google-places-flashdata` MCP server; it provides only `google_places` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

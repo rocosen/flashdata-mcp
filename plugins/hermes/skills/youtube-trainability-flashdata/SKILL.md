@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Creative Commons License Metadata Skill
 
-Inspect the Creative Commons license-label signal and keep it with the video ID. The source is named youtube_trainability, but the response does not grant training rights or inspect the creator’s third-party training settings.
+Read a YouTube video’s Creative Commons license-label metadata as JSON.
 This is a license/Creative Commons classification signal. Keep the raw permitted value; it does not grant training, downloading or republication rights.
 
 ## When to Use

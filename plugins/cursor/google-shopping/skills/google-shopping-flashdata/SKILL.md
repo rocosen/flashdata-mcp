@@ -1,11 +1,11 @@
 ---
 name: google-shopping-flashdata
-description: "Search Google Shopping for products, merchants and price labels. Collect comparable offer snapshots with product IDs and source links. Uses the paid FlashData API."
+description: "Search Google Shopping and return product offers, merchants and displayed prices as JSON. Uses FlashData."
 ---
 
 # Google Shopping
 
-Capture product identifiers, merchant names and displayed prices for later comparison. Store the original currency labels rather than treating them as normalized numbers.
+Search Google Shopping and return product offers, merchants and displayed prices as JSON.
 
 Use this Skill for google shopping or product search tasks. Use the installed `google-shopping-flashdata` MCP server; it provides only `google_shopping` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 

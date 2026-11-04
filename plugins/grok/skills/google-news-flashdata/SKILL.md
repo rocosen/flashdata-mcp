@@ -1,13 +1,13 @@
 ---
 name: google-news-flashdata
-description: "Search Google News for articles, publishers, date labels and source links. Turn a topic into a traceable news briefing. Uses the paid FlashData API."
+description: "Search Google News and return headlines, publishers, date labels and article links as JSON. Uses FlashData."
 metadata:
   author: FlashData
 ---
 
 # Google News
 
-Collect coverage of a company or topic, group stories by publisher, and keep the original date labels. Your application can schedule later snapshots; this package makes one request at a time.
+Search Google News and return headlines, publishers, date labels and article links as JSON.
 
 ## Workflow
 

@@ -27,12 +27,12 @@ Requires Node.js 22.18 or newer and your own FlashData API key with the selected
 Set `FLASHDATA_API_KEY` using your environment or secret manager. Choose a package from the table, then start with its help and free discovery:
 
 ```sh
-npx --yes @flashdata-dev/google-news@0.1.1 --help
-npx --yes @flashdata-dev/google-news@0.1.1 tools
-npx --yes @flashdata-dev/google-news@0.1.1 call get_pricing
+npx --yes @flashdata-dev/google-news@0.1.2 --help
+npx --yes @flashdata-dev/google-news@0.1.2 tools
+npx --yes @flashdata-dev/google-news@0.1.2 call get_pricing
 ```
 
-Each guide contains a task-specific query, output example, result-processing script, complete parameter table and its FlashData documentation link. Input comes from `--input <file>` or `--input -`; no credentials belong in command arguments. For MCP, use the same package with the single argument `mcp`.
+Each guide contains a query, MCP configuration, output fields and parameter table. Detailed response fixtures and Python processing examples are linked separately. Input comes from `--input <file>` or `--input -`; no credentials belong in command arguments. For MCP, use the same package with the single argument `mcp`.
 
 Task CLIs expose their data source, `get_pricing` and `get_job`. MCP adds `get_result` for reading chunks in the same server process. Neither interface exposes batch or account-wide tools. Other-source calls and job reads are rejected, and API-key scopes are checked on each operation. CLI output is complete JSON; timed-out submissions are never automatically retried.
 

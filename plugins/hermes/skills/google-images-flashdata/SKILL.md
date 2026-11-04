@@ -8,7 +8,7 @@ metadata:
 
 # Google Images Skill
 
-Find diagrams or reference images, then filter by returned dimensions before reviewing the original source pages. This helps research; it does not download the images or establish reuse rights.
+Search Google Images and return image URLs, dimensions and source-page links as JSON.
 Return image URLs, source pages and available dimensions. This tool searches images; it does not download them or grant reuse rights.
 
 ## When to Use

@@ -1,7 +1,7 @@
 {
   "name": "google-places-flashdata",
   "version": "0.1.0",
-  "description": "Search for local businesses and places with addresses, available ratings and review counts. Build location-specific research shortlists. Uses the paid FlashData API.",
+  "description": "Find local businesses and places with addresses, ratings and available review counts as JSON. Uses FlashData.",
   "mcpServers": {
     "google-places-flashdata": {
       "command": "npx",

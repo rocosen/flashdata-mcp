@@ -1,13 +1,13 @@
 ---
 name: google-search-flashdata
-description: "Search Google for ranked web pages, titles, URLs and snippets. Build localized SERP snapshots for research and comparison. Uses the paid FlashData API."
+description: "Search Google and return ranked page titles, URLs, snippets and positions as JSON. Uses FlashData."
 metadata:
   author: FlashData
 ---
 
 # Google Search
 
-Build a small source list for a research question. Save each result’s position with its link and capture time so later comparisons use a recorded snapshot.
+Search Google and return ranked page titles, URLs, snippets and positions as JSON.
 
 ## Workflow
 

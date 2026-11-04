@@ -2,7 +2,7 @@
   "name": "youtube-search-flashdata",
   "displayName": "YouTube Search — FlashData",
   "version": "0.1.0",
-  "description": "Search YouTube videos by keyword with date, duration, feature and sorting filters. Return video IDs, channels and available statistics. Uses the paid FlashData API.",
+  "description": "Search YouTube with keyword, date, duration and sorting filters. Request up to 20 video results. Uses FlashData.",
   "author": {
     "name": "FlashData",
     "email": "support@flashdata.dev"

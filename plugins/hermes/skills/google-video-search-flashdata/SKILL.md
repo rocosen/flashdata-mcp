@@ -8,7 +8,7 @@ metadata:
 
 # Google Video Search Skill
 
-Search Google’s video results for demonstrations or tutorials, then group the returned links by website. Use this when research needs sources beyond YouTube.
+Search Google Videos across websites and return video titles, links, sources and available durations as JSON.
 Return cross-site video URLs, sources and available durations. Google video search is distinct from YouTube-only search.
 
 ## When to Use

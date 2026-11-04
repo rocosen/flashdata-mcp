@@ -8,7 +8,7 @@ metadata:
 
 # Google Search Skill
 
-Build a small source list for a research question. Save each result’s position with its link and capture time so later comparisons use a recorded snapshot.
+Search Google and return ranked page titles, URLs, snippets and positions as JSON.
 Search snippets are not full-page text. Preserve the returned rank and locale as a dated snapshot.
 
 ## When to Use

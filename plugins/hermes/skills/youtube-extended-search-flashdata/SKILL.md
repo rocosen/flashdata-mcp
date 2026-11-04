@@ -8,7 +8,7 @@ metadata:
 
 # YouTube Extended Search Skill
 
-Collect a larger YouTube search sample and count observed videos by channel. Request up to 700 results when needed, while treating the actual result count as the observed sample size.
+Search YouTube with filters and up to 700 requested results, returned as structured video records.
 Extended search requests at most 700 results and has a different rate from standard search. Report the actual sample size; do not promise 700 results.
 
 ## When to Use

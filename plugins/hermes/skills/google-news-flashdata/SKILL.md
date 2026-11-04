@@ -8,7 +8,7 @@ metadata:
 
 # Google News Skill
 
-Collect coverage of a company or topic, group stories by publisher, and keep the original date labels. Your application can schedule later snapshots; this package makes one request at a time.
+Search Google News and return headlines, publishers, date labels and article links as JSON.
 Return article links, publishers and original date labels. Search results do not include guaranteed article full text.
 
 ## When to Use

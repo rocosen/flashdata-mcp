@@ -1,11 +1,11 @@
 ---
 name: youtube-trainability-flashdata
-description: "Inspect a YouTube video’s Creative Commons license classification. Record the returned license-label signal for a separate rights review. Uses the paid FlashData API."
+description: "Read a YouTube video’s Creative Commons license-label metadata as JSON. Uses FlashData."
 ---
 
 # YouTube Creative Commons License Metadata
 
-Inspect the Creative Commons license-label signal and keep it with the video ID. The source is named youtube_trainability, but the response does not grant training rights or inspect the creator’s third-party training settings.
+Read a YouTube video’s Creative Commons license-label metadata as JSON.
 
 Use this Skill for youtube trainability or youtube creative commons license metadata tasks. Use the installed `youtube-trainability-flashdata` MCP server; it provides only `youtube_trainability` plus `get_pricing`, `get_job` and `get_result`. If several servers are installed, keep all supporting calls on this server.
 
