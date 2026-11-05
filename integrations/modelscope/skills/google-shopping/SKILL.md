@@ -10,7 +10,7 @@ metadata:
 
 搜索谷歌购物商品，获取商家、价格标签和商品链接，支持按市场查询。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/google_shopping?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/google_shopping?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task)
 
 ## 安装与配置
 

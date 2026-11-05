@@ -2,7 +2,7 @@
 name: youtube-metadata-flashdata
 slug: youtube-metadata-flashdata
 displayName: "YouTube 元数据与章节 - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "读取 YouTube 视频的标题、频道、统计、可用章节及媒体格式信息。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "读取 YouTube 视频的标题、频道、统计、可用章节及媒体格式信息。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 读取 YouTube 视频的标题、频道、统计、可用章节及媒体格式信息。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_metadata?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_metadata?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task)
 
 ## 安装与配置
 

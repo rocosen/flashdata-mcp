@@ -2,7 +2,7 @@
 name: google-image-search-flashdata
 slug: google-image-search-flashdata
 displayName: "谷歌图片搜索 Google Images - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "搜索谷歌图片，获取图片链接、来源页面和可用尺寸，便于整理视觉参考。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "搜索谷歌图片，获取图片链接、来源页面和可用尺寸，便于整理视觉参考。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 搜索谷歌图片，获取图片链接、来源页面和可用尺寸，便于整理视觉参考。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/google_images?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/google_images?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task)
 
 ## 安装与配置
 

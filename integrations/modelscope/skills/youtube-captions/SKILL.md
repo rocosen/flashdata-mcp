@@ -10,7 +10,7 @@ metadata:
 
 提取 YouTube 上传者提供的字幕，返回分段时间戳及全文，可在本地转换为 SRT 或 WebVTT。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_captions?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_captions?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task)
 
 ## 安装与配置
 

@@ -2,7 +2,7 @@
 name: youtube-channel-flashdata
 slug: youtube-channel-flashdata
 displayName: "YouTube 频道资料 - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "按频道 handle 获取 YouTube 频道资料与近期视频，最多请求 100 条近期视频。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "按频道 handle 获取 YouTube 频道资料与近期视频，最多请求 100 条近期视频。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 按频道 handle 获取 YouTube 频道资料与近期视频，最多请求 100 条近期视频。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_channel?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_channel?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task)
 
 ## 安装与配置
 

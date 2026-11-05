@@ -2,7 +2,7 @@
 name: youtube-extended-search-flashdata
 slug: youtube-extended-search-flashdata
 displayName: "YouTube 扩展搜索 - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "搜索较大规模的 YouTube 视频结果，最多请求 700 条，支持日期、时长和排序筛选。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "搜索较大规模的 YouTube 视频结果，最多请求 700 条，支持日期、时长和排序筛选。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 搜索较大规模的 YouTube 视频结果，最多请求 700 条，支持日期、时长和排序筛选。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_search_extended?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_search_extended?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task)
 
 ## 安装与配置
 
