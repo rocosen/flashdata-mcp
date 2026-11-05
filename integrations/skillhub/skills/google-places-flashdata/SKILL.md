@@ -2,7 +2,7 @@
 name: google-places-flashdata
 slug: google-places-flashdata
 displayName: "谷歌地点搜索 Google Places - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "按关键词和城市搜索谷歌地点，返回名称、地址、评分及其他可用信息。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "按关键词和城市搜索谷歌地点，返回名称、地址、评分及其他可用信息。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 按关键词和城市搜索谷歌地点，返回名称、地址、评分及其他可用信息。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/google_places?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/google_places?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task)
 
 ## 安装与配置
 

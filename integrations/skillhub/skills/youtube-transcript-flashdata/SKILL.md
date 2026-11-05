@@ -2,7 +2,7 @@
 name: youtube-transcript-flashdata
 slug: youtube-transcript-flashdata
 displayName: "YouTube 字幕转录文本 - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "提取 YouTube 已有字幕和时间戳，返回分段文本及全文，默认选择自动字幕。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "提取 YouTube 已有字幕和时间戳，返回分段文本及全文，默认选择自动字幕。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 提取 YouTube 已有字幕和时间戳，返回分段文本及全文，默认选择自动字幕。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_transcript?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_transcript?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task)
 
 ## 安装与配置
 

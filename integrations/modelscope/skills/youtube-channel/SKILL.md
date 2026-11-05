@@ -10,7 +10,7 @@ metadata:
 
 按频道 handle 获取 YouTube 频道资料与近期视频，最多请求 100 条近期视频。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_channel?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_channel?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task)
 
 ## 安装与配置
 

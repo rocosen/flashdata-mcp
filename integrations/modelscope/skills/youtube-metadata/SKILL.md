@@ -10,7 +10,7 @@ metadata:
 
 读取 YouTube 视频的标题、频道、统计、可用章节及媒体格式信息。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_metadata?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_metadata?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task)
 
 ## 安装与配置
 

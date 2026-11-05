@@ -10,7 +10,7 @@ metadata:
 
 搜索谷歌网页，返回标题、链接、摘要和排名，支持地区、语言及分页设置。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/google_search?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/google_search?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task)
 
 ## 安装与配置
 

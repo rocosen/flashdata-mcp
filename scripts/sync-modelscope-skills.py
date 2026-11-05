@@ -3,6 +3,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECK = '--check' in sys.argv
@@ -26,15 +27,19 @@ for skill in catalog['skills']:
             _, meta, _ = (ROOT / directory / 'SKILL.md').read_text().split('---', 2)
             for field in ('summary', 'description'):
                 meta = re.sub(r'^' + field + r': .*$', field + ': ' + json.dumps(skill['description'], ensure_ascii=False), meta, flags=re.M)
-            meta = re.sub(r'^version: .*$', 'version: 1.0.2', meta, flags=re.M)
+            meta = re.sub(r'^version: .*$', 'version: 1.0.3', meta, flags=re.M)
             title = json.loads(re.search(r'^displayName: (.*)$', meta, re.M).group(1))
             install = '使用 SkillHub 安装入口，或下载 ZIP 后按客户端说明导入，保留目录结构。'
         homepage = skill['homepage'].replace('utm_source=modelscope', 'utm_source=' + platform)
+        params = urlencode({'utm_source': platform, 'utm_medium': 'integration',
+                            'utm_campaign': 'intent_gtm_2026q4', 'utm_content': source + '-task'})
+        signup = 'https://flashdata.dev/signup?' + params
+        pricing = 'https://flashdata.dev/zh/pricing?' + params
         body = f'''# {title}
 
 {text['description']}
 
-[功能文档]({homepage}) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档]({homepage}) · [获取 API Key]({signup}) · [价格]({pricing})
 
 ## 安装与配置
 
@@ -70,7 +75,7 @@ python3 -m pip install 'mcp==1.30.0' 'httpx==0.28.1'
         if platform == 'modelscope':
             files[directory + '/LICENSE'] = (ROOT / 'LICENSE').read_text()
         if source == 'youtube_download':
-            files[directory + '/references/storage.md'] = (ROOT / skill['source_directory'] / 'references/storage.md').read_text().replace('https://flashdata.dev/docs', 'https://flashdata.dev/zh/docs')
+            files[directory + '/references/storage.md'] = (ROOT / skill['source_directory'] / 'references/storage.md').read_text().replace('https://flashdata.dev/docs/sources/youtube_download', homepage)
 for relative, content in files.items():
     target = ROOT / relative
     if CHECK:

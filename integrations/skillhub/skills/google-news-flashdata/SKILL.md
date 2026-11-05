@@ -2,7 +2,7 @@
 name: google-news-flashdata
 slug: google-news-flashdata
 displayName: "谷歌新闻搜索 Google News - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "搜索谷歌新闻，获取标题、发布者、日期标签、摘要和文章链接。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "搜索谷歌新闻，获取标题、发布者、日期标签、摘要和文章链接。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 搜索谷歌新闻，获取标题、发布者、日期标签、摘要和文章链接。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/google_news?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/google_news?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task)
 
 ## 安装与配置
 

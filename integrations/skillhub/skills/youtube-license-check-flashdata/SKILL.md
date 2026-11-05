@@ -2,7 +2,7 @@
 name: youtube-license-check-flashdata
 slug: youtube-license-check-flashdata
 displayName: "YouTube 许可标签检查 - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "检查 YouTube 视频元数据中的 Creative Commons 许可标签，返回许可分类。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "检查 YouTube 视频元数据中的 Creative Commons 许可标签，返回许可分类。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 检查 YouTube 视频元数据中的 Creative Commons 许可标签，返回许可分类。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_trainability?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_trainability?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task)
 
 ## 安装与配置
 

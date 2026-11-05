@@ -10,7 +10,7 @@ metadata:
 
 按关键词前缀、语言和地区获取 YouTube 自动补全短语，用于拓展搜索词。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/youtube_suggestions?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/youtube_suggestions?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=modelscope&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task)
 
 ## 安装与配置
 

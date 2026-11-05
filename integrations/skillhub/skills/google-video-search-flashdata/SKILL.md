@@ -2,7 +2,7 @@
 name: google-video-search-flashdata
 slug: google-video-search-flashdata
 displayName: "谷歌视频搜索 Google Video Search - FlashData"
-version: 1.0.2
+version: 1.0.3
 summary: "搜索谷歌跨网站视频结果，返回标题、链接、来源和可用时长。 需自备 FlashData API Key，调用消耗付费 Credits。"
 description: "搜索谷歌跨网站视频结果，返回标题、链接、来源和可用时长。 需自备 FlashData API Key，调用消耗付费 Credits。"
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 
 搜索谷歌跨网站视频结果，返回标题、链接、来源和可用时长。
 
-[功能文档](https://flashdata.dev/zh/docs/sources/google_videos?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) · [获取 API Key](https://flashdata.dev/app/api-keys) · [价格](https://flashdata.dev/zh/pricing)
+[功能文档](https://flashdata.dev/zh/docs/sources/google_videos?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) · [获取 API Key](https://flashdata.dev/signup?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) · [价格](https://flashdata.dev/zh/pricing?utm_source=skillhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task)
 
 ## 安装与配置
 
