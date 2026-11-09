@@ -1,7 +1,7 @@
 ---
 name: youtube-download-flashdata
 description: "Download YouTube video, audio or a clip to your cloud storage with FlashData. Use for YouTube-to-S3 delivery, MP4 or MP3 exports and media ingestion through asynchronous jobs. Requires a FlashData API key and paid Credits."
-version: 1.0.1
+version: 1.0.2
 license: MIT-0
 metadata: {"openclaw":{"requires":{"bins":["python3"],"env":["FLASHDATA_API_KEY","FLASHDATA_STORAGE_FILE"]},"primaryEnv":"FLASHDATA_API_KEY","homepage":"https://flashdata.dev/docs/sources/youtube_download?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task","envVars":[{"name":"FLASHDATA_API_KEY","required":true,"description":"FlashData API key with this source enabled. Queries use paid FlashData Credits."},{"name":"FLASHDATA_STORAGE_FILE","required":true,"description":"Path inside the execution environment to a private JSON file containing your upload destination and credentials."}]}}
 ---
@@ -10,7 +10,7 @@ metadata: {"openclaw":{"requires":{"bins":["python3"],"env":["FLASHDATA_API_KEY"
 
 Send a YouTube video, audio track or selected clip directly to your own cloud storage. Choose the media type, format and quality, then use the returned job ID to retrieve the completed file location and size.
 
-[Documentation](https://flashdata.dev/docs/sources/youtube_download?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) · [Get an API key](https://flashdata.dev/app/api-keys)
+[Documentation](https://flashdata.dev/docs/sources/youtube_download?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) · [Get an API key](https://flashdata.dev/signup?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task)
 
 ## Use with OpenClaw
 
@@ -40,13 +40,13 @@ Run only the requests needed for the user’s task and approved budget. Adapt th
 
 ## Quick start with Python: a clip to your storage
 
-Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/app/api-keys) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
+Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/signup?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
 
 ```sh
 python3 -m pip install 'mcp==1.30.0' 'httpx==0.28.1'
 ```
 
-Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing); installing the dependencies is free. Run only within the user's authorized task and budget.
+Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task); installing the dependencies is free. Run only within the user's authorized task and budget.
 
 Set `FLASHDATA_STORAGE_FILE` to a private JSON file containing your destination configuration; [storage setup](references/storage.md) shows its fields. This example delivers the first 10 seconds as MP4. Replace the video and clip bounds for the user’s request. The file is read locally and its credentials are sent to FlashData for the upload, but are not printed.
 
@@ -104,7 +104,7 @@ except Exception:
     raise SystemExit("Request failed. Check Jobs before retrying a paid submission; no automatic retry was made.") from None
 ```
 
-With [FlashData MCP](https://flashdata.dev/mcp), call `youtube_download` using the same fields and a `storage` object from the user's protected configuration.
+With [FlashData MCP](https://flashdata.dev/mcp?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task), call `youtube_download` using the same fields and a `storage` object from the user's protected configuration.
 
 ## Choose the media
 

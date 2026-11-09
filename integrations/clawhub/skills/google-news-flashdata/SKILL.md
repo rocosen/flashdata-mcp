@@ -1,7 +1,7 @@
 ---
 name: google-news-flashdata
 description: "Search Google News with FlashData for article headlines, publishers, publication labels and links. Use for topic research, company news, news search by country or language, and preparing news digests. Requires a FlashData API key and paid Credits."
-version: 1.0.1
+version: 1.0.2
 license: MIT-0
 metadata: {"openclaw":{"requires":{"bins":["python3"],"env":["FLASHDATA_API_KEY"]},"primaryEnv":"FLASHDATA_API_KEY","homepage":"https://flashdata.dev/docs/sources/google_news?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task","envVars":[{"name":"FLASHDATA_API_KEY","required":true,"description":"FlashData API key with this source enabled. Queries use paid FlashData Credits."}]}}
 ---
@@ -10,7 +10,7 @@ metadata: {"openclaw":{"requires":{"bins":["python3"],"env":["FLASHDATA_API_KEY"
 
 Find news coverage of a topic, company or event and get headlines, publisher names, links and publication labels as JSON. Use the results for a quick briefing, a source list or a news digest.
 
-[Documentation](https://flashdata.dev/docs/sources/google_news?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [Get an API key](https://flashdata.dev/app/api-keys)
+[Documentation](https://flashdata.dev/docs/sources/google_news?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [Get an API key](https://flashdata.dev/signup?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task)
 
 ## Use with OpenClaw
 
@@ -40,13 +40,13 @@ Run only the requests needed for the user’s task and approved budget. Adapt th
 
 ## Quick start with Python
 
-Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/app/api-keys) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
+Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/signup?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
 
 ```sh
 python3 -m pip install 'mcp==1.30.0' 'httpx==0.28.1'
 ```
 
-Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing); installing the dependencies is free. Run only within the user's authorized task and budget.
+Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=clawhub&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task); installing the dependencies is free. Run only within the user's authorized task and budget.
 
 ```python
 import asyncio
