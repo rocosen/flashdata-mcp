@@ -4,7 +4,7 @@
 
 Find web sources, follow news, discover places, compare product offers, and research YouTube videos with structured data. This portable Agent Plugin connects the existing hosted FlashData MCP service and bundles 15 task Skills. It installs no local API server.
 
-**Free to install; data queries consume your own paid [FlashData Credits](https://flashdata.dev/pricing).** Hermes/model and storage charges are separate. Bring your own [FlashData API key](https://flashdata.dev/app/api-keys), scoped to the sources you intend to use.
+**Free to install; data queries consume your own paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined).** Hermes/model and storage charges are separate. Bring your own [FlashData API key](https://flashdata.dev/signup?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined), scoped to the sources you intend to use.
 
 ## Installation and credentials
 

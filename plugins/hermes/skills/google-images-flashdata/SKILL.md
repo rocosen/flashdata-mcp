@@ -19,9 +19,9 @@ Use this skill when the user needs the structured records described above and ha
 
 ## Prerequisites
 
-Enable the FlashData Hermes plugin and its `flashdata` MCP connection as described in [the plugin README](../../README.md). Configure your own `FLASHDATA_API_KEY` through Hermes's profile secret settings. Obtain it from [API keys](https://flashdata.dev/app/api-keys); never request or expose it in chat. Your Key must allow `google_images`.
+Enable the FlashData Hermes plugin and its `flashdata` MCP connection as described in [the plugin README](../../README.md). Configure your own `FLASHDATA_API_KEY` through Hermes's profile secret settings. Obtain it from [API keys](https://flashdata.dev/signup?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task); never request or expose it in chat. Your Key must allow `google_images`.
 
-Installation is free; data queries consume your own paid [FlashData Credits](https://flashdata.dev/pricing). Model and storage charges are separate. Hermes owns transport, secret resolution and approval prompts. Missing tools or credentials require setup, not a substitute paid call.
+Installation is free; data queries consume your own paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task). Model and storage charges are separate. Hermes owns transport, secret resolution and approval prompts. Missing tools or credentials require setup, not a substitute paid call.
 
 ## How to Run
 

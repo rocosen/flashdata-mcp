@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "flashdata-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Google web, news, image, shopping, video and places search, plus YouTube research and media delivery. Bring your own FlashData API key and paid Credits.",
   "author": { "name": "FlashData (rocosen)", "email": "support@flashdata.dev", "url": "https://github.com/rocosen" },
   "homepage": "https://flashdata.dev/mcp?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined",
@@ -11,7 +11,7 @@
   "extensions": {
     "com.nousresearch.hermes": {
       "config_schema": {
-        "api_key": { "type": "secret", "env": "FLASHDATA_API_KEY", "label": "FlashData API key", "description": "Your own key from https://flashdata.dev/app/api-keys. Data queries spend your FlashData Credits.", "required": true }
+        "api_key": { "type": "secret", "env": "FLASHDATA_API_KEY", "label": "FlashData API key", "description": "Your own key from https://flashdata.dev/signup?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined. Data queries spend your FlashData Credits.", "required": true }
       },
       "servers": { "flashdata": { "trust": "untrusted" } }
     }
