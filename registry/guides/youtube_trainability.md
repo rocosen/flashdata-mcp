@@ -2,7 +2,7 @@
 
 Record a video license-label signal as one input to a human rights review.
 
-[YouTube License Metadata inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_trainability?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[YouTube License Metadata inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_trainability?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task)
 
 ## Connect and check cost
 

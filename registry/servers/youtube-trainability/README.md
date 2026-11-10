@@ -2,7 +2,7 @@
 
 Inspect a YouTube video’s Creative Commons license classification. Record the returned license-label signal for a separate rights review.
 
-[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_trainability) · [Get an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_trainability?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [Get an API key](https://flashdata.dev/signup?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task)
 
 ## A task to try
 

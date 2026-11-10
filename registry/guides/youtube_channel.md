@@ -2,7 +2,7 @@
 
 Track the recent public video inventory of a known channel with stable identifiers.
 
-[YouTube Channel inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_channel?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[YouTube Channel inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_channel?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task)
 
 ## Connect and check cost
 

@@ -2,7 +2,7 @@
 
 Search YouTube videos by keyword with date, duration, feature and sorting filters. Return video IDs, channels and available statistics.
 
-[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_search) · [Get an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_search?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task) · [Get an API key](https://flashdata.dev/signup?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task)
 
 ## A task to try
 

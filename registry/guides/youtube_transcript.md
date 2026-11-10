@@ -2,7 +2,7 @@
 
 Build an evidence sheet with timestamped excerpts from an existing automatic caption track.
 
-[YouTube Transcript inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_transcript?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[YouTube Transcript inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_transcript?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task)
 
 ## Connect and check cost
 

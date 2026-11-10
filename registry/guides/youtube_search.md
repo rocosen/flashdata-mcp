@@ -2,7 +2,7 @@
 
 Create a small candidate set before spending more calls on metadata or transcripts.
 
-[YouTube Search inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_search?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[YouTube Search inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_search?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task)
 
 ## Connect and check cost
 

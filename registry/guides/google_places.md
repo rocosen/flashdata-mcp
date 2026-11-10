@@ -2,7 +2,7 @@
 
 Build a local business research shortlist using explicit quality thresholds.
 
-[Google Places inputs, outputs and account setup](https://flashdata.dev/docs/sources/google_places?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[Google Places inputs, outputs and account setup](https://flashdata.dev/docs/sources/google_places?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task)
 
 ## Connect and check cost
 
