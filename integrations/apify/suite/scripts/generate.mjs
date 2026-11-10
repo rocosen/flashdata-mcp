@@ -46,7 +46,9 @@ const descriptions = {
   start_at: 'Optional start timestamp in HH:MM:SS, at most 12:00:00.',
   end_at: 'Optional end timestamp after start_at, in HH:MM:SS.',
 };
-for (const definition of definitions) {
+const generatedDefinitions = definitions.filter(definition => definition.source !== 'youtube_download');
+// Download has its own PPE runtime; never overwrite it with the shared BYOK template.
+for (const definition of generatedDefinitions) {
   const source = catalog.SOURCE_CATALOG.find(item => item.id === definition.source);
   const download = source.id === 'youtube_download';
   const dir = path.join(root, definition.name);
@@ -143,4 +145,4 @@ for (const definition of definitions) {
     await copyFile(path.join(root,'google-search/assets/logo.png'),path.join(dir,'assets/logo.png'));
   }
 }
-console.log(`${check ? 'Verified' : 'Generated'} ${files} files for ${definitions.length} independent Actors.`);
+console.log(`${check ? 'Verified' : 'Generated'} ${files} files for ${generatedDefinitions.length} generated Actors (download maintained independently).`);

@@ -1,119 +1,71 @@
-# YouTube Video & Audio Downloader to Cloud Storage
+# YouTube Video & Audio Downloader by FlashData
 
-Save a YouTube video or audio track directly to cloud storage you control. Choose the download type and available format options, then follow the asynchronous job until the uploaded file appears in the delivery manifest.
-
-## What you get
-
-- **Video or audio:** select combined video and audio, video only, or audio only.
-- **Your destination:** deliver to S3, S3-compatible storage, GCS, Azure, OSS, COS, BOS or TOS.
-- **Job tracking:** keep a job ID for later status checks and read the completed file URL and size from the delivery manifest.
-
-Use it to deliver media you are authorized to obtain into your own storage for archiving, editing or a separate processing workflow.
-
-## Example output
-
-Completed uploads appear in **Delivery manifest**. A completed row has this form. This example is illustrative, not a live result:
-
-```json
-{
-  "job_id": "job_example",
-  "file_url": "https://example-bucket.s3.amazonaws.com/example.mp4",
-  "file_size": 1048576
-}
-```
-
-**Complete response and status** shows job progress and the full response. Pending jobs do not produce completed file rows. A file URL in your private bucket remains subject to that bucket's access controls.
+Download a public YouTube video, audio track or Short and get a hosted file link. Pay through Apify for the completed file size. No FlashData account, FlashData API key or cloud storage credentials are required.
 
 ## Quick start
 
-1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `youtube_download` access and available Credits.
-2. Enter a real video ID, your FlashData key and the destination configuration in encrypted `storageJson`. Select the download type and optional format settings.
-3. Click **Start**, then check **Complete response and status**. Open **Delivery manifest** once the job has completed.
+1. Paste a YouTube HTTPS URL.
+2. Choose video with sound, silent video or audio, and optional format/quality settings.
+3. Set **Max total charge** in Apify and start the run.
+4. Open **OUTPUT** for the latest download link. Save the file before the link expires.
 
 ```json
 {
-  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
-  "video_id": "abcdefghijk",
+  "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
   "download_type": "audio_video",
   "output_format": "mp4",
-  "storageJson": "{\"storage_type\":\"s3\",\"storage_url\":\"your-bucket\",\"access_key\":\"YOUR_ACCESS_KEY\",\"secret_key\":\"YOUR_SECRET_KEY\",\"region\":\"us-east-1\"}"
+  "video_quality": "<=1080",
+  "maxFileMB": 50
 }
 ```
 
-## Input parameters
+For MP3, use `download_type: "audio"`, `output_format: "mp3"`, and optionally `audio_quality: "192"`. Omit video quality and FPS for audio. Source availability determines which combinations work; no upscaling or translation.
 
-| Parameter | Required | Description |
-| --- | --- | --- |
-| `video_id` | New job | 11-character YouTube video ID (the v= value in a watch URL).  |
-| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
-| `storageJson` | New job | Storage credentials as JSON; required for a new download. See README for provider fields and an S3 example.  |
-| `download_type` | No | `audio_video` combines video and audio; `video` is video only; `audio` is audio only. Default: `"audio_video"`. |
-| `video_quality` | No | Video constraint such as `best`, `<=720` or `==1080`. Omit for audio-only downloads.  |
-| `fps` | No | Frame-rate constraint such as `<=30`. Omit for audio-only downloads.  |
-| `audio_language` | No | `default` or `original`. Omit for video-only downloads.  |
-| `audio_quality` | No | For audio-only downloads: `best`, `320`, `256`, `192` or `128`. Omit for video or combined media.  |
-| `yt_dlp_format` | No | Advanced format selector; overrides quality, FPS and audio-language selection.  |
-| `upload_metadata` | No | Also upload metadata to your customer storage. Default: `false`. |
-| `output_format` | No | Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default.  |
-| `start_at` | No | Optional start timestamp in HH:MM:SS, at most 12:00:00.  |
-| `end_at` | No | Optional end timestamp after start_at, in HH:MM:SS.  |
-| `jobId` | Existing job | Read an existing job without a new download charge. Clear video_id and storageJson.  |
-| `waitSeconds` | No | Polling window. Pending jobs continue; resume with jobId. An in-flight read may finish later. Range: 0–120. Default: `60`. |
+## Inputs
 
-Replace the video and credential placeholders before running. New jobs require video_id and storageJson; status-only requests use jobId instead. Quality and format selections depend on what the source supports.
+| Field | Meaning |
+| --- | --- |
+| `url` | Required. Public YouTube watch, Shorts or youtu.be HTTPS link. |
+| `download_type` | `audio_video` (default), `video` (silent) or `audio`. |
+| `output_format` | Video: `mp4`, `webm`, `mkv`. Audio: `m4a`, `mp3`, `opus`. Omit for the type-specific default. |
+| `video_quality` | `<=N` ceiling or `==N` exact resolution. N: 144, 360, 480, 720, 1080, 1440, 2160. Default ceiling 1080p. Video only. |
+| `fps` | Frame-rate constraint such as `<=30`; operators `<=`, `==`, `>=` and values 1–240. Video only. |
+| `audio_quality` | Audio-only: `best`, `320`, `256`, `192` or `128` kbps. |
+| `audio_language` | `default` or `original` source audio track. Omit for silent video. |
+| `maxFileMB` | File-size ceiling, default 50 MB, maximum 800 MB. Also reduced to fit the run budget. |
 
-## Storage configuration
+One file per run. Custom format selectors, clipping, metadata upload, callbacks and customer storage are not supported. Old `flashdataApiKey`, `storageJson`, `video_id`, `jobId` and `waitSeconds` inputs must be removed when migrating saved tasks.
 
-The input example uses AWS S3. `storage_url` is the bucket or Azure container name; use `object_prefix` for a folder within it. Keep provider credentials inside the encrypted `storageJson` field.
+## Pricing and free accounts
 
-Supported `storage_type` values: `s3`, `s3_compatible`, `gcs`, `azure`, `oss`, `cos`, `bos`, `tos`. S3-compatible destinations need an `endpoint_url`; GCS uses `service_account`; Azure uses `account_name` and a writable container `sas_token`. See the [provider-specific configuration](https://flashdata.dev/docs/sources/youtube_download) for required fields.
+The **Download 1 MB** (`download-mb`) rate depends on your Apify discount tier:
 
-## Check an unfinished job
+| Apify tier | Typical platform plan | Price per MB | Price per GB |
+| --- | --- | --- | --- |
+| FREE | Free | $0.000125 | $0.125 |
+| BRONZE | Starter | $0.000100 | $0.100 |
+| SILVER | Scale | $0.0000875 | $0.0875 |
+| GOLD | Business | $0.000075 | $0.075 |
+| PLATINUM / DIAMOND | Enterprise | $0.000075 | $0.075 |
 
-The Actor polls for up to `waitSeconds` (default 60, maximum 120), plus the last in-flight read. If the job is still pending or processing, keep the `jobId` from **Complete response and status**.
+These are usage rates, not a separate FlashData monthly subscription. Your Apify subscription credits are shared across the platform. Check the **Pricing** tab for your effective price and any pending price changes. Each completed file is rounded up to a whole decimal MB (1 MB = 1,000,000 bytes). A 2,100,000-byte file is 3 events. The event covers downloading and temporary hosting; it does not bill every later use of the same link.
 
-Start a status-only run with the same key and job ID. Clear video_id, storageJson and other new-download settings; use this minimal input:
+Submission, polling and failed downloads produce no download events. The run budget caps the permitted file size before work begins. When Apify supplies the complete tier price table, we conservatively reserve budget at the highest rate ($0.125/GB with this table); Apify still charges your actual discounted rate. A very small budget can therefore limit the permitted size more than your discounted rate would require. Increasing the run budget does not increase the per-MB price. An oversized file fails instead of silently exceeding that ceiling. Only the download event should be configured: no start fee or dataset-row fee.
 
-```json
-{
-  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
-  "jobId": "job_example",
-  "waitSeconds": 60
-}
-```
+Apify free accounts can use their available platform credits, shared with other Actors. There is no separate FlashData free allowance and no charge to a personal FlashData account. Available platform credit and account restrictions still apply. The file link is released after Apify confirms the download charge. Free-plan activity does not generate developer payouts; it is not a payment from Apify to FlashData.
 
-This reads the existing job without submitting another download. Do not resubmit the video just because the first polling window ended.
+## Results and retention
 
-## Pricing
+OUTPUT contains `download_url`, `filename`, `content_type`, `size_bytes`, `charged_mb`, `expires_at`, `file_expires_at` and `run_id`. A dataset row is also provided. Links normally last up to five minutes; hosted files are normally retained about 24 hours. Save the file promptly. OUTPUT's expiry fields are authoritative.
 
-New downloads reserve FlashData Credits and settle based on uploaded bytes at your applicable [download rate](https://flashdata.dev/pricing). Reading an existing job does not create another download charge. This Actor adds no service fee. Apify platform usage and your storage provider's storage/transfer fees are separate.
+To refresh a link or continue an interrupted download, **resurrect the same Apify run with its original input** before the hosted file expires. Confirmed charges are not repeated. OUTPUT is refreshed; the original dataset row can contain an expired link. Starting a new run is a new download and can incur a new charge.
 
-## FAQ
+## Errors and retries
 
-**Where is the downloaded file?**
+The Actor waits up to ten minutes for completion. A timeout does not cancel an accepted backend download. Resume the same run; do not repeatedly press Start for the same video.
 
-In the destination you supplied, after the job completes. This Actor does not provide a shared download bucket or make private objects public.
+A charge with an uncertain response is reconciled against Apify's event count. Automatic charge attempts are confined to the original short authorization window. If the window has expired and no charge is confirmed, the Actor stops for support review instead of risking a duplicate charge. A charge may have succeeded even if the run failed while saving its output.
 
-**Can I download several videos in one run?**
+Set a sufficient Apify run timeout (recommended 900 seconds). Private, restricted, removed, oversized or incompatible videos can fail. Download only media you have permission to use.
 
-This Actor submits one video per new job. Use separate jobs for additional videos.
-
-**Does it create transcripts or translate audio?**
-
-No. It delivers media files; transcription and translation are separate operations.
-
-**Are all requested qualities and formats guaranteed?**
-
-No. Available streams and valid combinations depend on the source. Leave unnecessary constraints unset rather than requesting an unavailable combination.
-
-**What if a run fails?**
-
-Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. If a jobId was saved, use it to read the existing job. Starting a fresh video request can create a second download charge.
-
-## Support
-
-Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
-
-[API documentation](https://flashdata.dev/docs/sources/youtube_download) · [Terms](https://flashdata.dev/legal/terms) · [Privacy](https://flashdata.dev/legal/privacy)
-
-This is an independent FlashData integration, not an official YouTube product.
+[Support](mailto:support@flashdata.dev) — include the run URL, never tokens or secrets. This is an independent FlashData integration, not an official YouTube product.

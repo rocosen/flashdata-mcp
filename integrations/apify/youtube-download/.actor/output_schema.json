@@ -1,10 +1,10 @@
 {
   "actorOutputSchemaVersion": 1,
-  "title": "YouTube to Cloud Storage output",
+  "title": "YouTube Download output",
   "properties": {
     "results": {
       "type": "string",
-      "title": "Delivery manifest",
+      "title": "Download result",
       "template": "{{links.apiDefaultDatasetUrl}}/items?view=results"
     },
     "response": {
