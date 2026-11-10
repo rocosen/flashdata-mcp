@@ -25,4 +25,4 @@ Read [the task guide](references/api.md) for input fields, output processing, ex
 
 > Search Google Shopping once for wireless headphones in the US. Return 10 requested offers with product identifiers, merchant names, original price labels and source URLs.
 
-[Source documentation](https://flashdata.dev/docs/sources/google_shopping?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [API Key](https://flashdata.dev/app/api-keys) · [Pricing](https://flashdata.dev/pricing).
+[Source documentation](https://flashdata.dev/docs/sources/google_shopping?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [API Key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [Pricing](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task).

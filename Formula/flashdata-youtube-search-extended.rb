@@ -2,7 +2,7 @@ class FlashdataYoutubeSearchExtended < Formula
   include Language::Python::Virtualenv
 
   desc "Run YouTube extended search for larger video result sets"
-  homepage "https://flashdata.dev/docs/sources/youtube_search_extended"
+  homepage "https://flashdata.dev/docs/sources/youtube_search_extended?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_search_extended-0.1.0.tar.gz"
   sha256 "3339b3f8ad3f0c31338e8924afea019895c3a5f1e5017c43cec1cd07286c29a4"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeSearchExtended < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_search_extended
+      Source documentation: https://flashdata.dev/docs/sources/youtube_search_extended?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task
     EOS
   end
 

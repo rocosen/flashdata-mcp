@@ -2,7 +2,7 @@ class FlashdataGoogleShopping < Formula
   include Language::Python::Virtualenv
 
   desc "Export Google Shopping merchant offers as JSON"
-  homepage "https://flashdata.dev/docs/sources/google_shopping"
+  homepage "https://flashdata.dev/docs/sources/google_shopping?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_google_shopping-0.1.0.tar.gz"
   sha256 "55a02177b35e09bb2334a22d7ccc12fec3bc6c9705c733bba61705c9ff7ded1e"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataGoogleShopping < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/google_shopping
+      Source documentation: https://flashdata.dev/docs/sources/google_shopping?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task
     EOS
   end
 

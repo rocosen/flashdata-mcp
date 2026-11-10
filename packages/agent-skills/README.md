@@ -4,27 +4,27 @@
 
 Find web sources, prepare news briefings, discover local businesses and research YouTube videos with structured results. This package includes 15 task Skills, examples and source guides, using the existing FlashData task CLIs. OpenCode also gets a small plugin that registers those Skills. Pi loads the declared Skills directly.
 
-**Free to install; data calls consume your own paid [FlashData Credits](https://flashdata.dev/pricing).** Model/client and storage costs are separate. Use Node.js 22.18+ and npm, and supply your own [FlashData API key](https://flashdata.dev/app/api-keys) through the environment or a secret manager before starting the agent. Never paste the Key into chat or commit it. Installation and Skill discovery submit no data queries.
+**Free to install; data calls consume your own paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined).** Model/client and storage costs are separate. Use Node.js 22.18+ and npm, and supply your own [FlashData API key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined) through the environment or a secret manager before starting the agent. Never paste the Key into chat or commit it. Installation and Skill discovery submit no data queries.
 
 ## Install from npm in Pi
 
 ```sh
-pi install npm:@flashdata-dev/agent-skills@0.1.0
+pi install npm:@flashdata-dev/agent-skills@0.1.1
 pi list
 ```
 
-Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.0`.
+Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.1`.
 
 ## Install from Git
 
-The public Git distribution is independent of npm publication. Review the source, then pin a release tag or commit. `agent-skills-v0.1.0` is the release reference for this package.
+The public Git distribution is independent of npm publication. Review the source, then pin a release tag or commit. `agent-skills-v0.1.1` is the release reference for this package.
 
 ### OpenCode
 
 Clone the source into a location you control:
 
 ```sh
-git clone --branch agent-skills-v0.1.0 --depth 1 https://github.com/rocosen/flashdata-mcp.git flashdata-agent-skills
+git clone --branch agent-skills-v0.1.1 --depth 1 https://github.com/rocosen/flashdata-mcp.git flashdata-agent-skills
 ```
 
 For OpenCode 1.18.29 and later v1 releases, add the absolute file URL of `packages/agent-skills/index.js` to your configuration:
@@ -59,11 +59,11 @@ The plugin inventory should show `flashdata.skills` with `state.status` equal to
 ### Pi
 
 ```sh
-pi install git:github.com/rocosen/flashdata-mcp@agent-skills-v0.1.0
+pi install git:github.com/rocosen/flashdata-mcp@agent-skills-v0.1.1
 pi list
 ```
 
-The repository's `pi.skills` manifest selects these 15 Skills. It declares no extensions. Pi installs the repository's existing CLI dependencies when using the Git source. Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata` when you want that task. To remove it, run `pi remove git:github.com/rocosen/flashdata-mcp@agent-skills-v0.1.0`.
+The repository's `pi.skills` manifest selects these 15 Skills. It declares no extensions. Pi installs the repository's existing CLI dependencies when using the Git source. Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata` when you want that task. To remove it, run `pi remove git:github.com/rocosen/flashdata-mcp@agent-skills-v0.1.1`.
 
 For a local checkout, `pi install /absolute/path/flashdata-agent-skills/packages/agent-skills` loads just this package. See Pi's [package documentation](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/packages.md) for project-scoped installations and resource selection.
 

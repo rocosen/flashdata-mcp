@@ -25,4 +25,4 @@ Read [the task guide](references/api.md) for input fields, output processing, ex
 
 > Find 20 Google Images results for solar panel diagrams. Keep images with a returned width of at least 1000 pixels, and list each image URL, source page and dimensions.
 
-[Source documentation](https://flashdata.dev/docs/sources/google_images?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [API Key](https://flashdata.dev/app/api-keys) · [Pricing](https://flashdata.dev/pricing).
+[Source documentation](https://flashdata.dev/docs/sources/google_images?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [API Key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [Pricing](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task).

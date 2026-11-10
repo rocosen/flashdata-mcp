@@ -2,7 +2,7 @@ class FlashdataGoogleVideos < Formula
   include Language::Python::Virtualenv
 
   desc "Export Google video search results across websites as JSON"
-  homepage "https://flashdata.dev/docs/sources/google_videos"
+  homepage "https://flashdata.dev/docs/sources/google_videos?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_google_videos-0.1.0.tar.gz"
   sha256 "e037a8256cbd94d9fb496cf3bb69cbe59ad5fb9d37c9d8fe4c71e0ca4f551f3d"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataGoogleVideos < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/google_videos
+      Source documentation: https://flashdata.dev/docs/sources/google_videos?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task
     EOS
   end
 

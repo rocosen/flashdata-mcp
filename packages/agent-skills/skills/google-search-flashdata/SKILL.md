@@ -25,4 +25,4 @@ Read [the task guide](references/api.md) for input fields, output processing, ex
 
 > Search Google for battery recycling research in the US, in English. Make one request for 10 results and return a table of position, title, source URL and snippet.
 
-[Source documentation](https://flashdata.dev/docs/sources/google_search?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [API Key](https://flashdata.dev/app/api-keys) · [Pricing](https://flashdata.dev/pricing).
+[Source documentation](https://flashdata.dev/docs/sources/google_search?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [API Key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [Pricing](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task).

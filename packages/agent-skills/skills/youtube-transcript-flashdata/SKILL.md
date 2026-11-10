@@ -25,4 +25,4 @@ Read [the task guide](references/api.md) for input fields, output processing, ex
 
 > Retrieve the existing English automatic transcript for YouTube video dQw4w9WgXcQ once. Produce notes with timestamped citations; report a missing track without transcribing or switching tracks.
 
-[Source documentation](https://flashdata.dev/docs/sources/youtube_transcript?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [API Key](https://flashdata.dev/app/api-keys) · [Pricing](https://flashdata.dev/pricing).
+[Source documentation](https://flashdata.dev/docs/sources/youtube_transcript?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [API Key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) · [Pricing](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task).

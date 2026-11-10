@@ -2,7 +2,7 @@ class FlashdataYoutubeCaptions < Formula
   include Language::Python::Virtualenv
 
   desc "Retrieve YouTube captions uploaded by the video owner"
-  homepage "https://flashdata.dev/docs/sources/youtube_captions"
+  homepage "https://flashdata.dev/docs/sources/youtube_captions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_captions-0.1.0.tar.gz"
   sha256 "ed411b069e7f80da05a1e8ed107f1283ba784cb445d3ecb192bc12c35e49f0ea"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeCaptions < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_captions
+      Source documentation: https://flashdata.dev/docs/sources/youtube_captions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task
     EOS
   end
 

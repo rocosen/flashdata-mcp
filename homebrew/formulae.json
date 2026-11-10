@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-google-search.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-google-search.md",
-    "homepage": "https://flashdata.dev/docs/sources/google_search",
+    "homepage": "https://flashdata.dev/docs/sources/google_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task",
     "core_directory_url": null
   },
   {
@@ -14,7 +14,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-google-news.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-google-news.md",
-    "homepage": "https://flashdata.dev/docs/sources/google_news",
+    "homepage": "https://flashdata.dev/docs/sources/google_news?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task",
     "core_directory_url": null
   },
   {
@@ -23,7 +23,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-google-images.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-google-images.md",
-    "homepage": "https://flashdata.dev/docs/sources/google_images",
+    "homepage": "https://flashdata.dev/docs/sources/google_images?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task",
     "core_directory_url": null
   },
   {
@@ -32,7 +32,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-google-shopping.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-google-shopping.md",
-    "homepage": "https://flashdata.dev/docs/sources/google_shopping",
+    "homepage": "https://flashdata.dev/docs/sources/google_shopping?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task",
     "core_directory_url": null
   },
   {
@@ -41,7 +41,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-google-videos.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-google-videos.md",
-    "homepage": "https://flashdata.dev/docs/sources/google_videos",
+    "homepage": "https://flashdata.dev/docs/sources/google_videos?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task",
     "core_directory_url": null
   },
   {
@@ -50,7 +50,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-google-places.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-google-places.md",
-    "homepage": "https://flashdata.dev/docs/sources/google_places",
+    "homepage": "https://flashdata.dev/docs/sources/google_places?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task",
     "core_directory_url": null
   },
   {
@@ -59,7 +59,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-search.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-search.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_search",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task",
     "core_directory_url": null
   },
   {
@@ -68,7 +68,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-search-extended.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-search-extended.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_search_extended",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_search_extended?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task",
     "core_directory_url": null
   },
   {
@@ -77,7 +77,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-metadata.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-metadata.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_metadata",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_metadata?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task",
     "core_directory_url": null
   },
   {
@@ -86,7 +86,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-transcript.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-transcript.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_transcript",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_transcript?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task",
     "core_directory_url": null
   },
   {
@@ -95,7 +95,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-captions.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-captions.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_captions",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_captions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task",
     "core_directory_url": null
   },
   {
@@ -104,7 +104,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-trainability.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-trainability.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_trainability",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_trainability?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task",
     "core_directory_url": null
   },
   {
@@ -113,7 +113,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-channel.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-channel.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_channel",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_channel?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task",
     "core_directory_url": null
   },
   {
@@ -122,7 +122,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-suggestions.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-suggestions.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_suggestions",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_suggestions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task",
     "core_directory_url": null
   },
   {
@@ -131,7 +131,7 @@
     "version": "0.1.0",
     "formula_url": "https://github.com/rocosen/flashdata-mcp/blob/main/Formula/flashdata-youtube-cloud-storage.rb",
     "guide_url": "https://github.com/rocosen/flashdata-mcp/blob/main/homebrew/guides/flashdata-youtube-cloud-storage.md",
-    "homepage": "https://flashdata.dev/docs/sources/youtube_download",
+    "homepage": "https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task",
     "core_directory_url": null
   }
 ]

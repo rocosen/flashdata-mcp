@@ -27,9 +27,9 @@ and requires normal Homebrew build tools and internet access. All runtime depend
 versions and source hashes are declared. The install performs no FlashData query.
 
 Help, version and schema commands need no account. To run a query,
-[sign up](https://flashdata.dev/signup), get an API Key, fund Credits, and set
+[sign up](https://flashdata.dev/signup?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined), get an API Key, fund Credits, and set
 `FLASHDATA_API_KEY` through your shell or secret manager. Installation is free;
-FlashData API usage consumes paid Credits at [current rates](https://flashdata.dev/pricing).
+FlashData API usage consumes paid Credits at [current rates](https://flashdata.dev/pricing?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined).
 Cloud-storage charges are separate. Follow the task guide before running its example.
 
 ## Choose a task
@@ -39,21 +39,21 @@ fields, fees, errors and source-specific limits.
 
 | Task / formula | Guide | FlashData source documentation |
 | --- | --- | --- |
-| `flashdata-google-search` | [Run this task](guides/flashdata-google-search.md) | [google_search](https://flashdata.dev/docs/sources/google_search) |
-| `flashdata-google-news` | [Run this task](guides/flashdata-google-news.md) | [google_news](https://flashdata.dev/docs/sources/google_news) |
-| `flashdata-google-images` | [Run this task](guides/flashdata-google-images.md) | [google_images](https://flashdata.dev/docs/sources/google_images) |
-| `flashdata-google-shopping` | [Run this task](guides/flashdata-google-shopping.md) | [google_shopping](https://flashdata.dev/docs/sources/google_shopping) |
-| `flashdata-google-videos` | [Run this task](guides/flashdata-google-videos.md) | [google_videos](https://flashdata.dev/docs/sources/google_videos) |
-| `flashdata-google-places` | [Run this task](guides/flashdata-google-places.md) | [google_places](https://flashdata.dev/docs/sources/google_places) |
-| `flashdata-youtube-search` | [Run this task](guides/flashdata-youtube-search.md) | [youtube_search](https://flashdata.dev/docs/sources/youtube_search) |
-| `flashdata-youtube-search-extended` | [Run this task](guides/flashdata-youtube-search-extended.md) | [youtube_search_extended](https://flashdata.dev/docs/sources/youtube_search_extended) |
-| `flashdata-youtube-metadata` | [Run this task](guides/flashdata-youtube-metadata.md) | [youtube_metadata](https://flashdata.dev/docs/sources/youtube_metadata) |
-| `flashdata-youtube-transcript` | [Run this task](guides/flashdata-youtube-transcript.md) | [youtube_transcript](https://flashdata.dev/docs/sources/youtube_transcript) |
-| `flashdata-youtube-captions` | [Run this task](guides/flashdata-youtube-captions.md) | [youtube_captions](https://flashdata.dev/docs/sources/youtube_captions) |
-| `flashdata-youtube-trainability` | [Run this task](guides/flashdata-youtube-trainability.md) | [youtube_trainability](https://flashdata.dev/docs/sources/youtube_trainability) |
-| `flashdata-youtube-channel` | [Run this task](guides/flashdata-youtube-channel.md) | [youtube_channel](https://flashdata.dev/docs/sources/youtube_channel) |
-| `flashdata-youtube-suggestions` | [Run this task](guides/flashdata-youtube-suggestions.md) | [youtube_suggestions](https://flashdata.dev/docs/sources/youtube_suggestions) |
-| `flashdata-youtube-cloud-storage` | [Run this task](guides/flashdata-youtube-cloud-storage.md) | [youtube_download](https://flashdata.dev/docs/sources/youtube_download) |
+| `flashdata-google-search` | [Run this task](guides/flashdata-google-search.md) | [google_search](https://flashdata.dev/docs/sources/google_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) |
+| `flashdata-google-news` | [Run this task](guides/flashdata-google-news.md) | [google_news](https://flashdata.dev/docs/sources/google_news?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) |
+| `flashdata-google-images` | [Run this task](guides/flashdata-google-images.md) | [google_images](https://flashdata.dev/docs/sources/google_images?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) |
+| `flashdata-google-shopping` | [Run this task](guides/flashdata-google-shopping.md) | [google_shopping](https://flashdata.dev/docs/sources/google_shopping?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) |
+| `flashdata-google-videos` | [Run this task](guides/flashdata-google-videos.md) | [google_videos](https://flashdata.dev/docs/sources/google_videos?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) |
+| `flashdata-google-places` | [Run this task](guides/flashdata-google-places.md) | [google_places](https://flashdata.dev/docs/sources/google_places?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task) |
+| `flashdata-youtube-search` | [Run this task](guides/flashdata-youtube-search.md) | [youtube_search](https://flashdata.dev/docs/sources/youtube_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task) |
+| `flashdata-youtube-search-extended` | [Run this task](guides/flashdata-youtube-search-extended.md) | [youtube_search_extended](https://flashdata.dev/docs/sources/youtube_search_extended?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search_extended-task) |
+| `flashdata-youtube-metadata` | [Run this task](guides/flashdata-youtube-metadata.md) | [youtube_metadata](https://flashdata.dev/docs/sources/youtube_metadata?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task) |
+| `flashdata-youtube-transcript` | [Run this task](guides/flashdata-youtube-transcript.md) | [youtube_transcript](https://flashdata.dev/docs/sources/youtube_transcript?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task) |
+| `flashdata-youtube-captions` | [Run this task](guides/flashdata-youtube-captions.md) | [youtube_captions](https://flashdata.dev/docs/sources/youtube_captions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task) |
+| `flashdata-youtube-trainability` | [Run this task](guides/flashdata-youtube-trainability.md) | [youtube_trainability](https://flashdata.dev/docs/sources/youtube_trainability?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task) |
+| `flashdata-youtube-channel` | [Run this task](guides/flashdata-youtube-channel.md) | [youtube_channel](https://flashdata.dev/docs/sources/youtube_channel?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) |
+| `flashdata-youtube-suggestions` | [Run this task](guides/flashdata-youtube-suggestions.md) | [youtube_suggestions](https://flashdata.dev/docs/sources/youtube_suggestions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) |
+| `flashdata-youtube-cloud-storage` | [Run this task](guides/flashdata-youtube-cloud-storage.md) | [youtube_download](https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) |
 
 Search installed tap definitions with `brew search --desc 'Google'` or
 `brew search --desc 'YouTube'`. This search requires this tap to be present; these

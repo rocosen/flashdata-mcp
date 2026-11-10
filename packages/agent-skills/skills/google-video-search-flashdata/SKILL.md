@@ -25,4 +25,4 @@ Read [the task guide](references/api.md) for input fields, output processing, ex
 
 > Search Google Videos once for battery recycling process demonstrations. Request 10 results and group the returned titles, URLs and available durations by website.
 
-[Source documentation](https://flashdata.dev/docs/sources/google_videos?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) · [API Key](https://flashdata.dev/app/api-keys) · [Pricing](https://flashdata.dev/pricing).
+[Source documentation](https://flashdata.dev/docs/sources/google_videos?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) · [API Key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task) · [Pricing](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_videos-task).

@@ -2,7 +2,7 @@ class FlashdataGooglePlaces < Formula
   include Language::Python::Virtualenv
 
   desc "Export Google Places local business search results"
-  homepage "https://flashdata.dev/docs/sources/google_places"
+  homepage "https://flashdata.dev/docs/sources/google_places?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_google_places-0.1.0.tar.gz"
   sha256 "895e09b949f2e101732ec6a9cd6e6e4f3e6583be433d6cc2c561bbe5e60ee811"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataGooglePlaces < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/google_places
+      Source documentation: https://flashdata.dev/docs/sources/google_places?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_places-task
     EOS
   end
 

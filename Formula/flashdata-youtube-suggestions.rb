@@ -2,7 +2,7 @@ class FlashdataYoutubeSuggestions < Formula
   include Language::Python::Virtualenv
 
   desc "Retrieve YouTube autocomplete suggestions"
-  homepage "https://flashdata.dev/docs/sources/youtube_suggestions"
+  homepage "https://flashdata.dev/docs/sources/youtube_suggestions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_suggestions-0.1.0.tar.gz"
   sha256 "69559bfba5317d2ac67199dca5a4bb04ad6ab1da7da8b7c160fc4dc89161c7b3"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeSuggestions < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_suggestions
+      Source documentation: https://flashdata.dev/docs/sources/youtube_suggestions?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task
     EOS
   end
 

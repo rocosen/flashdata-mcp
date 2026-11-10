@@ -2,7 +2,7 @@ class FlashdataYoutubeCloudStorage < Formula
   include Language::Python::Virtualenv
 
   desc "Submit YouTube download jobs to customer cloud storage"
-  homepage "https://flashdata.dev/docs/sources/youtube_download"
+  homepage "https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_cloud_storage-0.1.0.tar.gz"
   sha256 "7ae56c4db3179e2c901c3f5671532ac32b56f8ffea9816f9e7cd137201658e02"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeCloudStorage < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_download
+      Source documentation: https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task
     EOS
   end
 

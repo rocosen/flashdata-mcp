@@ -27,9 +27,9 @@ flashdata-youtube-channel is the installed command. Inspect inputs without an AP
 flashdata-youtube-channel --schema
 ```
 
-1. [Create a FlashData account](https://flashdata.dev/signup), obtain an API Key and fund Credits.
+1. [Create a FlashData account](https://flashdata.dev/signup?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task), obtain an API Key and fund Credits.
 2. Set `FLASHDATA_API_KEY` using your shell or secret manager. The CLI does not accept a key flag
-   or persist credentials. [Authentication and source documentation](https://flashdata.dev/docs/sources/youtube_channel).
+   or persist credentials. [Authentication and source documentation](https://flashdata.dev/docs/sources/youtube_channel?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task).
 3. Run this example after reviewing the input and cost:
 
 ```sh
@@ -58,12 +58,12 @@ defaults without a Key or an API call. `--help` and `--version` are also local-o
 The JSON output preserves the API result envelope and optional fields: results[]: channelId, channelHandle, name, channelUrl, statistics, videos; usage.credits.
 Missing fields remain missing; empty results remain empty. No article text, translated captions,
 model conclusions, rights grants or keyword volumes are invented. Exact source contracts are
-documented [here](https://flashdata.dev/docs/sources/youtube_channel).
+documented [here](https://flashdata.dev/docs/sources/youtube_channel?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task).
 
 ## Fees and failure handling
 
 This MIT-licensed CLI is free to install. FlashData API requests consume paid Credits;
-[current pricing](https://flashdata.dev/pricing) applies.
+[current pricing](https://flashdata.dev/pricing?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) applies.
 There is no automatic pagination, retry, polling, scheduled execution or model call.
 
 Each HTTP request has a 120-second network timeout (15-second connect timeout) and a 20-MiB response
@@ -83,5 +83,5 @@ Homebrew installation and removal do not create, revoke or store your API Key.
 Source and MIT license are included in the source distribution.
 [Formula source](../../Formula/flashdata-youtube-channel.rb) · [All 15 Homebrew commands](../README.md)
 
-[Source documentation](https://flashdata.dev/docs/sources/youtube_channel) ·
-[Pricing](https://flashdata.dev/pricing) · [Sign up](https://flashdata.dev/signup)
+[Source documentation](https://flashdata.dev/docs/sources/youtube_channel?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) ·
+[Pricing](https://flashdata.dev/pricing?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [Sign up](https://flashdata.dev/signup?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task)
