@@ -28,5 +28,7 @@ jobs:
         working-directory: integrations/apify/suite
       - run: npm test && npm run check && npm audit --audit-level=high
         working-directory: integrations/apify/suite
+      - run: npm ci --ignore-scripts && npm test
+        working-directory: integrations/apify/youtube-download
       - run: docker build -f .actor/Dockerfile -t flashdata-youtube-download:ci .
         working-directory: integrations/apify/youtube-download

@@ -1,164 +1,92 @@
-import { createHash } from 'node:crypto';
-import flashdata from '@flashdata-dev/mcp';
-import catalog from '@flashdata-dev/mcp/catalog';
+import { createHash, createHmac } from 'node:crypto';
 
-const { createLocalTools, loadLocalConfig, validateTool } = flashdata;
 export class RunError extends Error {}
-const record = value => value && typeof value === 'object' && !Array.isArray(value);
-const secretFields = new Set(['access_key', 'secret_key', 'private_key', 'sas_token', 'flashdataApiKey']);
-
-function parseInput(definition, input) {
-  const source = catalog.SOURCE_CATALOG.find(item => item.id === definition.source);
-  if (!source) throw new RunError('Unsupported Actor capability.');
-  const download = source.id === 'youtube_download';
-  const allowed = new Set(['flashdataApiKey', ...Object.keys(source.inputSchema.properties),
-    ...(download ? ['storageJson', 'jobId', 'waitSeconds'] : [])]);
-  if (!record(input) || Object.keys(input).some(key => !allowed.has(key))) {
-    throw new RunError('Use only this Actor\'s documented input fields.');
+export const EVENT = 'download-mb';
+const allowed = new Set(['url','download_type','output_format','video_quality','fps','audio_quality','audio_language','maxFileMB']);
+export function validateInput(input) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)
+    || Object.keys(input).some(k => !allowed.has(k)) || typeof input.url !== 'string') {
+    throw new RunError('Enter a YouTube URL and supported download settings. FlashData keys and storage credentials are no longer required.');
   }
-  const { flashdataApiKey, storageJson, jobId, waitSeconds = 60, ...parameters } = input;
-  if (typeof flashdataApiKey !== 'string' || !/^fd_[A-Za-z0-9_-]+$/.test(flashdataApiKey)) {
-    throw new RunError('Enter your own valid FlashData API key in the encrypted field.');
+  return input;
+}
+export function createBackendClient({ runId, secret, baseUrl = 'https://api.flashdata.dev', request = fetch, now = Date.now }) {
+  const origin = new URL(baseUrl);
+  if (origin.protocol !== 'https:' || origin.username || origin.password || origin.pathname !== '/' || origin.search || origin.hash
+    || !/^[A-Za-z0-9]{17}$/.test(runId || '') || !/^[\x21-\x7e]{32,512}$/.test(secret || '')) {
+    throw new RunError('The provider has not configured this Actor connection.');
   }
-  let config;
-  try { config = loadLocalConfig({ FLASHDATA_API_KEY: flashdataApiKey }); }
-  catch { throw new RunError('Enter a valid FlashData API key.'); }
-  const args = { ...parameters };
-  let storage;
-  if (download) {
-    if (!Number.isInteger(waitSeconds) || waitSeconds < 0 || waitSeconds > 120) {
-      throw new RunError('waitSeconds must be an integer from 0 to 120.');
+  return async (method, suffix, input) => {
+    const path = `/apify/youtube-download/${suffix}`;
+    const body = input === undefined ? '' : JSON.stringify(input);
+    const timestamp = String(now());
+    const digest = createHash('sha256').update(body).digest('hex');
+    const signature = createHmac('sha256', secret).update([method,path,runId,timestamp,digest].join('\n')).digest('hex');
+    let response, result;
+    try {
+      response = await request(`${origin.origin}${path}`, { method, redirect: 'error', signal: AbortSignal.timeout(45000),
+        headers: { 'Content-Type':'application/json', 'X-Apify-Run-Id':runId, 'X-Apify-Timestamp':timestamp,
+          'X-Apify-Signature':signature }, ...(body ? { body } : {}) });
+      result = await response.json();
+    } catch { throw new RunError('The provider response is unavailable. Resume this run; do not start a duplicate download.'); }
+    if (!response.ok) {
+      const error = new RunError(result?.error?.message || 'The download request could not complete.');
+      error.code = result?.error?.code;
+      throw error;
     }
-    if (jobId) {
-      if (validateTool('get_job', { job_id: jobId })) throw new RunError('Enter a valid existing FlashData job ID.');
-      if (storageJson || Object.keys(parameters).some(key => !['download_type', 'video_quality', 'audio_language', 'audio_quality', 'output_format', 'upload_metadata'].includes(key))) {
-        throw new RunError('For an existing job, clear the video ID and storage input. This mode only reads the existing job.');
-      }
-    } else {
-      if (typeof storageJson !== 'string') throw new RunError('Enter the customer storage configuration in encrypted storageJson.');
-      try { storage = JSON.parse(storageJson); }
-      catch { throw new RunError('Encrypted storageJson must contain a valid JSON object.'); }
-      args.storage = storage;
-    }
-  }
-  if (!jobId) {
-    for (const field of source.inputSchema.required) {
-      if (typeof args[field] !== 'string' || !args[field].trim()) throw new RunError(`Enter a non-empty ${field}.`);
-    }
-    if (source.id === 'youtube_channel' && (args.handle.includes('://') || args.handle.includes('/'))) {
-      throw new RunError('Use a YouTube channel handle, not a full URL.');
-    }
-    const invalid = validateTool(source.id, args);
-    if (invalid) throw new RunError(invalid.message);
-  }
-  const secrets = [config.secret];
-  function collect(value) {
-    if (!record(value)) return;
-    for (const [key, item] of Object.entries(value)) {
-      if (secretFields.has(key) && typeof item === 'string' && item) secrets.push(item);
-      else if (record(item)) collect(item);
-    }
-  }
-  collect(storage);
-  const sanitize = value => JSON.parse(JSON.stringify(value, (key, item) => {
-    if (key === 'storage' || secretFields.has(key)) return '[REDACTED]';
-    if (typeof item !== 'string') return item;
-    return secrets.reduce((text, secret) => text.replaceAll(secret, '[REDACTED]'), item);
-  }));
-  return { source, config, args, jobId, waitSeconds, sanitize };
+    return result;
+  };
 }
 
-export function resultRows(definition, response) {
-  if (!Array.isArray(response?.results)) throw new RunError('Unexpected result format. Inspect the saved response before another run.');
-  const rows = [];
-  for (const result of response.results) {
-    if (definition.rows === 'suggestions') {
-      if (!Array.isArray(result) || result.some(item => typeof item !== 'string')) throw new RunError('Unexpected suggestions format.');
-      rows.push(...result.map((suggestion, index) => ({ position: index + 1, suggestion })));
-    } else if (definition.rows === 'object') {
-      if (!record(result)) throw new RunError('Unexpected object result format.');
-      rows.push(result);
-    } else {
-      if (!record(result)) throw new RunError('Unexpected result format.');
-      const items = result[definition.rows];
-      if (items === undefined && definition.source.startsWith('google_')) continue;
-      if (!Array.isArray(items) || items.some(item => !record(item))) throw new RunError('Unexpected result rows. Inspect OUTPUT.');
-      const context = definition.rows === 'segments'
-        ? { videoId: result.videoId, languageCode: result.languageCode, isAutoGenerated: result.isAutoGenerated }
-        : definition.source === 'youtube_channel' ? { channelId: result.channelId, channelHandle: result.channelHandle } : {};
-      rows.push(...items.map(item => ({ ...context, ...item })));
+export async function runDownload({ input, backend, runId, charge, store, dataset,
+  now = Date.now, sleep = ms => new Promise(resolve => setTimeout(resolve, ms)), timeoutMs = 600000 }) {
+  validateInput(input);
+  // The server's unique run fence, not mutable Actor KV data, prevents duplicate submission.
+  await backend('POST', 'job', input);
+  await store.setValue('OUTPUT', { status:'pending', run_id:runId, message:'Resume this run to continue the same download.' });
+  const deadline = now() + timeoutMs;
+  let ready;
+  while (now() < deadline) {
+    try { ready = await backend('GET','job'); }
+    catch (error) {
+      if (error.code !== 'submission_pending') throw error;
+    }
+    if (ready?.status === 'completed') break;
+    if (ready?.status === 'failed') throw new RunError('Download failed. No download event was charged.');
+    await sleep(5000);
+  }
+  if (ready?.status !== 'completed') throw new RunError('Download is still pending. Resurrect this same run to continue; starting a new run creates another download.');
+  await store.setValue('OUTPUT', { ...ready, status:'awaiting_charge' });
+  let intent = await backend('POST','charge',{});
+  if (!intent.charged) {
+    // The API's 3-minute idempotency window is shorter than a possible run restart.
+    // The server persists a 90-second charging window and never reopens it.
+    if (intent.event_name !== EVENT || !Number.isSafeInteger(intent.count) || intent.count < 1
+      || !Number.isFinite(intent.price_usd) || intent.price_usd <= 0
+      || !Number.isFinite(intent.max_total_charge_usd)
+      || intent.count * intent.price_usd > intent.max_total_charge_usd + 1e-12
+      || !Number.isFinite(Date.parse(intent.charge_before)) || now() >= Date.parse(intent.charge_before)) {
+      throw new RunError('The billing authorization is invalid or expired. Contact support with this run URL.');
+    }
+    await store.setValue('BILLING', { status:'attempting', count:intent.count, charge_before:intent.charge_before });
+    try {
+      await charge({ eventName:EVENT, count:intent.count, idempotencyKey:intent.idempotency_key });
+    } catch {
+      // No blind retries: poll the platform through the backend before releasing the file.
     }
   }
-  return rows.map(row => ({ ...row, request_id: response.request_id }));
-}
-
-export async function runCapability({ definition, input, store, dataset,
-  makeTools = config => createLocalTools(config, { taskSource: definition.source }),
-  now = Date.now, sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds)) }) {
-  const { source, config, args, jobId: resumeId, waitSeconds, sanitize } = parseInput(definition, input);
-  const fingerprint = createHash('sha256').update(JSON.stringify({ source: source.id, secret: config.secret, args, resumeId })).digest('hex');
-  let state = await store.getValue('REQUEST_STATE');
-  if (state) {
-    if (state.fingerprint !== fingerprint) throw new RunError('This run has different saved input. Do not reuse its storage.');
-    if (state.phase === 'complete') return { status: 'completed', reused: true };
-    if (!state.jobId) throw new RunError('A request was already attempted. Inspect OUTPUT and FlashData Jobs; do not automatically submit again.');
-  }
-  const tools = makeTools(config);
-  let available;
-  try { available = await tools.list(); }
-  catch { throw new RunError('Could not verify your FlashData API key. No new request was submitted.'); }
-  if (!available.tools.some(tool => tool.name === source.id)) throw new RunError(`Your key needs ${source.name} permission. No new request was submitted.`);
-
-  if (source.id !== 'youtube_download') {
-    await store.setValue('REQUEST_STATE', { fingerprint, phase: 'attempt_started' });
-    const result = await tools.call({ name: source.id, arguments: args });
-    const response = sanitize(result.structuredContent);
-    await store.setValue('OUTPUT', { status: result.isError ? 'failed' : 'response_received', source: source.id, response });
-    await store.setValue('REQUEST_STATE', { fingerprint, phase: 'response_saved', request_id: response.request_id });
-    if (result.isError) throw new RunError('FlashData returned an error. Inspect OUTPUT and account usage; the request may have been charged. Do not automatically repeat it.');
-    if (![undefined, 'done', 'completed'].includes(response.status)) throw new RunError('The response is not complete. Inspect OUTPUT before another run.');
-    const rows = resultRows(definition, response).map(row => ({ ...row,
-      ...(args.query ? { query: sanitize(args.query) } : {}) }));
-    if (rows.length) await dataset.pushData(rows);
-    await store.setValue('OUTPUT', { status: 'completed', source: source.id, resultCount: rows.length, response });
-    await store.setValue('REQUEST_STATE', { fingerprint, phase: 'complete', request_id: response.request_id });
-    return { status: 'completed', count: rows.length };
-  }
-
-  let jobId = state?.jobId || resumeId;
-  if (!jobId) {
-    await store.setValue('REQUEST_STATE', { fingerprint, phase: 'attempt_started' });
-    const submission = await tools.call({ name: source.id, arguments: args });
-    const response = sanitize(submission.structuredContent);
-    await store.setValue('OUTPUT', { status: 'submission_received', response });
-    if (submission.isError || typeof response.id !== 'string' || validateTool('get_job', { job_id: response.id })) {
-      throw new RunError('Download submission could not be confirmed. Check OUTPUT and FlashData Jobs; do not automatically resubmit.');
+  let file;
+  for (let attempt=0; attempt<12; attempt++) {
+    try { file = await backend('GET','file'); break; }
+    catch (error) {
+      if (error.code !== 'charge_unconfirmed') throw error;
+      await sleep(5000);
     }
-    jobId = response.id;
   }
-  state = { fingerprint, phase: 'submitted', jobId };
-  await store.setValue('REQUEST_STATE', state);
-  // Persist the job ID before polling. A new run with jobId only never submits a download.
-  await store.setValue('OUTPUT', { status: 'pending', jobId, message: 'Read this job ID to continue without another paid submission.' });
-  const deadline = now() + waitSeconds * 1000;
-  while (true) {
-    const result = await tools.call({ name: 'get_job', arguments: { job_id: jobId } });
-    const response = sanitize(result.structuredContent);
-    await store.setValue('OUTPUT', { status: response.job?.status || 'read_failed', jobId, response });
-    if (result.isError) throw new RunError('The job read failed. Inspect OUTPUT; retry with jobId to read the existing job without submitting a new download.');
-    if (response.job?.status === 'completed') {
-      const rows = resultRows({ ...definition, rows: 'object' }, response.output)
-        .map(row => ({ ...row, job_id: jobId, request_id: response.request_id }));
-      if (!rows.length) throw new RunError('The completed job has no delivery manifest. Inspect OUTPUT and do not resubmit.');
-      await dataset.pushData(rows);
-      await store.setValue('OUTPUT', { status: 'completed', jobId, response });
-      await store.setValue('REQUEST_STATE', { ...state, phase: 'complete' });
-      return { status: 'completed', count: rows.length, jobId };
-    }
-    if (!['pending', 'processing', 'queued', 'running'].includes(response.job?.status)) {
-      throw new RunError('The job is not in an expected pending or completed state. Inspect OUTPUT before taking another action.');
-    }
-    if (now() >= deadline) return { status: 'pending', jobId };
-    await sleep(Math.min(5000, deadline - now()));
-  }
+  if (!file) throw new RunError('Apify has not confirmed the charge. Resume this same run or contact support; do not start a duplicate download.');
+  await store.setValue('BILLING', { status:'confirmed', charged_mb:file.charged_mb });
+  await store.setValue('OUTPUT', { status:'completed', ...file });
+  // One file per run. On resurrection only OUTPUT receives a refreshed temporary link.
+  if ((await dataset.getInfo()).itemCount === 0) await dataset.pushData(file);
+  return file;
 }
