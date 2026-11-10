@@ -2,7 +2,7 @@ class FlashdataGoogleImages < Formula
   include Language::Python::Virtualenv
 
   desc "Export Google Images search results with source URLs and dimensions"
-  homepage "https://flashdata.dev/docs/sources/google_images"
+  homepage "https://flashdata.dev/docs/sources/google_images?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_google_images-0.1.0.tar.gz"
   sha256 "c623530d07253247a4a4dc579ce17d750a56092551505e49b192759f51c6152a"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataGoogleImages < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/google_images
+      Source documentation: https://flashdata.dev/docs/sources/google_images?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task
     EOS
   end
 

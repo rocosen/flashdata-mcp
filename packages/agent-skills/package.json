@@ -1,6 +1,6 @@
 {
   "name": "@flashdata-dev/agent-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Google search, news, places and YouTube research skills for OpenCode and Pi, using the FlashData CLI and your own paid API credits.",
   "type": "module",
   "main": "index.js",

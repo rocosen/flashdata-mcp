@@ -20,7 +20,7 @@ socket.socket.connect = blocked
 from pydantic_ai import Agent, DeferredToolRequests
 from pydantic_ai_flashdata import FlashData, QUERY_SOURCES
 
-assert importlib.metadata.version("pydantic-ai-flashdata") == "0.1.0"
+assert importlib.metadata.version("pydantic-ai-flashdata") == "0.1.1"
 assert len(QUERY_SOURCES) == 14
 assert "youtube_download" not in QUERY_SOURCES
 agent = Agent.from_spec(

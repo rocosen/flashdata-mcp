@@ -122,7 +122,7 @@ def main():
   include Language::Python::Virtualenv
 
   desc "{DESCRIPTIONS[source]}"
-  homepage "https://flashdata.dev/docs/sources/{source}"
+  homepage "https://flashdata.dev/docs/sources/{source}?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content={source}-task"
   url "{REPOSITORY}/releases/download/python-cli-v{version}/{artifact["filename"]}"
   sha256 "{artifact["sha256"]}"
   license "MIT"
@@ -153,7 +153,7 @@ def main():
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/{source}
+      Source documentation: https://flashdata.dev/docs/sources/{source}?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content={source}-task
     EOS
   end
 
@@ -237,6 +237,12 @@ Source and MIT license are included in the source distribution.
 [Formula source](../../Formula/{name}.rb) · [All 15 Homebrew commands](../README.md)""",
         )
         assert "uvx " not in guide and "pip install" not in guide
+        guide = re.sub(
+            r"https://flashdata\.dev/(?:signup|pricing|docs/sources/[a-z_]+)(?:\?[^)\s]+)?",
+            lambda match: match[0].split("?")[0]
+            + f"?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content={source}-task",
+            guide,
+        )
         (guide_dir / f"{name}.md").write_text(guide)
         entries.append(
             {
@@ -245,7 +251,7 @@ Source and MIT license are included in the source distribution.
                 "version": version,
                 "formula_url": f"{REPOSITORY}/blob/main/Formula/{name}.rb",
                 "guide_url": f"{REPOSITORY}/blob/main/homebrew/guides/{name}.md",
-                "homepage": f"https://flashdata.dev/docs/sources/{source}",
+                "homepage": f"https://flashdata.dev/docs/sources/{source}?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content={source}-task",
                 "core_directory_url": None,
             }
         )

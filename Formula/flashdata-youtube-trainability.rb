@@ -2,7 +2,7 @@ class FlashdataYoutubeTrainability < Formula
   include Language::Python::Virtualenv
 
   desc "Inspect YouTube Creative Commons license labels"
-  homepage "https://flashdata.dev/docs/sources/youtube_trainability"
+  homepage "https://flashdata.dev/docs/sources/youtube_trainability?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_trainability-0.1.0.tar.gz"
   sha256 "12df378b1426733bb9ce9085b6931d00b4bdeecbc7d7e193940182369939656f"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeTrainability < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_trainability
+      Source documentation: https://flashdata.dev/docs/sources/youtube_trainability?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_trainability-task
     EOS
   end
 

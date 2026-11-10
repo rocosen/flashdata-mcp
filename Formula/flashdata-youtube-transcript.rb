@@ -2,7 +2,7 @@ class FlashdataYoutubeTranscript < Formula
   include Language::Python::Virtualenv
 
   desc "Export existing YouTube transcripts with timestamps"
-  homepage "https://flashdata.dev/docs/sources/youtube_transcript"
+  homepage "https://flashdata.dev/docs/sources/youtube_transcript?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_transcript-0.1.0.tar.gz"
   sha256 "14bf2780f9bd1669902ae92dafbd5424f9d05efd98c1f97267d6d4dc343ec5d8"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeTranscript < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_transcript
+      Source documentation: https://flashdata.dev/docs/sources/youtube_transcript?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_transcript-task
     EOS
   end
 

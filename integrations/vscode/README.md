@@ -58,7 +58,7 @@ For Local, open **Configure Tools** in the chat input. For Copilot, use **Chat: 
 
 ## Before making data requests
 
-Use your own [FlashData API key](https://flashdata.dev/app/api-keys), enabled for the sources you need. The configuration is free; data requests consume **your FlashData Credits**. Check [current pricing](https://flashdata.dev/pricing); agent/model and storage fees are separate. Keep the key in the credential mechanism above, never in chat, a URL or a committed file. No OAuth flow or FlashData-hosted proxy of your model is required.
+Use your own [FlashData API key](https://flashdata.dev/signup?utm_source=vscode&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined), enabled for the sources you need. The configuration is free; data requests consume **your FlashData Credits**. Check [current pricing](https://flashdata.dev/pricing?utm_source=vscode&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined); agent/model and storage fees are separate. Keep the key in the credential mechanism above, never in chat, a URL or a committed file. No OAuth flow or FlashData-hosted proxy of your model is required.
 
 First connect and ask: “Use only FlashData `get_pricing` to inspect current rates. Do not run a data query.” Inspect the actual tool name and returned result. This free account read checks authentication; it does not verify paid data retrieval. Review each paid tool call and its arguments before approval. The examples below describe actions a user can choose to run, not calls performed while installing this guide.
 

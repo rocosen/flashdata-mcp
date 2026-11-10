@@ -2,7 +2,7 @@ class FlashdataGoogleSearch < Formula
   include Language::Python::Virtualenv
 
   desc "Export Google Search web results as JSON"
-  homepage "https://flashdata.dev/docs/sources/google_search"
+  homepage "https://flashdata.dev/docs/sources/google_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_google_search-0.1.0.tar.gz"
   sha256 "5a42a6c016f07acd1e0101e4aef014b71e49095e4ceb18cf3733e0005d6f3ca1"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataGoogleSearch < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/google_search
+      Source documentation: https://flashdata.dev/docs/sources/google_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task
     EOS
   end
 

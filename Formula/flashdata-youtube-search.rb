@@ -2,7 +2,7 @@ class FlashdataYoutubeSearch < Formula
   include Language::Python::Virtualenv
 
   desc "Run YouTube search with keyword and video filters"
-  homepage "https://flashdata.dev/docs/sources/youtube_search"
+  homepage "https://flashdata.dev/docs/sources/youtube_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_search-0.1.0.tar.gz"
   sha256 "f95753e0b037691e14dcf818afa3eed45ece03f33214d90aa8b52a4e3d310ee2"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeSearch < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_search
+      Source documentation: https://flashdata.dev/docs/sources/youtube_search?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_search-task
     EOS
   end
 

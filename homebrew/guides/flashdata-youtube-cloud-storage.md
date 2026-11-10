@@ -27,9 +27,9 @@ flashdata-youtube-cloud-storage is the installed command. Inspect inputs without
 flashdata-youtube-cloud-storage --schema
 ```
 
-1. [Create a FlashData account](https://flashdata.dev/signup), obtain an API Key and fund Credits.
+1. [Create a FlashData account](https://flashdata.dev/signup?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task), obtain an API Key and fund Credits.
 2. Set `FLASHDATA_API_KEY` using your shell or secret manager. The CLI does not accept a key flag
-   or persist credentials. [Authentication and source documentation](https://flashdata.dev/docs/sources/youtube_download).
+   or persist credentials. [Authentication and source documentation](https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task).
 3. Run this example after reviewing the input and cost:
 
 ```sh
@@ -67,7 +67,7 @@ defaults without a Key or an API call. `--help` and `--version` are also local-o
 The JSON output preserves the API result envelope and optional fields: submit: id/status receipt; reads: job lifecycle; completed result: output JSON delivery manifest.
 Missing fields remain missing; empty results remain empty. No article text, translated captions,
 model conclusions, rights grants or keyword volumes are invented. Exact source contracts are
-documented [here](https://flashdata.dev/docs/sources/youtube_download).
+documented [here](https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task).
 
 ## Submit once and keep the job ID
 
@@ -87,7 +87,7 @@ Set `FLASHDATA_DOWNLOAD_STORAGE` through your secret manager, containing the doc
 storage JSON. Never paste it into command arguments or source code. The supported providers
 are s3, s3_compatible, gcs, azure, oss, bos, cos and tos. Use your own bucket/container,
 optional object_prefix, and the provider-specific credentials. S3-compatible endpoints must
-use HTTPS. [Storage fields and examples](https://flashdata.dev/docs/sources/youtube_download).
+use HTTPS. [Storage fields and examples](https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task).
 
 Keep the returned `id`. Read that same job with `--operation status --job-id ID` or
 `--operation result --job-id ID`. Omit submission inputs when resuming. There is no automatic
@@ -99,7 +99,7 @@ are excluded from CLI output.
 ## Fees and failure handling
 
 This MIT-licensed CLI is free to install. FlashData API requests consume paid Credits;
-[current pricing](https://flashdata.dev/pricing) applies. Media delivery is billed by delivered volume; cloud-storage costs are separate.
+[current pricing](https://flashdata.dev/pricing?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) applies. Media delivery is billed by delivered volume; cloud-storage costs are separate.
 There is no automatic pagination, retry, polling, scheduled execution or model call.
 
 Each HTTP request has a 120-second network timeout (15-second connect timeout) and a 20-MiB response
@@ -121,5 +121,5 @@ Homebrew installation and removal do not create, revoke or store your API Key.
 Source and MIT license are included in the source distribution.
 [Formula source](../../Formula/flashdata-youtube-cloud-storage.rb) · [All 15 Homebrew commands](../README.md)
 
-[Source documentation](https://flashdata.dev/docs/sources/youtube_download) ·
-[Pricing](https://flashdata.dev/pricing) · [Sign up](https://flashdata.dev/signup)
+[Source documentation](https://flashdata.dev/docs/sources/youtube_download?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) ·
+[Pricing](https://flashdata.dev/pricing?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) · [Sign up](https://flashdata.dev/signup?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task)

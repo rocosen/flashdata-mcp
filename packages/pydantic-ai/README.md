@@ -4,7 +4,7 @@
 
 Find ranked web sources, prepare news briefings, discover places, and research YouTube videos and existing subtitles. `FlashData` is an independent Pydantic AI capability that reads current schemas from the existing FlashData MCP service. It provides 14 query tools plus free pricing/job/result reads. The fifteenth workflow, media delivery to your own storage, uses the existing protected local CLI. See all [15 task workflows](https://github.com/rocosen/flashdata-mcp/blob/main/packages/pydantic-ai/workflows.md).
 
-**Free to install; data calls spend your own paid [FlashData Credits](https://flashdata.dev/pricing).** Model and storage costs are separate. This package is maintained by FlashData and is not a first-party Pydantic integration. A Git release, PyPI release, and official ecosystem listing are separate milestones.
+**Free to install; data calls spend your own paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=pydantic-ai&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined).** Model and storage costs are separate. This package is maintained by FlashData and is not a first-party Pydantic integration. A Git release, PyPI release, and official ecosystem listing are separate milestones.
 
 ## Install and configure
 
@@ -22,7 +22,7 @@ pip install 'pydantic-ai-flashdata @ git+https://github.com/rocosen/flashdata-mc
 
 Version 0.1.0 was published through the repository's project-specific Trusted Publisher. The public wheel and source distribution match the GitHub Actions build artifacts, and a fresh PyPI installation passed import and Agent spec registration checks without service calls.
 
-Get your [API key](https://flashdata.dev/app/api-keys) and supply `FLASHDATA_API_KEY` through your launching environment or secret manager. Do not put the value in code, YAML, chat or logs. No credential files are read. Importing the package or constructing the capability does not connect or spend Credits. Discovery starts when an agent run enters the toolset and contacts `https://data.flashdata.dev/mcp` with `X-API-Key`.
+Get your [API key](https://flashdata.dev/signup?utm_source=pydantic-ai&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined) and supply `FLASHDATA_API_KEY` through your launching environment or secret manager. Do not put the value in code, YAML, chat or logs. No credential files are read. Importing the package or constructing the capability does not connect or spend Credits. Discovery starts when an agent run enters the toolset and contacts `https://data.flashdata.dev/mcp` with `X-API-Key`.
 
 ```python
 from pydantic_ai import Agent, DeferredToolRequests

@@ -2,7 +2,7 @@ class FlashdataYoutubeMetadata < Formula
   include Language::Python::Virtualenv
 
   desc "Read YouTube metadata, chapters and video statistics"
-  homepage "https://flashdata.dev/docs/sources/youtube_metadata"
+  homepage "https://flashdata.dev/docs/sources/youtube_metadata?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task"
   url "https://github.com/rocosen/flashdata-mcp/releases/download/python-cli-v0.1.0/flashdata_youtube_metadata-0.1.0.tar.gz"
   sha256 "3a394ff05422f3165a5272f59b0d5f8691df61a9390bff18323055c9b4a05174"
   license "MIT"
@@ -111,7 +111,7 @@ class FlashdataYoutubeMetadata < Formula
       Set FLASHDATA_API_KEY through your shell or secret manager before querying.
       Installation is free; API requests consume paid FlashData Credits.
       Help, version and schema commands do not call the API.
-      Source documentation: https://flashdata.dev/docs/sources/youtube_metadata
+      Source documentation: https://flashdata.dev/docs/sources/youtube_metadata?utm_source=homebrew&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_metadata-task
     EOS
   end
 
