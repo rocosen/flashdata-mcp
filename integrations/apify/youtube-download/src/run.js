@@ -62,9 +62,9 @@ export async function runDownload({ input, backend, runId, charge, store, datase
     // The API's 3-minute idempotency window is shorter than a possible run restart.
     // The server persists a 90-second charging window and never reopens it.
     if (intent.event_name !== EVENT || !Number.isSafeInteger(intent.count) || intent.count < 1
-      || !Number.isFinite(intent.price_usd) || intent.price_usd <= 0
+      || !Number.isFinite(intent.price_ceiling_usd) || intent.price_ceiling_usd <= 0
       || !Number.isFinite(intent.max_total_charge_usd)
-      || intent.count * intent.price_usd > intent.max_total_charge_usd + 1e-12
+      || intent.count * intent.price_ceiling_usd > intent.max_total_charge_usd + 1e-12
       || !Number.isFinite(Date.parse(intent.charge_before)) || now() >= Date.parse(intent.charge_before)) {
       throw new RunError('The billing authorization is invalid or expired. Contact support with this run URL.');
     }

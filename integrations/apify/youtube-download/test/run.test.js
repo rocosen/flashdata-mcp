@@ -1,12 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { createHash,createHmac } from 'node:crypto';
 import { runDownload,createBackendClient,validateInput,EVENT,RunError } from '../src/run.js';
 const input={url:'https://www.youtube.com/watch?v=jNQXAC9IVRw'};
 const runId='0123456789abcdefg';
 function fixture() {
   let now=1794268800000,charged=false,failed=false,count=0,attempts=0;const values=new Map(),calls=[];
-  const intent={charged:false,event_name:EVENT,count:3,idempotency_key:'stable-key',charge_before:new Date(now+90000).toISOString(),price_usd:0.01,max_total_charge_usd:1};
+  const intent={charged:false,event_name:EVENT,count:3,idempotency_key:'stable-key',charge_before:new Date(now+90000).toISOString(),price_ceiling_usd:0.01,max_total_charge_usd:1};
   const output={run_id:runId,download_url:'https://storage.example/file',size_bytes:2100000,charged_mb:3};
   const backend=async(method,path)=>{
     calls.push([method,path]);
@@ -44,6 +45,9 @@ for(const [label,change] of [
   ['wrong event',i=>{i.event_name='another-fee';}],
   ['fractional count',i=>{i.count=2.5;}],
   ['invalid expiry',i=>{i.charge_before='invalid';}],
+  ['missing price ceiling',i=>{delete i.price_ceiling_usd;}],
+  ['zero price ceiling',i=>{i.price_ceiling_usd=0;}],
+  ['nonfinite price ceiling',i=>{i.price_ceiling_usd=Infinity;}],
 ])test(`${label} cannot charge`,async()=>{
   const f=fixture();change(f.intent);await assert.rejects(runDownload(f.options),/authorization/);assert.equal(f.attempts(),0);
 });
@@ -68,4 +72,29 @@ test('backend request signs exact bytes and does not leak shared secret',async()
 test('untrusted origins and missing provider config cannot receive secrets',()=>{
   for(const baseUrl of ['http://example.com','https://user@example.com','https://example.com/path','https://example.com/?token=1'])
     assert.throws(()=>createBackendClient({runId,secret:'s'.repeat(32),baseUrl}),/not configured/);
+});
+
+test('tiered pricing charges actual MB only and leaves price resolution to Apify', async () => {
+  const pricing = JSON.parse(readFileSync(new URL('../ppe-pricing.json', import.meta.url)));
+  const events = pricing.pricingPerEvent.actorChargeEvents;
+  assert.deepEqual(Object.keys(events), [EVENT]);
+  assert.equal(pricing.isPPEPlatformUsagePaidByUser, false);
+  assert.equal(events[EVENT].eventPriceUsd, undefined);
+  const tiers = events[EVENT].eventTieredPricingUsd;
+  // Each paying tier preserves its reference website rate after the 20% commission.
+  for (const [tier, websiteUsdPerTb] of Object.entries({ BRONZE:80, SILVER:70, GOLD:60, PLATINUM:60, DIAMOND:60 })) {
+    assert.ok(Math.abs(tiers[tier].tieredEventPriceUsd * 1000000 * 0.8 - websiteUsdPerTb) < 1e-9);
+  }
+  const f = fixture();
+  f.intent.price_ceiling_usd = Math.max(...Object.values(tiers).map(t => t.tieredEventPriceUsd));
+  f.intent.max_total_charge_usd = 0.0004;
+  let charged;
+  f.options.charge = async options => { charged = options; f.setCharged(); };
+  await runDownload(f.options);
+  assert.deepEqual(charged, { eventName:EVENT, count:3, idempotencyKey:'stable-key' });
+  const over = fixture();
+  over.intent.price_ceiling_usd = f.intent.price_ceiling_usd;
+  over.intent.max_total_charge_usd = 0.0003;
+  await assert.rejects(runDownload(over.options), /authorization/);
+  assert.equal(over.attempts(), 0);
 });

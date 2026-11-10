@@ -7,7 +7,14 @@
       "download-mb": {
         "eventTitle": "Download 1 MB",
         "eventDescription": "Completed media file size. 1 MB = 1,000,000 bytes, rounded up per file. No download event for failed jobs.",
-        "eventPriceUsd": 0.000125,
+        "eventTieredPricingUsd": {
+          "FREE": { "tieredEventPriceUsd": 0.000125 },
+          "BRONZE": { "tieredEventPriceUsd": 0.0001 },
+          "SILVER": { "tieredEventPriceUsd": 0.0000875 },
+          "GOLD": { "tieredEventPriceUsd": 0.000075 },
+          "PLATINUM": { "tieredEventPriceUsd": 0.000075 },
+          "DIAMOND": { "tieredEventPriceUsd": 0.000075 }
+        },
         "isPrimaryEvent": true
       }
     }

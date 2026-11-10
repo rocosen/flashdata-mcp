@@ -38,9 +38,19 @@ One file per run. Custom format selectors, clipping, metadata upload, callbacks 
 
 ## Pricing and free accounts
 
-The download rate is **$0.000125/MB ($0.125/GB)** for **Download 1 MB** (`download-mb`). Check the **Pricing** tab for the effective platform price. Each completed file is rounded up to a whole decimal MB (1 MB = 1,000,000 bytes). A 2,100,000-byte file is 3 events. The event covers downloading and temporary hosting; it does not bill every later use of the same link.
+The **Download 1 MB** (`download-mb`) rate depends on your Apify discount tier:
 
-Submission, polling and failed downloads produce no download events. The run budget caps the permitted file size before work begins. An oversized file fails instead of silently exceeding that ceiling. Only the download event should be configured: no start fee or dataset-row fee.
+| Apify tier | Typical platform plan | Price per MB | Price per GB |
+| --- | --- | --- | --- |
+| FREE | Free | $0.000125 | $0.125 |
+| BRONZE | Starter | $0.000100 | $0.100 |
+| SILVER | Scale | $0.0000875 | $0.0875 |
+| GOLD | Business | $0.000075 | $0.075 |
+| PLATINUM / DIAMOND | Enterprise | $0.000075 | $0.075 |
+
+These are usage rates, not a separate FlashData monthly subscription. Your Apify subscription credits are shared across the platform. Check the **Pricing** tab for your effective price and any pending price changes. Each completed file is rounded up to a whole decimal MB (1 MB = 1,000,000 bytes). A 2,100,000-byte file is 3 events. The event covers downloading and temporary hosting; it does not bill every later use of the same link.
+
+Submission, polling and failed downloads produce no download events. The run budget caps the permitted file size before work begins. When Apify supplies the complete tier price table, we conservatively reserve budget at the highest rate ($0.125/GB with this table); Apify still charges your actual discounted rate. A very small budget can therefore limit the permitted size more than your discounted rate would require. Increasing the run budget does not increase the per-MB price. An oversized file fails instead of silently exceeding that ceiling. Only the download event should be configured: no start fee or dataset-row fee.
 
 Apify free accounts can use their available platform credits, shared with other Actors. There is no separate FlashData free allowance and no charge to a personal FlashData account. Available platform credit and account restrictions still apply. The file link is released after Apify confirms the download charge. Free-plan activity does not generate developer payouts; it is not a payment from Apify to FlashData.
 
