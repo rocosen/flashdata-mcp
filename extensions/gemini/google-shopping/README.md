@@ -2,7 +2,7 @@
 
 Search Google Shopping and return product offers, merchants and displayed prices as JSON.
 
-Use it from the command line or an MCP client. Requires Node.js **22.18+** and a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_shopping` access. Data queries use paid [FlashData Credits](https://flashdata.dev/pricing); installation is free. Pricing and job reads are free.
+Use it from the command line or an MCP client. Requires Node.js **22.18+** and a [FlashData API key](https://flashdata.dev/signup?utm_source=gemini&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) with `google_shopping` access. Data queries use paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=gemini&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task); installation is free. Pricing and job reads are free.
 
 ## Install in Gemini CLI
 
@@ -100,7 +100,7 @@ Currency-formatted price labels are not normalized numeric prices. This does not
 | `autocorrect` | boolean | No |  |
 | `mode` | string | No | Default: `"realtime"`. Allowed: `realtime`, `async`. |
 
-See the [API reference](https://flashdata.dev/docs/sources/google_shopping) for details. The package includes `schema.json` and `examples/query.json`; `tools` lists schemas allowed by your key.
+See the [API reference](https://flashdata.dev/docs/sources/google_shopping?utm_source=gemini&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) for details. The package includes `schema.json` and `examples/query.json`; `tools` lists schemas allowed by your key.
 
 ## Async jobs and errors
 
@@ -122,4 +122,4 @@ Async JSON results are available for 24 hours.
 CLI exit codes: `0` success, `1` API/tool failure, `2` invalid input/configuration. A successful job read may still be pending.
 [Response limits, MCP chunks and optional settings](https://github.com/rocosen/flashdata-mcp/blob/main/npm/docs/google-shopping/examples.md#protocol-reference).
 
-[API documentation](https://flashdata.dev/docs/sources/google_shopping) · [Pricing](https://flashdata.dev/pricing) · [Source](https://github.com/rocosen/flashdata-mcp) · [Support](mailto:support@flashdata.dev)
+[API documentation](https://flashdata.dev/docs/sources/google_shopping?utm_source=gemini&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [Pricing](https://flashdata.dev/pricing?utm_source=gemini&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_shopping-task) · [Source](https://github.com/rocosen/flashdata-mcp) · [Support](mailto:support@flashdata.dev)

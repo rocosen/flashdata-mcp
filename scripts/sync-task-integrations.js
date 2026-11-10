@@ -75,7 +75,19 @@ files.set('.cursor-plugin/marketplace.json', json({ name: 'flashdata', owner: co
 }));
 files.set('integrations/catalog.json', json(catalog));
 let mismatches = 0;
-for (const [relative, content] of files) {
+// Only the five existing public Gemini repositories are maintained in this batch.
+const publishedGeminiSlugs = new Set(['google-search', 'google-news', 'google-images', 'google-shopping', 'google-video-search']);
+for (const [relative, originalContent] of files) {
+  const task = tasks.find(task => publishedGeminiSlugs.has(task.slug) && relative.startsWith(`extensions/gemini/${task.slug}/`));
+  const content = task ? originalContent.replace(/https:\/\/flashdata\.dev\/(?:docs\/[a-zA-Z0-9/_-]+|pricing|signup|app\/api-keys)(?:\?[^)\s"]*)?/g, raw => {
+    const url = new URL(raw);
+    if (url.pathname === '/app/api-keys') url.pathname = '/signup';
+    url.searchParams.set('utm_source', 'gemini');
+    url.searchParams.set('utm_medium', 'integration');
+    url.searchParams.set('utm_campaign', 'intent_gtm_2026q4');
+    url.searchParams.set('utm_content', `${task.source}-task`);
+    return url.toString();
+  }) : originalContent;
   const target = path.join(root, relative);
   if (check) {
     if (!fs.existsSync(target) || read(relative) !== content) {
