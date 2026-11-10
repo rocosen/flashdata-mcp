@@ -2,7 +2,7 @@
 
 Use an uploader-provided caption track when your subtitle workflow requires that source.
 
-[YouTube Captions inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_captions?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[YouTube Captions inputs, outputs and account setup](https://flashdata.dev/docs/sources/youtube_captions?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_captions-task)
 
 ## Connect and check cost
 

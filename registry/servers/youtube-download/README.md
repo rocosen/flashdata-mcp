@@ -2,7 +2,7 @@
 
 Deliver YouTube video, audio or clips to your own S3 or other supported cloud storage. Track asynchronous delivery and its output manifest.
 
-[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_download) · [Get an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_download?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) · [Get an API key](https://flashdata.dev/signup?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_download-task)
 
 ## A task to try
 

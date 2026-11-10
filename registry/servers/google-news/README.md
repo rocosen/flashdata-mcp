@@ -2,7 +2,7 @@
 
 Search Google News for articles, publishers, date labels and source links. Turn a topic into a traceable news briefing.
 
-[API documentation and account setup](https://flashdata.dev/docs/sources/google_news) · [Get an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[API documentation and account setup](https://flashdata.dev/docs/sources/google_news?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [Get an API key](https://flashdata.dev/signup?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_news-task)
 
 ## A task to try
 

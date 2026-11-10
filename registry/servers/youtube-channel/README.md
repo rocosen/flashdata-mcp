@@ -2,7 +2,7 @@
 
 Read a YouTube channel profile and recent videos by handle. Capture channel identifiers and a bounded recent-upload inventory.
 
-[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_channel) · [Get an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[API documentation and account setup](https://flashdata.dev/docs/sources/youtube_channel?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [Get an API key](https://flashdata.dev/signup?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_channel-task)
 
 ## A task to try
 

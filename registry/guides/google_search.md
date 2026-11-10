@@ -2,7 +2,7 @@
 
 Give an AI research assistant Google web-search evidence for a topic such as battery recycling. The MCP returns ranked titles, URLs and snippets; your agent turns those records into a source shortlist, notes what still needs checking, and cites the original links.
 
-[Google Search inputs, outputs and account setup](https://flashdata.dev/docs/sources/google_search?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-guide) · [Create an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[Google Search inputs, outputs and account setup](https://flashdata.dev/docs/sources/google_search?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [Create an API key](https://flashdata.dev/signup?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=official-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task)
 
 ## Example agent task
 

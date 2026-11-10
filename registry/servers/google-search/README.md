@@ -2,7 +2,7 @@
 
 Give an AI research assistant Google web-search evidence for a topic such as battery recycling. Retrieve ranked titles, URLs and snippets, then let your agent build a source shortlist and a brief with links to the original pages.
 
-[API documentation and account setup](https://flashdata.dev/docs/sources/google_search) · [Get an API key](https://flashdata.dev/app/api-keys) · [Current pricing](https://flashdata.dev/pricing)
+[API documentation and account setup](https://flashdata.dev/docs/sources/google_search?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [Get an API key](https://flashdata.dev/signup?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task) · [Current pricing](https://flashdata.dev/pricing?utm_source=github-mcp-registry&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_search-task)
 
 ## A task to try
 
