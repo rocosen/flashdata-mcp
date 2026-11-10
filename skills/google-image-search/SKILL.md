@@ -10,7 +10,7 @@ metadata:
 
 Find images by keyword and return image URLs, source pages and available dimensions. Useful for collecting visual references, finding diagrams and building an image list your application can process.
 
-[Documentation](https://flashdata.dev/docs/sources/google_images?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [Get an API key](https://flashdata.dev/app/api-keys)
+[Documentation](https://flashdata.dev/docs/sources/google_images?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) · [Get an API key](https://flashdata.dev/signup?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task)
 
 ## Example requests
 
@@ -20,13 +20,13 @@ Find images by keyword and return image URLs, source pages and available dimensi
 
 ## Quick start with Python
 
-Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/app/api-keys) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
+Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/signup?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
 
 ```sh
 python3 -m pip install 'mcp==1.30.0' 'httpx==0.28.1'
 ```
 
-Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing); installing the dependencies is free. Run only within the user's authorized task and budget.
+Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=google_images-task); installing the dependencies is free. Run only within the user's authorized task and budget.
 
 ```python
 import asyncio

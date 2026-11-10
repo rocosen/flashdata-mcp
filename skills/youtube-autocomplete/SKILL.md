@@ -10,7 +10,7 @@ metadata:
 
 Turn a partial search phrase into YouTube autocomplete suggestions. Explore how people phrase a topic, find related questions, or compare suggested searches across languages and regions.
 
-[Documentation](https://flashdata.dev/docs/sources/youtube_suggestions?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) · [Get an API key](https://flashdata.dev/app/api-keys)
+[Documentation](https://flashdata.dev/docs/sources/youtube_suggestions?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) · [Get an API key](https://flashdata.dev/signup?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task)
 
 ## Example requests
 
@@ -20,13 +20,13 @@ Turn a partial search phrase into YouTube autocomplete suggestions. Explore how 
 
 ## Quick start with Python
 
-Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/app/api-keys) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
+Use Python 3.10+ and a [FlashData API key](https://flashdata.dev/signup?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) supplied as `FLASHDATA_API_KEY` through your environment or secret manager. Install the Python dependencies in your virtual environment:
 
 ```sh
 python3 -m pip install 'mcp==1.30.0' 'httpx==0.28.1'
 ```
 
-Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing); installing the dependencies is free. Run only within the user's authorized task and budget.
+Save the following code as `example.py` and run `python3 example.py`. It connects to hosted [FlashData MCP](https://flashdata.dev/mcp?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task) and sends one request. Data calls use paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=skills-sh&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=youtube_suggestions-task); installing the dependencies is free. Run only within the user's authorized task and budget.
 
 ```python
 import asyncio
