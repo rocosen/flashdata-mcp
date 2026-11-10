@@ -8,19 +8,19 @@ Find ranked web sources, prepare news briefings, discover places, and research Y
 
 ## Install and configure
 
-Use Python 3.11+. The adapter is tested with Pydantic AI 2.61.0, FastMCP 4.1.3 and HTTPX2 2.16.0. Install the published [PyPI package](https://pypi.org/project/pydantic-ai-flashdata/0.1.0/):
+Use Python 3.11+. The adapter is tested with Pydantic AI 2.61.0, FastMCP 4.1.3 and HTTPX2 2.16.0. Install the published [PyPI package](https://pypi.org/project/pydantic-ai-flashdata/0.1.1/):
 
 ```sh
-pip install 'pydantic-ai-flashdata==0.1.0'
+pip install 'pydantic-ai-flashdata==0.1.1'
 ```
 
 The pinned public source release is also available:
 
 ```sh
-pip install 'pydantic-ai-flashdata @ git+https://github.com/rocosen/flashdata-mcp.git@pydantic-ai-v0.1.0#subdirectory=packages/pydantic-ai'
+pip install 'pydantic-ai-flashdata @ git+https://github.com/rocosen/flashdata-mcp.git@pydantic-ai-v0.1.1#subdirectory=packages/pydantic-ai'
 ```
 
-Version 0.1.0 was published through the repository's project-specific Trusted Publisher. The public wheel and source distribution match the GitHub Actions build artifacts, and a fresh PyPI installation passed import and Agent spec registration checks without service calls.
+Version 0.1.1 was published through the repository's project-specific Trusted Publisher. The public wheel and source distribution match the GitHub Actions build artifacts, and a fresh PyPI installation passed import and Agent spec registration checks without service calls.
 
 Get your [API key](https://flashdata.dev/signup?utm_source=pydantic-ai&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined) and supply `FLASHDATA_API_KEY` through your launching environment or secret manager. Do not put the value in code, YAML, chat or logs. No credential files are read. Importing the package or constructing the capability does not connect or spend Credits. Discovery starts when an agent run enters the toolset and contacts `https://data.flashdata.dev/mcp` with `X-API-Key`.
 
