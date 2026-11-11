@@ -9,11 +9,11 @@ Find web sources, prepare news briefings, discover local businesses and research
 ## Install from npm in Pi
 
 ```sh
-pi install npm:@flashdata-dev/agent-skills@0.1.0
+pi install npm:@flashdata-dev/agent-skills@0.1.1
 pi list
 ```
 
-Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.0`. The npm release remains 0.1.0; the updated website links are available in the Git distribution below while npm publication is pending.
+Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.1`.
 
 ## Install from Git
 
