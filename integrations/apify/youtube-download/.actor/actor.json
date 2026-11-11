@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-download",
+  "title": "YouTube Video & Audio Downloader by FlashData",
+  "description": "Download YouTube videos, audio and Shorts with hosted download links. MP4, WEBM, MKV, MP3, M4A and OPUS. Pay through Apify per completed MB; no FlashData API key required.",
+  "version": "0.2",
+  "buildTag": "ppe-preview",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

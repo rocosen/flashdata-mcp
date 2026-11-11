@@ -1,0 +1,22 @@
+{
+  "name": "flashdata-apify-youtube-transcript",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Extract existing YouTube captions as timestamped text and full transcript JSON. Select a language and caption type; defaults to automatic captions. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@flashdata-dev/mcp": "0.2.0",
+    "apify": "3.7.2"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "basic-ftp": "6.2.3"
+  }
+}

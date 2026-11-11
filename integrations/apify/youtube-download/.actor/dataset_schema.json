@@ -1,0 +1,48 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "Download result",
+      "transformation": {
+        "fields": [
+          "run_id",
+          "download_url",
+          "filename",
+          "size_bytes",
+          "charged_mb",
+          "expires_at"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "run_id": {
+            "label": "run_id",
+            "format": "text"
+          },
+          "download_url": {
+            "label": "download_url",
+            "format": "link"
+          },
+          "filename": {
+            "label": "filename",
+            "format": "text"
+          },
+          "size_bytes": {
+            "label": "size_bytes",
+            "format": "number"
+          },
+          "charged_mb": {
+            "label": "charged_mb",
+            "format": "number"
+          },
+          "expires_at": {
+            "label": "expires_at",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

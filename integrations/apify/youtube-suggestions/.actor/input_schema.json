@@ -1,0 +1,49 @@
+{
+  "title": "YouTube Autocomplete with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Get YouTube autocomplete phrases for one query prefix, language and region. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "properties": {
+    "query": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "title": "Query",
+      "description": "Autocomplete prefix, e.g. battery recycling.",
+      "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Requires youtube_suggestions access. Get your key: https://flashdata.dev/app/api-keys",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 35,
+      "pattern": "^[A-Za-z0-9-]+$",
+      "default": "en",
+      "title": "Language",
+      "description": "Suggestion language code, e.g. en, de or es.",
+      "editor": "textfield",
+      "sectionCaption": "Optional settings"
+    },
+    "region": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2,
+      "default": "US",
+      "pattern": "^[A-Za-z]{2}$",
+      "title": "Region",
+      "description": "Two-letter country code, e.g. US, GB or SG.",
+      "editor": "textfield"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "query"
+  ],
+  "additionalProperties": false
+}

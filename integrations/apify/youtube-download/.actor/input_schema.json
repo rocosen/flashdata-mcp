@@ -1,0 +1,109 @@
+{
+  "title": "YouTube Video & Audio Downloader",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Download one video or audio file. Pay through Apify per completed MB; no FlashData API key or cloud storage credentials required.",
+  "properties": {
+    "url": {
+      "title": "YouTube video URL",
+      "type": "string",
+      "editor": "textfield",
+      "description": "Public YouTube watch, Shorts or youtu.be HTTPS URL.",
+      "prefill": "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+    },
+    "download_type": {
+      "type": "string",
+      "default": "audio_video",
+      "enum": [
+        "audio_video",
+        "video",
+        "audio"
+      ],
+      "title": "Download Type",
+      "description": "Video with audio, video only, or audio only.",
+      "editor": "select"
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "mp4",
+        "webm",
+        "mkv",
+        "m4a",
+        "mp3",
+        "opus"
+      ],
+      "title": "Output Format",
+      "description": "Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default.",
+      "editor": "select"
+    },
+    "video_quality": {
+      "type": "string",
+      "enum": [
+        "<=144",
+        "==144",
+        "<=360",
+        "==360",
+        "<=480",
+        "==480",
+        "<=720",
+        "==720",
+        "<=1080",
+        "==1080",
+        "<=1440",
+        "==1440",
+        "<=2160",
+        "==2160"
+      ],
+      "title": "Video Quality",
+      "description": "Default ceiling: 1080p. Up to 2160p where available. Omit for audio-only downloads; no upscaling.",
+      "editor": "select",
+      "sectionCaption": "Optional download settings"
+    },
+    "fps": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 6,
+      "pattern": "^(?:>=|<=|==)(?:[1-9]\\d?|1\\d\\d|2[0-3]\\d|240)$",
+      "title": "Fps",
+      "description": "Frame-rate constraint. Omit for audio-only downloads.",
+      "editor": "textfield"
+    },
+    "audio_quality": {
+      "type": "string",
+      "enum": [
+        "best",
+        "320",
+        "256",
+        "192",
+        "128"
+      ],
+      "title": "Audio Quality",
+      "description": "Applies only to audio downloads; omit for video or combined media.",
+      "editor": "select"
+    },
+    "audio_language": {
+      "type": "string",
+      "enum": [
+        "default",
+        "original"
+      ],
+      "title": "Audio Language",
+      "description": "Audio language selection; omit for video-only downloads.",
+      "editor": "select"
+    },
+    "maxFileMB": {
+      "title": "Maximum file size (MB)",
+      "type": "integer",
+      "editor": "number",
+      "minimum": 1,
+      "maximum": 800,
+      "default": 50,
+      "description": "Hard file-size ceiling. Also limited by your run budget. 1 MB = 1,000,000 bytes. Oversized downloads fail without a download event charge."
+    }
+  },
+  "required": [
+    "url"
+  ],
+  "additionalProperties": false
+}

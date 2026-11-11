@@ -1,0 +1,44 @@
+{
+  "title": "YouTube Search with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Search YouTube by keyword with filters and up to 20 requested results. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "properties": {
+    "query": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "title": "Query",
+      "description": "One search query, e.g. battery recycling explained.",
+      "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Requires youtube_search access. Get your key: https://flashdata.dev/app/api-keys",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "max_results": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20,
+      "default": 20,
+      "title": "Max Results",
+      "description": "Maximum results (1–20). Actual count may be lower.",
+      "editor": "number",
+      "sectionCaption": "Optional settings"
+    },
+    "filters": {
+      "title": "Filters",
+      "description": "JSON filters, e.g. {\"upload_date\":\"this_week\",\"type\":\"video\"}. See README for supported values.",
+      "type": "object",
+      "editor": "json"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "query"
+  ],
+  "additionalProperties": false
+}

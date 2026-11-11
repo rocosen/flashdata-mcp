@@ -1,0 +1,46 @@
+{
+  "title": "YouTube Transcript with FlashData",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Read existing YouTube captions as timestamped text; defaults to English automatic captions. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "properties": {
+    "video_id": {
+      "type": "string",
+      "minLength": 11,
+      "maxLength": 11,
+      "pattern": "^[A-Za-z0-9_-]{11}$",
+      "title": "Video Id",
+      "description": "11-character YouTube video ID (the v= value in a watch URL).",
+      "editor": "textfield"
+    },
+    "flashdataApiKey": {
+      "title": "FlashData API key",
+      "type": "string",
+      "description": "Requires youtube_transcript access. Get your key: https://flashdata.dev/app/api-keys",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 35,
+      "pattern": "^[A-Za-z0-9-]+$",
+      "default": "en",
+      "title": "Language",
+      "description": "Existing caption language, e.g. en, de or es. No translation.",
+      "editor": "textfield",
+      "sectionCaption": "Optional settings"
+    },
+    "auto": {
+      "type": "boolean",
+      "default": true,
+      "description": "true selects automatic captions; false selects uploader captions. No fallback.",
+      "title": "Auto"
+    }
+  },
+  "required": [
+    "flashdataApiKey",
+    "video_id"
+  ],
+  "additionalProperties": false
+}
