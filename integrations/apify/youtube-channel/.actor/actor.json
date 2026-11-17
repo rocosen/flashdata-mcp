@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-channel",
-  "title": "YouTube Channel Scraper",
-  "description": "Get a YouTube channel profile and recent videos from its handle. Request up to 100 videos with available titles, durations, views and dates. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "title": "YouTube Channel Scraper — $0.50/1K Requests",
+  "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Get a channel profile by handle and up to 100 recent videos, with available titles, durations, views and dates. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

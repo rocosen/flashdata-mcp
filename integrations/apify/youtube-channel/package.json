@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Get a YouTube channel profile and recent videos from its handle. Request up to 100 videos with available titles, durations, views and dates. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Get a channel profile by handle and up to 100 recent videos, with available titles, durations, views and dates. Requires your FlashData API key and Credits; Apify usage is separate.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

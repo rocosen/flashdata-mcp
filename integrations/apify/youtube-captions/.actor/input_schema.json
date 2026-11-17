@@ -2,7 +2,7 @@
   "title": "YouTube Uploader Captions with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Read existing uploader-provided YouTube subtitles; defaults to English. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "description": "$0.50/1K PAYG requests; lower FlashData plan rates. Requires your FlashData key and Credits. Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "video_id": {
       "type": "string",

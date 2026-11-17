@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Extract existing YouTube subtitles with timestamps and full text. Choose a language; defaults to uploader-provided captions. Export JSON or CSV. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Extract existing subtitles with timestamps and full text. Select a language; defaults to uploader-provided captions. Requires your FlashData API key and Credits; Apify usage is separate.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

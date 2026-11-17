@@ -2,7 +2,7 @@
   "title": "Google Videos with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Find video results across websites through Google Videos. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "description": "$1.00/1K PAYG requests; lower FlashData plan rates. One query/page. Requires your FlashData key and Credits. Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "title": "Search query",

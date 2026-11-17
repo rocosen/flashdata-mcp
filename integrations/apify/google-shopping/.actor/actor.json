@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "google-shopping",
-  "title": "Google Shopping Scraper",
-  "description": "Scrape Google Shopping results with product titles, merchants, prices, links and available ratings. Customize country, language and search location. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "title": "Google Shopping Scraper — $1/1K Requests",
+  "description": "From $0.40/1K requests on FlashData Business; $1.00/1K PAYG. Collect product listings, displayed prices, merchants, links and available ratings for product and market research. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

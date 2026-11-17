@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-transcript",
-  "title": "YouTube Transcript Scraper",
-  "description": "Extract existing YouTube captions as timestamped text and full transcript JSON. Select a language and caption type; defaults to automatic captions. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "title": "YouTube Transcript Scraper — $0.50/1K Requests",
+  "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Extract existing captions as timestamped text and fullText JSON. Select a language; defaults to automatic captions. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

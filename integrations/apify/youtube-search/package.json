@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Search YouTube by keyword and extract titles, video IDs and available channel, duration, view and date metadata. Apply search filters; request up to 20 results. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Search by keyword with filters and up to 20 requested results. Get video IDs, titles and available channel and view data. Requires your FlashData API key and Credits; Apify usage is separate.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

@@ -1,13 +1,13 @@
 {
-  "title": "Google Search Results Scraper",
+  "title": "Google Search Results Scraper \u2014 $1/1K Requests",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Google Search results as structured JSON. Uses FlashData Credits; Apify usage is billed separately. API key: https://flashdata.dev/app/api-keys",
+  "description": "$1.00/1K PAYG requests; lower FlashData plan rates. One query/page. Requires your FlashData key and Credits. Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "query": {
       "title": "Search query",
       "type": "string",
-      "description": "One search query, e.g. AI agent tools or site:github.com MCP server.",
+      "description": "One search query, e.g. battery recycling research or site:example.com recycling.",
       "editor": "textfield",
       "minLength": 1,
       "maxLength": 2000
@@ -22,7 +22,7 @@
     "num": {
       "title": "Requested results",
       "type": "integer",
-      "description": "Maximum results to request (1–100). Actual count may be lower.",
+      "description": "Maximum results to request (1\u2013100). Actual count may be lower.",
       "minimum": 1,
       "maximum": 100,
       "default": 10,

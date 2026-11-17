@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Scrape Google Shopping results with product titles, merchants, prices, links and available ratings. Customize country, language and search location. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "description": "From $0.40/1K requests on FlashData Business; $1.00/1K PAYG. Collect product listings, displayed prices, merchants, links and available ratings for product and market research. Requires your FlashData API key and Credits; Apify usage is separate.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

@@ -2,7 +2,7 @@
   "title": "YouTube Channel with FlashData",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Get a YouTube channel profile and up to 100 recent videos by handle. Uses FlashData Credits; Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
+  "description": "$0.50/1K PAYG requests; lower FlashData plan rates. Requires your FlashData key and Credits. Apify usage is separate. API key: https://flashdata.dev/app/api-keys",
   "properties": {
     "handle": {
       "type": "string",

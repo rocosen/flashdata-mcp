@@ -1,16 +1,81 @@
-# Google Shopping Scraper
+# Google Shopping Scraper — $1/1K Requests
+
+**$1.00 per 1,000 requests with no monthly FlashData subscription. From $0.40/1,000 on FlashData Business ($1,999/month, including 40,000 Credits). Apify usage is billed separately.**
 
 Search Google Shopping by keyword and collect product listings in a structured dataset. Compare the offers returned for a product category, review merchant coverage and research displayed prices in different markets.
 
-## What you get
+Start with one query and your FlashData API key. Results are saved to an Apify dataset and a complete JSON OUTPUT record. API requests use your own FlashData account and Credits. Apify compute and storage are billed separately through Apify.
+
+## Features
 
 - **Product listings:** titles, merchant/source names, displayed prices and product links.
 - **Available ratings:** rating values and rating counts when returned by the provider.
 - **Market selection:** country, language, location and results-page controls; export the dataset as JSON or CSV.
+- **Direct API workflow:** enter your key and inputs, then start the request without setting up a browser or proxy.
 
 Use it to explore a product niche, shortlist competing offers or collect a pricing snapshot for further analysis.
 
-## Example output
+## Input
+
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `query` | Yes | One search query, e.g. portable solar panel.  |
+| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
+| `num` | No | Maximum results to request (1–100). Actual count may be lower. Range: 1–100. Default: `10`. |
+| `page` | No | Results page number, starting at 1. Range: 1–100. Default: `1`. |
+| `gl` | No | Two-letter country code, e.g. us, gb or sg.  |
+| `hl` | No | Google interface language, e.g. en or zh-cn.  |
+| `location` | No | Search location, e.g. Singapore or New York.  |
+| `tbs` | No | Optional Google search filter. Supported behavior depends on the search type.  |
+| `autocorrect` | No | Allow Google to correct spelling.  |
+
+Each run handles one query and one page. Additional queries or pages require separate runs; the requested result count is not guaranteed.
+
+### Example input and first run
+
+1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_shopping` access and available Credits.
+2. Enter a product **Search query** and your key. Set a country or location if you want a particular market.
+3. Click **Start**, then open **Google Shopping results** to review or export the listings.
+
+```json
+{
+  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
+  "query": "portable solar panel",
+  "num": 10,
+  "gl": "us",
+  "hl": "en"
+}
+```
+
+## Pricing
+
+All prices below are in USD.
+
+**Pay as you go: $1.00/1,000 requests, with no monthly FlashData subscription.** Lower API rates apply to FlashData monthly plans; these are FlashData plans, independent of your Apify subscription.
+
+| FlashData plan | Monthly fee | Included Credits | API rate per 1,000 requests |
+| --- | --- | --- | --- |
+| Pay as you go | $0 | 0 | $1.00 |
+| Micro | $49 | 1,000 | $0.80 |
+| Starter | $199 | 4,000 | $0.65 |
+| Pro | $499 | 10,000 | $0.60 |
+| Scale | $999 | 20,000 | $0.50 |
+| Business | $1,999 | 40,000 | $0.40 |
+
+One request is **one query and one selected results page**. Each additional query or page is a separate request. The API rate is per request, not per dataset row; requesting more results within the supported limit does not change that unit. Actual result counts may be lower.
+
+Rates checked November 17, 2026. See [FlashData pricing](https://flashdata.dev/pricing/google-search) and your account for current rates. For example, 10,000 PAYG requests consume $10 of FlashData API usage, plus Apify resources. On a monthly plan, eligible usage is deducted from included Credits first.
+
+### What you pay and where
+
+- **FlashData API usage:** use your own [FlashData account and API key](https://flashdata.dev/app/api-keys). Requests consume that account's Credits at its applicable rate. 1 Credit = $0.05 of API usage; Credits are usage units, not request counts.
+- **Monthly plans include Credits:** the monthly fee adds the shared Credits shown above. Usage covered by those Credits is not charged a second time. The same balance is shared across FlashData products; each product does not get a separate allowance.
+- **Apify usage is separate:** compute, storage and other Apify platform operations use your Apify allowance or balance under your Apify plan. The FlashData API rate is not the total Apify cost. An Apify subscription does not select your FlashData plan.
+- **No additional Actor service fee or proxy purchase:** this Actor adds no service fee and has no proxy input. You do not need to configure or buy an Apify Proxy for it. FlashData API usage and Apify resources still apply.
+
+Clicking **Start** submits the request directly. Check key permissions and available Credits first. The Actor does not automatically retry an uncertain paid submission. After a timeout, inspect OUTPUT and FlashData Jobs/usage before starting a new run; the request may already have been charged.
+
+## Output
 
 The **Google Shopping results** dataset contains one returned listing per row. This example is illustrative, not a live result:
 
@@ -30,41 +95,16 @@ The **Google Shopping results** dataset contains one returned listing per row. T
 
 The `price` field preserves the displayed text, including currency symbols when supplied. Optional fields may be absent. **Complete response and status** contains the full response and returned usage information.
 
-## Quick start
+## Send Results to Your Workflow
 
-1. Get a [FlashData API key](https://flashdata.dev/app/api-keys) with `google_shopping` access and available Credits.
-2. Enter a product **Search query** and your key. Set a country or location if you want a particular market.
-3. Click **Start**, then open **Google Shopping results** to review or export the listings.
+Save displayed prices with the query and collection time in your own catalog. Match product models and currencies before comparing listings.
 
-```json
-{
-  "flashdataApiKey": "YOUR_FLASHDATA_API_KEY",
-  "query": "portable solar panel",
-  "num": 10,
-  "gl": "us",
-  "hl": "en"
-}
-```
+1. Save a Task or call this Actor with the [Apify API](https://docs.apify.com/api/v2) using the same input fields.
+2. Use a run-succeeded integration or webhook to trigger your next step.
+3. Read the default dataset for rows and the key-value store's **OUTPUT** record for the complete response, status and returned usage. JSON preserves nested fields; CSV is useful for flat rows.
+4. Pass the selected fields to your spreadsheet, database or other application through your chosen connector or its API.
 
-## Input parameters
-
-| Parameter | Required | Description |
-| --- | --- | --- |
-| `query` | Yes | One search query, e.g. portable solar panel.  |
-| `flashdataApiKey` | Yes | Your FlashData API key, stored as encrypted input.  |
-| `num` | No | Maximum results to request (1–100). Actual count may be lower. Range: 1–100. Default: `10`. |
-| `page` | No | Results page number, starting at 1. Range: 1–100. Default: `1`. |
-| `gl` | No | Two-letter country code, e.g. us, gb or sg.  |
-| `hl` | No | Google interface language, e.g. en or zh-cn.  |
-| `location` | No | Search location, e.g. Singapore or New York.  |
-| `tbs` | No | Optional Google search filter. Supported behavior depends on the search type.  |
-| `autocorrect` | No | Allow Google to correct spelling.  |
-
-Each run handles one query and one page. Additional queries or pages require separate runs; the requested result count is not guaranteed.
-
-## Pricing
-
-Requests use your FlashData Credits at your applicable [account rate](https://flashdata.dev/pricing). This Actor adds no service fee. Apify compute, storage and other platform usage are billed separately under your Apify plan.
+Connections are configured in Apify or your own workflow; this Actor has no destination connector input. Scheduled runs and follow-up Actor calls submit new requests and can incur further usage. See [Apify integrations](https://docs.apify.com/platform/integrations) for available methods.
 
 ## FAQ
 
@@ -88,7 +128,7 @@ Available ratings and rating counts can be returned; full customer reviews are n
 
 Check key permissions and Credits for authentication errors. After a timeout or interruption, inspect **Complete response and status** and FlashData Jobs/usage before starting again: the request may already have been charged. A new run can create another charge.
 
-## Support
+## Contact
 
 Open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL or request ID. Do not include API keys.
 

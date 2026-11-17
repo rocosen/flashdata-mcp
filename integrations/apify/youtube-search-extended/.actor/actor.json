@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-search-extended",
-  "title": "YouTube Search Scraper – Extended",
-  "description": "Search YouTube by keyword and request up to 700 results with available titles, channels, durations, views and dates. Uses the extended-search rate. Requires a FlashData API key and Credits; Apify usage is billed separately.",
+  "title": "YouTube Search Scraper — Up to 700 Results",
+  "description": "Extended Search uses its own FlashData rate. Request up to 700 YouTube results per query, filter discovery results and export video IDs, titles and available metadata. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",
   "defaultMemoryMbytes": 256,

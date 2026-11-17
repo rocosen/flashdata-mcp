@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Google Search Actor using the customer's FlashData API key and Credits",
+  "description": "From $0.40/1K requests on FlashData Business; $1.00/1K PAYG. Scrape organic titles, URLs, snippets and positions. Localize by country, language and location; select a page and time filter. Requires your FlashData API key and Credits; Apify usage is separate.",
   "license": "MIT",
-  "engines": { "node": ">=22.18.0" },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "start": "node src/main.js",
     "test": "node --test test/*.test.js",
