@@ -1,13 +1,13 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "flashdata-plugin",
-  "version": "0.1.1",
-  "description": "Google web, news, image, shopping, video and places search, plus YouTube research and media delivery. Bring your own FlashData API key and paid Credits.",
+  "version": "0.1.2",
+  "description": "Google Search, YouTube Data and YouTube Download: web, news, images, shopping, videos and places; video and channel data, transcripts, captions, and media delivery to your own storage. Requires your FlashData API key and paid Credits.",
   "author": { "name": "FlashData (rocosen)", "email": "support@flashdata.dev", "url": "https://github.com/rocosen" },
   "homepage": "https://flashdata.dev/mcp?utm_source=hermes&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined",
   "repository": "https://github.com/rocosen/flashdata-mcp",
   "license": "MIT",
-  "keywords": ["google-search", "web-search", "news", "youtube", "transcript", "flashdata"],
+  "keywords": ["google-search", "google-news", "google-images", "google-shopping", "google-places", "web-search", "youtube-data", "youtube-search", "youtube-transcript", "youtube-captions", "youtube-channel", "youtube-download", "flashdata"],
   "extensions": {
     "com.nousresearch.hermes": {
       "config_schema": {
