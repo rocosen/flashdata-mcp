@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Download YouTube videos, audio and Shorts with hosted download links. MP4, WEBM, MKV, MP3, M4A and OPUS. Pay through Apify per completed MB; no FlashData API key required.",
+  "description": "From $0.10/GB on Business; $0.125/GB on Starter. Download YouTube videos and Shorts up to 4K, or extract MP3, M4A and OPUS audio. Get hosted links with no extra platform or proxy fees and no cloud setup. Free-plan rate: $2.50/GB. Pay per completed MB.",
   "license": "MIT",
   "engines": {
     "node": ">=22.18.0"

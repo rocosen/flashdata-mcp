@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "youtube-download",
-  "title": "YouTube Video & Audio Downloader by FlashData",
-  "description": "Download YouTube videos, audio and Shorts with hosted download links. MP4, WEBM, MKV, MP3, M4A and OPUS. Pay through Apify per completed MB; no FlashData API key required.",
+  "title": "YouTube Video & Audio Downloader — No Platform or Proxy Fees",
+  "description": "From $0.10/GB on Business; $0.125/GB on Starter. Download YouTube videos and Shorts up to 4K, or extract MP3, M4A and OPUS audio. Get hosted links with no extra platform or proxy fees and no cloud setup. Free-plan rate: $2.50/GB. Pay per completed MB.",
   "version": "0.2",
   "buildTag": "ppe-preview",
   "defaultMemoryMbytes": 256,

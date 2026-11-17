@@ -1,13 +1,49 @@
-# YouTube Video & Audio Downloader by FlashData
+# YouTube Video & Audio Downloader — No Platform or Proxy Fees
 
-Download a public YouTube video, audio track or Short and get a hosted file link. Pay through Apify for the completed file size. No FlashData account, FlashData API key or cloud storage credentials are required.
+**Download from $0.10/GB on Apify Business, or $0.125/GB on Starter. No extra platform or proxy fees for the Actor run.** Free-plan downloads are $2.50/GB; see the full tier table below.
 
-## Quick start
+Paste a public YouTube video or Shorts URL, choose video with sound, silent video or audio, and get a hosted download link. Save video as MP4, WEBM or MKV, or extract audio as MP3, M4A or OPUS. Choose video quality up to 4K where the source supports it.
 
-1. Paste a YouTube HTTPS URL.
-2. Choose video with sound, silent video or audio, and optional format/quality settings.
-3. Set **Max total charge** in Apify and start the run.
-4. Open **OUTPUT** for the latest download link. Save the file before the link expires.
+You do not need a FlashData account, a FlashData API key or your own cloud storage. Payment stays in Apify and is based on the completed file size, with no separate start fee or dataset-row charge.
+
+## Features
+
+- **Videos, Shorts and audio:** download from public YouTube watch, Shorts and youtu.be links; one file per run.
+- **Video quality from 144p to 4K:** choose a resolution ceiling or an exact resolution, subject to source availability. The default ceiling is 1080p.
+- **Six output formats:** MP4, WEBM and MKV for video; MP3, M4A and OPUS for audio.
+- **Audio and frame-rate controls:** choose audio bitrate, the default or original source audio track, and a video FPS constraint.
+- **Hosted files without storage setup:** receive a temporary download link and the file name, type, size and expiry in JSON.
+- **Pay for completed MB:** the download rate includes temporary hosting and Actor run platform usage. No extra proxy, start or dataset-row event fees.
+- **Continue in your workflow:** retrieve results through the Apify API or use a run-finished integration to pass them to your next step.
+
+## Input
+
+Only `url` is required. Optional settings let you choose the media type, format, quality and maximum file size.
+
+| Field | Required | What it does |
+| --- | --- | --- |
+| `url` | Yes | Public YouTube watch, Shorts or youtu.be HTTPS URL. |
+| `download_type` | No | `audio_video` for video with sound (default), `video` for silent video, or `audio` for audio only. |
+| `output_format` | No | Video: `mp4`, `webm`, `mkv`. Audio: `mp3`, `m4a`, `opus`. Omit to use the default for the selected download type. |
+| `video_quality` | No | `<=N` selects a resolution ceiling; `==N` requests an exact resolution. Supported N: 144, 360, 480, 720, 1080, 1440, 2160. Default: up to 1080p. Omit for audio-only downloads. |
+| `fps` | No | Video frame-rate constraint, such as `<=30`. Operators: `<=`, `==`, `>=`; values: 1–240. Omit for audio only. |
+| `audio_quality` | No | Audio-only bitrate: `best`, `320`, `256`, `192` or `128` kbps. Omit for video downloads. |
+| `audio_language` | No | `default` or `original` source audio track. Omit for silent video. This selects an existing track; it does not translate audio. |
+| `maxFileMB` | No | Maximum completed file size in decimal MB. Default: 50; maximum: 800. Your run budget can reduce this limit. |
+
+Formats, resolutions and frame rates depend on the source video; the Actor does not upscale it. This Actor accepts one URL per run and provides hosted delivery. It does not offer clipping, batch input or delivery to customer cloud storage.
+
+### Storage options
+
+**Hosted delivery is included.** The media file is hosted by FlashData, and the Actor saves its download link and file details to Apify's **OUTPUT** record and default dataset. You do not need to create a bucket or enter storage credentials.
+
+Download links normally last up to **five minutes**. The underlying hosted file is normally retained for about **24 hours**. These are different expiry times: use `expires_at` for the link and `file_expires_at` for the file, and save the media promptly.
+
+If you need a lasting copy in S3, Google Cloud, Azure or another destination, have your own workflow download and upload the file while the link is valid. This Actor does not upload directly to those services.
+
+### Example input
+
+For an MP4 video with sound:
 
 ```json
 {
@@ -19,53 +55,88 @@ Download a public YouTube video, audio track or Short and get a hosted file link
 }
 ```
 
-For MP3, use `download_type: "audio"`, `output_format: "mp3"`, and optionally `audio_quality: "192"`. Omit video quality and FPS for audio. Source availability determines which combinations work; no upscaling or translation.
+For MP3 audio:
 
-## Inputs
+```json
+{
+  "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+  "download_type": "audio",
+  "output_format": "mp3",
+  "audio_quality": "192",
+  "maxFileMB": 50
+}
+```
 
-| Field | Meaning |
-| --- | --- |
-| `url` | Required. Public YouTube watch, Shorts or youtu.be HTTPS link. |
-| `download_type` | `audio_video` (default), `video` (silent) or `audio`. |
-| `output_format` | Video: `mp4`, `webm`, `mkv`. Audio: `m4a`, `mp3`, `opus`. Omit for the type-specific default. |
-| `video_quality` | `<=N` ceiling or `==N` exact resolution. N: 144, 360, 480, 720, 1080, 1440, 2160. Default ceiling 1080p. Video only. |
-| `fps` | Frame-rate constraint such as `<=30`; operators `<=`, `==`, `>=` and values 1–240. Video only. |
-| `audio_quality` | Audio-only: `best`, `320`, `256`, `192` or `128` kbps. |
-| `audio_language` | `default` or `original` source audio track. Omit for silent video. |
-| `maxFileMB` | File-size ceiling, default 50 MB, maximum 800 MB. Also reduced to fit the run budget. |
+Paste your URL, choose the settings, set **Max total charge** and click **Start**. Open **OUTPUT** when the run finishes to get the latest link. A **$0.125 run budget** allows up to 50 MB under the current conservative budget check; it is a spending ceiling, not a fixed download charge. Recommended run timeout: **900 seconds**.
 
-One file per run. Custom format selectors, clipping, metadata upload, callbacks and customer storage are not supported. Old `flashdataApiKey`, `storageJson`, `video_id`, `jobId` and `waitSeconds` inputs must be removed when migrating saved tasks.
+Saved tasks from the former FlashData-key version must use the fields above; remove `flashdataApiKey`, `storageJson`, `video_id`, `jobId` and `waitSeconds`.
 
-## Pricing and free accounts
+## Pricing
 
-The **Download 1 MB** (`download-mb`) rate depends on your Apify discount tier:
+**Pay per completed MB, with no additional Actor run platform fee, proxy fee, start fee or dataset-row event charge.** The same per-MB rate applies to video and audio at every supported quality. A smaller audio file can cost less than the corresponding video because fewer MB are delivered.
 
-| Apify tier | Typical platform plan | Price per MB | Price per GB |
-| --- | --- | --- | --- |
-| FREE | Free | $0.002500 | $2.500 |
-| BRONZE | Starter | $0.000125 | $0.125 |
-| SILVER | Scale | $0.0001125 | $0.1125 |
-| GOLD | Business | $0.000100 | $0.100 |
-| PLATINUM / DIAMOND | Enterprise | $0.000100 | $0.100 |
+| Apify discount tier | Typical Apify plan | Price per MB | Equivalent per GB | A 100 MB file |
+| --- | --- | --- | --- | --- |
+| FREE | Free | $0.002500 | $2.50 | $0.25 |
+| BRONZE | Starter | $0.000125 | $0.125 | $0.0125 |
+| SILVER | Scale | $0.0001125 | $0.1125 | $0.01125 |
+| GOLD | Business | $0.000100 | $0.10 | $0.01 |
+| PLATINUM / DIAMOND | Enterprise tiers | $0.000100 | $0.10 | $0.01 |
 
-These are usage rates, not a separate FlashData monthly subscription. Your Apify subscription credits are shared across the platform. Check the **Pricing** tab for your effective price and any pending price changes. Each completed file is rounded up to a whole decimal MB (1 MB = 1,000,000 bytes). A 2,100,000-byte file is 3 events. The event covers downloading and temporary hosting; it does not bill every later use of the same link.
+1 MB = 1,000,000 bytes; 1 GB = 1,000 MB. Each completed file is rounded up to a whole MB: a 2,100,000-byte file is billed as 3 MB. The GB figures are unit conversions, not a requirement to buy a GB at a time. Check this Actor's **Pricing** tab for your effective tier and any scheduled changes.
 
-Submission, polling and failed downloads produce no download events. The run budget caps the permitted file size before work begins. When Apify supplies the complete tier price table, we conservatively reserve budget at the highest rate ($2.50/GB with this table); Apify still charges your actual discounted rate. A very small budget can therefore limit the permitted size more than your discounted rate would require. For example, a $0.05 budget permits at most 20 MB at the conservative rate; allowing 50 MB requires a budget of at least $0.125. Increasing the run budget does not increase the per-MB price. An oversized file fails instead of silently exceeding that ceiling. Only the download event should be configured: no start fee or dataset-row fee.
+### How the download rate compares
 
-Apify free accounts can use their available platform credits, shared with other Actors. At $2.50/GB, a full $5 of available platform credits covers up to 2 GB; this is not an additional allowance from FlashData. There is no separate FlashData free allowance and no charge to a personal FlashData account. Available platform credit and account restrictions still apply. The file link is released after Apify confirms the download charge. Free-plan activity does not generate developer payouts; it is not a payment from Apify to FlashData.
+- **97.5% lower than streamers on Starter:** FlashData's download usage rate is **$0.125/GB**, versus **$5/GB** for [streamers/youtube-video-downloader](https://apify.com/streamers/youtube-video-downloader) at the same BRONZE tier. This compares the media download event rate only; optional services and platform subscriptions are excluded.
+- **An example against per-second pricing:** [epctex/youtube-video-downloader](https://apify.com/epctex/youtube-video-downloader) charges $0.00075 per second for 1080p. Ten minutes is **$0.45** for the download, plus its duration lookup. If that download produces a **100 MB file**, FlashData costs **$0.0125 on Starter**, about **97.2% less** than the $0.45 download portion. This is an illustrative size assumption, not a measured result; the actual difference depends on file size, duration and your tier.
 
-## Results and retention
+Comparison checked **November 17, 2026**, against the linked Actors' public pricing. Their capabilities and rates can change.
 
-OUTPUT contains `download_url`, `filename`, `content_type`, `size_bytes`, `charged_mb`, `expires_at`, `file_expires_at` and `run_id`. A dataset row is also provided. Links normally last up to five minutes; hosted files are normally retained about 24 hours. Save the file promptly. OUTPUT's expiry fields are authoritative.
+### Charges, free accounts and run budgets
 
-To refresh a link or continue an interrupted download, **resurrect the same Apify run with its original input** before the hosted file expires. Confirmed charges are not repeated. OUTPUT is refreshed; the original dataset row can contain an expired link. Starting a new run is a new download and can incur a new charge.
+Submission, polling and downloads that fail before file completion produce no download event. Downloading an already-paid file through the same valid link does not create another download charge. If a run stops after the completed file has been charged, resume that same run to recover the result rather than starting another download.
 
-## Errors and retries
+Your **Max total charge** and `maxFileMB` cap the permitted file size. When Apify supplies a complete tier price table, the size limit is checked conservatively at the highest rate, currently $2.50/GB. The default $0.05 budget can therefore limit a run to 20 MB even on a discounted tier. Increasing the budget changes the permitted size, not your actual per-MB rate. An oversized file fails instead of silently exceeding its limit.
 
-The Actor waits up to ten minutes for completion. A timeout does not cancel an accepted backend download. Resume the same run; do not repeatedly press Start for the same video.
+Free accounts use their available Apify credits at the FREE rate. For example, $5 of available platform credits would cover up to 2 GB if entirely spent here. Credits are shared with other Actors; there is no separate FlashData free allowance or FlashData subscription. Your Apify plan subscription and separate platform operations after the run, such as dataset API access, remain subject to Apify's own charges.
 
-A charge with an uncertain response is reconciled against Apify's event count. Automatic charge attempts are confined to the original short authorization window. If the window has expired and no charge is confirmed, the Actor stops for support review instead of risking a duplicate charge. A charge may have succeeded even if the run failed while saving its output.
+## Output
 
-Set a sufficient Apify run timeout (recommended 900 seconds). Private, restricted, removed, oversized or incompatible videos can fail. Download only media you have permission to use.
+Each completed run produces one **OUTPUT** record and one dataset row containing the hosted link and file details. OUTPUT also includes the run status. This illustrative JSON shows the completed OUTPUT structure; it is not a live download:
 
-[Support](mailto:support@flashdata.dev) — include the run URL, never tokens or secrets. This is an independent FlashData integration, not an official YouTube product.
+```json
+{
+  "status": "completed",
+  "run_id": "EXAMPLE_RUN_ID",
+  "download_url": "https://example.com/temporary-download/video.mp4",
+  "filename": "video.mp4",
+  "content_type": "video/mp4",
+  "size_bytes": 10000000,
+  "charged_mb": 10,
+  "expires_at": "2026-11-17T12:05:00.000Z",
+  "file_expires_at": "2026-11-18T12:00:00.000Z"
+}
+```
+
+Use `download_url` to save the file, `size_bytes` for its actual size, and `charged_mb` for the billed whole-MB count. The expiry fields returned by your run are authoritative.
+
+To refresh an expired link while the hosted file still exists, **resurrect the same Apify run with its original input**. Confirmed download charges are not repeated. Read the refreshed **OUTPUT**: the original dataset row can still contain the old link. Starting a new run creates a new download and can incur a new charge.
+
+If processing is still pending after ten minutes, continue the same run. If a charge cannot be confirmed, contact support with the run URL. Private, restricted, removed or incompatible videos may fail; request only media you have permission to download.
+
+## Send Results to Your Workflow
+
+Use the download link and JSON result in your own media archive, editing pipeline or automation. For Notion, Todoist or another application, pass the result through your chosen automation service or the application's API:
+
+1. Set up an Apify **run-succeeded integration or webhook** for this Actor.
+2. Retrieve the run's **OUTPUT** record through the [Apify API](https://docs.apify.com/api/v2).
+3. Send the file name, size and other result fields to your destination. If your workflow needs the media, download it before the link expires.
+4. Save a permanent copy in your own storage when the destination needs lasting access.
+
+Connections are configured in Apify or your own workflow; this Actor has no destination connector input. See [Apify integrations](https://docs.apify.com/platform/integrations) for available connection methods.
+
+## Contact
+
+For help, open an issue on this Actor or email [support@flashdata.dev](mailto:support@flashdata.dev) with the run URL and a description of the problem. Do not send API tokens, keys or storage credentials.
+
+This is an independent FlashData integration, not an official YouTube product.

@@ -2,13 +2,13 @@
   "title": "YouTube Video & Audio Downloader",
   "type": "object",
   "schemaVersion": 1,
-  "description": "Download one video or audio file. Pay through Apify per completed MB; no FlashData API key or cloud storage credentials required.",
+  "description": "Paste a public YouTube URL, choose video or audio, and get a hosted download link. From $0.10/GB on Business or $0.125/GB on Starter; Free is $2.50/GB. No extra Actor run platform or proxy fees, FlashData key or cloud setup.",
   "properties": {
     "url": {
-      "title": "YouTube video URL",
+      "title": "YouTube video or Shorts URL",
       "type": "string",
       "editor": "textfield",
-      "description": "Public YouTube watch, Shorts or youtu.be HTTPS URL.",
+      "description": "Paste one public YouTube watch, Shorts or youtu.be HTTPS link. One completed file per run.",
       "prefill": "https://www.youtube.com/watch?v=jNQXAC9IVRw"
     },
     "download_type": {
@@ -19,9 +19,14 @@
         "video",
         "audio"
       ],
-      "title": "Download Type",
-      "description": "Video with audio, video only, or audio only.",
-      "editor": "select"
+      "title": "What to download",
+      "description": "Choose a video with its audio, a silent video, or an audio-only file. Default: video with sound.",
+      "editor": "select",
+      "enumTitles": [
+        "Video with sound",
+        "Silent video",
+        "Audio only"
+      ]
     },
     "output_format": {
       "type": "string",
@@ -33,9 +38,17 @@
         "mp3",
         "opus"
       ],
-      "title": "Output Format",
-      "description": "Video: mp4, webm, mkv. Audio: m4a, mp3, opus. Omit to use the type-specific default.",
-      "editor": "select"
+      "title": "File format",
+      "description": "Choose MP4, WEBM or MKV for video; M4A, MP3 or OPUS for audio. Leave blank to use the default for your download type.",
+      "editor": "select",
+      "enumTitles": [
+        "MP4 (video)",
+        "WEBM (video)",
+        "MKV (video)",
+        "M4A (audio)",
+        "MP3 (audio)",
+        "OPUS (audio)"
+      ]
     },
     "video_quality": {
       "type": "string",
@@ -55,8 +68,8 @@
         "<=2160",
         "==2160"
       ],
-      "title": "Video Quality",
-      "description": "Default ceiling: 1080p. Up to 2160p where available. Omit for audio-only downloads; no upscaling.",
+      "title": "Video resolution",
+      "description": "Choose a resolution ceiling (<=) or exact resolution (==), from 144p to 2160p (4K). Default: up to 1080p. Availability depends on the source; no upscaling. Leave blank for audio only.",
       "editor": "select",
       "sectionCaption": "Optional download settings"
     },
@@ -65,8 +78,8 @@
       "minLength": 1,
       "maxLength": 6,
       "pattern": "^(?:>=|<=|==)(?:[1-9]\\d?|1\\d\\d|2[0-3]\\d|240)$",
-      "title": "Fps",
-      "description": "Frame-rate constraint. Omit for audio-only downloads.",
+      "title": "Video frame rate (FPS)",
+      "description": "Optional source frame-rate constraint, for example <=30 or ==60. Supports <=, == or >= and 1–240 FPS. Leave blank for audio only.",
       "editor": "textfield"
     },
     "audio_quality": {
@@ -78,8 +91,8 @@
         "192",
         "128"
       ],
-      "title": "Audio Quality",
-      "description": "Applies only to audio downloads; omit for video or combined media.",
+      "title": "Audio bitrate (kbps)",
+      "description": "For audio-only downloads: choose best available, 320, 256, 192 or 128 kbps. Leave blank for video with sound or silent video.",
       "editor": "select"
     },
     "audio_language": {
@@ -88,9 +101,13 @@
         "default",
         "original"
       ],
-      "title": "Audio Language",
-      "description": "Audio language selection; omit for video-only downloads.",
-      "editor": "select"
+      "title": "Source audio track",
+      "description": "Select the default or original audio track already available on the source. This does not translate audio. Leave blank for silent video.",
+      "editor": "select",
+      "enumTitles": [
+        "Default source track",
+        "Original source track"
+      ]
     },
     "maxFileMB": {
       "title": "Maximum file size (MB)",
@@ -99,7 +116,7 @@
       "minimum": 1,
       "maximum": 800,
       "default": 50,
-      "description": "Hard file-size ceiling. Also limited by your run budget. 1 MB = 1,000,000 bytes. Oversized downloads fail without a download event charge."
+      "description": "Hard ceiling for the completed file: 50 MB by default, up to 800 MB. The run budget can reduce this limit. Under the current conservative budget check, $0.125 allows up to 50 MB. This is a budget ceiling, not a fixed charge. Oversized downloads produce no download event."
     }
   },
   "required": [
