@@ -142,7 +142,7 @@ for (const definition of generatedDefinitions) {
   await save(path.join(dir,'LICENSE'), await readFile(path.join(root,'google-search/LICENSE'),'utf8'));
   if (!check) {
     await mkdir(path.join(dir,'assets'),{recursive:true});
-    await copyFile(path.join(root,'google-search/assets/logo.png'),path.join(dir,'assets/logo.png'));
+    await copyFile(path.join(suite, 'assets', `${source.category === 'google' ? 'google' : 'youtube'}.png`),path.join(dir,'assets/logo.png'));
   }
 }
 console.log(`${check ? 'Verified' : 'Generated'} ${files} files for ${generatedDefinitions.length} generated Actors (download maintained independently).`);
