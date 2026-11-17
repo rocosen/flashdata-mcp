@@ -1,7 +1,7 @@
 {
   "actorSpecification": 1,
   "name": "youtube-search",
-  "title": "YouTube Search Scraper — $0.50/1K Requests",
+  "title": "YouTube Search Scraper — Fast & Affordable",
   "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Search by keyword with filters and up to 20 requested results. Get video IDs, titles and available channel and view data. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",

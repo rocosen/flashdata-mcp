@@ -1,4 +1,4 @@
-# Google Search Results Scraper — $1/1K Requests
+# Google Search Results Scraper — Fast & Affordable
 
 **$1.00 per 1,000 requests with no monthly FlashData subscription. From $0.40/1,000 on FlashData Business ($1,999/month, including 40,000 Credits). Apify usage is billed separately.**
 

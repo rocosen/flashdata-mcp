@@ -1,7 +1,7 @@
 {
   "actorSpecification": 1,
   "name": "youtube-metadata",
-  "title": "YouTube Video Metadata Scraper — $0.50/1K Requests",
+  "title": "YouTube Video Metadata & Chapters Scraper",
   "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Get video details by ID, with available titles, channels, views, durations, chapters and media format metadata. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",

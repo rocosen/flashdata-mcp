@@ -1,7 +1,7 @@
 {
   "actorSpecification": 1,
   "name": "youtube-trainability",
-  "title": "YouTube Video License Checker — $0.50/1K Requests",
+  "title": "YouTube Creative Commons License Checker",
   "description": "From $0.20/1K requests on FlashData Business; $0.50/1K PAYG. Check a video's Creative Commons license label. Returns a metadata signal; it does not grant reuse or AI-training rights. Requires your FlashData API key and Credits; Apify usage is separate.",
   "version": "0.1",
   "buildTag": "latest",

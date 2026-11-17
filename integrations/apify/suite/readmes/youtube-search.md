@@ -1,4 +1,4 @@
-# YouTube Search Scraper — $0.50/1K Requests
+# YouTube Search Scraper — Fast & Affordable
 
 **$0.50 per 1,000 requests with no monthly FlashData subscription. From $0.20/1,000 on FlashData Business ($1,999/month, including 40,000 Credits). Apify usage is billed separately.**
 
