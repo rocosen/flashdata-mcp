@@ -1,4 +1,4 @@
-# Google Search for AI Agent Research — FlashData
+# Google Search — FlashData
 
 Give an AI research assistant Google web-search evidence for a topic such as battery recycling. Retrieve ranked titles, URLs and snippets, then let your agent build a source shortlist and a brief with links to the original pages.
 
