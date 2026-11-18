@@ -1,23 +1,35 @@
-# FlashData Skills for OpenCode and Pi
+# Google Search, YouTube Data & YouTube Downloads
 
 ![FlashData](assets/logo.svg)
 
-Find web sources, prepare news briefings, discover local businesses and research YouTube videos with structured results. This package includes 15 task Skills, examples and source guides, using the existing FlashData task CLIs. OpenCode also gets a small plugin that registers those Skills. Pi loads the declared Skills directly.
+- **Google Search:** Search for `battery recycling` with the country set to the US and the language to English. Get ranked results with a title, URL and snippet for each match.
+- **YouTube Data:** Search by topic to find video IDs, titles and channels. Use a video ID to look up details or retrieve existing captions when available. Use a channel ID to see its profile and recent uploads.
+- **YouTube Downloads:** Give Pi a video ID and a writable bucket you own. For example, save the first 10 seconds of a video you have permission to use as an MP4. The download runs asynchronously: you get a job ID first, then the file location and size when delivery finishes. Audio-only downloads are also supported.
 
-**Free to install; data calls consume your own paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined).** Model/client and storage costs are separate. Use Node.js 22.18+ and npm, and supply your own [FlashData API key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined) through the environment or a secret manager before starting the agent. Never paste the Key into chat or commit it. Installation and Skill discovery submit no data queries.
+**Free to install.** Data calls use your own paid [FlashData Credits](https://flashdata.dev/pricing?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined); downloads are billed by bytes delivered to your storage. Model and storage-provider charges are separate. Use Node.js 22.18+ and npm. Set `FLASHDATA_API_KEY` to your [FlashData API key](https://flashdata.dev/signup?utm_source=agent-skills&utm_medium=integration&utm_campaign=intent_gtm_2026q4&utm_content=combined) in the environment or a secret manager before starting Pi. Never paste keys into chat. Installation does not submit a paid query.
 
 ## Install from npm in Pi
 
 ```sh
-pi install npm:@flashdata-dev/agent-skills@0.1.1
+pi install npm:@flashdata-dev/agent-skills@0.1.2
 pi list
 ```
 
-Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.1`.
+Start Pi or use `/reload`, then invoke `/skill:google-search-flashdata`. To remove the package, run `pi remove npm:@flashdata-dev/agent-skills@0.1.2`.
+
+## Use a task
+
+Ask Pi to prepare a query before spending credits:
+
+> Load google-search-flashdata. Prepare a US English search for battery recycling research with 10 requested results. Show the input and current price first; do not submit a paid query yet.
+
+Each Skill uses a fixed published CLI version, for example `npx --yes @flashdata-dev/google-search@0.1.1`. Its `--version` check is local after package download. `tools` and `call get_pricing` perform free authenticated schema/pricing reads. Data commands execute only within your approved task and budget. A quote does not authorize a query.
+
+Skills include JSON inputs, task-specific processing examples and error handling. Save outputs locally and retain source links. For asynchronous responses, retain the job ID and read the existing job; pending is not completion. Never automatically repeat a timed-out paid submission.
 
 ## Install from Git
 
-The public Git distribution is independent of npm publication. Review the source, then pin a release tag or commit. `agent-skills-v0.1.1` is the release reference for this package.
+The public Git distribution is independent of npm publication. The commands below pin the `agent-skills-v0.1.1` Git release, which contains the same 15 Skills.
 
 ### OpenCode
 
@@ -67,16 +79,6 @@ The repository's `pi.skills` manifest selects these 15 Skills. It declares no ex
 
 For a local checkout, `pi install /absolute/path/flashdata-agent-skills/packages/agent-skills` loads just this package. See Pi's [package documentation](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/packages.md) for project-scoped installations and resource selection.
 
-## Use a task
-
-Ask the agent to load the relevant Skill and read its guide. For example:
-
-> Load google-search-flashdata. Prepare a US English search for battery recycling research with 10 requested results. Show the input and current price first; do not submit a paid query yet.
-
-Each Skill uses a fixed published CLI version, for example `npx --yes @flashdata-dev/google-search@0.1.1`. Its `--version` check is local after package download. `tools` and `call get_pricing` perform free authenticated schema/pricing reads. Data commands execute only within your approved task and budget. A quote does not authorize a query.
-
-Skills include JSON inputs, task-specific processing examples and error handling. Save outputs locally and retain source links. For asynchronous responses, retain the job ID and read the existing job; pending is not completion. Never automatically repeat a timed-out paid submission.
-
 ## Capabilities
 
 | Task | Source | Skill and guide |
@@ -95,7 +97,7 @@ Skills include JSON inputs, task-specific processing examples and error handling
 | Creative Commons license labels | `youtube_trainability` | [License Metadata](skills/youtube-trainability-flashdata/SKILL.md) |
 | Channel profiles and recent uploads | `youtube_channel` | [YouTube Channel](skills/youtube-channel-flashdata/SKILL.md) |
 | Query suggestions | `youtube_suggestions` | [YouTube Autocomplete](skills/youtube-autocomplete-flashdata/SKILL.md) |
-| Media delivery to your storage | `youtube_download` | [Cloud Storage Delivery](skills/youtube-cloud-storage-flashdata/SKILL.md) |
+| Download YouTube video or audio to your storage | `youtube_download` | [YouTube Downloads](skills/youtube-cloud-storage-flashdata/SKILL.md) |
 
 News results do not promise article full text. Images returns result metadata and URLs, not image downloads. Shopping results do not guarantee current stock or checkout prices. Places contact fields may be absent. Requested result counts are ceilings, not guarantees; standard and extended YouTube search have different rates. Transcript defaults to `auto=true`, Captions to `auto=false`; both retrieve existing tracks and provide no ASR or translation. License labels do not grant permission to train a model.
 
