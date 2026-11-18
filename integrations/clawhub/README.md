@@ -31,11 +31,12 @@ The current source prepares version `1.0.1` with Python examples. The publicatio
 Run from the repository root with Node.js 22.18+:
 
 ```sh
+git submodule update --init -- .channel-sources/flashdata-skills
 node scripts/sync-clawhub-skills.js
 node scripts/sync-clawhub-skills.js --check
 ```
 
-The generator adapts the maintained `skills/*/SKILL.md` content, task catalog, prompts and source schemas. Publication is deliberately separate. `catalog.json` is a build manifest, not a live-platform status file.
+The generator reads the pinned Python edition of the official FlashData skills submodule, along with the task catalog, prompts and source schemas. Publication is deliberately separate. `catalog.json` is a build manifest, not a live-platform status file.
 
 Use the official ClawHub CLI to preview a release without uploading:
 

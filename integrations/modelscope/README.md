@@ -6,9 +6,10 @@ This directory is publishing source, not evidence that a ModelScope listing is p
 
 Public website links use `/zh` so visitors start in Chinese. The website remembers this language for authentication and console pages. Keep tracking parameters and API URLs unchanged, and sync the existing platform objects after a source update.
 
-Update the localized metadata in `catalog.json`, then run:
+Update the localized metadata in `catalog.json`, then run with the pinned official Python examples (also used by `--skillhub`):
 
 ```sh
+git submodule update --init -- .channel-sources/flashdata-skills
 python3 scripts/sync-modelscope-skills.py
 python3 scripts/sync-modelscope-skills.py --check
 ```

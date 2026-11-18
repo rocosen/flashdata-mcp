@@ -1,9 +1,9 @@
 name: Python channel examples
 on:
   push:
-    paths: ['skills/**', 'integrations/clawhub/**', 'integrations/modelscope/**', 'registry/examples/**', 'test/test_python_channel_examples.py', '.github/workflows/python-examples.yml']
+    paths: ['.channel-sources/flashdata-skills', '.gitmodules', 'scripts/sync-clawhub-skills.js', 'scripts/sync-modelscope-skills.py', 'integrations/clawhub/**', 'integrations/modelscope/**', 'registry/examples/**', 'test/test_python_channel_examples.py', '.github/workflows/python-examples.yml']
   pull_request:
-    paths: ['skills/**', 'integrations/clawhub/**', 'integrations/modelscope/**', 'registry/examples/**', 'test/test_python_channel_examples.py', '.github/workflows/python-examples.yml']
+    paths: ['.channel-sources/flashdata-skills', '.gitmodules', 'scripts/sync-clawhub-skills.js', 'scripts/sync-modelscope-skills.py', 'integrations/clawhub/**', 'integrations/modelscope/**', 'registry/examples/**', 'test/test_python_channel_examples.py', '.github/workflows/python-examples.yml']
 permissions:
   contents: read
 jobs:
@@ -15,6 +15,8 @@ jobs:
         python: ['3.10', '3.14']
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          submodules: true
       - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
         with:
           python-version: ${{ matrix.python }}

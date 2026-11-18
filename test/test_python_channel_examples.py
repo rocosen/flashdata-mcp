@@ -26,7 +26,9 @@ SCHEMAS["get_job"] = {
 }
 SCHEMAS["get_pricing"] = {"type": "object"}
 EXAMPLES = []
-for pattern in ("skills/*/SKILL.md", "integrations/clawhub/skills/*/SKILL.md", "integrations/modelscope/skills/*/SKILL.md"):
+for pattern in (".channel-sources/flashdata-skills/skills/*/SKILL.md", "integrations/clawhub/skills/*/SKILL.md", "integrations/modelscope/skills/*/SKILL.md"):
+    if not list(ROOT.glob(pattern)):
+        raise RuntimeError(f"Missing Skills: {pattern}. Initialize the official skills submodule before testing.")
     for path in sorted(ROOT.glob(pattern)):
         for index, block in enumerate(re.findall(r"```python\n([\s\S]*?)\n```", path.read_text())):
             EXAMPLES.append(pytest.param(block, id=f"{path.relative_to(ROOT)}:{index}"))
