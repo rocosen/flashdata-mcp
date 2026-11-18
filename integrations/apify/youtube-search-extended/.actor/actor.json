@@ -1,0 +1,18 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-search-extended",
+  "title": "YouTube Search Scraper — Up to 700 Results",
+  "description": "Extended Search uses its own FlashData rate. Request up to 700 YouTube results per query, filter discovery results and export video IDs, titles and available metadata. Requires your FlashData API key and Credits; Apify usage is separate.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 512,
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

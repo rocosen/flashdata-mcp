@@ -1,0 +1,23 @@
+{
+  "name": "flashdata-apify-youtube-download",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "From $0.10/GB on Business; $0.125/GB on Starter. Download YouTube videos and Shorts up to 4K, or extract MP3, M4A and OPUS audio. Get hosted links with no extra platform or proxy fees and no cloud setup. Free-plan rate: $2.50/GB. Pay per completed MB.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "apify": "3.7.2",
+    "apify-client": "2.25.0"
+  },
+  "overrides": {
+    "basic-ftp": "6.2.6",
+    "follow-redirects": "1.16.3"
+  }
+}

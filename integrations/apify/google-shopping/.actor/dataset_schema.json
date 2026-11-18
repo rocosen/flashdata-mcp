@@ -1,0 +1,64 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "Google Shopping results",
+      "description": "Returned result rows. Complete nested fields and usage remain in OUTPUT.",
+      "transformation": {
+        "fields": [
+          "query",
+          "position",
+          "title",
+          "source",
+          "price",
+          "link",
+          "rating",
+          "ratingCount",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "query": {
+            "label": "query",
+            "format": "text"
+          },
+          "position": {
+            "label": "position",
+            "format": "number"
+          },
+          "title": {
+            "label": "title",
+            "format": "text"
+          },
+          "source": {
+            "label": "source",
+            "format": "text"
+          },
+          "price": {
+            "label": "price",
+            "format": "text"
+          },
+          "link": {
+            "label": "link",
+            "format": "link"
+          },
+          "rating": {
+            "label": "rating",
+            "format": "number"
+          },
+          "ratingCount": {
+            "label": "ratingCount",
+            "format": "number"
+          },
+          "request_id": {
+            "label": "request_id",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

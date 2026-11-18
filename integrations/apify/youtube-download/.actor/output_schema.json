@@ -1,0 +1,18 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "YouTube video or audio download result",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Download link and file details",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=results",
+      "description": "One dataset row per completed file: download_url, filename, content_type, size_bytes, charged_mb, expires_at, file_expires_at and run_id. For refreshed links, read Complete response and latest link instead."
+    },
+    "response": {
+      "type": "string",
+      "title": "Complete response and latest link",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT",
+      "description": "The OUTPUT record contains status and the latest hosted download link, file details, billed MB and expiry times. Links normally last up to five minutes; hosted files normally remain about 24 hours. Resurrect the same run with its original input to refresh a link without repeating a confirmed download charge."
+    }
+  }
+}

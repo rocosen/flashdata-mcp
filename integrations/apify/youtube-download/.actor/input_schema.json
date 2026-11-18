@@ -1,0 +1,126 @@
+{
+  "title": "YouTube Video & Audio Downloader",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Paste a public YouTube URL, choose video or audio, and get a hosted download link. From $0.10/GB on Business or $0.125/GB on Starter; Free is $2.50/GB. No extra Actor run platform or proxy fees, FlashData key or cloud setup.",
+  "properties": {
+    "url": {
+      "title": "YouTube video or Shorts URL",
+      "type": "string",
+      "editor": "textfield",
+      "description": "Paste one public YouTube watch, Shorts or youtu.be HTTPS link. One completed file per run.",
+      "prefill": "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+    },
+    "download_type": {
+      "type": "string",
+      "default": "audio_video",
+      "enum": [
+        "audio_video",
+        "video",
+        "audio"
+      ],
+      "title": "What to download",
+      "description": "Choose a video with its audio, a silent video, or an audio-only file. Default: video with sound.",
+      "editor": "select",
+      "enumTitles": [
+        "Video with sound",
+        "Silent video",
+        "Audio only"
+      ]
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "mp4",
+        "webm",
+        "mkv",
+        "m4a",
+        "mp3",
+        "opus"
+      ],
+      "title": "File format",
+      "description": "Choose MP4, WEBM or MKV for video; M4A, MP3 or OPUS for audio. Leave blank to use the default for your download type.",
+      "editor": "select",
+      "enumTitles": [
+        "MP4 (video)",
+        "WEBM (video)",
+        "MKV (video)",
+        "M4A (audio)",
+        "MP3 (audio)",
+        "OPUS (audio)"
+      ]
+    },
+    "video_quality": {
+      "type": "string",
+      "enum": [
+        "<=144",
+        "==144",
+        "<=360",
+        "==360",
+        "<=480",
+        "==480",
+        "<=720",
+        "==720",
+        "<=1080",
+        "==1080",
+        "<=1440",
+        "==1440",
+        "<=2160",
+        "==2160"
+      ],
+      "title": "Video resolution",
+      "description": "Choose a resolution ceiling (<=) or exact resolution (==), from 144p to 2160p (4K). Default: up to 1080p. Availability depends on the source; no upscaling. Leave blank for audio only.",
+      "editor": "select",
+      "sectionCaption": "Optional download settings"
+    },
+    "fps": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 6,
+      "pattern": "^(?:>=|<=|==)(?:[1-9]\\d?|1\\d\\d|2[0-3]\\d|240)$",
+      "title": "Video frame rate (FPS)",
+      "description": "Optional source frame-rate constraint, for example <=30 or ==60. Supports <=, == or >= and 1–240 FPS. Leave blank for audio only.",
+      "editor": "textfield"
+    },
+    "audio_quality": {
+      "type": "string",
+      "enum": [
+        "best",
+        "320",
+        "256",
+        "192",
+        "128"
+      ],
+      "title": "Audio bitrate (kbps)",
+      "description": "For audio-only downloads: choose best available, 320, 256, 192 or 128 kbps. Leave blank for video with sound or silent video.",
+      "editor": "select"
+    },
+    "audio_language": {
+      "type": "string",
+      "enum": [
+        "default",
+        "original"
+      ],
+      "title": "Source audio track",
+      "description": "Select the default or original audio track already available on the source. This does not translate audio. Leave blank for silent video.",
+      "editor": "select",
+      "enumTitles": [
+        "Default source track",
+        "Original source track"
+      ]
+    },
+    "maxFileMB": {
+      "title": "Maximum file size (MB)",
+      "type": "integer",
+      "editor": "number",
+      "minimum": 1,
+      "maximum": 800,
+      "default": 50,
+      "description": "Hard ceiling for the completed file: 50 MB by default, up to 800 MB. The run budget can reduce this limit. Under the current conservative budget check, $0.125 allows up to 50 MB. This is a budget ceiling, not a fixed charge. Oversized downloads produce no download event."
+    }
+  },
+  "required": [
+    "url"
+  ],
+  "additionalProperties": false
+}

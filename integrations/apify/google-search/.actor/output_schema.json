@@ -1,0 +1,18 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Google Search output",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Organic search results",
+      "description": "Organic search results, exportable as JSON or CSV.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=organic"
+    },
+    "response": {
+      "type": "string",
+      "title": "Complete search response",
+      "description": "Complete search response, query, request ID and usage when returned.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    }
+  }
+}

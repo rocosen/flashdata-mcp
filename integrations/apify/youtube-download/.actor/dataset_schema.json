@@ -1,0 +1,58 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "results": {
+      "title": "Download link and file details",
+      "transformation": {
+        "fields": [
+          "run_id",
+          "download_url",
+          "filename",
+          "content_type",
+          "size_bytes",
+          "charged_mb",
+          "expires_at",
+          "file_expires_at"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "run_id": {
+            "label": "Run ID",
+            "format": "text"
+          },
+          "download_url": {
+            "label": "Download link",
+            "format": "link"
+          },
+          "filename": {
+            "label": "File name",
+            "format": "text"
+          },
+          "size_bytes": {
+            "label": "File size (bytes)",
+            "format": "number"
+          },
+          "charged_mb": {
+            "label": "Billed size (MB)",
+            "format": "number"
+          },
+          "expires_at": {
+            "label": "Link expires at",
+            "format": "text"
+          },
+          "content_type": {
+            "format": "text",
+            "label": "File type"
+          },
+          "file_expires_at": {
+            "format": "text",
+            "label": "Hosted file expires at"
+          }
+        }
+      }
+    }
+  }
+}

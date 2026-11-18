@@ -1,0 +1,49 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "organic": {
+      "title": "Organic search results",
+      "description": "One row for each returned organic search result. Other SERP fields remain in the complete JSON output.",
+      "transformation": {
+        "fields": [
+          "query",
+          "position",
+          "title",
+          "link",
+          "snippet",
+          "request_id"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "query": {
+            "label": "Query",
+            "format": "text"
+          },
+          "position": {
+            "label": "Position",
+            "format": "number"
+          },
+          "title": {
+            "label": "Title",
+            "format": "text"
+          },
+          "link": {
+            "label": "URL",
+            "format": "link"
+          },
+          "snippet": {
+            "label": "Snippet",
+            "format": "text"
+          },
+          "request_id": {
+            "label": "Request ID",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}
