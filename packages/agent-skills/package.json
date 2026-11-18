@@ -1,7 +1,7 @@
 {
   "name": "@flashdata-dev/agent-skills",
-  "version": "0.1.1",
-  "description": "Google search, news, places and YouTube research skills for OpenCode and Pi, using the FlashData CLI and your own paid API credits.",
+  "version": "0.1.2",
+  "description": "Get ranked Google results, find YouTube videos and retrieve available captions, or download video and audio you have permission to use to your own cloud storage.",
   "type": "module",
   "main": "index.js",
   "files": ["index.js", "skills.json", "skills", "assets", "README.md", "verification.md", "LICENSE"],
