@@ -6,12 +6,13 @@ from pathlib import Path
 from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parents[1]
+UPSTREAM = ROOT / '.channel-sources/flashdata-skills'
 CHECK = '--check' in sys.argv
 catalog = json.loads((ROOT / 'integrations/modelscope/catalog.json').read_text())
 copy = json.loads((ROOT / 'integrations/modelscope/copy.zh.json').read_text())
 files = {}
 for skill in catalog['skills']:
-    original = (ROOT / skill['source_directory'] / 'SKILL.md').read_text()
+    original = (UPSTREAM / skill['source_directory'] / 'SKILL.md').read_text()
     _, frontmatter, _ = original.split('---', 2)
     code = re.findall(r'```python\n(.*?)```', original, re.S)
     source = skill['source']
@@ -75,7 +76,7 @@ python3 -m pip install 'mcp==1.30.0' 'httpx==0.28.1'
         if platform == 'modelscope':
             files[directory + '/LICENSE'] = (ROOT / 'LICENSE').read_text()
         if source == 'youtube_download':
-            files[directory + '/references/storage.md'] = (ROOT / skill['source_directory'] / 'references/storage.md').read_text().replace('https://flashdata.dev/docs/sources/youtube_download', homepage)
+            files[directory + '/references/storage.md'] = (UPSTREAM / skill['source_directory'] / 'references/storage.md').read_text().replace('https://flashdata.dev/docs/sources/youtube_download', homepage)
 for relative, content in files.items():
     target = ROOT / relative
     if CHECK:

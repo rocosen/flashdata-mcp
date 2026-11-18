@@ -9,6 +9,7 @@ const pythonDependencies = ['mcp==1.30.0', 'httpx==0.28.1'];
 const prompts = require('../integrations/task-prompts.json');
 
 const root = path.resolve(__dirname, '..');
+const upstream = path.join(root, '.channel-sources/flashdata-skills/skills');
 const check = process.argv.includes('--check');
 const json = value => `${JSON.stringify(value, null, 2)}\n`;
 const overrides = {
@@ -42,7 +43,7 @@ for (const task of tasks) {
   const sourceDir = overrides[task.source] || task.slug;
   const slug = `${sourceDir}-flashdata`;
   const directory = `integrations/clawhub/skills/${slug}`;
-  const original = fs.readFileSync(path.join(root, 'skills', sourceDir, 'SKILL.md'), 'utf8');
+  const original = fs.readFileSync(path.join(upstream, sourceDir, 'SKILL.md'), 'utf8');
   const match = original.match(/^---\n[\s\S]*?description: (.+)\n[\s\S]*?\n---\n([\s\S]*)$/);
   assert.ok(match, sourceDir);
   const description = `${JSON.parse(match[1])} Requires a FlashData API key and paid Credits.`;
@@ -67,7 +68,7 @@ for (const task of tasks) {
   files.set(`${directory}/references/schema.json`, json(listTaskTools(task.source).find(t => t.name === task.source).inputSchema));
   const sample = require(`../registry/examples/${task.source}.json`).arguments;
   files.set(`${directory}/references/query.json`, json(sample));
-  if (download) files.set(`${directory}/references/storage.md`, fs.readFileSync(path.join(root, 'skills/youtube-download/references/storage.md'), 'utf8'));
+  if (download) files.set(`${directory}/references/storage.md`, fs.readFileSync(path.join(upstream, sourceDir, 'references/storage.md'), 'utf8'));
   catalog.push({ source: task.source, slug, displayName: `${task.title} — FlashData`, version: skillVersion, directory,
     runtime: 'Python >=3.10', pythonDependencies, homepage, categories: download ? ['integrations', 'automation'] : ['research', 'integrations'], topics: topics.split(','),
     scenario: scenarioTitle });
